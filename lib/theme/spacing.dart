@@ -25,7 +25,7 @@ class Spacing {
     required this.xxxxxl,
   });
 
-  factory Spacing(double spacerSize) {
+  factory Spacing({double spacerSize = 4.0}) {
     return Spacing._(
       spacerSize: spacerSize,
       xxs: 1 * spacerSize,

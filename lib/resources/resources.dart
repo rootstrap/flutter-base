@@ -23,5 +23,5 @@ extension ContextString on BuildContext {
 }
 
 extension SpacingOnWidget on Widget {
-  Spacing get spacing => Spacing(4.0);
+  Spacing get spacing => Spacing();
 }
