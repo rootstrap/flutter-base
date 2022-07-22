@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/resources/localization.dart';
+import 'package:flutter_base_rootstrap/resources/locale/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'en.dart' as enLang;
-import 'es.dart' as esLang;
-
 enum Lang { es, en }
-
-enum Localize {
-  appName,
-}
 
 class Localization {
   Lang currentLang = LangExtensions.defaultLang;
@@ -32,7 +25,7 @@ extension LangExtensions on Lang {
   ];
 
   static const appLocalizationDelegates = [
-    AppLocalizations.delegate,
+    S.delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -46,7 +39,8 @@ extension LangExtensions on Lang {
   static Lang defaultLang = Lang.en;
   static Locale defaultLocaleLang = const Locale('en', '');
 
-  static Lang? fromValue(String? fromValue) => langValues[fromValue];
+  static Lang fromValue(String? fromValue) =>
+      langValues[fromValue ?? defaultLang.value]!;
 
   static Lang fromLocale(Locale locale) {
     var lang = defaultLang;
@@ -63,8 +57,3 @@ extension LangExtensions on Lang {
 
   String get value => toString();
 }
-
-const Map<Lang, Map<Localize, String>> localize = {
-  Lang.en: enLang.localization,
-  Lang.es: esLang.localization,
-};
