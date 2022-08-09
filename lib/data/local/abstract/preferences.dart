@@ -1,4 +1,4 @@
-import 'package:flutter_base_rootstrap/domain/data/local/concrete/preferences.dart';
+import 'package:flutter_base_rootstrap/data/local/concrete/preferences.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/localize.dart';
 
 abstract class Preferences {
