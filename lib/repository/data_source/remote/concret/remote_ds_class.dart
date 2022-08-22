@@ -1,4 +1,4 @@
-import 'package:flutter_base_rootstrap/data/remote/abstract/remote_ds_class.dart';
+import 'package:flutter_base_rootstrap/repository/data_source/remote/abstract/remote_ds_class.dart';
 
 class RemoteDsExampleImpl extends RemoteDsExample {
   @override
