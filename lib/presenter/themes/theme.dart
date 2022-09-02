@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/theme/resources/colors.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/resources/colors.dart';
 
 abstract class LocalTheme {
   final AppColors colors;

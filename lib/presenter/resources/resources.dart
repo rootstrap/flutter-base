@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/theme/spacing.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/spacing.dart';
 import 'package:flutter_svg/svg.dart';
 
 part 'dim.dart';

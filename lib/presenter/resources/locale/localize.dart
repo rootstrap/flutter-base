@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/resources/locale/generated/l10n.dart';
+import 'package:flutter_base_rootstrap/presenter/resources/locale/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 enum Lang { es, en }

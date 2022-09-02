@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_base_rootstrap/theme/resources/colors.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/resources/colors.dart';
 
 /// Change the colors for the dark theme
 class ColorsDark implements AppColors {

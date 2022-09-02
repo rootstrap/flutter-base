@@ -1,0 +1,3 @@
+### Device Layer
+
+- Get access to the devices components: Permissions, Camera, Files, Photos, GPS etc...
