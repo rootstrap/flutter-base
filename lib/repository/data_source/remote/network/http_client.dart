@@ -14,7 +14,9 @@ class HttpClient {
   static const defaultReceiveTimeout = 10000;
 
   Map<String, dynamic> get _headers {
-    final defaultHeaders = <String, dynamic>{};
+    final defaultHeaders = <String, dynamic>{
+      "Content-Type": Headers.jsonContentType
+    };
 
     if (headers != null) {
       defaultHeaders.addAll(headers!);
