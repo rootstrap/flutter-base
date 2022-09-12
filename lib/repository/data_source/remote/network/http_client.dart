@@ -10,15 +10,11 @@ class HttpClient {
   final int? connectTimeOut;
   final int? receiveTimeout;
   static const defaultTimeout = 10000;
-  static const defaultBaseUrl = 'target-mvd-api.herokuapp.com';
+  static const defaultBaseUrl = 'https://target-mvd-api.herokuapp.com/api/v1/';
   static const defaultReceiveTimeout = 10000;
 
-  Uri get _url => Uri.https(baseUrl, '/api/v1/$path');
-
   Map<String, dynamic> get _headers {
-    final defaultHeaders = <String, dynamic>{
-      'Content-Type': 'application/json'
-    };
+    final defaultHeaders = <String, dynamic>{};
 
     if (headers != null) {
       defaultHeaders.addAll(headers!);
@@ -42,21 +38,24 @@ class HttpClient {
         baseUrl: baseUrl,
         connectTimeout: connectTimeOut,
         receiveTimeout: receiveTimeout,
+        contentType: Headers.jsonContentType,
+        responseType: ResponseType.json,
         headers: _headers,
       ),
     );
+    _dio.interceptors.add(LogInterceptor());
   }
 
-  Future<HttpResponse> get() => _processResponse(_dio.get(_url.path));
+  Future<HttpResponse> get() => _processResponse(_dio.get(path));
 
   Future<HttpResponse> post() =>
-      _processResponse(_dio.post(_url.path, data: parameters));
+      _processResponse(_dio.post(path, data: parameters));
 
   Future<HttpResponse> patch() =>
-      _processResponse(_dio.patch(_url.path, data: parameters));
+      _processResponse(_dio.patch(path, data: parameters));
 
   Future<HttpResponse> delete() =>
-      _processResponse(_dio.delete(_url.path, data: parameters));
+      _processResponse(_dio.delete(path, data: parameters));
 
   Future<HttpResponse> _processResponse(Future request) async {
     try {
