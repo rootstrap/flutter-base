@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/domain/services/abstract/service_class.dart';
 import 'package:flutter_base_rootstrap/utils/data_state.dart';
+import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ServerStatus extends StatelessWidget {
-  ServiceExample get _service => ServiceExample.instance;
+  ServiceExample get _service => getIt();
 
   const ServerStatus({Key? key}) : super(key: key);
 

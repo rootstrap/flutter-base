@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
+import 'package:flutter_base_rootstrap/utils/globals.dart';
 
 class HttpClient {
   late Dio _dio;
@@ -13,6 +14,8 @@ class HttpClient {
   static const defaultBaseUrl = 'https://target-mvd-api.herokuapp.com/api/v1/';
   static const defaultReceiveTimeout = 10000;
 
+  Preferences get _pref => getIt();
+
   Map<String, dynamic> get _headers {
     final defaultHeaders = <String, dynamic>{
       "Content-Type": Headers.jsonContentType
@@ -22,7 +25,7 @@ class HttpClient {
       defaultHeaders.addAll(headers!);
     }
 
-    defaultHeaders.addAll(Preferences.instance.secureHeaders);
+    defaultHeaders.addAll(_pref.secureHeaders);
 
     return defaultHeaders;
   }
@@ -70,8 +73,7 @@ class HttpClient {
           'expiry': remoteHeaders['expiry'] ?? '',
           'uid': remoteHeaders['uid'] ?? '',
         };
-        Preferences.instance.secureHeaders =
-            savedHeaders as Map<String, String>;
+        _pref.secureHeaders = savedHeaders as Map<String, String>;
       }
       if (response.isSuccess) {
         return HttpResponse(
