@@ -1,5 +1,8 @@
-abstract class ServiceExample {
-  bool get isActive;
+import 'package:flutter_base_rootstrap/utils/data_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-  void activateApp();
+abstract class ServiceExample {
+  Cubit<Data<bool>> get blocServerStatus;
+
+  void checkState();
 }

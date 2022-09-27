@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
+import 'package:flutter_base_rootstrap/utils/globals.dart';
 
 class HttpClient {
   late Dio _dio;
@@ -7,89 +9,102 @@ class HttpClient {
   final Map<String, dynamic>? headers;
   final Map<String, dynamic>? parameters;
   final int? connectTimeOut;
-  final int? recieveTimeout;
+  final int? receiveTimeout;
   static const defaultTimeout = 10000;
+  static const defaultBaseUrl = 'https://target-mvd-api.herokuapp.com/api/v1/';
   static const defaultReceiveTimeout = 10000;
 
-  HttpClient(
-    this.baseUrl, {
+  Preferences get _pref => getIt();
+
+  Map<String, dynamic> get _headers {
+    final defaultHeaders = <String, dynamic>{
+      "Content-Type": Headers.jsonContentType
+    };
+
+    if (headers != null) {
+      defaultHeaders.addAll(headers!);
+    }
+
+    defaultHeaders.addAll(_pref.secureHeaders);
+
+    return defaultHeaders;
+  }
+
+  HttpClient({
+    this.baseUrl = defaultBaseUrl,
     this.path = '',
     this.headers,
     this.parameters,
     this.connectTimeOut = defaultTimeout,
-    this.recieveTimeout = defaultReceiveTimeout,
+    this.receiveTimeout = defaultReceiveTimeout,
   }) {
-    _dio = Dio(BaseOptions(
-      baseUrl: baseUrl,
-      connectTimeout: connectTimeOut,
-      receiveTimeout: recieveTimeout,
-      headers: headers,
-    ));
+    _dio = Dio(
+      BaseOptions(
+        baseUrl: baseUrl,
+        connectTimeout: connectTimeOut,
+        receiveTimeout: receiveTimeout,
+        contentType: Headers.jsonContentType,
+        responseType: ResponseType.json,
+        headers: _headers,
+      ),
+    );
+    _dio.interceptors.add(LogInterceptor());
   }
 
-  Future<dynamic> get() async {
-    var client = _dio;
-    try {
-      var response = await client.get(path);
-      if (response.isSuccess) {
-        return response;
-      } else {
-        throw HttpError(errorCode: response.statusCode);
-      }
-    } catch (e) {
-      throw HttpError(message: e.toString());
-    } finally {
-      client.close();
-    }
-  }
+  Future<HttpResponse> get() => _processResponse(_dio.get(path));
 
-  Future<dynamic> post() async {
-    var client = _dio;
-    try {
-      var response = await client.post(path, data: parameters);
-      if (response.isSuccess) {
-        return response;
-      } else {
-        throw HttpError(errorCode: response.statusCode);
-      }
-    } catch (e) {
-      throw HttpError(message: e.toString());
-    } finally {
-      client.close();
-    }
-  }
+  Future<HttpResponse> post() =>
+      _processResponse(_dio.post(path, data: parameters));
 
-  Future<dynamic> patch() async {
-    var client = _dio;
-    try {
-      var response = await client.patch(path, data: parameters);
-      if (response.isSuccess) {
-        return response;
-      } else {
-        throw HttpError(errorCode: response.statusCode);
-      }
-    } catch (e) {
-      throw HttpError(message: e.toString());
-    } finally {
-      client.close();
-    }
-  }
+  Future<HttpResponse> patch() =>
+      _processResponse(_dio.patch(path, data: parameters));
 
-  Future<dynamic> delete() async {
-    var client = _dio;
+  Future<HttpResponse> delete() =>
+      _processResponse(_dio.delete(path, data: parameters));
+
+  Future<HttpResponse> _processResponse(Future request) async {
     try {
-      var response = await client.delete(path, data: parameters);
+      var response = await request;
+      final remoteHeaders = response.headers;
+      if (remoteHeaders.containsKey('access-token')) {
+        final savedHeaders = {
+          'access-token': remoteHeaders['access-token'] ?? '',
+          'client': remoteHeaders['client'] ?? '',
+          'expiry': remoteHeaders['expiry'] ?? '',
+          'uid': remoteHeaders['uid'] ?? '',
+        };
+        _pref.secureHeaders = savedHeaders as Map<String, String>;
+      }
       if (response.isSuccess) {
-        return response;
+        return HttpResponse(
+          data: response.data,
+        );
       } else {
-        throw HttpError(errorCode: response.statusCode);
+        return HttpResponse(
+          exception: HttpError(
+            errorCode: response.statusCode,
+          ),
+        );
       }
     } catch (e) {
-      throw HttpError(message: e.toString());
+      return HttpResponse(
+        exception: HttpError(
+          message: e.toString(),
+        ),
+      );
     } finally {
-      client.close();
+      _dio.close();
     }
   }
+}
+
+class HttpResponse {
+  final dynamic data;
+  final HttpError? exception;
+
+  const HttpResponse({this.data, this.exception});
+
+  bool get isSuccess => exception == null;
 }
 
 extension UtilResponse on Response {

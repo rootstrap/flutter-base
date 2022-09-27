@@ -4,6 +4,8 @@ import 'package:flutter_base_rootstrap/repository/abstract/repository_class.dart
 import 'package:flutter_base_rootstrap/repository/concrete/repository_class.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/concrete/preferences.dart';
+import 'package:flutter_base_rootstrap/repository/data_source/remote/abstract/remote_ds_class.dart';
+import 'package:flutter_base_rootstrap/repository/data_source/remote/concret/remote_ds_class.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,6 +23,7 @@ Future<void> initialize() async {
   final pref = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(pref);
   getIt.registerSingleton<Preferences>(PreferencesImpl(getIt()));
+  getIt.registerSingleton<RemoteDsExample>(RemoteDsExampleImpl());
   getIt.registerFactory<RepositoryExample>(
     () => (RepositoryExampleImpl(getIt())),
   );

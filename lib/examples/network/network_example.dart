@@ -10,42 +10,62 @@ import 'package:flutter_base_rootstrap/repository/data_source/remote/network/htt
 class NetworkExample {
   final String baseUrl = "https://reqres.in/api";
 
-  Future<User> getUser({required String id}) async {
-    HttpClient httpClient = HttpClient(baseUrl, path: '/users/$id');
+  Future<User?> getUser({required String id}) async {
+    HttpClient httpClient = HttpClient(baseUrl: baseUrl, path: '/users/$id');
     final userDataResponse = await httpClient.get();
-    try {
-      return User.fromJson(userDataResponse);
-    } catch (e) {
-      rethrow;
+
+    if (userDataResponse.isSuccess) {
+      try {
+        return User.fromJson(userDataResponse.data as Map<String, dynamic>);
+      } catch (e) {
+        rethrow;
+      }
     }
+    return null;
   }
 
-  Future<UserCrudResponse> createUser(
-      {required UserCrudRequest request}) async {
-    HttpClient httpClient =
-        HttpClient(baseUrl, path: '/users', parameters: request.toJson());
+  Future<UserCrudResponse?> createUser({
+    required UserCrudRequest request,
+  }) async {
+    HttpClient httpClient = HttpClient(
+        baseUrl: baseUrl, path: '/users', parameters: request.toJson());
     final userCreateResponse = await httpClient.post();
-    try {
-      return UserCrudResponse.fromJson(userCreateResponse);
-    } catch (e) {
-      rethrow;
+    if (userCreateResponse.isSuccess) {
+      try {
+        return UserCrudResponse.fromJson(
+          userCreateResponse.data as Map<String, dynamic>,
+        );
+      } catch (e) {
+        rethrow;
+      }
     }
+
+    return null;
   }
 
-  Future<UserCrudResponse> updateUser(
+  Future<UserCrudResponse?> updateUser(
       {required UserCrudRequest request, required String id}) async {
-    HttpClient httpClient =
-        HttpClient(baseUrl, path: '/users/$id', parameters: request.toJson());
+    HttpClient httpClient = HttpClient(
+      baseUrl: baseUrl,
+      path: '/users/$id',
+      parameters: request.toJson(),
+    );
     final userCreateResponse = await httpClient.patch();
-    try {
-      return UserCrudResponse.fromJson(userCreateResponse);
-    } catch (e) {
-      rethrow;
+    if (userCreateResponse.isSuccess) {
+      try {
+        return UserCrudResponse.fromJson(
+          userCreateResponse.data as Map<String, dynamic>,
+        );
+      } catch (e) {
+        rethrow;
+      }
     }
+
+    return null;
   }
 
   Future<void> deleteUser({required String id}) async {
-    HttpClient httpClient = HttpClient(baseUrl, path: '/users/$id');
+    HttpClient httpClient = HttpClient(baseUrl: baseUrl, path: '/users/$id');
     await httpClient.delete();
   }
 }
