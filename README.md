@@ -49,11 +49,12 @@ Also runs [flutter analyze](https://dart.dev/tools/dart-analyze) for each build 
 
 ### Third Party Keys
 
-We strongly recommend that all private keys should be saved as ENV Vars on each platform, our Flavors config. already manage it.
-In your Android Studio add the env var for each flavor:
+We strongly recommend that all private keys should be saved as ENV Vars on each platform, our
+Flavors config. already manage it. In your Android Studio add the env var for each flavor:
 ![me](env_var_config.png)
 
 Android: go to `android -> app -> build.gradle` and add your env var name like this:
+
 ```
     def dartEnvironmentVariables = [
         YOUR_DEV_API_KEY: null
@@ -64,16 +65,19 @@ iOs: Not extra configuration needed.
 
 ## CI/CD configuration with Bitrise (updated on Dec 12th 2021)
 
-We are going to use Bitrise to configure de CI/CD pipelines.
+We are going to use Bitrise to configure
+de [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee8442908fc00c3ea8f49bf1)
 
 ## License
 
 Flutter-Base is available under the MIT license. See the LICENSE file for more info.
 
-**NOTE:** Remove the free LICENSE file for private projects or replace it with the corresponding license.
+**NOTE:** Remove the free LICENSE file for private projects or replace it with the corresponding
+license.
 
 ## Credits
 
-**Flutter Base** is maintained by [Rootstrap](http://www.rootstrap.com) with the help of our [contributors](https://github.com/rootstrap/flutter-base/contributors).
+**Flutter Base** is maintained by [Rootstrap](http://www.rootstrap.com) with the help of
+our [contributors](https://github.com/rootstrap/flutter-base/contributors).
 
 [<img src="https://s3-us-west-1.amazonaws.com/rootstrap.com/img/rs.png" width="100"/>](http://www.rootstrap.com)
