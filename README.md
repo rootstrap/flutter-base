@@ -19,10 +19,11 @@ This template comes with:
 
 ## How to use
 
-1. Clone repo.
-2. Run `flutter doctor`.
-3. Run `flutter pub get`.
-4. Initialize a new git repo and add your remote url.
+1. Create a new repo using this template.
+![template](template.png)
+2. Clone your new repo.
+3. Run `flutter doctor`.
+4. Run `flutter pub get`.
 5. Run your project
 6. Done!
 
