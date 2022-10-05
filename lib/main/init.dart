@@ -3,7 +3,7 @@ import 'package:flutter_base_rootstrap/di_init.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/generated/l10n.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/localize.dart';
 import 'package:flutter_base_rootstrap/presenter/themes/variants/light.dart';
-import 'package:flutter_base_rootstrap/presenter/ui/ScreenServerStatus.dart';
+import 'package:flutter_base_rootstrap/presenter/ui/server_status_page.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Scaffold(
-              body: ServerStatus(),
+              body: ServerStatusPage(),
             ),
       },
     );
