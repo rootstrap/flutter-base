@@ -19,7 +19,7 @@ class ServiceExampleImpl extends ServiceExample {
 }
 
 class _ServerStateCubit extends Cubit<Data<bool>> {
-  _ServerStateCubit() : super(Data(data: false));
+  _ServerStateCubit() : super(Data());
 
   RepositoryExample get _repositoryExample => getIt();
 
@@ -32,6 +32,7 @@ class _ServerStateCubit extends Cubit<Data<bool>> {
 
   void _notifyData(bool isServerOnline) => emit(
         Data(
+          isInitial: false,
           isLoading: false,
           data: isServerOnline,
         ),

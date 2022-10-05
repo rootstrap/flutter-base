@@ -4,10 +4,10 @@ import 'package:flutter_base_rootstrap/utils/data_state.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ServerStatus extends StatelessWidget {
+class ServerStatusPage extends StatelessWidget {
   ServiceExample get _service => getIt();
 
-  const ServerStatus({Key? key}) : super(key: key);
+  const ServerStatusPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class ServerStatus extends StatelessWidget {
                             child: CircularProgressIndicator(),
                           )
                         : Text(
-                            data.data.toString(),
+                            data.isInitial ? '' : data.data.toString(),
                             style: Theme.of(context).textTheme.headline4,
                           );
                   },
@@ -41,7 +41,7 @@ class ServerStatus extends StatelessWidget {
               onPressed: () {
                 _service.checkState();
               },
-              child: Text("Check Status Bloc"),
+              child: const Text("Check Server Status"),
             ),
           ],
         ),

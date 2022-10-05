@@ -11,14 +11,15 @@ class HttpClient {
   final int? connectTimeOut;
   final int? receiveTimeout;
   static const defaultTimeout = 10000;
-  static const defaultBaseUrl = 'https://target-mvd-api.herokuapp.com/api/v1/';
+  static const defaultBaseUrl =
+      'https://target-api-induction-v2.herokuapp.com/api/v1/';
   static const defaultReceiveTimeout = 10000;
 
   Preferences get _pref => getIt();
 
   Map<String, dynamic> get _headers {
     final defaultHeaders = <String, dynamic>{
-      "Content-Type": Headers.jsonContentType
+      Headers.acceptHeader: Headers.jsonContentType
     };
 
     if (headers != null) {
@@ -104,7 +105,7 @@ class HttpResponse {
 
   const HttpResponse({this.data, this.exception});
 
-  bool get isSuccess => exception == null;
+  bool get isSuccess => exception != null;
 }
 
 extension UtilResponse on Response {
