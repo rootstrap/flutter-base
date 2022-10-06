@@ -42,19 +42,19 @@ This template comes with:
 
 ## Code Quality Standards
 
-In order to meet the required code quality standards, this project si following
-this [tech guides considerations](https://github.com/rootstrap/tech-guides/blob/master/flutter/README.md)
-Also runs [flutter analyze](https://dart.dev/tools/dart-analyze) for each build on your CI/CD tool.
+In order to meet the required code quality standards, this project is following
+this [tech guides considerations](https://github.com/rootstrap/tech-guides/blob/master/flutter/README.md).
+It also runs [flutter analyze](https://dart.dev/tools/dart-analyze) for each build on your CI/CD tool.
 
 ## Security recommendations
 
 ### Third Party Keys
 
-We strongly recommend that all private keys should be saved as ENV Vars on each platform, our
-Flavors config. already manage it. In your Android Studio add the env var for each flavor:
+We strongly recommend that all private keys should be saved as ENV Vars on each platform. Our
+Flavors config already manages this. In Android Studio, add the env var for each flavor:
 ![me](env_var_config.png)
 
-Android: go to `android -> app -> build.gradle` and add your env var name like this:
+Android: Go to `android -> app -> build.gradle` and add your env var name like this:
 
 ```
     def dartEnvironmentVariables = [
@@ -62,12 +62,12 @@ Android: go to `android -> app -> build.gradle` and add your env var name like t
     ]
 ```
 
-iOs: Not extra configuration needed.
+iOS: No extra configuration needed.
 
 ## CI/CD configuration with Bitrise (updated on Dec 12th 2021)
 
-We are going to use Bitrise to configure
-de [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee8442908fc00c3ea8f49bf1)
+We are using Bitrise to configure and run
+the [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee8442908fc00c3ea8f49bf1).
 
 ## License
 
