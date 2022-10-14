@@ -24,6 +24,82 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  plugins:
+    - dart_code_metrics
+dart_code_metrics:
+  anti-patterns:
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    maximum-nesting-level: 5
+    number-of-parameters: 4
+    source-lines-of-code: 15
+  metrics-exclude:
+    - test/**
+  rules:
+    - avoid-nested-conditional-expressions:
+        acceptable-level: 2
+    - prefer-correct-identifier-length:
+        max-identifier-length: 30
+        min-identifier-length: 2
+    - prefer-correct-type-name:
+        min-length: 2
+        max-length: 23
+    - prefer-extracting-callbacks:
+        allowed-line-count: 3
+    - no-equal-arguments:
+        ignored-parameters:
+          - height
+          - width
+          - backspaceColor
+          - skinToneIndicatorColor
+          - enabled
+          - fontFamily
+          - color
+          - focusedBorder
+          - enabledBorder
+          - subtitle2
+          - subtitle1
+          - overline
+          - headline4
+          - bodyText1
+          - bodyText2
+          - button
+          - caption
+          - headline1
+          - headline2
+          - headline3
+          - headline5
+          - headline6
+          - verticalPadding
+          - horizontalPadding
+          - topRightRadius
+          - topLeftRadius
+          - bottomRightRadius
+          - bottomLeftRadius
+          - topLeft
+          - bottomLeft
+          - contentBorderColor
+    - no-boolean-literal-compare
+    - no-empty-block
+    - no-equal-then-else
+    - prefer-single-widget-per-file
+    - avoid-late-keyword
+    - avoid-missing-enum-constant-in-map
+    - avoid-non-null-assertion
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - double-literal-format
+    - no-equal-then-else
+    - no-magic-number
+    - no-object-declaration
+    - prefer-async-await
+    - prefer-first
+    - prefer-immediate-return
+    - prefer-last
+    - prefer-match-file-name
+    - prefer-trailing-comma
+    - avoid-border-all
+    - avoid-wrapping-in-padding
+    - prefer-const-border-radius
