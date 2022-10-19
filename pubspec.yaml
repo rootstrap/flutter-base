@@ -43,6 +43,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   dio_logger: ^4.0.8+8
   get_it: ^7.2.0
+  dart_code_metrics: ^4.15.0
 
 dev_dependencies:
   flutter_test:
