@@ -1,3 +1,9 @@
+import 'package:flutter_base_rootstrap/devices/platform/abstract/app_platform.dart';
+import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
+import 'package:flutter_base_rootstrap/devices/platform/concrete/_app_platform_impl.dart'
+    if (dart.library.io) 'package:flutter_base_rootstrap/devices/platform/concrete/mobile_desk/_app_platform_impl.dart'
+    if (dart.library.html) 'package:flutter_base_rootstrap/devices/platform/concrete/web/_app_platform_impl.dart';
+import 'package:flutter_base_rootstrap/devices/platform/concrete/_platform_info_impl.dart';
 import 'package:flutter_base_rootstrap/domain/services/abstract/service_class.dart';
 import 'package:flutter_base_rootstrap/domain/services/concrete/service_class.dart';
 import 'package:flutter_base_rootstrap/repository/abstract/repository_class.dart';
@@ -24,6 +30,8 @@ Future<void> initialize() async {
   getIt.registerSingleton<SharedPreferences>(pref);
   getIt.registerSingleton<Preferences>(PreferencesImpl(getIt()));
   getIt.registerSingleton<RemoteDsExample>(RemoteDsExampleImpl());
+  getIt.registerSingleton<AppPlatform>(AppPlatformImpl());
+  getIt.registerLazySingleton<PlatformInfo>(() => PlatformInfoImpl(getIt()));
   getIt.registerFactory<RepositoryExample>(
     () => (RepositoryExampleImpl(getIt())),
   );
