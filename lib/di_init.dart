@@ -1,3 +1,5 @@
+import 'package:flutter_base_rootstrap/devices/media/abstract/file_manager.dart';
+import 'package:flutter_base_rootstrap/devices/media/concrete/_file_manager_impl.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/app_platform.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
 import 'package:flutter_base_rootstrap/devices/platform/concrete/_app_platform_impl.dart'
@@ -32,6 +34,7 @@ Future<void> initialize() async {
   getIt.registerSingleton<RemoteDsExample>(RemoteDsExampleImpl());
   getIt.registerSingleton<AppPlatform>(AppPlatformImpl());
   getIt.registerLazySingleton<PlatformInfo>(() => PlatformInfoImpl(getIt()));
+  getIt.registerLazySingleton<FileManager>(() => FileManagerImpl());
   getIt.registerFactory<RepositoryExample>(
     () => (RepositoryExampleImpl(getIt())),
   );
