@@ -57,7 +57,7 @@ class ServerStatusPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 //Example
-                _permissions.requestNotificationPermission();
+                _permissions.requestCameraPermission();
                 //_service.checkState();
               },
               child: const Text("Check Server Status"),

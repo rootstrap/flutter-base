@@ -7,11 +7,9 @@ class PermissionsWeb extends PermissionManager {
     final permission =
         await html.window.navigator.permissions?.query({"name": "camera"});
     if (_permissionStatus(permission) != AppPermissionStatus.GRANTED) {
-      // await html.window.navigator.getUserMedia(video: true, audio: true);
-      // await html.window.navigator.getUserMedia(audio: true);
       await html.window.navigator.getUserMedia(video: true);
-      final check =
-          await html.window.navigator.permissions?.query({"name": "camera"});
+      final check = await html.window.navigator.permissions
+          ?.query({"request": "", "name": "camera"});
       return _permissionStatus(check);
     }
     return AppPermissionStatus.GRANTED;
@@ -24,7 +22,7 @@ class PermissionsWeb extends PermissionManager {
 
   @override
   Future<AppPermissionStatus> requestNotificationPermission() async {
-    //TODO:...
+    //TODO...
     return AppPermissionStatus.DENIED;
   }
 
