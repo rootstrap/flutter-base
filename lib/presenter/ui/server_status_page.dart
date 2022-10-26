@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_rootstrap/devices/permissions/abstract/permission_manager.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
 import 'package:flutter_base_rootstrap/domain/services/abstract/service_class.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/resources.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ServerStatusPage extends StatelessWidget {
   ServiceExample get _service => getIt();
+  PermissionManager get _permissions => getIt();
 
   PlatformInfo get _platform => getIt();
 
@@ -54,7 +56,8 @@ class ServerStatusPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                _service.checkState();
+                _permissions.requestCameraPermission();
+                //_service.checkState();
               },
               child: const Text("Check Server Status"),
             ),
