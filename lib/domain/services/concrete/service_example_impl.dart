@@ -1,6 +1,6 @@
-import 'package:flutter_base_rootstrap/domain/services/abstract/service_class.dart';
-import 'package:flutter_base_rootstrap/repository/abstract/repository_class.dart';
-import 'package:flutter_base_rootstrap/utils/data_state.dart';
+import 'package:flutter_base_rootstrap/domain/services/abstract/service_example.dart';
+import 'package:flutter_base_rootstrap/repository/abstract/repository_example.dart';
+import 'package:flutter_base_rootstrap/utils/data.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/presenter/themes/resources/colors.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/resources/app_colors.dart';
 
 abstract class LocalTheme {
   final AppColors colors;
@@ -139,7 +139,7 @@ abstract class LocalTheme {
         fontFamily: primaryFontBlack,
         fontSize: titleXLFontSize,
         height: titleXLHeight,
-        letterSpacing: -.07,
+        letterSpacing: -0.07,
         color: colors.primary,
       );
 
@@ -147,28 +147,28 @@ abstract class LocalTheme {
         fontFamily: primaryFontBlack,
         fontSize: titleLFontSize,
         height: titleLHeight,
-        letterSpacing: -.22,
+        letterSpacing: -0.22,
       );
 
   get titleM => TextStyle(
         fontFamily: primaryFontBlack,
         fontSize: titleMFontSize,
         height: titleMHeight,
-        letterSpacing: -.2,
+        letterSpacing: -0.2,
       );
 
   get titleS => TextStyle(
         fontFamily: primaryFontBlack,
         fontSize: titleSFontSize,
         height: titleSHeight,
-        letterSpacing: -.16,
+        letterSpacing: -0.16,
       );
 
   get titleXS => TextStyle(
         fontFamily: primaryFontHeavy,
         fontSize: titleXSFontSize,
         height: titleXSHeight,
-        letterSpacing: -.14,
+        letterSpacing: -0.14,
       );
 
   get subtitleM => TextStyle(
@@ -197,7 +197,7 @@ abstract class LocalTheme {
         fontSize: bodyFontSize,
         height: bodyHeight,
         fontWeight: FontWeight.normal,
-        letterSpacing: -.14,
+        letterSpacing: -0.14,
       );
 
   TextStyle get bodyS => TextStyle(
@@ -205,14 +205,14 @@ abstract class LocalTheme {
         fontSize: bodySFontSize,
         height: bodySHeight,
         fontWeight: FontWeight.normal,
-        letterSpacing: -.14,
+        letterSpacing: -0.14,
       );
 
   get inputText => TextStyle(
         fontFamily: primaryFontMedium,
         fontSize: titleXSFontSize,
         height: inputTextHeight,
-        letterSpacing: .1,
+        letterSpacing: 0.1,
       );
 
   get caption => TextStyle(

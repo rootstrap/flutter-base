@@ -16,6 +16,7 @@ abstract class PlatformInfo {
   String get getCurrentPlatformType;
 }
 
+// ignore: constant_identifier_names
 enum PlatformType { Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, Unknown }
 
 extension PlatformTypeString on PlatformType {

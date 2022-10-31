@@ -19,7 +19,7 @@ class HttpClient {
 
   Map<String, dynamic> get _headers {
     final defaultHeaders = <String, dynamic>{
-      Headers.acceptHeader: Headers.jsonContentType
+      Headers.acceptHeader: Headers.jsonContentType,
     };
 
     if (headers != null) {

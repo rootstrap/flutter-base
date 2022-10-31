@@ -1,6 +1,6 @@
 import 'package:flutter_base_rootstrap/presenter/themes/resources/colors_dark.dart';
 import 'package:flutter_base_rootstrap/presenter/themes/resources/colors_light.dart';
-import 'package:flutter_base_rootstrap/presenter/themes/theme.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/local_theme.dart';
 
 class LightTheme extends LocalTheme {
   LightTheme() : super(colors: ColorsLight());

@@ -1,4 +1,4 @@
-part of 'resources.dart';
+part of 'spacing_on_widget.dart';
 
 /// Add images references here
 /// call: Images.appLogo.get()
@@ -99,6 +99,7 @@ class _SvgImage {
     Alignment alignment = Alignment.center,
     String? semanticLabel,
     String? package,
+    // ignore: unused_element
     @visibleForTesting bool isWeb = false,
   }) {
     return SvgPicture.asset(
