@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class PreferencesImpl extends Preferences {
   final String _prefLang = 'app_lang';
   final String _apiHeaders = 'api_headers';
+  final String _cookiesAllowed = 'cookies_allowed';
 
   final SharedPreferences _pref;
 
@@ -39,5 +40,13 @@ class PreferencesImpl extends Preferences {
       return jsonDecode(headers);
     }
     return {};
+  }
+
+  @override
+  bool get cookiesAllowed => _pref.getBool(_cookiesAllowed) ?? false;
+
+  @override
+  set cookiesAllowed(bool cookiesAllowed) {
+    _pref.setBool(_cookiesAllowed, cookiesAllowed);
   }
 }
