@@ -8,11 +8,13 @@ import 'package:flutter_base_rootstrap/utils/globals.dart';
 class Cookies extends StatefulWidget {
   final Widget child;
   final Widget? cookiesChild;
+  final Alignment alignment;
 
   const Cookies({
     super.key,
     required this.child,
     this.cookiesChild,
+    this.alignment = Alignment.bottomCenter,
   });
 
   @override
@@ -47,7 +49,7 @@ class _CookiesState extends State<Cookies> {
             children: [
               widget.child,
               Align(
-                alignment: Alignment.bottomCenter,
+                alignment: widget.alignment,
                 child: widget.cookiesChild ??
                     Container(
                       constraints: BoxConstraints(
