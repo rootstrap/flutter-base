@@ -1,10 +1,7 @@
 import 'package:flutter_base_rootstrap/repository/data_source/remote/network/http_client.dart';
+import 'package:flutter_base_rootstrap/skeleton/data/data_sources/remote/abstract/skeleton_data_source.dart';
 import 'package:flutter_base_rootstrap/utils/custom_exception.dart';
 import 'package:flutter_base_rootstrap/utils/resource.dart';
-
-abstract class SkeletonDataSource {
-  Future<Resource<bool, CustomException>> checkServerStatus();
-}
 
 class SkeletonDataSourceImpl extends SkeletonDataSource {
   @override
