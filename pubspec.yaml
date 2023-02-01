@@ -47,6 +47,7 @@ dependencies:
   package_info_plus: ^3.0.1
   permission_handler: ^10.2.0
   universal_html: ^2.0.8
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
