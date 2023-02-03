@@ -1,3 +1,7 @@
+import 'package:flutter_base_rootstrap/devices/permissions/abstract/permission_manager.dart';
+import 'package:flutter_base_rootstrap/devices/permissions/concrete/mobile/_permissions_android.dart';
+import 'package:flutter_base_rootstrap/devices/permissions/concrete/mobile/_permissions_ios.dart';
+import 'package:flutter_base_rootstrap/devices/permissions/concrete/web/_permissions_web.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/app_platform.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
 import 'package:flutter_base_rootstrap/devices/platform/concrete/_app_platform_impl.dart'
@@ -38,6 +42,17 @@ Future<void> initialize() async {
   getIt.registerLazySingleton<ServiceExample>(
     () => ServiceExampleImpl(getIt()),
   );
+  getIt.registerLazySingleton<PermissionManager>(() {
+    final platforms = getIt<AppPlatform>();
+    if (platforms.isWeb) {
+      return PermissionsWeb();
+    }
+    if (platforms.isAndroid) {
+      return PermissionsAndroid();
+    }
+
+    return PermissionsIOs();
+  });
   /*getIt.registerLazySingletonAsync<ServiceExample>(() async {
     //DO SOMETHING AWESOME HERE
     return ServiceExampleImpl(getIt());

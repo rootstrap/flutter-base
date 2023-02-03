@@ -59,6 +59,36 @@ class S {
       args: [],
     );
   }
+
+  /// `This website uses cookies`
+  String get cookiesTitle {
+    return Intl.message(
+      'This website uses cookies',
+      name: 'cookiesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get cookiesAcceptCTA {
+    return Intl.message(
+      'Accept',
+      name: 'cookiesAcceptCTA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.`
+  String get cookiesBody {
+    return Intl.message(
+      'We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.',
+      name: 'cookiesBody',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

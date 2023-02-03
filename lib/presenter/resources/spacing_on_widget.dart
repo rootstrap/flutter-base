@@ -9,3 +9,7 @@ part 'images.dart';
 extension SpacingOnWidget on Widget {
   Spacing get spacing => Spacing();
 }
+
+extension SpacingOnStateWidget on State {
+  Spacing get spacing => Spacing();
+}
