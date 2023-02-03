@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_base_rootstrap/skeleton/domain/repositories/skeleton_repository.dart';
+import 'package:flutter_base_rootstrap/domain/repositories/skeleton_repository.dart';
 import 'package:flutter_base_rootstrap/utils/cubit_status.dart';
 import 'package:flutter_base_rootstrap/utils/resource.dart';
 

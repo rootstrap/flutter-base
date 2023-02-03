@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/skeleton/presentation/bloc/skeleton/skeleton_cubit.dart';
-import 'package:flutter_base_rootstrap/skeleton/presentation/pages/skeleton/skeleton_view.dart';
+import 'package:flutter_base_rootstrap/presentation/bloc/skeleton/skeleton_cubit.dart';
+import 'package:flutter_base_rootstrap/presentation/ui/pages/skeleton/skeleton_view.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

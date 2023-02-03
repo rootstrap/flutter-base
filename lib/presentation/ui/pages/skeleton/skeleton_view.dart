@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
+import 'package:flutter_base_rootstrap/presentation/bloc/skeleton/skeleton_cubit.dart';
 import 'package:flutter_base_rootstrap/presentation/resources/resources.dart';
-import 'package:flutter_base_rootstrap/skeleton/presentation/bloc/skeleton/skeleton_cubit.dart';
 import 'package:flutter_base_rootstrap/utils/cubit_status.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
