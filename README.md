@@ -17,15 +17,38 @@ This template comes with:
 - State Management (Blocs/Cubit).
 - Env config and flavors.
 
-## How to use
+## Initial Setup
 
 1. Create a new repo using this template.
-![template](template.png)
+   ![template](template.png)
 2. Clone your new repo.
 3. Run `flutter doctor`.
 4. Run `flutter pub get`.
-5. Run your project
-6. Done!
+
+## Set up an editor
+
+- Follow the [Android Studio](https://docs.flutter.dev/get-started/editor?tab=androidstudio) instructions to setup the editor
+
+- Follow the [VS Code](https://docs.flutter.dev/get-started/editor?tab=vscode) instructions to setup the editor
+
+## Running the App
+
+1. Open a Simulator or Emulator
+2. Open your project in your editor of preference
+
+### Android Studio
+
+1. Add a **Run Configuration**
+    1. Add new **Flutter** configuration
+    2. Give it a meaningful name **IE:** Dev, QA, Staging, Prod
+    3. Pick the entry point, main.dart file location **IE:** ``.../lib/main/env/main_dev.dart``
+    4. Include any additional run arguments to launch the app, **IE:** Environment Variables.
+2. Select the device to launch the App
+3. Run the App
+
+<!---
+### VS Code -> TBD
+-->
 
 ## Packages
 
@@ -39,7 +62,7 @@ This template comes with:
 - [intl](https://pub.dev/packages/intl) and [intl_utils](https://pub.dev/packages/intl_utils) for
   localization.
 - [flutter_svg](https://pub.dev/packages/flutter_svg) Svg Image loader.
-- [dart_code_metrics] (https://dartcodemetrics.dev/docs/rules) Dart code static analysis code.
+- [dart_code_metrics] (<https://dartcodemetrics.dev/docs/rules>) Dart code static analysis code.
 
 ## Code Quality Standards
 
