@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/presenter/resources/locale/generated/l10n.dart';
-import 'package:flutter_base_rootstrap/presenter/resources/locale/localize.dart';
-import 'package:flutter_base_rootstrap/presenter/themes/variants/light.dart';
-import 'package:flutter_base_rootstrap/presenter/ui/components/cookies.dart';
-import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
+import 'package:flutter_base_rootstrap/data/data_sources/local/abstract/preferences.dart';
+import 'package:flutter_base_rootstrap/presentation/resources/locale/generated/l10n.dart';
+import 'package:flutter_base_rootstrap/presentation/resources/locale/localize.dart';
+import 'package:flutter_base_rootstrap/presentation/themes/variants/light.dart';
+import 'package:flutter_base_rootstrap/presentation/ui/components/cookies.dart';
 import 'package:flutter_base_rootstrap/skeleton/presentation/pages/skeleton/skeleton_page.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
