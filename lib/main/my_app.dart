@@ -1,20 +1,12 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/di_init.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/generated/l10n.dart';
-import 'package:flutter_base_rootstrap/presenter/ui/components/cookies.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/lang.dart';
 import 'package:flutter_base_rootstrap/presenter/themes/variants/light_theme.dart';
-import 'package:flutter_base_rootstrap/presenter/ui/server_status_page.dart';
+import 'package:flutter_base_rootstrap/presenter/ui/components/cookies.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
+import 'package:flutter_base_rootstrap/skeleton/presentation/pages/skeleton/skeleton_page.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-void init() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initialize();
-  runApp(const MyApp());
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -38,9 +30,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Cookies(
-              child: Scaffold(
-                body: ServerStatusPage(),
-              ),
+              child: SkeletonPage(),
+              // child: ServerStatusPage(),
             ),
       },
     );

@@ -13,6 +13,11 @@ import 'package:flutter_base_rootstrap/domain/services/concrete/service_example_
 import 'package:flutter_base_rootstrap/repository/abstract/repository_example.dart';
 import 'package:flutter_base_rootstrap/repository/concrete/repository_example_impl.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
+import 'package:flutter_base_rootstrap/skeleton/data/data_sources/remote/abstract/skeleton_data_source.dart';
+import 'package:flutter_base_rootstrap/skeleton/data/data_sources/remote/concrete/skeleton_data_source_impl.dart';
+import 'package:flutter_base_rootstrap/skeleton/data/repositories/skeleton_repository_impl.dart';
+import 'package:flutter_base_rootstrap/skeleton/domain/repositories/skeleton_repository.dart';
+import 'package:flutter_base_rootstrap/skeleton/presentation/bloc/skeleton/skeleton_cubit.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/concrete/preferences_impl.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/remote/abstract/remote_ds_example.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/remote/concrete/remote_ds_example_impl.dart';
@@ -53,8 +58,17 @@ Future<void> initialize() async {
 
     return PermissionsIOs();
   });
-  /*getIt.registerLazySingletonAsync<ServiceExample>(() async {
-    //DO SOMETHING AWESOME HERE
-    return ServiceExampleImpl(getIt());
-  })*/
+
+  //Data Sources
+  getIt.registerLazySingleton<SkeletonDataSource>(
+    () => SkeletonDataSourceImpl(),
+  );
+
+  //Repositories
+  getIt.registerLazySingleton<SkeletonRepository>(
+    () => SkeletonRepositoryImpl(getIt()),
+  );
+
+  //Cubits
+  getIt.registerFactory(() => SkeletonCubit(getIt()));
 }
