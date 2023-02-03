@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_base_rootstrap/presenter/resources/locale/localize.dart';
+import 'package:flutter_base_rootstrap/presenter/resources/locale/lang.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

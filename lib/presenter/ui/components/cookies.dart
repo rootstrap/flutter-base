@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/generated/l10n.dart';
-import 'package:flutter_base_rootstrap/presenter/resources/resources.dart';
+import 'package:flutter_base_rootstrap/presenter/resources/spacing_on_widget.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 

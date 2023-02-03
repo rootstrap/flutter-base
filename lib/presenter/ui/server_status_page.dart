@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/devices/permissions/abstract/permission_manager.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
-import 'package:flutter_base_rootstrap/domain/services/abstract/service_class.dart';
-import 'package:flutter_base_rootstrap/presenter/resources/resources.dart';
-import 'package:flutter_base_rootstrap/utils/data_state.dart';
+import 'package:flutter_base_rootstrap/domain/services/abstract/service_example.dart';
+import 'package:flutter_base_rootstrap/presenter/resources/spacing_on_widget.dart';
+import 'package:flutter_base_rootstrap/utils/data.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
