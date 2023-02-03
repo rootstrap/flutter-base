@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_base_rootstrap/presenter/themes/resources/colors.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/resources/app_colors.dart';
 
 class ColorsLight implements AppColors {
   @override

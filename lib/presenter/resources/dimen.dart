@@ -1,4 +1,4 @@
-part of 'resources.dart';
+part of 'spacing_on_widget.dart';
 
 /// Set here Dimensions and sizes of the widgets.
 ///*/

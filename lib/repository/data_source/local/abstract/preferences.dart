@@ -1,4 +1,4 @@
-import 'package:flutter_base_rootstrap/presenter/resources/locale/localize.dart';
+import 'package:flutter_base_rootstrap/presenter/resources/locale/lang.dart';
 
 abstract class Preferences {
   Lang get appLang;

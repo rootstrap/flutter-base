@@ -16,7 +16,7 @@ class Localization {
 extension LangExtensions on Lang {
   static Map<String, Lang> langValues = {
     Lang.en.toString(): Lang.en,
-    Lang.es.toString(): Lang.es
+    Lang.es.toString(): Lang.es,
   };
 
   static const supportedLang = [
@@ -33,7 +33,7 @@ extension LangExtensions on Lang {
 
   static Map<Lang, Locale> langLocale = {
     Lang.en: const Locale('en', ''),
-    Lang.es: const Locale('es', '')
+    Lang.es: const Locale('es', ''),
   };
 
   static Lang defaultLang = Lang.en;
