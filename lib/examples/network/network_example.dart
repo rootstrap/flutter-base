@@ -28,7 +28,7 @@ class NetworkExample {
     required UserCrudRequest request,
   }) async {
     HttpClient httpClient = HttpClient(
-        baseUrl: baseUrl, path: '/users', parameters: request.toJson());
+        baseUrl: baseUrl, path: '/users', parameters: request.toJson(),);
     final userCreateResponse = await httpClient.post();
     if (userCreateResponse.isSuccess) {
       try {
@@ -44,7 +44,7 @@ class NetworkExample {
   }
 
   Future<UserCrudResponse?> updateUser(
-      {required UserCrudRequest request, required String id}) async {
+      {required UserCrudRequest request, required String id,}) async {
     HttpClient httpClient = HttpClient(
       baseUrl: baseUrl,
       path: '/users/$id',
