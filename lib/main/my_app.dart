@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/presenter/resources/locale/generated/l10n.dart';
-import 'package:flutter_base_rootstrap/presenter/resources/locale/localize.dart';
-import 'package:flutter_base_rootstrap/presenter/themes/variants/light.dart';
+import 'package:flutter_base_rootstrap/presenter/resources/locale/lang.dart';
+import 'package:flutter_base_rootstrap/presenter/themes/variants/light_theme.dart';
 import 'package:flutter_base_rootstrap/presenter/ui/components/cookies.dart';
 import 'package:flutter_base_rootstrap/repository/data_source/local/abstract/preferences.dart';
 import 'package:flutter_base_rootstrap/skeleton/presentation/pages/skeleton/skeleton_page.dart';
