@@ -1,7 +1,7 @@
+import 'package:flutter_base_rootstrap/data/data_sources/network/http_client.dart';
 import 'package:flutter_base_rootstrap/examples/network/model/user.dart';
 import 'package:flutter_base_rootstrap/examples/network/model/user_crud_request.dart';
 import 'package:flutter_base_rootstrap/examples/network/model/user_crud_response.dart';
-import 'package:flutter_base_rootstrap/repository/data_source/remote/network/http_client.dart';
 
 /// This example was maded using reqres.in to generate a CRUD of users.
 /// Using as base url: https://reqres.in/api and providing all the operations
