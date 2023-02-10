@@ -5,8 +5,10 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Sign Up Page"),
+    return const Material(
+      child: Center(
+        child: Text("Sign Up Page"),
+      ),
     );
   }
 }

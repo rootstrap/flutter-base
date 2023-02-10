@@ -5,8 +5,10 @@ class ResetPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Reset Pass Page"),
+    return const Material(
+      child: Center(
+        child: Text("Reset Pass Page"),
+      ),
     );
   }
 }
