@@ -29,22 +29,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^1.1.1+1
-  shared_preferences: ^2.0.15
+  flutter_svg: ^2.0.0+1
+  shared_preferences: ^2.0.17
   intl: ^0.17.0
-  intl_utils: ^2.7.0
+  intl_utils: ^2.8.1
   flutter_localizations:
     sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   dio: ^4.0.6
-  bloc: ^8.1.0
-  flutter_bloc: ^8.0.0
   dio_logger: ^4.0.8+8
+  connectivity_plus: ^3.0.2
+  flutter_bloc: ^8.1.2
   get_it: ^7.2.0
-  dart_code_metrics: ^4.15.0
-  package_info_plus: ^3.0.1
+  dart_code_metrics: ^5.5.1
+  package_info_plus: ^3.0.3
   permission_handler: ^10.2.0
   universal_html: ^2.0.8
   equatable: ^2.0.5
@@ -101,8 +101,8 @@ dev_dependencies:
 flutter_intl:
   enabled: true # Required. Must be set to true to activate the package. Default: false
   main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should consist of language code and optional script and country codes separated with underscore (e.g. 'en', 'en_GB', 'zh_Hans', 'zh_Hans_CN'). Default: en
-  arb_dir: lib/presenter/resources/locale # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n
-  output_dir: lib/presenter/resources/locale/generated # Optional. Sets the directory of generated localization files. Provided value should be a valid path on your system. Default: lib/generated
+  arb_dir: lib/presentation/resources/locale # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n
+  output_dir: lib/presentation/resources/locale/generated # Optional. Sets the directory of generated localization files. Provided value should be a valid path on your system. Default: lib/generated
 
 flutter:
   generate: true

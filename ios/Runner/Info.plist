@@ -49,5 +49,7 @@
     <string>App needs access to photo lib</string>
     <key>NSCameraUsageDescription</key>
     <string>To capture photo please grant camera access</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

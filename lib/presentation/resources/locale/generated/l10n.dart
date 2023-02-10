@@ -89,6 +89,46 @@ class S {
       args: [],
     );
   }
+
+  /// `No connection`
+  String get noConnection {
+    return Intl.message(
+      'No connection',
+      name: 'noConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please try again later, we are\nworking to fix the issue.`
+  String get pleaseTryAgainLaterWeArenworkingToFixTheIssue {
+    return Intl.message(
+      'Please try again later, we are\nworking to fix the issue.',
+      name: 'pleaseTryAgainLaterWeArenworkingToFixTheIssue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry we didn't find any product`
+  String get sorryWeDidntFindAnyProduct {
+    return Intl.message(
+      'Sorry we didn\'t find any product',
+      name: 'sorryWeDidntFindAnyProduct',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
