@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -107,10 +107,12 @@ flutter_intl:
 flutter:
   generate: true
   uses-material-design: true
-  assets:
-    - assets/
-    - assets/images/
-    - assets/icons/
+
+  # In order for you to include assets to the app we recommend you to use the paths below, uncomment them and set the files inside them based on what they are (Images or Icons)
+  # assets:
+  #   - assets/
+  #   - assets/images/
+  #   - assets/icons/
 
   fonts:
     - family: Roboto Black
