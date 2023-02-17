@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/components/cookies.dart';
+import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_page.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_screen.dart';
+import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_view.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/main_screen.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/notification_screen.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/post_details_screen.dart';
@@ -50,7 +52,7 @@ class Routers {
         navigatorKey: mainNavigatorKey,
         builder: (context, state, child) {
           return Cookies(
-            child: HomePage(
+            child: HomeCorePage(
               child: child,
             ),
           );
@@ -59,62 +61,7 @@ class Routers {
           GoRoute(
             name: "main",
             path: "/main",
-            builder: (context, state) => const MainPage(),
-            routes: [
-              GoRoute(
-                name: "postDetails",
-                path: "post/:id",
-                builder: (context, state) => PostDetailsPage(
-                  postId: state.params["id"] ?? "",
-                ),
-              ),
-            ],
-          ),
-          GoRoute(
-            name: "notifications",
-            path: "/notifications",
-            builder: (context, state) => const NotificationPage(),
-          ),
-        ],
-      ),
-      //ROUTES for settings
-      ShellRoute(
-        builder: (context, state, child) {
-          return Cookies(child: child);
-        },
-        routes: [
-          GoRoute(
-            name: "settings",
-            path: "/settings",
-            builder: (context, state) {
-              return Container();
-            },
-            routes: [
-              GoRoute(
-                name: "profile_sub",
-                path: "profile_sub",
-                builder: (context, state) {
-                  return SettingsPage(
-                    profileName:
-                        state.queryParams['profileName']?.toString() ?? "",
-                  );
-                },
-              ),
-            ],
-          ),
-          GoRoute(
-            name: "profile",
-            path: "/profile",
-            builder: (context, state) {
-              return SettingsPage(
-                profileName: state.queryParams['profileName']?.toString() ?? "",
-              );
-            },
-          ),
-          GoRoute(
-            name: "password",
-            path: "/password",
-            builder: (context, state) => const ResetPasswordPage(),
+            builder: (context, state) => const HomePage(),
           ),
         ],
       ),

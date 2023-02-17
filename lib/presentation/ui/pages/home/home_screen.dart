@@ -6,10 +6,10 @@ import 'package:go_router/go_router.dart';
 
 GlobalKey<ScaffoldState> _mainScaffoldKey = GlobalKey<ScaffoldState>();
 
-class HomePage extends StatelessWidget {
+class HomeCorePage extends StatelessWidget {
   final Widget child;
 
-  const HomePage({super.key, required this.child});
+  const HomeCorePage({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
