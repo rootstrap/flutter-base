@@ -27,6 +27,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "cookiesBody": MessageLookupByLibrary.simpleMessage(
             "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services."),
         "cookiesTitle":
-            MessageLookupByLibrary.simpleMessage("This website uses cookies")
+            MessageLookupByLibrary.simpleMessage("This website uses cookies"),
+        "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
+        "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
+            MessageLookupByLibrary.simpleMessage(
+                "Please try again later, we are\nworking to fix the issue."),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
+            "Sorry we didn\'t find any product")
       };
 }

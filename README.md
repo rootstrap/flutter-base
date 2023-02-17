@@ -46,9 +46,22 @@ This template comes with:
 2. Select the device to launch the App
 3. Run the App
 
-<!---
-### VS Code -> TBD
--->
+### VS Code
+
+1. Go to **Run and Debug** section at the **Activity Bar**
+2. At the top of the section expand the list and **Add Configuration**
+3. Insert **Flutter Launch** configuration
+    1. Update the environment name **(dev)**
+    2. Update the launch program path **``/lib/main/env/main_dev.dart``**
+    3. Update the **Flutter Mode** (debug, profile, release)
+
+![launch configuration example](vs-code-launch-configuration.png)
+
+**Note 1:** Create as much **Launch Configurations** as you need for any specific environment.
+
+**Note 2:** You shouldn't commit the **``.vscode/launch.json``** file.
+
+For more information you can check the [docs](https://dartcode.org/docs/launch-configuration/)
 
 ## Packages
 

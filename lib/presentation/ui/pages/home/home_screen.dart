@@ -45,14 +45,17 @@ class HomePage extends StatelessWidget {
                 },
               ),
               SizedBox(height: spacing.s),
-              _DrawerItem("Post Details", () {
-                _mainScaffoldKey.currentState?.closeDrawer();
-                context.goNamed(
-                  "postDetails",
-                  params: {'id': "asbdasdasom"},
-                );
-                //_navTo(context, "/main/post/123");
-              }),
+              _DrawerItem(
+                "Post Details",
+                () {
+                  _mainScaffoldKey.currentState?.closeDrawer();
+                  context.goNamed(
+                    "postDetails",
+                    params: {'id': "asbdasdasom"},
+                  );
+                  //_navTo(context, "/main/post/123");
+                },
+              ),
               SizedBox(height: spacing.s),
               _DrawerItem(
                 "LOGOUT",
