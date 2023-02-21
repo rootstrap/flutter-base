@@ -3,11 +3,6 @@ import 'package:flutter_base_rootstrap/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/components/cookies.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_page.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_screen.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_view.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/pages/home/main_screen.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/pages/home/notification_screen.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/pages/home/post_details_screen.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/pages/home/settings_screen.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/onboarding/auth_login_screen.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/onboarding/auth_reset_password_screen.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/onboarding/auth_sign_up_screen.dart';
@@ -45,26 +40,26 @@ class Routers {
         ],
       );
 
-  static GoRouter mainRouter = GoRouter(
-    initialLocation: "/main",
-    routes: [
-      ShellRoute(
-        navigatorKey: mainNavigatorKey,
-        builder: (context, state, child) {
-          return Cookies(
-            child: HomeCorePage(
-              child: child,
+    static GoRouter mainRouter = GoRouter(
+      initialLocation: "/main",
+      routes: [
+        ShellRoute(
+          navigatorKey: mainNavigatorKey,
+          builder: (context, state, child) {
+            return Cookies(
+              child: HomeCorePage(
+                child: child,
+              ),
+            );
+          },
+          routes: [
+            GoRoute(
+              name: "main",
+              path: "/main",
+              builder: (context, state) => const HomePage(),
             ),
-          );
-        },
-        routes: [
-          GoRoute(
-            name: "main",
-            path: "/main",
-            builder: (context, state) => const HomePage(),
-          ),
-        ],
-      ),
-    ],
-  );
+          ],
+        ),
+      ],
+    );
 }
