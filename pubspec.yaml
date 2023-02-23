@@ -48,6 +48,7 @@ dependencies:
   permission_handler: ^10.2.0
   universal_html: ^2.0.8
   equatable: ^2.0.5
+  firebase_core: ^2.7.0
 
 dev_dependencies:
   flutter_test:
