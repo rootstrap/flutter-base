@@ -13,6 +13,7 @@ This template comes with:
 - Dependency injection (GetIt).
 - HttpClient already configured for Rootstrap BE Projects(Dio).
 - Theming setup.
+- Navigation Router and DeepLinks config with go_router
 - Intl.
 - State Management (Blocs/Cubit).
 - Env config and flavors.
