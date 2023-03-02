@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_base_rootstrap/presentation/bloc/global_state/app_global_state.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/components/cookies.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_page.dart';
 import 'package:flutter_base_rootstrap/presentation/ui/pages/home/home_screen.dart';
@@ -40,26 +40,26 @@ class Routers {
         ],
       );
 
-    static GoRouter mainRouter = GoRouter(
-      initialLocation: "/main",
-      routes: [
-        ShellRoute(
-          navigatorKey: mainNavigatorKey,
-          builder: (context, state, child) {
-            return Cookies(
-              child: HomeCorePage(
-                child: child,
-              ),
-            );
-          },
-          routes: [
-            GoRoute(
-              name: "main",
-              path: "/main",
-              builder: (context, state) => const HomePage(),
+  static GoRouter mainRouter = GoRouter(
+    initialLocation: "/main",
+    routes: [
+      ShellRoute(
+        navigatorKey: mainNavigatorKey,
+        builder: (context, state, child) {
+          return Cookies(
+            child: HomeCorePage(
+              child: child,
             ),
-          ],
-        ),
-      ],
-    );
+          );
+        },
+        routes: [
+          GoRoute(
+            name: "main",
+            path: "/main",
+            builder: (context, state) => const HomePage(),
+          ),
+        ],
+      ),
+    ],
+  );
 }

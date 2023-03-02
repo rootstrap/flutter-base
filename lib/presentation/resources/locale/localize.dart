@@ -16,7 +16,7 @@ class Localization {
 extension LangExtensions on Lang {
   static Map<String, Lang> langValues = {
     Lang.en.toString(): Lang.en,
-    Lang.es.toString(): Lang.es
+    Lang.es.toString(): Lang.es,
   };
 
   static const supportedLang = [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/data/data_sources/local/abstract/preferences.dart';
-import 'package:flutter_base_rootstrap/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_base_rootstrap/presentation/bloc/global_state/app_global_state.dart';
+import 'package:flutter_base_rootstrap/presentation/bloc/global_state/app_global_state_bloc.dart';
 import 'package:flutter_base_rootstrap/presentation/resources/locale/generated/l10n.dart';
 import 'package:flutter_base_rootstrap/presentation/resources/locale/localize.dart';
 import 'package:flutter_base_rootstrap/presentation/routers.dart';
@@ -19,10 +20,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(),
-      child: BlocBuilder<AuthBloc, AuthState>(
+      create: (context) => AppGlobalStateBloc(),
+      child: BlocBuilder<AppGlobalStateBloc, AppGlobalState>(
         builder: (context, state) => MaterialApp.router(
-          theme: LightTheme().data,
+          theme: state.appTheme?.data ?? Themes.light.getLocalTheme().data,
           locale: appLang,
           supportedLocales: LangExtensions.supportedLang,
           localizationsDelegates: const [
@@ -31,10 +32,9 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          routerConfig: AuthState.loggedIn == state
+          routerConfig: AuthState.loggedIn == state.authState
               ? Routers.mainRouter
-              : Routers.onBoardingRouter(state),
-          //isLoggedIn ? Routers.mainRouter : Routers.onBoardingRouter,
+              : Routers.onBoardingRouter(state.authState),
         ),
       ),
     );
