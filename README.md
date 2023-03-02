@@ -37,6 +37,16 @@ This template comes with:
 1. Open a Simulator or Emulator
 2. Open your project in your editor of preference
 
+**Note:** Starting with **Flutter 2.8** in order for you to launch the app in **Android** you must define the `flutter.compileSdkVersion` inside the `local.properties` file.
+
+Ideally you should use the one inside `[$PATH_OF_FLUTTER_GIT_DIRECTORY]/flutter/packages/flutter_tools/gradle/flutter.gradle`
+
+```text
+flutter.compileSdkVersion=33
+```
+
+You can read more about this [here](https://docs.page/bizz84/complete-flutter-course/faq/android-build-gradle-issues).
+
 ### Android Studio
 
 1. Add a **Run Configuration**
