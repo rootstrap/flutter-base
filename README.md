@@ -21,6 +21,7 @@ This template comes with:
 ## Initial Setup
 
 1. Create a new repo using this template.
+
    ![template](template.png)
 2. Clone your new repo.
 3. Run `flutter doctor`.
@@ -53,9 +54,13 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
     1. Add new **Flutter** configuration
     2. Give it a meaningful name **IE:** Dev, QA, Staging, Prod
     3. Pick the entry point, main.dart file location **IE:** ``.../lib/main/env/main_dev.dart``
-    4. Include any additional run arguments to launch the app, **IE:** Environment Variables.
-2. Select the device to launch the App
-3. Run the App
+2. Include any additional run arguments to launch the app.
+    1. Environment variables
+
+        Add the env var for each flavor: ![me](env_var_config.png)
+
+3. Select the device to launch the App
+4. Run the App
 
 ### VS Code
 
@@ -65,8 +70,15 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
     1. Update the environment name **(dev)**
     2. Update the launch program path **``/lib/main/env/main_dev.dart``**
     3. Update the **Flutter Mode** (debug, profile, release)
+    4. Include any additional run argments to launch the app.
+        1. Environment variables
 
-![launch configuration example](vs-code-launch-configuration.png)
+            Add the env vars for each flavor with the property ``toolArgs``
+            ![launch configuration example](vs-code-launch-configuration.png)
+
+4. Inside the **Run and Debug** section select the environment you want to excute
+5. Make sure you have the device you want to use already open
+6. Run the App
 
 **Note 1:** Create as much **Launch Configurations** as you need for any specific environment.
 
@@ -96,21 +108,9 @@ It also runs [flutter analyze](https://dart.dev/tools/dart-analyze) for each bui
 
 ## Security recommendations
 
-### Third Party Keys
+### Obfuscation
 
-We strongly recommend that all private keys should be saved as ENV Vars on each platform. Our
-Flavors config already manages this. In Android Studio, add the env var for each flavor:
-![me](env_var_config.png)
-
-Android: Go to `android -> app -> build.gradle` and add your env var name like this:
-
-```
-    def dartEnvironmentVariables = [
-        YOUR_DEV_API_KEY: null
-    ]
-```
-
-iOS: No extra configuration needed.
+TBD
 
 ## CI/CD configuration with Bitrise (updated on Dec 12th 2021)
 
