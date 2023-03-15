@@ -1,87 +1,78 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/presentation/themes/resources/colors.dart';
+import 'package:flutter_base_rootstrap/presentation/themes/resources/app_theme_data.dart';
 
 abstract class LocalTheme {
-  final AppColors colors;
+  final AppThemeData themeData;
 
-  LocalTheme({required this.colors});
+  ColorScheme get colors => themeData.colorScheme;
 
-  ThemeData get data => ThemeData.from(
-        colorScheme: colorScheme,
+  LocalTheme({required this.themeData});
+
+  CupertinoThemeData get cupertinoThemeData => CupertinoThemeData.raw(
+        themeData.brightness,
+        themeData.colorScheme.primary,
+        themeData.colorScheme.inversePrimary,
+        CupertinoTextThemeData(
+          textStyle: bodyS,
+          actionTextStyle: buttonText,
+          tabLabelTextStyle: overLine,
+          navTitleTextStyle: titleL,
+          navLargeTitleTextStyle: titleXL,
+          navActionTextStyle: titleM,
+          pickerTextStyle: bodyS,
+          dateTimePickerTextStyle: bodyS,
+        ),
+        themeData.colorScheme.background,
+        themeData.colorScheme.secondaryContainer,
+      );
+
+  // By using this configuration you should have this output for each material widget:
+  // https://flutter.github.io/samples/web/material_3_demo
+  ThemeData get data => ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: themeData.palette.primary,
+        colorScheme: colors,
+        brightness: themeData.brightness,
         textTheme: Typography.blackCupertino.copyWith(
-          headline1: titleXL,
-          headline2: titleL,
-          headline3: titleM,
-          headline4: titleS,
-          headline5: titleXS,
-          button: button,
-          bodyText1: body,
-          bodyText2: bodyS,
-          subtitle1: subtitleM,
-          subtitle2: subtitleS,
-          caption: caption,
-          overline: inputText,
+          displayLarge: titleXL,
+          displayMedium: titleL,
+          displaySmall: titleM,
+          headlineLarge: titleS,
+          headlineMedium: titleXS,
+          headlineSmall: titleXSS,
+          bodyLarge: body,
+          bodyMedium: bodyS,
+          bodySmall: caption,
+          titleLarge: subtitleL,
+          titleMedium: subtitleM,
+          titleSmall: subtitleS,
+          labelLarge: buttonText,
+          labelMedium: inputText,
+          labelSmall: overLine,
         ),
-      ).copyWith(
-        backgroundColor: colorScheme.background,
-        scaffoldBackgroundColor: colorScheme.background,
-        shadowColor: colors.shadowColor,
-        dividerColor: colors.dividerColor,
-        buttonTheme: ButtonThemeData(
-          buttonColor: colors.surface,
-          hoverColor: colors.shadowColor,
-          focusColor: colors.shadowColor,
-          padding: EdgeInsets.zero,
-        ),
+      )
+      // to customize your widgets
+      // add your custom design here
+      // i.e: elevatedButton
+      /*  .copyWith(
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
+            disabledBackgroundColor: colors.primary,
+            backgroundColor: colors.primary.variant50,
+            textStyle: buttonText,
+            foregroundColor: colors.onPrimary.variant10,
             enableFeedback: true,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             alignment: Alignment.center,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.zero),
+            shape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(themeData.borderRadius)),
             ),
           ),
         ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            alignment: Alignment.center,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.zero),
-            ),
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 2, color: colors.primary),
-            borderRadius: const BorderRadius.all(Radius.zero),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 2, color: colors.primary),
-            borderRadius: const BorderRadius.all(Radius.zero),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 2, color: colors.error),
-            borderRadius: const BorderRadius.all(Radius.zero),
-          ),
-        ),
-      );
-
-  ColorScheme get colorScheme => ColorScheme(
-        brightness: Brightness.light,
-        primary: colors.primary,
-        primaryContainer: colors.primary,
-        secondary: colors.secondary,
-        surface: colors.surface,
-        background: colors.background,
-        error: colors.error,
-        onPrimary: colors.onPrimary,
-        onSecondary: colors.onSecondary,
-        onSurface: colors.onSurface,
-        onBackground: colors.onBackground,
-        onError: colors.onError,
-      );
+      )*/
+      ;
 
   final primaryFont = 'Roboto Regular';
   final primaryFontBlack = 'Roboto Black';
@@ -94,12 +85,14 @@ abstract class LocalTheme {
   final double titleMFontSize = 20;
   final double titleSFontSize = 16;
   final double titleXSFontSize = 12;
+  final double titleXSSFontSize = 8;
   final double buttonFontSize = 16;
   final double bodyFontSize = 12;
   final double bodyMFontSize = 16;
   final double bodyLFontSize = 20;
   final double bodySFontSize = 8;
   final double navBarFontSize = 12;
+  final double subtitleLFontSize = 18;
   final double subtitleMFontSize = 16;
   final double subtitleSFontSize = 12;
   final double inputTextFontSize = 12;
@@ -171,6 +164,20 @@ abstract class LocalTheme {
         letterSpacing: -0.14,
       );
 
+  get titleXSS => TextStyle(
+        fontFamily: primaryFontHeavy,
+        fontSize: titleXSSFontSize,
+        height: titleXSHeight,
+        letterSpacing: -0.14,
+      );
+
+  get subtitleL => TextStyle(
+        fontFamily: primaryFontMedium,
+        fontSize: subtitleLFontSize,
+        height: subtitleMHeight,
+        letterSpacing: 1.2,
+      );
+
   get subtitleM => TextStyle(
         fontFamily: primaryFontMedium,
         fontSize: subtitleMFontSize,
@@ -185,7 +192,7 @@ abstract class LocalTheme {
         letterSpacing: 1.65,
       );
 
-  get button => TextStyle(
+  get buttonText => TextStyle(
         fontFamily: primaryFontBlack,
         fontSize: buttonFontSize,
         height: buttonHeight,
@@ -215,6 +222,13 @@ abstract class LocalTheme {
         letterSpacing: 0.1,
       );
 
+  get overLine => TextStyle(
+        fontFamily: primaryFontLight,
+        fontSize: titleXSFontSize,
+        height: inputTextHeight,
+        letterSpacing: 0.1,
+      );
+
   get caption => TextStyle(
         fontFamily: primaryFontHeavy,
         fontSize: captionFontSize,
@@ -234,4 +248,40 @@ abstract class LocalTheme {
         height: labelHeight,
         letterSpacing: 1,
       );
+}
+
+extension ColorShadow on Color {
+  Color variant(int variant) {
+    try {
+      return (this as MaterialColor)[variant] ?? this;
+    } catch (e) {
+      return this;
+    }
+  }
+
+  Color get variant0 => variant(0);
+
+  Color get variant10 => variant(10);
+
+  Color get variant20 => variant(20);
+
+  Color get variant30 => variant(30);
+
+  Color get variant40 => variant(40);
+
+  Color get variant50 => variant(50);
+
+  Color get variant60 => variant(60);
+
+  Color get variant70 => variant(70);
+
+  Color get variant80 => variant(80);
+
+  Color get variant90 => variant(90);
+
+  Color get variant95 => variant(95);
+
+  Color get variant99 => variant(99);
+
+  Color get variant100 => variant(100);
 }
