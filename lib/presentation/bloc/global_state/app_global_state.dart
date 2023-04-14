@@ -1,4 +1,4 @@
-import 'package:flutter_base_rootstrap/presentation/themes/theme.dart';
+import 'package:flutter_base_rootstrap/presentation/themes/local_theme.dart';
 
 class AppGlobalState {
   final AuthState authState;
