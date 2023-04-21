@@ -1,10 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/presentation/themes/local_theme.dart';
 
 class AppGlobalState {
   final AuthState authState;
   final LocalTheme? appTheme;
+  final Locale? locale;
 
-  AppGlobalState({this.authState = AuthState.loading, this.appTheme});
+  AppGlobalState({
+    this.authState = AuthState.loading,
+    this.appTheme,
+    this.locale,
+  });
 }
 
 enum AuthState { loggedIn, loading, loggedOut }

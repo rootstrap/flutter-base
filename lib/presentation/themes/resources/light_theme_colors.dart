@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_rootstrap/presentation/themes/resources/app_theme_data.dart';
 
-class LigthThemeColors implements ThemeColors {
+class LightThemeColors implements ThemeColors {
   @override
   // TODO: implement neutral
   MaterialColor get neutral => const MaterialColor(40, {

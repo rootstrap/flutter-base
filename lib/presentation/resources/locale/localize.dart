@@ -4,15 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 enum Lang { es, en }
 
-class Localization {
-  Lang currentLang = LangExtensions.defaultLang;
-
-  void saveLang(Lang lang) {
-    currentLang = lang;
-    //TODO: notify lang change
-  }
-}
-
 extension LangExtensions on Lang {
   static Map<String, Lang> langValues = {
     Lang.en.toString(): Lang.en,

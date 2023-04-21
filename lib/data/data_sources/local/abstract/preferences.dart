@@ -1,6 +1,6 @@
 import 'package:flutter_base_rootstrap/presentation/bloc/global_state/app_global_state.dart';
 import 'package:flutter_base_rootstrap/presentation/resources/locale/localize.dart';
-import 'package:flutter_base_rootstrap/presentation/themes/variants/light.dart';
+import 'package:flutter_base_rootstrap/presentation/themes/app_themes.dart';
 
 abstract class Preferences {
   Lang get appLang;
