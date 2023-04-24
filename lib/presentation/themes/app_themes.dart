@@ -7,7 +7,7 @@ import 'package:flutter_base_rootstrap/presentation/themes/resources/light_theme
 class AppThemes {
   static LocalTheme get light => LightTheme();
 
-  static LocalTheme get dark => LightTheme();
+  static LocalTheme get dark => DarkTheme();
 }
 
 class LightTheme extends LocalTheme {
@@ -15,7 +15,7 @@ class LightTheme extends LocalTheme {
       : super(
           themeData: AppThemeData(
             Brightness.light,
-            LigthThemeColors(),
+            LightThemeColors(),
             8.0,
           ),
         );

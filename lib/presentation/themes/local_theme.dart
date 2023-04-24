@@ -5,14 +5,16 @@ import 'package:flutter_base_rootstrap/presentation/themes/resources/app_theme_d
 abstract class LocalTheme {
   final AppThemeData themeData;
 
-  ColorScheme get colors => themeData.colorScheme;
+  late ColorScheme colors;
 
-  LocalTheme({required this.themeData});
+  LocalTheme({required this.themeData}) {
+    colors = themeData.colorScheme;
+  }
 
   CupertinoThemeData get cupertinoThemeData => CupertinoThemeData.raw(
-        themeData.brightness,
-        themeData.colorScheme.primary,
-        themeData.colorScheme.inversePrimary,
+        colors.brightness,
+        colors.primary,
+        colors.inversePrimary,
         CupertinoTextThemeData(
           textStyle: bodyS,
           actionTextStyle: buttonText,
@@ -23,15 +25,14 @@ abstract class LocalTheme {
           pickerTextStyle: bodyS,
           dateTimePickerTextStyle: bodyS,
         ),
-        themeData.colorScheme.background,
-        themeData.colorScheme.secondaryContainer,
+        colors.background,
+        colors.secondaryContainer,
       );
 
   // By using this configuration you should have this output for each material widget:
   // https://flutter.github.io/samples/web/material_3_demo
   ThemeData get data => ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: themeData.palette.primary,
         colorScheme: colors,
         brightness: themeData.brightness,
         textTheme: Typography.blackCupertino.copyWith(

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_base_rootstrap/data/data_sources/local/abstract/preferences.dart';
 import 'package:flutter_base_rootstrap/presentation/bloc/global_state/app_global_state.dart';
 import 'package:flutter_base_rootstrap/presentation/resources/locale/localize.dart';
-import 'package:flutter_base_rootstrap/presentation/themes/variants/light.dart';
+import 'package:flutter_base_rootstrap/presentation/themes/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesImpl extends Preferences {

@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_base_rootstrap/data/data_sources/local/abstract/preferences.dart';
 import 'package:flutter_base_rootstrap/presentation/bloc/global_state/app_global_state.dart';
-import 'package:flutter_base_rootstrap/presentation/themes/variants/light.dart';
+import 'package:flutter_base_rootstrap/presentation/resources/locale/localize.dart';
+import 'package:flutter_base_rootstrap/presentation/themes/app_themes.dart';
 import 'package:flutter_base_rootstrap/utils/globals.dart';
 
 class AppGlobalStateBloc extends Cubit<AppGlobalState> {
@@ -16,6 +17,7 @@ class AppGlobalStateBloc extends Cubit<AppGlobalState> {
       AppGlobalState(
         authState: preferences.authState,
         appTheme: preferences.appTheme.getLocalTheme(),
+        locale: preferences.appLang.locale,
       ),
     );
   }
