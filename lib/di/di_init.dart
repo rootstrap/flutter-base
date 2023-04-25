@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_base_rootstrap/data/data_sources/local/abstract/preferences.dart';
-import 'package:flutter_base_rootstrap/data/data_sources/local/concrete/preferences.dart';
+import 'package:flutter_base_rootstrap/data/data_sources/local/concrete/preferences_impl.dart';
 import 'package:flutter_base_rootstrap/data/data_sources/remote/abstract/product_data_source.dart';
 import 'package:flutter_base_rootstrap/data/data_sources/remote/concrete/product_data_source_impl.dart';
 import 'package:flutter_base_rootstrap/data/network/config/network_config.dart';
