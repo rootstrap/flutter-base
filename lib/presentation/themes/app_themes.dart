@@ -40,8 +40,7 @@ extension ThemeType on Themes {
     Themes.dark.toString(): Themes.dark,
   };
 
-  static Themes getTheme(String? fromValue) =>
-      themesValues[fromValue ?? Themes.light.toString()]!;
+  static Themes getTheme(String? fromValue) => themesValues[fromValue ?? Themes.light.toString()]!;
 
   LocalTheme getLocalTheme() {
     return this == Themes.light ? AppThemes.light : AppThemes.dark;
