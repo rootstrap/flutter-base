@@ -1,7 +1,7 @@
+import 'package:flutter_base_rootstrap/core/failure/failure.dart';
 import 'package:flutter_base_rootstrap/domain/errors/get_products_error.dart';
 import 'package:flutter_base_rootstrap/domain/repositories/product_repository.dart';
 
-import '../../core/resource.dart';
 import '../../core/result_type.dart';
 import '../models/product.dart';
 
@@ -10,20 +10,18 @@ class GetProductsUseCase {
 
   GetProductsUseCase(this._productRepository);
 
-  Stream<Resource<List<Product>, GetProductsError>> getProducts() async* {
-    yield RLoading();
-    final productResult = await _productRepository.getProducts();
-    yield* productResult.toStream(
-      success: (products) async* {
+  Future<ResultType<List<Product>, GetProductsError>> getProducts() async {
+    final result = await _productRepository.getProducts();
+    switch (result) {
+      case TSuccess<List<Product>, Failure> e:
+        final products = e.data;
         if (products.isEmpty) {
-          yield RError(EmptyListError());
+          return TError(EmptyListError());
         } else {
-          yield RSuccess(products);
+          return TSuccess(products);
         }
-      },
-      error: (failure) async* {
-        yield RError(DataError(failure));
-      },
-    );
+      case TError<List<Product>, Failure> e:
+        return TError(DataError(e.error));
+    }
   }
 }

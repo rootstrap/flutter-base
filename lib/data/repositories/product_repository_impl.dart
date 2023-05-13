@@ -15,8 +15,12 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<ResultType<List<Product>, Failure>> getProducts() async {
     final connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) return TError(ConnectionFailure());
+    if (connectivityResult == ConnectivityResult.none) {
+      return TError(ConnectionFailure());
+    }
     final productResult = await _productDataSource.getProducts();
-    return productResult.mapSuccess((products) => products.map((e) => e.toDomain()).toList());
+    return productResult.mapSuccess(
+      (products) => products.map((e) => e.toDomain()).toList(),
+    );
   }
 }

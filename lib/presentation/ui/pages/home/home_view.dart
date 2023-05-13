@@ -17,22 +17,16 @@ class HomeView extends StatelessWidget {
       child: Material(
         child: BlocBuilder<GetProductsRepoCubit, GetProductsState>(
           builder: (context, state) {
-            if (state is GetProductsStateLoading) {
-              return const ProductsLoading();
-            }
-            if (state is GetProductsStateSuccess) {
-              return ProductsListWidget(products: state.products);
-            }
-            if (state is GetProductsStateEmpty) {
-              return const ProductsEmptyWidget();
-            }
-            if (state is GetProductsStateError) {
-              return FailureWidget(
-                failure: state.failure,
-                onRetry: () => context.read<GetProductsRepoCubit>().fetchProducts(),
-              );
-            }
-            return const SizedBox.shrink();
+            return switch (state) {
+              GetProductsStateLoading _ => const ProductsLoading(),
+              GetProductsStateEmpty _ => const ProductsEmptyWidget(),
+              GetProductsStateSuccess e => ProductsListWidget(products: e.products),
+              GetProductsStateError e => FailureWidget(
+                  failure: e.failure,
+                  onRetry: () => context.read<GetProductsRepoCubit>().fetchProducts(),
+                ),
+              _ => const SizedBox.shrink(),
+            };
           },
         ),
       ),
