@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../domain/models/product.dart';
+import 'package:flutter_base_rootstrap/domain/models/product.dart';
 
 class ProductWidget extends StatelessWidget {
   final Product product;
@@ -10,9 +9,9 @@ class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-        color: Colors.green[200],
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        color: Colors.green,
       ),
       padding: const EdgeInsets.all(8),
       child: Row(
@@ -33,7 +32,7 @@ class ProductWidget extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(width: 16),
           Image.network(product.thumbnail, width: 120),
         ],
       ),

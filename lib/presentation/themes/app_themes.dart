@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_rootstrap/domain/models/theme_type.dart';
 import 'package:flutter_base_rootstrap/presentation/themes/local_theme.dart';
 import 'package:flutter_base_rootstrap/presentation/themes/resources/app_theme_data.dart';
 import 'package:flutter_base_rootstrap/presentation/themes/resources/dark_theme_colors.dart';
@@ -6,8 +7,14 @@ import 'package:flutter_base_rootstrap/presentation/themes/resources/light_theme
 
 class AppThemes {
   static LocalTheme get light => LightTheme();
-
   static LocalTheme get dark => DarkTheme();
+
+  static LocalTheme getAppTheme(ThemeType themeType) {
+    return switch (themeType) {
+      ThemeType.light => light,
+      ThemeType.dark => dark,
+    };
+  }
 }
 
 class LightTheme extends LocalTheme {
@@ -30,19 +37,4 @@ class DarkTheme extends LocalTheme {
             8.0,
           ),
         );
-}
-
-enum Themes { light, dark }
-
-extension ThemeType on Themes {
-  static Map<String, Themes> themesValues = {
-    Themes.light.toString(): Themes.light,
-    Themes.dark.toString(): Themes.dark,
-  };
-
-  static Themes getTheme(String? fromValue) => themesValues[fromValue ?? Themes.light.toString()]!;
-
-  LocalTheme getLocalTheme() {
-    return this == Themes.light ? AppThemes.light : AppThemes.dark;
-  }
 }
