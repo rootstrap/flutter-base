@@ -1,7 +1,7 @@
 import 'package:flutter_base_rootstrap/devices/permissions/abstract/permission_manager.dart';
 import 'package:universal_html/html.dart' as html;
 
-class PermissionsWeb extends PermissionManager {
+class AppPermissions extends PermissionManager {
   @override
   Future<AppPermissionStatus> requestCameraPermission() async {
     final permission =

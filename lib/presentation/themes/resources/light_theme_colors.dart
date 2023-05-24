@@ -4,33 +4,31 @@ import 'package:flutter_base_rootstrap/presentation/themes/resources/app_theme_d
 class LightThemeColors implements ThemeColors {
   @override
   // TODO: implement neutral
-  MaterialColor get neutral =>
-      const MaterialColor(40, {
-        0: Color(0xFF000000),
-        10: Color(0xFF1C1B1F),
-        20: Color(0xFFF0524D),
-        30: Color(0xFFF0524D),
-        40: Color(0xFFF0524D),
-        50: Color(0xFFF0524D),
-        60: Color(0xFFF0524D),
-        70: Color(0xFFF0524D),
-        80: Color(0xFFF0524D),
-        90: Color(0xFFF0524D),
-        95: Color(0xFFF0524D),
-        99: Color(0xFFFFFBFE),
-        100: Color(0xFFF0524D),
+  MaterialColor get neutral => const MaterialColor(40, {
+        0: Color(0xFFFFFFFF),
+        10: Color(0xFFFFFFFF),
+        20: Color(0xFFFFFFFF),
+        30: Color(0xFFFFFFFF),
+        40: Color(0xFFFFFFFF),
+        50: Color(0xFFFFFFFF),
+        60: Color(0xFFFFFFFF),
+        70: Color(0xFFFFFFFF),
+        80: Color(0xFFFFFFFF),
+        90: Color(0xFFFFFFFF),
+        95: Color(0xFFFFFFFF),
+        99: Color(0xFFFFFFFF),
+        100: Color(0xFFFFFFFF),
       });
 
   @override
   // TODO: implement neutralVariant
-  MaterialColor get neutralVariant =>
-      const MaterialColor(40, {
+  MaterialColor get neutralVariant => const MaterialColor(40, {
         0: Color(0xFF000000),
         10: Color(0xFF49454F),
         20: Color(0xFFF0524D),
         30: Color(0xFFF0524D),
         40: Color(0xFFF0524D),
-        50: Color(0xFF79747E),
+        50: Color(0xFFFFFFFF),
         60: Color(0xFFF0524D),
         70: Color(0xFFF0524D),
         80: Color(0xFFF0524D),
@@ -42,8 +40,7 @@ class LightThemeColors implements ThemeColors {
 
   @override
   // TODO: implement tertiary
-  MaterialColor get tertiary =>
-      const MaterialColor(40, {
+  MaterialColor get tertiary => const MaterialColor(40, {
         0: Color(0xFF000000),
         10: Color(0xFF31111D),
         20: Color(0xFFF0524D),
@@ -61,8 +58,7 @@ class LightThemeColors implements ThemeColors {
 
   @override
   // TODO: implement error
-  MaterialColor get error =>
-      const MaterialColor(40, {
+  MaterialColor get error => const MaterialColor(40, {
         0: Color(0xFF000000),
         10: Color(0xFF410E0B),
         20: Color(0xFFF0524D),
@@ -80,8 +76,7 @@ class LightThemeColors implements ThemeColors {
 
   @override
   // TODO: implement primary
-  MaterialColor get primary =>
-      const MaterialColor(40, {
+  MaterialColor get primary => const MaterialColor(40, {
         0: Color(0xFF000000),
         10: Color(0xFF21005D),
         20: Color(0xFFF0524D),
@@ -99,8 +94,7 @@ class LightThemeColors implements ThemeColors {
 
   @override
   // TODO: implement secondary
-  MaterialColor get secondary =>
-      const MaterialColor(40, {
+  MaterialColor get secondary => const MaterialColor(40, {
         0: Color(0xFF000000),
         10: Color(0xFF1D192B),
         20: Color(0xFFF0524D),
