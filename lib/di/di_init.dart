@@ -8,9 +8,10 @@ import 'package:flutter_base_rootstrap/data/repositories/auth_repository_impl.da
 import 'package:flutter_base_rootstrap/data/repositories/common_repository_impl.dart';
 import 'package:flutter_base_rootstrap/data/repositories/product_repository_impl.dart';
 import 'package:flutter_base_rootstrap/devices/permissions/abstract/permission_manager.dart';
-import 'package:flutter_base_rootstrap/devices/permissions/concrete/mobile/_permissions_android.dart';
+import 'package:flutter_base_rootstrap/devices/permissions/concrete/mobile/_permissions_android.dart'
+    if (dart.library.io) 'package:flutter_base_rootstrap/devices/permissions/concrete/mobile/_permissions_android.dart'
+    if (dart.library.html) 'package:flutter_base_rootstrap/devices/permissions/concrete/web/_permissions_web.dart';
 import 'package:flutter_base_rootstrap/devices/permissions/concrete/mobile/_permissions_ios.dart';
-import 'package:flutter_base_rootstrap/devices/permissions/concrete/web/_permissions_web.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/app_platform.dart';
 import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
 import 'package:flutter_base_rootstrap/devices/platform/concrete/_app_platform_impl.dart'
@@ -49,14 +50,11 @@ Future<void> initialize() async {
   getIt.registerLazySingleton<PlatformInfo>(() => PlatformInfoImpl(getIt()));
   getIt.registerLazySingleton<PermissionManager>(() {
     final platforms = getIt<AppPlatform>();
-    if (platforms.isWeb) {
-      return PermissionsWeb();
-    }
-    if (platforms.isAndroid) {
-      return PermissionsAndroid();
+    if (platforms.isIOS) {
+      return AppPermissionsIOs();
     }
 
-    return PermissionsIOs();
+    return AppPermissions();
   });
 
   //Network
