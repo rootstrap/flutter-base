@@ -1,14 +1,15 @@
-**Mandatory:**
- - [ ] **Documentation** - The PR title contains the Jira ticket /Github issue
+### Description
+[Write your PR description here, be clear ]
 
-Overall changes:
- - [ ] **Documentation (optional)** - I've added a brief text explanation
- - [ ] **ConfigurationChange** - Entering/exiting split screen doesn't break the app in any way
- - [ ] **Sanity** - I've reviewed my own pull request
+### Issue
+[LINK TO JIRA/GITHUB ISSUE]
 
-UI Changes:
- - [ ] **Documentation** - I've added screenshots/gifs/videos
- - [ ] **Accessibility** - The UX/UI doesn't break with large font sizes
+#### Tasks [ISSUE TASKS covered in this PR when apply]
+- [ ] Task 1
+- [ ] Task 2
 
-Business logic changes:
- - [ ] **Testing** - I've added/updated unit tests
+### Preview
+[UI Preview]
+
+#### Notes:
+[extra note or considerations]
