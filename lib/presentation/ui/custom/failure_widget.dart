@@ -5,18 +5,18 @@ import '../../../core/failure/failure.dart';
 import '../../resources/locale/generated/l10n.dart';
 
 class FailureWidget extends StatelessWidget {
-  final Failure failure;
+  final Failure? failure;
   final VoidCallback onRetry;
 
   const FailureWidget({Key? key, required this.failure, required this.onRetry}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (failure is ConnectionFailure) {
-      return ConnectionErrorWidget(onRetry: onRetry);
-    } else {
-      return UnexpectedErrorWidget(onRetry: onRetry);
-    }
+    return switch (failure) {
+      ConnectionFailure _ => ConnectionErrorWidget(onRetry: onRetry),
+      UnexpectedErrorWidget _ => UnexpectedErrorWidget(onRetry: onRetry),
+      _ => UnexpectedErrorWidget(onRetry: onRetry),
+    };
   }
 }
 

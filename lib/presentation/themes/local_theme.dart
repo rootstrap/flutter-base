@@ -27,6 +27,7 @@ abstract class LocalTheme {
         ),
         colors.background,
         colors.secondaryContainer,
+        true,
       );
 
   // By using this configuration you should have this output for each material widget:
