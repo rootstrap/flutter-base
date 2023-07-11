@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/domain/models/product.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/pages/home/widget/product_widget.dart';
+import 'package:domain/models/product.dart';
+import 'package:app/presentation/ui/pages/home/widget/product_widget.dart';
 
 class ProductsListWidget extends StatelessWidget {
   final List<Product> products;

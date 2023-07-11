@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/presentation/themes/resources/app_theme_data.dart';
+import 'package:app/presentation/themes/resources/app_theme_data.dart';
 
 class LightThemeColors implements ThemeColors {
   @override

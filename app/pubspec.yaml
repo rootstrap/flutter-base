@@ -1,4 +1,4 @@
-name: flutter_base_rootstrap
+name: app
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -43,7 +43,10 @@ dependencies:
   url_strategy: ^0.2.0
   flutter_localizations:
     sdk: flutter
-
+  domain:
+    path: ../modules/domain
+  common:
+    path: ../modules/common
 
 dev_dependencies:
   flutter_test:

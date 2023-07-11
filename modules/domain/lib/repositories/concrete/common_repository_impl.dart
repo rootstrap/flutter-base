@@ -31,4 +31,14 @@ class CommonRepositoryImpl implements CommonRepository {
   void setTheme(ThemeType themeType) {
     _preferences.setAppTheme(themeType.name);
   }
+
+  @override
+  bool areCookiesAllowed() {
+    return _preferences.getCookiesAllowed();
+  }
+
+  @override
+  void setAcceptCookies(bool isAllowed) {
+    _preferences.setCookiesAllowed(isAllowed);
+  }
 }

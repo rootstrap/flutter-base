@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/domain/models/app_lang.dart';
-import 'package:flutter_base_rootstrap/presentation/resources/locale/generated/l10n.dart';
+import 'package:domain/models/app_lang.dart';
+import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 extension LangExtensions on AppLang {
   static const supportedLang = [

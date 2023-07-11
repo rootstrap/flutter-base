@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/app/app_cubit.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/login/login_cubit.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/login/login_state.dart';
-import 'package:flutter_base_rootstrap/domain/models/theme_type.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/custom/app_theme_switch.dart';
-import 'package:flutter_base_rootstrap/presentation/ui/custom/loading_screen.dart';
+import 'package:domain/bloc/login/login_cubit.dart';
+import 'package:domain/bloc/login/login_state.dart';
+import 'package:app/presentation/ui/custom/app_theme_switch.dart';
+import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginView extends StatelessWidget {
@@ -28,7 +26,9 @@ class LoginView extends StatelessWidget {
                   child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
-                      context.read<LoginCubit>().onSubmitted('Rootstrap', '12345678');
+                      context
+                          .read<LoginCubit>()
+                          .onSubmitted('Rootstrap', '12345678');
                     },
                   ),
                 ),
@@ -56,5 +56,3 @@ class _Loading extends StatelessWidget {
     );
   }
 }
-
-

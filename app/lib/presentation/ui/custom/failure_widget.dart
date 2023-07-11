@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../core/failure/failure.dart';
-import '../../resources/locale/generated/l10n.dart';
+import 'package:common/core/failure/failure.dart';
+import 'package:app/presentation/resources/locale/generated/l10n.dart';
 
 class FailureWidget extends StatelessWidget {
   final Failure? failure;
   final VoidCallback onRetry;
 
-  const FailureWidget({Key? key, required this.failure, required this.onRetry}) : super(key: key);
+  const FailureWidget({Key? key, required this.failure, required this.onRetry})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,8 @@ class FailureWidget extends StatelessWidget {
 class ConnectionErrorWidget extends StatelessWidget {
   final VoidCallback onRetry;
 
-  const ConnectionErrorWidget({Key? key, required this.onRetry}) : super(key: key);
+  const ConnectionErrorWidget({Key? key, required this.onRetry})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,8 @@ class ConnectionErrorWidget extends StatelessWidget {
 class UnexpectedErrorWidget extends StatelessWidget {
   final VoidCallback onRetry;
 
-  const UnexpectedErrorWidget({Key? key, required this.onRetry}) : super(key: key);
+  const UnexpectedErrorWidget({Key? key, required this.onRetry})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

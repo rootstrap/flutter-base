@@ -9,4 +9,8 @@ abstract class CommonRepository {
   void setAppLang(AppLang lang);
 
   void setTheme(ThemeType themeStatus);
+
+  bool areCookiesAllowed();
+
+  void setAcceptCookies(bool isAllowed);
 }

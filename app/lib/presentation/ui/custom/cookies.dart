@@ -1,9 +1,9 @@
+import 'package:app/main/init.dart';
+import 'package:domain/repositories/common_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/data/preferences/preferences.dart';
-import 'package:flutter_base_rootstrap/devices/platform/abstract/platform_info.dart';
-import 'package:flutter_base_rootstrap/di/di_init.dart';
-import 'package:flutter_base_rootstrap/presentation/resources/locale/generated/l10n.dart';
-import 'package:flutter_base_rootstrap/presentation/resources/resources.dart';
+import 'package:common/devices/platform/abstract/platform_info.dart';
+import 'package:app/presentation/resources/locale/generated/l10n.dart';
+import 'package:app/presentation/resources/resources.dart';
 
 class Cookies extends StatefulWidget {
   final Widget child;
@@ -24,19 +24,19 @@ class Cookies extends StatefulWidget {
 class _CookiesState extends State<Cookies> {
   PlatformInfo get _platformInfo => getIt();
 
-  Preferences get _preferences => getIt();
+  CommonRepository get _commonRepo => getIt();
   bool _needsCookies = false;
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      _needsCookies = !_preferences.getCookiesAllowed();
+      _needsCookies = !_commonRepo.areCookiesAllowed();
     });
   }
 
   void _confirmCookies() {
-    _preferences.setCookiesAllowed(true);
+    _commonRepo.setAcceptCookies(true);
     setState(() {
       _needsCookies = false;
     });
@@ -65,12 +65,14 @@ class _CookiesState extends State<Cookies> {
                             children: [
                               Text(
                                 S.of(context).cookiesTitle,
-                                style: Theme.of(context).textTheme.headline4,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               SizedBox(height: spacing.s),
                               SelectableText(
                                 S.of(context).cookiesBody,
-                                style: Theme.of(context).textTheme.headline4,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               SizedBox(height: spacing.s),
                               Align(

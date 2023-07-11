@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_rootstrap/di/di_init.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/app/app_cubit.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/app/app_state.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/auth/auth_cubit.dart';
-import 'package:flutter_base_rootstrap/domain/bloc/auth/auth_state.dart';
-import 'package:flutter_base_rootstrap/domain/repositories/auth_repository.dart';
-import 'package:flutter_base_rootstrap/presentation/navigation/routers.dart';
-import 'package:flutter_base_rootstrap/presentation/resources/locale/generated/l10n.dart';
-import 'package:flutter_base_rootstrap/presentation/themes/app_themes.dart';
-import 'package:flutter_base_rootstrap/presentation/utils/lang_extensions.dart';
+import 'package:domain/bloc/app/app_cubit.dart';
+import 'package:domain/bloc/app/app_state.dart';
+import 'package:domain/bloc/auth/auth_cubit.dart';
+import 'package:domain/bloc/auth/auth_state.dart';
+import 'package:domain/repositories/auth_repository.dart';
+import 'package:app/presentation/navigation/routers.dart';
+import 'package:app/presentation/resources/locale/generated/l10n.dart';
+import 'package:app/presentation/themes/app_themes.dart';
+import 'package:app/presentation/utils/lang_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
+
+import 'init.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -47,7 +48,6 @@ class AppView extends StatefulWidget {
 }
 
 class _AppViewState extends State<AppView> {
-
   GoRouter goRouter = Routers.authRouter;
 
   @override
