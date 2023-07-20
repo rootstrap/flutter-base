@@ -5,7 +5,6 @@ import shutil
 MODULES_FOLDER = "modules"
 GITHUB_REPO = "https://github.com/rootstrap/flutter-modules.git"
 
-
 def add_module(module_name):
     # Create a temporary directory to clone the repository
     temp_dir = "/Users/Shared"
@@ -30,7 +29,6 @@ def add_module(module_name):
 def main():
     module_name = input("Add module. \n Enter module name: ")
     add_module(module_name)
-
 
 if __name__ == "__main__":
     main()
