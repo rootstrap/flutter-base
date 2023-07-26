@@ -11,6 +11,8 @@ import 'package:common/devices/platform/concrete/_app_platform_impl.dart'
     if (dart.library.html) 'package:common/devices/platform/concrete/web/_app_platform_impl.dart';
 import 'package:common/devices/platform/concrete/_platform_info_impl.dart';
 
+final getIt = GetIt.instance;
+
 class CommonInit {
   static Future<void> initialize(GetIt getIt) async {
     getIt.registerSingleton<AppPlatform>(AppPlatformImpl());
