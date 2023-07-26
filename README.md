@@ -35,6 +35,18 @@ This template comes with:
      flutter.minSdkVersion=21
      flutter.targetSdkVersion=33 
    ***
+6. Android SignIn
+   - Create your release Key Store:
+      "keytool -genkey -v -keystore ~/keystore_name.jks -keyalg RSA \
+     -keysize 2048 -validity 10000 -alias your_alias" 
+   - Create the 'key.properties' file with the keystore information:
+   ***
+    storePassword=<YourStorePassword>
+    keyPassword=<YourKeyPassword>
+    keyAlias=<YourStoreAlias>>
+    storeFile=<FilePath>
+   ***
+ 
 
 ## Set up an editor
 
