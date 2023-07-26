@@ -22,10 +22,19 @@ This template comes with:
 
 1. Create a new repo using this template.
 
-   ![template](template.png)
+   ![template](app/template.png)
 2. Clone your new repo.
 3. Run `flutter doctor`.
 4. Run `flutter pub get`.
+5. Setup Android: 
+   - Add to the local.properties file (and update when needed):
+   *** 
+     flutter.versionName=1.0.0
+     flutter.versionCode=1
+     flutter.compileSdkVersion=33
+     flutter.minSdkVersion=21
+     flutter.targetSdkVersion=33 
+   ***
 
 ## Set up an editor
 
@@ -57,7 +66,7 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
 2. Include any additional run arguments to launch the app.
     1. Environment variables
 
-        Add the env var for each flavor: ![me](env_var_config.png)
+        Add the env var for each flavor: ![me](app/env_var_config.png)
 
 3. Select the device to launch the App
 4. Run the App
@@ -74,7 +83,7 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
         1. Environment variables
 
             Add the env vars for each flavor with the property ``toolArgs``
-            ![launch configuration example](vs-code-launch-configuration.png)
+            ![launch configuration example](app/vs-code-launch-configuration.png)
 
 4. Inside the **Run and Debug** section select the environment you want to excute
 5. Make sure you have the device you want to use already open

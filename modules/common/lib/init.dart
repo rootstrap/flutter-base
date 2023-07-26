@@ -11,10 +11,11 @@ import 'package:common/devices/platform/concrete/_app_platform_impl.dart'
     if (dart.library.html) 'package:common/devices/platform/concrete/web/_app_platform_impl.dart';
 import 'package:common/devices/platform/concrete/_platform_info_impl.dart';
 
-final getIt = GetIt.instance;
+late GetIt getIt;
 
 class CommonInit {
-  static Future<void> initialize(GetIt getIt) async {
+  static Future<void> initialize(GetIt getItInst) async {
+    getIt = getItInst;
     getIt.registerSingleton<AppPlatform>(AppPlatformImpl());
     getIt.registerLazySingleton<PlatformInfo>(() => PlatformInfoImpl(getIt()));
     getIt.registerLazySingleton<PermissionManager>(() {
