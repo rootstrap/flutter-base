@@ -3,8 +3,7 @@ import shutil
 
 # Constants
 MODULES_FOLDER = "modules"
-GITHUB_REPO = "https://github.com/rootstrap/flutter-base.git"
-
+GITHUB_REPO = "https://github.com/rootstrap/flutter-modules.git"
 
 def add_module(module_name):
     # Create a temporary directory to clone the repository
@@ -28,9 +27,8 @@ def add_module(module_name):
 
 # Main function
 def main():
-    module_name = input("Add or Update module. \n Enter module name: ")
+    module_name = input("Add module. \n Enter module name: ")
     add_module(module_name)
-
 
 if __name__ == "__main__":
     main()
