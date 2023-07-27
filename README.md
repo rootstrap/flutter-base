@@ -28,25 +28,25 @@ This template comes with:
 4. Run `flutter pub get`.
 5. Setup Android: 
    - Add to the local.properties file (and update when needed):
-   *** 
+```text 
      flutter.versionName=1.0.0
      flutter.versionCode=1
      flutter.compileSdkVersion=33
      flutter.minSdkVersion=21
      flutter.targetSdkVersion=33 
-   ***
+```
 6. Android SignIn
    - Create your release Key Store:
-      "keytool -genkey -v -keystore ~/keystore_name.jks -keyalg RSA \
-     -keysize 2048 -validity 10000 -alias your_alias" 
+```text
+   keytool -genkey -v -keystore ~/keystore_name.jks -keyalg RSA -keysize 2048 -validity 10000 -alias your_alias"
+```
    - Create the 'key.properties' file with the keystore information:
-   ***
+```text
     storePassword=<YourStorePassword>
     keyPassword=<YourKeyPassword>
     keyAlias=<YourStoreAlias>>
     storeFile=<FilePath>
-   ***
- 
+```
 
 ## Set up an editor
 
@@ -60,12 +60,6 @@ This template comes with:
 2. Open your project in your editor of preference
 
 **Note:** Starting with **Flutter 2.8** in order for you to launch the app in **Android** you must define the `flutter.compileSdkVersion` inside the `local.properties` file.
-
-Ideally you should use the one inside `[$PATH_OF_FLUTTER_GIT_DIRECTORY]/flutter/packages/flutter_tools/gradle/flutter.gradle`
-
-```text
-flutter.compileSdkVersion=33
-```
 
 You can read more about this [here](https://docs.page/bizz84/complete-flutter-course/faq/android-build-gradle-issues).
 
