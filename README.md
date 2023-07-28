@@ -26,8 +26,9 @@ This template comes with:
 2. Clone your new repo.
 3. Run `flutter doctor`.
 4. Run `flutter pub get`.
-5. Setup Android: 
-   - Add to the local.properties file (and update when needed):
+5. Setup Android:
+    - Add to the local.properties file (and update when needed):
+
 ```text 
      flutter.versionName=1.0.0
      flutter.versionCode=1
@@ -35,12 +36,16 @@ This template comes with:
      flutter.minSdkVersion=21
      flutter.targetSdkVersion=33 
 ```
+
 6. Android SignIn
-   - Create your release Key Store:
+    - Create your release Key Store:
+
 ```text
    keytool -genkey -v -keystore ~/keystore_name.jks -keyalg RSA -keysize 2048 -validity 10000 -alias your_alias"
 ```
-   - Create the 'key.properties' file with the keystore information:
+
+- Create the 'key.properties' file with the keystore information:
+
 ```text
     storePassword=<YourStorePassword>
     keyPassword=<YourKeyPassword>
@@ -48,20 +53,34 @@ This template comes with:
     storeFile=<FilePath>
 ```
 
+7. Add your env vars, create a config file for each env:
+   ![me](env_config_files.png)
+    - add the env config, i.e:
+
+```text
+    {
+        "API_URL": "https://dummyjson.com"
+    }
+```
+
 ## Set up an editor
 
-- Follow the [Android Studio](https://docs.flutter.dev/get-started/editor?tab=androidstudio) instructions to setup the editor
+- Follow the [Android Studio](https://docs.flutter.dev/get-started/editor?tab=androidstudio)
+  instructions to setup the editor
 
-- Follow the [VS Code](https://docs.flutter.dev/get-started/editor?tab=vscode) instructions to setup the editor
+- Follow the [VS Code](https://docs.flutter.dev/get-started/editor?tab=vscode) instructions to setup
+  the editor
 
 ## Running the App
 
 1. Open a Simulator or Emulator
 2. Open your project in your editor of preference
 
-**Note:** Starting with **Flutter 2.8** in order for you to launch the app in **Android** you must define the `flutter.compileSdkVersion` inside the `local.properties` file.
+**Note:** Starting with **Flutter 2.8** in order for you to launch the app in **Android** you must
+define the `flutter.compileSdkVersion` inside the `local.properties` file.
 
-You can read more about this [here](https://docs.page/bizz84/complete-flutter-course/faq/android-build-gradle-issues).
+You can read more about
+this [here](https://docs.page/bizz84/complete-flutter-course/faq/android-build-gradle-issues).
 
 ### Android Studio
 
@@ -70,12 +89,18 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
     2. Give it a meaningful name **IE:** Dev, QA, Staging, Prod
     3. Pick the entry point, main.dart file location **IE:** ``.../lib/main/env/main_dev.dart``
 2. Include any additional run arguments to launch the app.
-    1. Environment variables
-
-        Add the env var for each flavor: ![me](app/env_var_config.png)
-
-3. Select the device to launch the App
-4. Run the App
+    1. Create each env files config files in your root **app/**
+       ![me](env_config_files.png)
+    2. Setup your build, add the env file to the build command in AE:
+       ![me](env_config.png)
+3. Setup your env vars, i.e the api_url for each env:
+    ```text
+        {
+            "API_URL": "https://dummyjson.com"
+        }
+    ```
+4. Select the device to launch the App
+5. Run the App
 
 ### VS Code
 
@@ -88,8 +113,8 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
     4. Include any additional run argments to launch the app.
         1. Environment variables
 
-            Add the env vars for each flavor with the property ``toolArgs``
-            ![launch configuration example](app/vs-code-launch-configuration.png)
+           Add the env vars for each flavor with the property ``toolArgs``
+           ![launch configuration example](app/vs-code-launch-configuration.png)
 
 4. Inside the **Run and Debug** section select the environment you want to excute
 5. Make sure you have the device you want to use already open
@@ -98,6 +123,23 @@ You can read more about this [here](https://docs.page/bizz84/complete-flutter-co
 **Note 1:** Create as much **Launch Configurations** as you need for any specific environment.
 
 **Note 2:** You shouldn't commit the **``.vscode/launch.json``** file.
+
+## Build Production App:
+
+1. Build your android appBundle or apk:
+    - run the following command to build your appBundle
+
+    ```text
+        flutter build appBundle -t lib/main/env/main.dart --dart-define-from-file=env_prod.json
+    ```
+
+   [TODO: add how to setup Xcode for apple signIn]
+2. Configure your iOs app sigIn.
+    - run the following command to build your ipa
+
+    ```text
+        flutter build ipa --release -t lib/main/env/main.dart --dart-define-from-file=env_prod.json
+    ```
 
 For more information you can check the [docs](https://dartcode.org/docs/launch-configuration/)
 
@@ -118,8 +160,10 @@ For more information you can check the [docs](https://dartcode.org/docs/launch-c
 ## Code Quality Standards
 
 In order to meet the required code quality standards, this project is following
-this [tech guides considerations](https://github.com/rootstrap/tech-guides/blob/master/flutter/README.md).
-It also runs [flutter analyze](https://dart.dev/tools/dart-analyze) for each build on your CI/CD tool.
+this [tech guides considerations](https://github.com/rootstrap/tech-guides/blob/master/flutter/README.md)
+.
+It also runs [flutter analyze](https://dart.dev/tools/dart-analyze) for each build on your CI/CD
+tool.
 
 ## Security recommendations
 
@@ -130,7 +174,8 @@ TBD
 ## CI/CD configuration with Bitrise (updated on Dec 12th 2021)
 
 We are using Bitrise to configure and run
-the [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee8442908fc00c3ea8f49bf1).
+the [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee8442908fc00c3ea8f49bf1)
+.
 
 ## License
 
