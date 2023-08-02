@@ -27,14 +27,14 @@ This template comes with:
 3. Run `flutter doctor`.
 4. Run `flutter pub get`.
 5. Setup Android:
-    - Add to the local.properties file (and update when needed):
-
+    - Add to the build.properties file (and update when needed):
 ```text 
-     flutter.versionName=1.0.0
-     flutter.versionCode=1
-     flutter.compileSdkVersion=33
-     flutter.minSdkVersion=21
-     flutter.targetSdkVersion=33 
+    flutter.versionName=1.0.0
+    flutter.appId=base
+    flutter.versionCode=1
+    flutter.compileSdkVersion=33
+    flutter.minSdkVersion=21
+    flutter.targetSdkVersion=33 
 ```
 
 6. Android SignIn
@@ -61,6 +61,13 @@ This template comes with:
     {
         "API_URL": "https://dummyjson.com"
     }
+```
+
+8. Setup iOs App Name and id:
+   - Locate the config file for each flavor and configure the FLUTTER_APP_NAME i.e: Debug.xcconfig
+```text
+     FLUTTER_APP_ID=base.debug
+     FLUTTER_APP_NAME=RS Base Debug
 ```
 
 ## Set up an editor

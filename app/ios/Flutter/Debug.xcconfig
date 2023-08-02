@@ -1,2 +1,9 @@
 #include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
 #include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main/env/main_dev.dart
+FLUTTER_BUILD_NAME=2.0.0
+FLUTTER_BUILD_NUMBER=1
+FLUTTER_APP_ID=base.debug
+FLUTTER_APP_NAME=RS Base Debug
+PREFIX=debug

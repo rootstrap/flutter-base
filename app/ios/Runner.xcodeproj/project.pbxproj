@@ -384,8 +384,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rootstrap.base.flutterBaseRootstrap;
-				PRODUCT_NAME = "Flutter Base";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID)";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -461,8 +461,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rootstrap.base.flutterBaseRootstrap.$(PREFIX)";
-				PRODUCT_NAME = "Flutter Base QA";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).debug.qa";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME) $(FLUTTER_BUILD_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -539,8 +539,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rootstrap.base.flutterBaseRootstrap.$(PREFIX)";
-				PRODUCT_NAME = "Flutter Base Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).debug.dev";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -614,8 +614,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rootstrap.base.flutterBaseRootstrap.$(PREFIX)";
-				PRODUCT_NAME = "Flutter Base Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).dev";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -688,8 +688,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rootstrap.base.flutterBaseRootstrap.$(PREFIX)";
-				PRODUCT_NAME = "Flutter Base QA";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).qa";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -760,8 +760,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rootstrap.base.flutterBaseRootstrap.$(PREFIX)";
-				PRODUCT_NAME = "Flutter Base QA";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).qa";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -832,8 +832,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rootstrap.base.flutterBaseRootstrap.$(PREFIX)";
-				PRODUCT_NAME = "Flutter Base Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).dev";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -960,8 +960,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rootstrap.base.flutterBaseRootstrap;
-				PRODUCT_NAME = "Flutter Base";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID).debug";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME) $(FLUTTER_BUILD_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -982,8 +982,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rootstrap.base.flutterBaseRootstrap;
-				PRODUCT_NAME = "Flutter Base";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rs.$(FLUTTER_APP_ID)";
+				PRODUCT_NAME = "$(FLUTTER_APP_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
