@@ -1,9 +1,8 @@
-import 'package:common/core/mixins/cancelable_cubit_mixin.dart';
 import 'package:common/core/resource.dart';
 import 'package:common/core/result_type.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BaseBlocState<T, E> extends Cubit<Resource> with CancelableCubitMixin {
+class BaseBlocState<T, E> extends Cubit<Resource> {
   BaseBlocState(super.initialState);
 
   void isLoading() {

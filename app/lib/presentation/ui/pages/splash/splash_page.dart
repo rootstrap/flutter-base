@@ -1,6 +1,6 @@
+import 'package:app/main/init.dart';
+import 'package:domain/services/AuthService.dart';
 import 'package:flutter/material.dart';
-import 'package:domain/bloc/auth/auth_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -10,10 +10,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  AuthService get _authService => getIt();
+
   @override
   void initState() {
     super.initState();
-    context.read<AuthCubit>().onValidate();
+    _authService.onValidate();
   }
 
   @override
