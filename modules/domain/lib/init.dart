@@ -9,6 +9,7 @@ import 'package:domain/repositories/concrete/common_repository_impl.dart';
 import 'package:domain/repositories/concrete/product_repository_impl.dart';
 import 'package:domain/repositories/product_repository.dart';
 import 'package:data/init.dart';
+import 'package:domain/services/ProductService.dart';
 import 'package:get_it/get_it.dart';
 
 class DomainInit {
@@ -30,6 +31,9 @@ class DomainInit {
     getIt.registerFactory(() => AppCubit(getIt()));
     getIt.registerFactory(() => AuthCubit(getIt()));
     getIt.registerFactory(() => LoginCubit(getIt()));
-    getIt.registerFactory(() => GetProductsCubit(getIt()));
+    getIt.registerSingleton(GetProductsCubit());
+
+    //Services
+    getIt.registerSingleton(ProductService(getIt(), getIt()));
   }
 }

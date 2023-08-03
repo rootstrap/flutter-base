@@ -4,6 +4,10 @@ sealed class Failure {
   Failure(this.message);
 }
 
+class Exception extends Failure {
+  Exception([String? message]) : super(message);
+}
+
 class ConnectionFailure extends Failure {
   ConnectionFailure([String? message]) : super(message);
 }

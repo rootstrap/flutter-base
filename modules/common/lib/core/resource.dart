@@ -1,14 +1,17 @@
-sealed class Resource<T, E> {}
+import 'package:common/core/failure/failure.dart';
 
-class RLoading<T,E> extends Resource<T, E> {}
+sealed class Resource {}
 
-class RError<T, E> extends Resource<T, E> {
-  final E error;
+class Loading extends Resource {}
 
-  RError(this.error);
+class Error<E> extends Resource {
+  final E? exception;
+
+  Error({this.exception});
 }
 
-class RSuccess<T,E> extends Resource<T,E> {
+class Success<T> extends Resource {
   final T data;
-  RSuccess(this.data);
+
+  Success(this.data);
 }

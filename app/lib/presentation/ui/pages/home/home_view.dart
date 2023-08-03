@@ -1,7 +1,9 @@
+import 'package:common/core/failure/failure.dart';
+import 'package:common/core/resource.dart';
+import 'package:domain/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/bloc/get_products/get_products_cubit.dart';
-import 'package:domain/bloc/get_products/get_products_state.dart';
 import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 import 'package:app/presentation/ui/custom/failure_widget.dart';
 import 'package:app/presentation/ui/pages/home/widget/products_list_widget.dart';
@@ -23,16 +25,16 @@ class HomeView extends StatelessWidget {
           const AppThemeSwitch(),
         ],
       ),
-      body: BlocBuilder<GetProductsCubit, GetProductsState>(
+      body: BlocBuilder<GetProductsCubit, Resource>(
         builder: (context, state) {
           return switch (state) {
-            GetProductsStateLoading _ => const ProductsLoading(),
-            GetProductsStateSuccess e =>
-              ProductsListWidget(products: e.products),
-            GetProductsStateError e => FailureWidget(
-                failure: e.failure,
-                onRetry: () => context.read<GetProductsCubit>().fetchProducts(),
+            Loading _ => const ProductsLoading(),
+            Success<List<Product>> e => ProductsListWidget(products: e.data),
+            Error<Failure> e => FailureWidget(
+                failure: e.exception,
+                onRetry: () => context.read<GetProductsCubit>(),
               ),
+            _ => Container()
           };
         },
       ),
