@@ -1,40 +1,31 @@
-import 'dart:async';
-
+import 'package:common/core/failure/failure.dart';
+import 'package:common/core/resource.dart';
+import 'package:common/core/result_type.dart';
+import 'package:domain/bloc/BaseBlocState.dart';
 import 'package:domain/bloc/auth/auth_state.dart';
-import 'package:domain/models/auth_status.dart';
-import 'package:domain/repositories/auth_repository.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AuthCubit extends Cubit<AuthState> {
-  final AuthRepository _authRepository;
-  late StreamSubscription<AuthStatus> _statusSubscription;
+class SessionCubit extends BaseBlocState<AuthState, Failure> {
+  SessionCubit() : super(Success(AuthStateUnknown()));
 
-  AuthCubit(this._authRepository) : super(AuthStateUnknown()) {
-    _statusSubscription = _authRepository.status.listen((status) => _onStatusChange(status));
+  void isLogin() {
+    isSuccess(AuthStateAuthenticated());
   }
 
-  void _onStatusChange(AuthStatus authStatus) {
-    switch (authStatus) {
-      case AuthStatus.unauthenticated:
-        emit(AuthStateUnauthenticated());
-      case AuthStatus.authenticated:
-        emit(AuthStateAuthenticated());
-      case AuthStatus.unknown:
-        emit(AuthStateUnknown());
-    }
+  void isLogOut() {
+    isSuccess(AuthStateUnauthenticated());
   }
 
-  void onValidate() {
-    _authRepository.validate();
-  }
-
-  Future<void> onLogout() {
-    return _authRepository.logout();
+  void isUnknown() {
+    isSuccess(AuthStateUnknown());
   }
 
   @override
-  Future<void> close() {
-    _statusSubscription.cancel();
-    return super.close();
+  void onResult(ResultType<void, Failure> result) {
+    switch (result) {
+      case TSuccess<void, Failure> _:
+        isLogin();
+      case TError<void, Failure> _:
+        isError(result.error);
+    }
   }
 }

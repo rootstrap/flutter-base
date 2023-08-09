@@ -5,13 +5,9 @@ import 'package:common/core/result_type.dart';
 import 'package:domain/models/auth_status.dart';
 
 abstract class AuthRepository {
-  Stream<AuthStatus> get status;
-
-  void validate();
+  bool isLoggedIn();
 
   Future<ResultType<void, Failure>> login(String username, String password);
 
   Future<void> logout();
-
-  void dispose();
 }
