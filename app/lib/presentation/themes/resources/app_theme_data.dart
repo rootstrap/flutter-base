@@ -6,10 +6,11 @@ class AppThemeData {
   final Brightness brightness;
   final ThemeColors palette;
   final double borderRadius;
+  final ColorScheme? customColorScheme;
 
-  AppThemeData(this.brightness, this.palette, this.borderRadius);
+  AppThemeData(this.brightness, this.palette, this.borderRadius, this.customColorScheme);
 
-  ColorScheme get colorScheme => ColorScheme(
+  ColorScheme get colorScheme => customColorScheme ?? ColorScheme(
         brightness: brightness,
         primary: palette.primary[40]!,
         onPrimary: palette.primary[100]!,

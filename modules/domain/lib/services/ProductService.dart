@@ -13,6 +13,7 @@ class ProductService {
 
   void fetchProducts() async {
     _getProductsCubit.isLoading();
+    await Future.delayed(const Duration(seconds: 5));
     final result = await _getProductsCubit.toCancelable(
       _productRepository.getProducts(),
     );

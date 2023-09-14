@@ -9,9 +9,9 @@ class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        color: Colors.green,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+        color: Theme.of(context).colorScheme.primaryContainer,
       ),
       padding: const EdgeInsets.all(8),
       child: Row(
@@ -22,18 +22,31 @@ class ProductWidget extends StatelessWidget {
               children: [
                 Text(
                   product.title,
-                  style: const TextStyle(fontSize: 18),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   product.description,
-                  style: const TextStyle(fontSize: 16),
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
           ),
           const SizedBox(width: 16),
-          Image.network(product.thumbnail, width: 120),
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+            child: Image.network(
+              product.thumbnail,
+              width: 120,
+              height: 80,
+              fit: BoxFit.cover,
+            ),
+          ),
         ],
       ),
     );

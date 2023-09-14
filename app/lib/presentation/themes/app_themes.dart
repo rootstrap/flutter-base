@@ -1,3 +1,4 @@
+import 'package:app/presentation/themes/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:domain/models/theme_type.dart';
 import 'package:app/presentation/themes/local_theme.dart';
@@ -25,6 +26,7 @@ class LightTheme extends LocalTheme {
             Brightness.light,
             LightThemeColors(),
             8.0,
+            lightColorScheme,
           ),
         );
 }
@@ -36,6 +38,7 @@ class DarkTheme extends LocalTheme {
             Brightness.dark,
             DarkThemeColors(),
             8.0,
+            darkColorScheme,
           ),
         );
 }

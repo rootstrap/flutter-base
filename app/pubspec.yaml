@@ -41,6 +41,7 @@ dependencies:
   equatable: ^2.0.5
   firebase_core: ^2.12.0
   url_strategy: ^0.2.0
+  flutter_animate: ^4.2.0+1
   flutter_localizations:
     sdk: flutter
   domain:
@@ -62,6 +63,9 @@ flutter_intl:
 flutter:
   generate: true
   uses-material-design: true
+
+  assets:
+    - assets/images/
 
   fonts:
     - family: Roboto Black

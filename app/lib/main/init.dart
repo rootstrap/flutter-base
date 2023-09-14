@@ -2,6 +2,7 @@ import 'package:common/init.dart';
 import 'package:domain/init.dart';
 import 'package:flutter/material.dart';
 import 'package:app/main/app.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get_it/get_it.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -15,6 +16,7 @@ void init() async {
 final getIt = GetIt.instance;
 
 Future<void> initialize() async {
+  Animate.restartOnHotReload = true;
   await CommonInit.initialize(getIt);
   await DomainInit.initialize(getIt);
 }
