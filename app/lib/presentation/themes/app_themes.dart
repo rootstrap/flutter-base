@@ -43,17 +43,22 @@ class DarkTheme extends LocalTheme {
 }
 
 /**
- * For projects where the design is custom and don't use the Material Design colors or
- * use more colors than the ones provided by Material Design,
+ * For projects where the design is custom and use more colors than the ones definded for Material Design,
  * get access to the colors defined in the theme by using the following extension:
+ *
  * context.colors.primary
  * context.colors.secondary
  * context.colors.tertiary
  * context.colors.error
  * context.colors.neutral
  * context.colors.neutralVariant
- * and all their variants (v0, v10, v20, v30, v40, v50, v60, v70, v80, v90, v99, v100)
+ *
+ * All their variants (v0, v10, v20, v30, v40, v50, v60, v70, v80, v90, v95, v99, v100)
  * i.e: context.colors.primary.v40
+ *
+ * Check the official documentation to understand where to use each color:
+ * https://m3.material.io/styles/color/the-color-system/key-colors-tones#5b4f0cd4-beb7-41b1-b6ff-a952fcbea726
+ * https://m3.material.io/styles/color/the-color-system/color-roles
  * **/
 extension AppLocalTheme on BuildContext {
   LocalTheme get localTheme => AppThemes.getAppTheme(
