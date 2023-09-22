@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:common/core/failure/failure.dart';
 import 'package:common/core/result_type.dart';
 import 'package:data/preferences/preferences.dart';
-import 'package:domain/models/auth_status.dart';
 import 'package:domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
