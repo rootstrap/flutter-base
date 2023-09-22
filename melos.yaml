@@ -33,3 +33,9 @@ scripts:
     packageFilters:
       dirExists:
         - lib
+  doctor:
+    exec: flutter doctor
+    description: Run `dart doctor` in selected or all packages. Includes prompt for packages.
+    packageFilters:
+      dirExists:
+        - lib
