@@ -1,3 +1,4 @@
+import 'package:app/presentation/themes/local_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeData {
@@ -11,57 +12,37 @@ class AppThemeData {
 
   ColorScheme get colorScheme => ColorScheme(
         brightness: brightness,
-        primary: palette.primary[40]!,
-        onPrimary: palette.primary[100]!,
-        primaryContainer: palette.primary[90]!,
-        onPrimaryContainer: palette.primary[10]!,
-        secondary: palette.secondary[40]!,
-        onSecondary: palette.secondary[100]!,
-        secondaryContainer: palette.secondary[90]!,
-        onSecondaryContainer: palette.secondary[10]!,
-        tertiary: palette.tertiary[40]!,
-        onTertiary: palette.tertiary[100]!,
-        tertiaryContainer: palette.tertiary[90]!,
-        onTertiaryContainer: palette.tertiary[10]!,
-        error: palette.error[40]!,
-        onError: palette.error[100]!,
-        errorContainer: palette.error[90]!,
-        onErrorContainer: palette.error[10]!,
-        background: palette.neutral[99]!,
-        onBackground: palette.neutral[10]!,
-        surface: palette.neutral[99]!,
-        onSurface: palette.neutral[10]!,
-        surfaceVariant: palette.neutralVariant[90]!,
-        onSurfaceVariant: palette.neutralVariant[30]!,
-        outline: palette.neutralVariant[50]!,
-        outlineVariant: palette.neutralVariant[80]!,
-        shadow: palette.neutral[0]!,
-        scrim: palette.neutral[0]!,
-        inverseSurface: palette.neutral[20]!,
-        inversePrimary: palette.primary[80]!,
+        primary: palette.primary.v40,
+        secondary: palette.secondary.v40,
+        error: palette.error.v40,
+        tertiary: palette.tertiary.v40,
+        onPrimary: palette.primary.v100,
+        primaryContainer: palette.primary.v90,
+        onPrimaryContainer: palette.primary.v10,
+        onSecondary: palette.secondary.v100,
+        secondaryContainer: palette.secondary.v90,
+        onSecondaryContainer: palette.secondary.v10,
+        onTertiary: palette.tertiary.v100,
+        tertiaryContainer: palette.tertiary.v90,
+        onTertiaryContainer: palette.tertiary.v10,
+        onError: palette.error.v100,
+        errorContainer: palette.error.v90,
+        onErrorContainer: palette.error.v10,
+        background: palette.neutral.v99,
+        onBackground: palette.neutral.v10,
+        surface: palette.neutral.v99,
+        onSurface: palette.neutral.v10,
+        surfaceVariant: palette.neutralVariant.v90,
+        onSurfaceVariant: palette.neutralVariant.v30,
+        outline: palette.neutralVariant.v50,
+        outlineVariant: palette.neutralVariant.v80,
+        shadow: palette.neutral.v0,
+        scrim: palette.neutral.v0,
+        inverseSurface: palette.neutral.v20,
+        inversePrimary: palette.primary.v80,
       );
 }
 
-/**
- * To define material colors:
- * First argument is the primary color of the pallete
- *  const MaterialColor(40, {
-    0: Color(0xFF000000),
-    10: Color(0xFFF0524D),
-    20: Color(0xFFF0524D),
-    30: Color(0xFFF0524D),
-    40: Color(0xFFF0524D),
-    50: Color(0xFFF0524D),
-    60: Color(0xFFF0524D),
-    70: Color(0xFFF0524D),
-    80: Color(0xFFF0524D),
-    90: Color(0xFFF0524D),
-    95: Color(0xFFF0524D),
-    99: Color(0xFFF0524D),
-    100: Color(0xFFF0524D),
-    });
-
- * **/
 abstract class ThemeColors {
   /**
    * 40: primary

@@ -1,4 +1,5 @@
 import 'package:app/main/init.dart';
+import 'package:app/presentation/themes/app_themes.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/services/AuthService.dart';
@@ -18,6 +19,7 @@ class LoginPage extends StatelessWidget {
       children: [
         Scaffold(
           appBar: AppBar(),
+          backgroundColor: context.theme.colorScheme.background,
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(

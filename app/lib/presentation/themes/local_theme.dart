@@ -32,10 +32,9 @@ abstract class LocalTheme {
 
   // By using this configuration you should have this output for each material widget:
   // https://flutter.github.io/samples/web/material_3_demo
-  ThemeData get data => ThemeData(
+  ThemeData get data => ThemeData.from(
         useMaterial3: true,
         colorScheme: colors,
-        brightness: themeData.brightness,
         textTheme: Typography.blackCupertino.copyWith(
           displayLarge: titleXL,
           displayMedium: titleL,
@@ -53,17 +52,16 @@ abstract class LocalTheme {
           labelMedium: inputText,
           labelSmall: overLine,
         ),
-      )
-      // to customize your widgets
-      // add your custom design here
-      // i.e: elevatedButton
-      /*  .copyWith(
+      ).copyWith(
+        // to customize your widgets
+        // add your custom design here
+        // i.e: elevatedButton
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             disabledBackgroundColor: colors.primary,
-            backgroundColor: colors.primary.variant50,
+            backgroundColor: colors.primary.v40,
             textStyle: buttonText,
-            foregroundColor: colors.onPrimary.variant10,
+            foregroundColor: colors.onPrimary.v10,
             enableFeedback: true,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             alignment: Alignment.center,
@@ -73,8 +71,7 @@ abstract class LocalTheme {
             ),
           ),
         ),
-      )*/
-      ;
+      );
 
   final primaryFont = 'Roboto Regular';
   final primaryFontBlack = 'Roboto Black';
@@ -261,29 +258,29 @@ extension ColorShadow on Color {
     }
   }
 
-  Color get variant0 => variant(0);
+  Color get v0 => variant(0);
 
-  Color get variant10 => variant(10);
+  Color get v10 => variant(10);
 
-  Color get variant20 => variant(20);
+  Color get v20 => variant(20);
 
-  Color get variant30 => variant(30);
+  Color get v30 => variant(30);
 
-  Color get variant40 => variant(40);
+  Color get v40 => variant(40);
 
-  Color get variant50 => variant(50);
+  Color get v50 => variant(50);
 
-  Color get variant60 => variant(60);
+  Color get v60 => variant(60);
 
-  Color get variant70 => variant(70);
+  Color get v70 => variant(70);
 
-  Color get variant80 => variant(80);
+  Color get v80 => variant(80);
 
-  Color get variant90 => variant(90);
+  Color get v90 => variant(90);
 
-  Color get variant95 => variant(95);
+  Color get v95 => variant(95);
 
-  Color get variant99 => variant(99);
+  Color get v99 => variant(99);
 
-  Color get variant100 => variant(100);
+  Color get v100 => variant(100);
 }
