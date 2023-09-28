@@ -10,7 +10,7 @@ class ResponsiveBuilder extends StatelessWidget {
 
   final AppPlatform _platform = getIt.get();
 
-  const ResponsiveBuilder({
+  ResponsiveBuilder({
     Key? key,
     required this.small,
     required this.big,
