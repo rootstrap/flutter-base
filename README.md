@@ -26,9 +26,13 @@ This template comes with:
    ![template](app/template.png)
 2. Clone your new repo.
 3. Install [Melos](https://melos.invertase.dev/getting-started) globally executing: `dart pub global activate melos 2.9.0`.
-4. Run `melos doctor`. 
-5. Run `melos pub:get`. 
-6. Setup Android:
+4. test: `melos -v` * note: if your terminal don't recognize melos command, you can add the following line to your .zshrc or .bashrc file:*
+```text
+    export PATH="$PATH":"$HOME/.pub-cache/bin"
+``` 
+5. Run `melos doctor`. 
+6. Run `melos pub:get`. 
+7. Setup Android:
     - Add to the build.properties file (and update when needed):
 ```text 
     flutter.versionName=1.0.0
@@ -39,7 +43,7 @@ This template comes with:
     flutter.targetSdkVersion=33 
 ```
 
-7. Android SignIn
+8. Android SignIn
     - Create your release Key Store:
 
 ```text
@@ -55,7 +59,7 @@ This template comes with:
     storeFile=<FilePath>
 ```
 
-8. Add your env vars, create a config file for each env:
+9. Add your env vars, create a config file for each env:
    ![me](env_config_files.png)
     - add the env config, i.e:
 
@@ -65,7 +69,7 @@ This template comes with:
     }
 ```
 
-9. Setup iOs App Name and id:
+10. Setup iOs App Name and id:
    - Locate the config file for each flavor and configure the FLUTTER_APP_NAME i.e: Debug.xcconfig
 ```text
      FLUTTER_APP_ID=base.debug
