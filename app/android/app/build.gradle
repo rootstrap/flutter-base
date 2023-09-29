@@ -35,12 +35,12 @@ if (project.hasProperty('dart-defines')) {
             }
 }
 
-def flutterVersionCode = buildProperties.getProperty('flutter.versionCode')
+def flutterVersionCode = flutterProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
 }
 
-def flutterVersionName = buildProperties.getProperty('flutter.versionName')
+def flutterVersionName = flutterProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
