@@ -29,7 +29,6 @@ dependencies:
   intl_utils: ^2.8.2
   cupertino_icons: ^1.0.5
   dio: ^5.1.2
-  connectivity_plus: ^4.0.0
   async: ^2.11.0
   flutter_bloc: ^8.1.2
   get_it: ^7.6.0

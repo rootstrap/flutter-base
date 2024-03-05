@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  connectivity_plus: ^4.0.0
   async: ^2.11.0
   flutter_bloc: ^8.1.2
   get_it: ^7.6.0
