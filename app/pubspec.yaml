@@ -25,14 +25,13 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.5
   shared_preferences: ^2.1.1
-  intl: ^0.18.0
-  intl_utils: ^2.8.2
+  intl: ^0.19.0
+  intl_utils: ^2.8.6
   cupertino_icons: ^1.0.5
   dio: ^5.1.2
   async: ^2.11.0
   flutter_bloc: ^8.1.2
   get_it: ^7.6.0
-  dart_code_metrics: ^5.7.3
   package_info_plus: ^4.0.0
   permission_handler: ^10.2.0
   universal_html: ^2.2.2
@@ -46,11 +45,19 @@ dependencies:
     path: ../modules/domain
   common:
     path: ../modules/common
+  http: ^0.13.6
+  melos: ^3.4.0
+  dev: ^1.0.0
 
 dev_dependencies:
+  bloc_test: ^9.0.2
+  build_runner: ^2.4.9
+  flutter_gen:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  mockito: ^5.4.4
+  mocktail: ^1.0.3
+  flutter_lints: ^3.0.2
 
 flutter_intl:
   enabled: true # Required. Must be set to true to activate the package. Default: false
