@@ -130,3 +130,4 @@ modules/data/.flutter-plugins
 modules/data/.flutter-plugins-dependencies
 modules/domain/.flutter-plugins
 modules/domain/.flutter-plugins-dependencies
+/.idea/
