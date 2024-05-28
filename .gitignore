@@ -122,3 +122,11 @@ app.*.symbols
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
 /app/env/
+
+
+modules/common/.flutter-plugins
+modules/common/.flutter-plugins-dependenci
+modules/data/.flutter-plugins
+modules/data/.flutter-plugins-dependenci
+modules/domain/.flutter-plugins
+modules/domain/.flutter-plugins-dependencies
