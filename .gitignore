@@ -124,10 +124,10 @@ app.*.symbols
 /app/env/
 
 
-modules/common/.flutter-plugins
-modules/common/.flutter-plugins-dependencies
-modules/data/.flutter-plugins
-modules/data/.flutter-plugins-dependencies
-modules/domain/.flutter-plugins
-modules/domain/.flutter-plugins-dependencies
+/modules/common/.flutter-plugins
+/modules/common/.flutter-plugins-dependencies
+/modules/data/.flutter-plugins
+/modules/data/.flutter-plugins-dependencies
+/modules/domain/.flutter-plugins
+/modules/domain/.flutter-plugins-dependencies
 /.idea/
