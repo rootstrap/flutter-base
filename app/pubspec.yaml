@@ -37,7 +37,7 @@ dependencies:
   universal_html: ^2.2.2
   go_router: ^7.0.1
   equatable: ^2.0.5
-  firebase_core: ^2.12.0
+  firebase_core: ^2.32.0
   url_strategy: ^0.2.0
   flutter_localizations:
     sdk: flutter
@@ -45,9 +45,11 @@ dependencies:
     path: ../modules/domain
   common:
     path: ../modules/common
-  http: ^0.13.6
+  http: ^1.2.1
   melos: ^3.4.0
   dev: ^1.0.0
+  flutter_chat_ui: ^1.6.13
+  firebase_vertexai: ^0.1.1
 
 dev_dependencies:
   bloc_test: ^9.0.2

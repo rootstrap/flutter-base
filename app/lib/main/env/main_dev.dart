@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:app/main/env/env_config.dart';
 import 'package:app/main/init.dart';
 
+import '../../firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlavorConfig(
     flavor: Flavor.dev,
     values: FlavorValues(baseUrl: "https://demo_dev/web_api.json"),
+  );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   //Add your firebase configuration here
   /*await Firebase.initializeApp(
