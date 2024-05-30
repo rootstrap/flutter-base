@@ -45,6 +45,9 @@ dependencies:
     path: ../modules/domain
   common:
     path: ../modules/common
+  example_domain:
+    path: ../example/example_domain
+
   http: ^0.13.6
   melos: ^3.4.0
   dev: ^1.0.0

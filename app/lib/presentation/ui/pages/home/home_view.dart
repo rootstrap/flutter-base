@@ -1,11 +1,10 @@
 import 'package:app/main/init.dart';
 import 'package:common/core/failure/failure.dart';
 import 'package:common/core/resource.dart';
-import 'package:domain/models/product.dart';
+import 'package:example_domain/models/product.dart';
 import 'package:domain/services/AuthService.dart';
 import 'package:flutter/material.dart';
-import 'package:domain/bloc/auth/auth_cubit.dart';
-import 'package:domain/bloc/get_products/get_products_cubit.dart';
+import 'package:example_domain/bloc/get_products/get_products_cubit.dart';
 import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 import 'package:app/presentation/ui/custom/failure_widget.dart';
 import 'package:app/presentation/ui/pages/home/widget/products_list_widget.dart';

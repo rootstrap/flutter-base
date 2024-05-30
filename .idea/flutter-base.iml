@@ -47,11 +47,17 @@
       <excludeFolder url="file://$MODULE_DIR$/app/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/app/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_data/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_data/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_data/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_domain/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_domain/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_domain/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Flutter Plugins" level="project" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>

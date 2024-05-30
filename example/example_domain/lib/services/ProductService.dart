@@ -1,5 +1,7 @@
-import 'package:domain/bloc/get_products/get_products_cubit.dart';
-import 'package:domain/repositories/product_repository.dart';
+
+
+import '../bloc/get_products/get_products_cubit.dart';
+import '../repositories/product_repository.dart';
 
 class ProductService {
   final ProductRepository _productRepository;
