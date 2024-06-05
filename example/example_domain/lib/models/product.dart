@@ -1,4 +1,4 @@
-import 'package:data/models/product_entity.dart';
+import 'package:example_data/models/product_entity.dart';
 
 class Product {
   final int id;
