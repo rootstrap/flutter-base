@@ -1,3 +1,5 @@
+import 'package:example_domain/models/product.dart';
+
 class ProductEntity {
   final int id;
   final String title;
@@ -21,6 +23,17 @@ class ProductEntity {
       map['title'] as String,
       map['description'] as String,
       map['thumbnail'] as String,
+    );
+  }
+}
+
+extension ProductEntityExtension on ProductEntity {
+  Product toProduct() {
+    return Product(
+      id,
+      title,
+      description,
+      thumbnail,
     );
   }
 }

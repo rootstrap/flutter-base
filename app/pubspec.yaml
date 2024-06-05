@@ -45,6 +45,11 @@ dependencies:
     path: ../modules/domain
   common:
     path: ../modules/common
+  data:
+    path: ../modules/data
+
+  example_data:
+    path: ../example/example_data
   example_domain:
     path: ../example/example_domain
   example_presentation:
