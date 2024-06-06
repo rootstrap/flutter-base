@@ -64,13 +64,18 @@ class _GeminiChatState extends State<GeminiChatPage> {
     print("RESPONSE FROM API");
     print(text);
 
-    final textMessage = types.TextMessage(
-      author: _agent,
-      text: text,
-      id: "testIdAgent",
-    );
 
-    _addMessage(textMessage);
+    if (text != null ) {
+
+      final textMessage = types.TextMessage(
+        author: _agent,
+        text: text,
+        id: "testIdAgent",
+      );
+
+      _addMessage(textMessage);
+    }
+
 
     setState(() {
       _loading = false;
