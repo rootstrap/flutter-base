@@ -58,9 +58,6 @@ class _GeminiChatState extends State<GeminiChatPage> {
     var response = await model.generateContent([messageContent]);
     var text = response.text;
 
-    print("RESPONSE FROM API");
-    print(text);
-
     if (text != null) {
       final textMessage = types.TextMessage(
         author: _agent,
