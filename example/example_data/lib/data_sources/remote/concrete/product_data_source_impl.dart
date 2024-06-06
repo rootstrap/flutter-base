@@ -1,11 +1,10 @@
-import 'package:data/data_sources/remote/abstract/product_data_source.dart';
-import 'package:dio/dio.dart';
-import 'package:common/core/failure/failure_mapper.dart';
-
 import 'package:common/core/failure/failure.dart';
+import 'package:common/core/failure/failure_mapper.dart';
 import 'package:common/core/result_type.dart';
-import 'package:data/models/product_entity.dart';
-import 'package:data/network/config/network_constants.dart';
+import 'package:dio/dio.dart';
+
+import '../../../models/product_entity.dart';
+import '../abstract/product_data_source.dart';
 
 class ProductDataSourceImpl extends ProductDataSource {
   final Dio _dio;
@@ -26,4 +25,9 @@ class ProductDataSourceImpl extends ProductDataSource {
       return TError(UnexpectedFailure(e.toString()));
     }
   }
+}
+
+class NetworkConstants {
+  static const productsPath = "/products";
+  static const baseUrl = "http://www.example.com";
 }

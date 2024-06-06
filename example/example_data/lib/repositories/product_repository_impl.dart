@@ -1,8 +1,9 @@
 import 'package:common/core/failure/failure.dart';
 import 'package:common/core/result_type.dart';
-import 'package:data/data_sources/remote/abstract/product_data_source.dart';
-import 'package:domain/models/product.dart';
-import 'package:domain/repositories/product_repository.dart';
+import 'package:example_domain/repositories/product_repository.dart';
+
+import '../data_sources/remote/abstract/product_data_source.dart';
+import 'package:example_domain/models/product.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   final ProductDataSource _productDataSource;
