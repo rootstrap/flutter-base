@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:uuid/uuid.dart';
 
 class GeminiChatPage extends StatefulWidget {
   const GeminiChatPage({super.key});
@@ -40,7 +41,7 @@ class _GeminiChatState extends State<GeminiChatPage> {
     final textMessage = types.TextMessage(
       author: _user,
       text: text.text,
-      id: "testId",
+      id: const Uuid().v4(),
     );
 
     _addMessage(textMessage);
@@ -70,7 +71,7 @@ class _GeminiChatState extends State<GeminiChatPage> {
       final textMessage = types.TextMessage(
         author: _agent,
         text: text,
-        id: "testIdAgent",
+        id: const Uuid().v4(),
       );
 
       _addMessage(textMessage);
