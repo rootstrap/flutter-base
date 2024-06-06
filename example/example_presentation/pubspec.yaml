@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   example_domain:
     path: ../example_domain
+  example_data:
+    path: ../example_data
 
 dev_dependencies:
   flutter_test:

@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  example_data:
-    path: ../example_data
   common:
     path: ../../modules/common
   flutter_bloc: ^8.1.2

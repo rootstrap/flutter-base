@@ -19,8 +19,6 @@ dependencies:
     sdk: flutter
   common:
     path: ../common
-  data:
-    path: ../data
 
 dev_dependencies:
   flutter_test:
