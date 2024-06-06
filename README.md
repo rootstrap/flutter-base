@@ -25,7 +25,7 @@ This template comes with:
 
    ![template](app/template.png)
 2. Clone your new repo.
-3. Install [Melos](https://melos.invertase.dev/getting-started) globally executing: `dart pub global activate melos 2.9.0`.
+3. Install [Melos](https://melos.invertase.dev/getting-started) globally executing: `dart pub global activate melos`.
 4. test: `melos -v` * note: if your terminal don't recognize melos command, you can add the following line to your .zshrc or .bashrc file:*
 ```text
     export PATH="$PATH":"$HOME/.pub-cache/bin"
