@@ -1,5 +1,4 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -25,9 +24,8 @@ class _GeminiChatState extends State<GeminiChatPage> {
 
     model = FirebaseVertexAI.instance.generativeModel(
         model: 'gemini-1.5-pro',
-        generationConfig: GenerationConfig(
-            temperature: 0, responseMimeType: 'text/plain'));
-
+        generationConfig:
+            GenerationConfig(temperature: 0, responseMimeType: 'text/plain'));
   }
 
   void _addMessage(types.Message message) {
@@ -37,7 +35,6 @@ class _GeminiChatState extends State<GeminiChatPage> {
   }
 
   void _handleSendPressed(types.PartialText text) {
-
     final textMessage = types.TextMessage(
       author: _user,
       text: text.text,
@@ -50,7 +47,6 @@ class _GeminiChatState extends State<GeminiChatPage> {
   }
 
   Future<void> _sendVertexMessage(types.PartialText meesageToSend) async {
-
     _loading = true;
 
     final messageContent = Content.multi(
@@ -65,9 +61,7 @@ class _GeminiChatState extends State<GeminiChatPage> {
     print("RESPONSE FROM API");
     print(text);
 
-
-    if (text != null ) {
-
+    if (text != null) {
       final textMessage = types.TextMessage(
         author: _agent,
         text: text,
@@ -77,23 +71,20 @@ class _GeminiChatState extends State<GeminiChatPage> {
       _addMessage(textMessage);
     }
 
-
     setState(() {
       _loading = false;
     });
-
-
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    body: Chat(
-        showUserAvatars: true,
-        showUserNames: true,
-        typingIndicatorOptions: TypingIndicatorOptions(typingUsers: _loading ? [_agent] : []),
-        messages: _messages,
-        onSendPressed: _handleSendPressed,
-        user: _user
-    ),
-  ) ;
+        body: Chat(
+            showUserAvatars: true,
+            showUserNames: true,
+            typingIndicatorOptions:
+                TypingIndicatorOptions(typingUsers: _loading ? [_agent] : []),
+            messages: _messages,
+            onSendPressed: _handleSendPressed,
+            user: _user),
+      );
 }
