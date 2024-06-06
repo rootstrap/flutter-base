@@ -53,6 +53,9 @@
       <excludeFolder url="file://$MODULE_DIR$/example/example_domain/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/example_domain/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/example_domain/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_presentation/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_presentation/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example_presentation/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

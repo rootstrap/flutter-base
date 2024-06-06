@@ -4,6 +4,7 @@ import 'package:example_domain/repositories/product_repository.dart';
 
 import '../data_sources/remote/abstract/product_data_source.dart';
 import 'package:example_domain/models/product.dart';
+import 'package:example_data/models/product_entity.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   final ProductDataSource _productDataSource;
@@ -14,7 +15,7 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<ResultType<List<Product>, Failure>> getProducts() async {
     final productResult = await _productDataSource.getProducts();
     return productResult.mapSuccess(
-      (products) => products.map((e) => Product.fromEntity(e)).toList(),
+      (products) => products.map((e) => e.toProduct()).toList(),
     );
   }
 }
