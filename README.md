@@ -168,7 +168,6 @@ For more information you can check the [docs](https://dartcode.org/docs/launch-c
 - [intl](https://pub.dev/packages/intl) and [intl_utils](https://pub.dev/packages/intl_utils) for
   localization.
 - [flutter_svg](https://pub.dev/packages/flutter_svg) Svg Image loader.
-- [dart_code_metrics] (<https://dartcodemetrics.dev/docs/rules>) Dart code static analysis code.
 
 ## Code Quality Standards
 
