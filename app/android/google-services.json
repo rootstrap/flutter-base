@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "584649509078",
+    "project_id": "geminichattest",
+    "storage_bucket": "geminichattest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584649509078:android:243d74b8c6b25cb59e6177",
+        "android_client_info": {
+          "package_name": "com.geminichattest.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqzWUBK45noZd2z44zhX7legtKHqL9RR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584649509078:android:a2efac4373986aea9e6177",
+        "android_client_info": {
+          "package_name": "com.rootstrap.base.flutter_base_rootstrap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqzWUBK45noZd2z44zhX7legtKHqL9RR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
