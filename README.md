@@ -18,6 +18,7 @@ This template comes with:
 - Intl.
 - State Management (Blocs/Cubit).
 - Env config and flavors.
+- Chat with Gemini and Vertex AI (Documantation and setup WIP)
 
 ## Initial Setup
 
