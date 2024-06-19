@@ -1,7 +1,12 @@
+import 'package:app/main/init.dart';
+import 'package:app/presentation/navigation/routers.dart';
+import 'package:app/presentation/ui/custom/app_theme_switch.dart';
+import 'package:domain/services/AuthService.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 class GeminiChatPage extends StatefulWidget {
@@ -17,6 +22,8 @@ class _GeminiChatState extends State<GeminiChatPage> {
   var model;
   final _agent = const types.User(id: "testidAgent", firstName: "Chatty");
   final _user = const types.User(id: "testidUser", firstName: "");
+  AuthService get _authService => getIt();
+  GoRouter get _goRouter => Routers.authRouter;
 
   @override
   void initState() {
@@ -75,6 +82,19 @@ class _GeminiChatState extends State<GeminiChatPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () => _authService.onLogout(),
+              icon: const Icon(Icons.logout),
+            ),
+            IconButton(
+              onPressed: () => _goRouter.go('/home'),
+              icon: const Icon(Icons.list),
+            ),
+            const AppThemeSwitch(),
+          ],
+        ),
         body: Chat(
             showUserAvatars: true,
             showUserNames: true,
