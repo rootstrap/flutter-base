@@ -1,4 +1,3 @@
-import 'package:app/presentation/ui/pages/geminichat/geminichat_page.dart';
 import 'package:app/presentation/ui/pages/home/home_page.dart';
 import 'package:app/presentation/ui/pages/login/login_page.dart';
 import 'package:app/presentation/ui/pages/sign_up/sign_up_page.dart';
@@ -28,11 +27,6 @@ class Routers {
         name: "home",
         path: "/home",
         builder: (context, state) => const HomePage(),
-      ),
-      GoRoute(
-        name: "chat",
-        path: "/chat",
-        builder: (context, state) => const GeminiChatPage(),
       ),
     ],
   );
