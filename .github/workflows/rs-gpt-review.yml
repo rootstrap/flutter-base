@@ -33,3 +33,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           openai_key: ${{ secrets.OPENAI_KEY }}
+          model: gpt-4-turbo
+          files_excluded: README.md, LICENSE, rs-gpt-review.yml, sonar-qube-scann.yml,  .flutter-plugins, .flutter-plugins-dependencies
