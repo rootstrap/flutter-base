@@ -196,6 +196,20 @@ the [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee84
     - OPENAI_KEY
 
 ### Github Actions: Sonarqube
+- Go to you sonarqube server and configure a new project.
+- Configure the sonar-project.properties:
+    example:
+    '''
+        sonar.projectKey=your-app-key
+        sonar.projectName=your-project-name
+        sonar.host.url=https://your-sonarqube-server.net
+        sonar.projectVersion=1.0
+        sonar.sourceEncoding=UTF-8
+    '''
+# Main source directories
+sonar.sources=app/lib,modules/domain,modules/data,modules/common
+sonar.dart.exclusions=pubspec.yaml
+sonar.dart.analyzer.report.mode=LEGACY
 - Configure Sonarqube secrets vars on your repo settings:
   - SONAR_TOKEN (your sonarqube project token)
   - SONAR_URL (your sonarqube server url)

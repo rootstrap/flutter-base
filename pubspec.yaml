@@ -1,0 +1,21 @@
+# This config file is for Sonarqube only
+name: Sonar
+description: Sonar
+
+publish_to: "none"
+version: 0.0.1+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  generate: true
+  uses-material-design: true
