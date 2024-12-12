@@ -194,6 +194,7 @@ the [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee84
 ### Github Actions: RS-GPT-Review
 - Configure GPT secrets vars on your repo settings:
     - OPENAI_KEY
+#### Note: The action will only run if the description or comments mentions @rs-gpt-review
 
 ### Github Actions: Sonarqube
 - Go to you sonarqube server and configure a new project.
