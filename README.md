@@ -18,7 +18,9 @@ This template comes with:
 - Intl.
 - State Management (Blocs/Cubit).
 - Env config and flavors.
-- Chat with Gemini and Vertex AI (Documantation and setup WIP)
+- Chat with Gemini and Vertex AI (Documentation and setup WIP)
+- GitWorkflow config: RS-GPT-Review
+- GitWorkflow config: Sonarqube
 
 ## Initial Setup
 
@@ -188,7 +190,30 @@ TBD
 
 We are using Bitrise to configure and run
 the [CI/CD pipelines](https://www.notion.so/rootstrap/Flutter-CI-CD-9a0a5957ee8442908fc00c3ea8f49bf1)
-.
+
+### Github Actions: RS-GPT-Review
+- Configure GPT secrets vars on your repo settings:
+    - OPENAI_KEY
+#### Note: The action will only run if the description or comments mentions @rs-gpt-review
+
+### Github Actions: Sonarqube
+- Go to you sonarqube server and configure a new project.
+- Configure the sonar-project.properties:
+    example:
+    '''
+        sonar.projectKey=your-app-key
+        sonar.projectName=your-project-name
+        sonar.host.url=https://your-sonarqube-server.net
+        sonar.projectVersion=1.0
+        sonar.sourceEncoding=UTF-8
+    '''
+# Main source directories
+sonar.sources=app/lib,modules/domain,modules/data,modules/common
+sonar.dart.exclusions=pubspec.yaml
+sonar.dart.analyzer.report.mode=LEGACY
+- Configure Sonarqube secrets vars on your repo settings:
+  - SONAR_TOKEN (your sonarqube project token)
+  - SONAR_URL (your sonarqube server url)
 
 ## License
 

@@ -4,12 +4,10 @@
 ### Issue
 [LINK TO JIRA/GITHUB ISSUE]
 
-#### Tasks [ISSUE TASKS covered in this PR when apply]
-- [ ] Task 1
-- [ ] Task 2
-
 ### Preview
 [UI Preview]
 
 #### Notes:
 [extra note or considerations]
+
+@rs-gpt-review Describe the changes in this PR. Recommend improvements (including code improvements), possible memory leaks, and best practices.
