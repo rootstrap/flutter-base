@@ -24,7 +24,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<AppCubit>()),
-        BlocProvider(create: (_) => getIt<SessionCubit>()),
+        BlocProvider(create: (_) => getIt<AuthCubit>()),
       ],
       child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             builder: (context, child) {
-              return BlocListener<SessionCubit, Resource>(
+              return BlocListener<AuthCubit, Resource>(
                 listener: (_, state) {
                   if (state is Success<AuthState>) {
                     switch (state.data) {
