@@ -56,7 +56,7 @@ class _Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SessionCubit, Resource>(
+    return BlocBuilder<AuthCubit, Resource>(
       builder: (context, state) {
         return LoadingScreen(
           isLoading: state is Loading,
