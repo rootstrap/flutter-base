@@ -4,7 +4,7 @@ import 'package:domain/bloc/auth/auth_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('SessionCubit', () {
+  group('AuthCubit', () {
     late AuthCubit cubit;
 
     setUp(() {
