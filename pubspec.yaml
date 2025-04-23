@@ -1,6 +1,6 @@
 # This config file is for Sonarqube only
-name: Sonar
-description: Sonar
+name: sonar
+description: sonar
 
 publish_to: "none"
 version: 0.0.1+1
