@@ -1,16 +1,23 @@
+import 'package:common/core/failure/failure.dart';
+import 'package:common/core/result_type.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/repositories/auth_repository.dart';
 
 class AuthService {
   final AuthRepository _authRepository;
-  final SessionCubit _sessionCubit;
+  final AuthCubit _sessionCubit;
 
   AuthService(this._authRepository, this._sessionCubit);
 
-  void logInWithCredentials(String username, String password) async {
+  Future<void> logInWithCredentials(String username, String password) async {
     _sessionCubit.isLoading();
     final result = await _authRepository.login(username, password);
-    _sessionCubit.onResult(result);
+    switch (result) {
+      case TSuccess<void, Failure> _:
+        _sessionCubit.isLogin();
+      case TError<void, Failure> _:
+        _sessionCubit.isError(result.error);
+    }
   }
 
   void onValidate() {
@@ -21,7 +28,7 @@ class AuthService {
     }
   }
 
-  void onLogout() async {
+  Future<void> onLogout() async {
     await _authRepository.logout();
     _sessionCubit.isLogOut();
   }

@@ -16,3 +16,8 @@ class AuthStateAuthenticated extends AuthState {
 class AuthStateUnauthenticated extends AuthState {
   AuthStateUnauthenticated() : super._(AuthStatus.unauthenticated);
 }
+
+class AuthStateError extends AuthState {
+  final String message;
+  AuthStateError(this.message) : super._(AuthStatus.unknown);
+}
