@@ -1,0 +1,4 @@
+lib/**/*.g.dart
+lib/**/*.freezed.dart
+lib/network/**/*.dart
+lib/preferences/*.dart

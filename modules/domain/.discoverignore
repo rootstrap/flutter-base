@@ -1,0 +1,3 @@
+lib/**/*.g.dart
+lib/**/*.freezed.dart
+lib/presentation/ui/**/*.dart
