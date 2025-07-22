@@ -1,3 +1,5 @@
+import 'dart:async';
+
 /// Additional method to track custom events with a specific type.
 /// Follow the naming convention for event types.
 /// Future trackInitLoginFlow() => trackEvent('init_login', properties: {...});
@@ -9,7 +11,7 @@ abstract class AnalyticsClient {
   /// Example usage:
   /// trackFunction(() => loginWithEmailPassword(email, password), 'login_triggered', properties: {email: email});
   Future trackFunction(
-    Function fn,
+    FutureOr<void> Function() fn,
     String name, {
     Map<String, dynamic>? properties,
   });

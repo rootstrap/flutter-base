@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:common/analytics/abstract/analytics_client.dart';
 
 class FirebaseAnalytics implements AnalyticsClient {
@@ -51,8 +53,9 @@ class FirebaseAnalytics implements AnalyticsClient {
 
   @override
   Future trackFunction(
-    Function fn,
+    FutureOr<void> Function() fn,
     String name, {
     Map<String, dynamic>? properties,
-  }) => fn().then((_) => trackEvent(name, properties: properties));
+  }) =>
+      Future.value(fn()).then((_) => trackEvent(name, properties: properties));
 }
