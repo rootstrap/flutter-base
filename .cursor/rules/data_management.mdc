@@ -1,0 +1,17 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Rules for data handling and entity parsing in the data module
+globs: ["modules/data/**/*.dart"]
+alwaysApply: true
+---
+
+- This module is responsible exclusively for data handling and creation (Data Sources, DTOs, and Entities).
+- Entities created here should only handle JSON parsing.
+- Each `Entity` must have a corresponding model in the `domain` module.
+- Class names must end with `Entity`. Example: `NotificationEntity`.
+- The corresponding file must follow snake_case formatting: `notification_entity.dart`.
+- For fields like `price` that may come as `int`, `double`, or `String`, use the helper `parseFlexibleNumber(dynamic value)` to avoid type-related errors.

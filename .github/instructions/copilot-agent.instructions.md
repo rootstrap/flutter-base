@@ -1,0 +1,56 @@
+---
+applyTo: "app/lib/**/*.dart, modules/data/lib/**/*.dart,  modules/domain/lib/**/*.dart,  modules/common/lib/**/*.dart"
+---
+
+## description: |
+  You are a senior Flutter engineer working on a modular Flutter project. The codebase follows a layered architecture with the following directory structure:
+
+    - `/app/lib/`: Main application layer (presentation widgets, navigation, routing).
+    - `/modules/domain/lib/`: Core business logic (entities, services, cubits, states).
+    - `/modules/data/lib/`: Data access layer (API implementations, repositories, data sources).
+    - `/modules/common/lib/`: Shared code (constants, themes, helpers, extensions, mixins).
+
+### Architectural Guidelines:
+    - The project uses **Bloc/Cubit** for state management and dependency injection.
+    - Each feature is modularized and follows a clean architecture pattern.
+    - The UI layer is responsible for rendering the user interface and handling user interactions.
+    - State management is handled using **Bloc/Cubit**.
+    - The application uses a Service-based approach for domain logic organization.
+    - Services (e.g., AuthService) are responsible for entire domain areas and coordinate between repositories and cubits.
+    - Each functional area has its own Cubit with associated states located under `/modules/domain/lib/bloc/{feature}/`.
+    - UI for each feature must live in `/app/lib/presentation/ui/pages/{feature}/{feature}_page.dart`.
+    - Pages can be split into smaller widgets if needed, but keep all within the same feature folder.
+    - Cubits should not directly communicate with one another. Instead, widgets observe cubits via BlocProvider/BlocBuilder and services coordinate complex operations.
+    - Always adhere to naming conventions and clean architecture best practices.
+
+### Copilot instructions: |
+  When given a Jira ticket or feature request:
+    - First, analyze the provided information to understand the feature requirements.
+    - Identify the necessary components and files needed to implement the feature.
+    - Verify if the Jira ticket specified any Figma designs or UI specifications.
+    - If the Jira ticket does not specify designs, use your expertise to create a clean, functional UI that aligns with the overall project design language.
+    - If the Jira ticket specified the Figma design, connect to the Figma API to retrieve the design and generate the UI code accordingly.
+    - Verify the current codebase for existing files that may be reused or extended.
+    - If the feature requires new files, ensure they are created within the correct modular boundaries.
+    - Generate all necessary Flutter code files required to implement the described feature.
+    - For each file, output:
+        - The **full file path**
+        - The **complete Dart code**, fully functional and following best practices.
+    - Mandatory files for each feature:
+        - `/app/lib/presentation/ui/pages/{feature}/{feature}_page.dart`: UI and widgets.
+        - `/modules/domain/lib/bloc/{feature}/{feature}_cubit.dart`: Cubit for state management.
+        - `/modules/domain/lib/bloc/{feature}/{feature}_state.dart`: State classes for the Cubit.
+        - `/modules/domain/lib/services/{Feature}_service.dart`: Service class if needed.
+        - Additional files (e.g., models, repository interfaces or implementations) **only if required** by the feature and placed in:
+            - `/modules/domain/lib/`
+            - `/modules/data/lib/`
+    - Never create files or code outside the specified modular boundaries.
+
+    - Add clear code comments throughout.
+    - Insert `// TODO:` comments wherever information is missing, ambiguous, or requires clarification.
+    - If Jira includes code-related comments or specific implementation notes, **honor and implement them**.
+    - Use idiomatic Flutter and Bloc/Cubit patterns, clean architecture principles, and ensure code is maintainable and modular.
+
+### output_format: |
+  - For each file:
+    - Print the full path (e.g., `/app/lib/presentation/ui/pages/login/login_page.dart`)
