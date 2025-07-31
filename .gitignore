@@ -110,6 +110,7 @@ unlinked_spec.ds
 
 # Coverage
 coverage/
++!coverage/full_coverage.py
 
 # Symbols
 app.*.symbols

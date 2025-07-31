@@ -1,34 +1,64 @@
-#SonarQube Configuration
-# This is the sonarqube configuration, check readme for instructions
-#name: 'sonarqube'
-#
-#on: push
-#
-#jobs:
-#  sonarQubeTrigger:
-#    name: Sonarqube-Trigger
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: dart-lang/setup-dart@v1
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#      - uses: webfactory/ssh-agent@v0.9.0
-#        with:
-#          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-#      - name: Set up Flutter
-#        uses: subosito/flutter-action@v2
-#        with:
-#          channel: stable
-#          flutter-version: 3.24.3
-#      - run: flutter --version
-#      - name: Get Dependencies
-#        run: flutter pub get app && flutter pub get modules/domain && flutter pub get modules/data && flutter pub get modules/common
-#      - name: Analyze App
-#        #run analyze first
-#        run: flutter analyze
-#      - name: Setup Sonarqube Scanner
-#        uses: warchant/setup-sonar-scanner@v8
-#      - name: Run Sonarqube Scanner
-#        run: sonar-scanner
-#          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-#          -Dsonar.host.url=${{ secrets.SONAR_URL }}
+# name: sonarqube
+
+# # ────────────────────────────────────────────────────────────────
+# # CI TRIGGERS
+# #   · push on main      → historical baseline
+# #   · pull_request PRs  → quality gate before merge
+# # ────────────────────────────────────────────────────────────────
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+
+# jobs:
+#   sonarQubeTrigger:
+#     name: Sonarqube Trigger
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # 1 — Checkout the repo
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       # 2 — SSH agent for any Git-based pub dependencies
+#       - name: Start ssh-agent
+#         uses: webfactory/ssh-agent@v0.9.0
+#         with:
+#           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+#       # 3 — Install Dart SDK
+#       - uses: dart-lang/setup-dart@v1
+
+#       # 4 — Install Flutter SDK
+#       - name: Set up Flutter
+#         uses: subosito/flutter-action@v2
+#         with:
+#           channel: stable
+#           flutter-version: 3.24.3
+
+#       # 5 — Install all pub packages (app + each module)
+#       - name: Get pub packages
+#         run: |
+#           set -e
+#           for dir in app modules/*; do
+#             if [ -f "$dir/pubspec.yaml" ]; then
+#               echo "▶ flutter pub get --directory $dir"
+#               flutter pub get --directory "$dir"
+#             fi
+#           done
+
+#       # 6 — Static analysis (kept exactly as before)
+#       - name: Analyze App
+#         run: flutter analyze
+
+#       # 7 — Install SonarScanner CLI (needed by full_coverage.py)
+#       - name: Setup Sonarqube Scanner
+#         uses: warchant/setup-sonar-scanner@v8
+
+#       # 8 — Run tests, build combined lcov.info and upload to SonarQube
+#       - name: Generate coverage & run SonarQube
+#         run: python3 coverage/full_coverage.py --ci
+#         env:
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#           SONAR_URL: ${{ secrets.SONAR_URL }}
