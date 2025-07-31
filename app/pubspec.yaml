@@ -47,6 +47,8 @@ dependencies:
     path: ../modules/common
   data:
     path: ../modules/data
+  notifications:
+    path: ../modules/notifications
 
   # Remove example dependencies
   example_data:
