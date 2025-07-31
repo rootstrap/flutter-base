@@ -59,6 +59,7 @@ dependencies:
   http: ^0.13.6
   melos: ^3.4.0
   dev: ^1.0.0
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   bloc_test: ^9.0.2

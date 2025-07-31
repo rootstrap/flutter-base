@@ -1,0 +1,98 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Architectural rules for a Flutter project using Bloc Cubit
+globs: ["**/*.dart"]
+alwaysApply: true
+---
+
+# Flutter Project Coding Standards
+
+## Project Structure & Architecture
+
+Follow a strict modular architecture:
+
+- `/app/lib/`: Presentation layer (screens, widgets, routes).
+- `/modules/domain/lib/`: Core business logic (services, cubits, abstract repositories, models).
+- `/modules/data/lib/`: Data access (API clients, DTOs, data sources, and `Entity` classes).
+- `/modules/common/lib/`: Shared utilities, themes, constants, and mixins.
+
+### Service & Cubit Communication
+
+- Cubits **must not** communicate directly with one another.
+- Services coordinate between repositories and cubits for complex operations.
+- Widgets are responsible for observing their respective cubit's state via BlocProvider/BlocBuilder and triggering actions as needed.
+
+---
+
+## Naming Conventions
+
+- **PascalCase** for class names, enums, and type aliases.
+- **camelCase** for variables, functions, and parameters.
+- Prefix **private members** with an underscore `_`.
+- Use **ALL_CAPS** for constants (e.g., `const MAX_ITEMS = 10;`).
+- **File names** must follow **snake_case** (e.g., `user_profile_cubit.dart`).
+- **Cubit files** must end with `_cubit.dart` and state files with `_state.dart`.
+- **Service files** must use PascalCase followed by `Service.dart` (e.g., `AuthService.dart`).
+- **Widget files** must end with `_page.dart` or `_widget.dart` depending on scope.
+
+---
+
+## Data Module Guidelines
+
+The `/modules/data/lib/` folder is exclusively for data handling:
+
+- Data sources (API, DB)
+- DTOs
+- `Entity` classes
+
+### Entity Standards
+
+- Each entity class must end with `Entity`, e.g., `UserEntity`.
+- File names for entities must be snake_case: `user_entity.dart`.
+- Entities must implement **JSON parsing logic only**.
+- For fields like `price` or `amount` that may come as `int`, `double`, or `String`, use:
+
+```dart
+num parseFlexibleNumber(dynamic value) {
+  if (value is num) return value;
+  return num.tryParse(value.toString()) ?? 0;
+}
+```
+
+### Mapping
+
+- Each `Entity` must have a corresponding domain `Model` in `/modules/domain/lib/` used in business logic.
+
+---
+
+## Error Handling
+
+- Use `try/catch` for all asynchronous operations.
+- Always log errors with contextual information using `debugPrint`, `log`, or your logging utility.
+- Avoid silently swallowing errors.
+- Prefer using custom error types (`AppException`, `NetworkException`, etc.) in repositories or use cases.
+
+---
+
+## State Management (Bloc/Cubit)
+
+- Use **Bloc/Cubit** for state management across all features.
+- Each feature must have its own cubit under `/modules/domain/lib/bloc/{feature}/`.
+- Each cubit must have corresponding state classes in `/modules/domain/lib/bloc/{feature}/`.
+- Services coordinate between repositories and cubits, located under `/modules/domain/lib/services/`.
+- Avoid shared/global cubits unless absolutely necessary.
+- Cubits manage the complete screen state through state transitions.
+- Use `BlocProvider`, `BlocBuilder`, `BlocListener`, or `BlocConsumer` to react to state changes in widgets.
+
+---
+
+## TODOs and Comments
+
+- Use `// TODO:` for areas where logic is incomplete or unclear.
+- Use `// FIXME:` for known bugs, temporary workarounds, or technical debt.
+
+---
