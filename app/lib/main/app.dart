@@ -1,3 +1,4 @@
+import 'package:app/presentation/themes/local_theme.dart';
 import 'package:common/core/resource.dart';
 import 'package:flutter/material.dart';
 import 'package:domain/bloc/app/app_cubit.dart';
@@ -11,6 +12,10 @@ import 'package:app/presentation/utils/lang_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:notifications/bloc/notification_cubit.dart';
+import 'package:notifications/presentation/notification_widget.dart';
+import 'package:notifications/service/notification_service.dart';
+import 'package:notifications/utils/notification_constants.dart';
 
 import 'init.dart';
 
@@ -25,6 +30,9 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<AppCubit>()),
         BlocProvider(create: (_) => getIt<AuthCubit>()),
+        BlocProvider.value(
+          value: getIt<NotificationService>().notificationCubit,
+        ),
       ],
       child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
@@ -51,7 +59,64 @@ class App extends StatelessWidget {
                     }
                   }
                 },
-                child: child,
+                child: Stack(
+                  children: [
+                    child ?? const SizedBox.shrink(),
+                    BlocBuilder<NotificationCubit, NotificationState?>(
+                      buildWhen: (previous, current) => previous != current,
+                      builder: (context, state) {
+                        return state?.message?.isNotEmpty ?? false
+                            ? Positioned(
+                                top: NotificationConstants
+                                    .notificationButtonPadding,
+                                child: SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Row(
+                                    children: [
+                                      const Spacer(),
+                                      // Change according on project needs
+                                      NotificationWidget(
+                                        onClose: () {
+                                          getIt<NotificationService>()
+                                              .clearNotification();
+                                        },
+                                        message: state!.message!,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineMedium
+                                            ?.copyWith(
+                                              color: context
+                                                  .colors.neutralVariant.v0,
+                                            ),
+                                        status: state.status,
+                                        maxWidth:
+                                            NotificationConstants.toastMaxWidth,
+                                        progressBarColor: switch (
+                                            state.status) {
+                                          NotificationStatus.idle =>
+                                            context.colors.primary.v10,
+                                          NotificationStatus.information =>
+                                            context.colors.primary.v99,
+                                          NotificationStatus.success =>
+                                            context.colors.primary.v0,
+                                          NotificationStatus.error =>
+                                            context.colors.error.v40,
+                                        },
+                                        progressBarBorderColor:
+                                            context.colors.neutral.v0,
+                                        progressBarBackgroundColor:
+                                            context.colors.neutral.v0,
+                                      ),
+                                      const Spacer(),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink();
+                      },
+                    ),
+                  ],
+                ),
               );
             },
             routerConfig: _goRouter,
