@@ -99,7 +99,6 @@ class _SvgImage {
     Alignment alignment = Alignment.center,
     String? semanticLabel,
     String? package,
-    @visibleForTesting bool isWeb = false,
   }) {
     return SvgPicture.asset(
       assetPath,

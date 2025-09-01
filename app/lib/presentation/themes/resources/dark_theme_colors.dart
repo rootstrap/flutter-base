@@ -11,7 +11,7 @@ class DarkThemeColors implements ThemeColors {
    * **/
   @override
   // TODO: implement primary
-  MaterialColor get primary => const MaterialColor(40, {
+  MaterialColor get primary => const MaterialColor(0xFFFFFFDE, {
         0: Color(0xFFFFFFDE),
         10: Color(0xFFFFFFDE),
         20: Color(0xFFFFFFDE),
@@ -35,7 +35,7 @@ class DarkThemeColors implements ThemeColors {
    * **/
   @override
   // TODO: implement secondary
-  MaterialColor get secondary => const MaterialColor(40, {
+  MaterialColor get secondary => const MaterialColor(0xFFFFFFFD, {
         0: Color(0xFFFFFFDE),
         10: Color(0xFF1D192B),
         20: Color(0xFFFFFFDE),
@@ -59,7 +59,7 @@ class DarkThemeColors implements ThemeColors {
    * **/
   @override
   // TODO: implement tertiary
-  MaterialColor get tertiary => const MaterialColor(40, {
+  MaterialColor get tertiary => const MaterialColor(0xFFFFFFDE, {
         0: Color(0xFFFFFFDE),
         10: Color(0xFFFFFFDE),
         20: Color(0xFFFFFFDE),
@@ -83,7 +83,7 @@ class DarkThemeColors implements ThemeColors {
    * **/
   @override
   // TODO: implement error
-  MaterialColor get error => const MaterialColor(40, {
+  MaterialColor get error => const MaterialColor(0xFFB3261E, {
         0: Color(0xFFFFFFDE),
         10: Color(0xFF410E0B),
         20: Color(0xFFF0524D),
@@ -106,7 +106,7 @@ class DarkThemeColors implements ThemeColors {
    * **/
   @override
   // TODO: implement neutral
-  MaterialColor get neutral => const MaterialColor(40, {
+  MaterialColor get neutral => const MaterialColor(0xFF410E0B, {
         0: Color(0xFF410E0B),
         10: Color(0xFF410E0B),
         20: Color(0xFF410E0B),
@@ -130,7 +130,7 @@ class DarkThemeColors implements ThemeColors {
    * **/
   @override
   // TODO: implement neutralVariant
-  MaterialColor get neutralVariant => const MaterialColor(40, {
+  MaterialColor get neutralVariant => const MaterialColor(0xFFFDDDDE, {
         0: Color(0xFF000000),
         10: Color(0xFF49454F),
         20: Color(0xFFF0524D),
