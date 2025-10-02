@@ -99,7 +99,6 @@ class _SvgImage {
     Alignment alignment = Alignment.center,
     String? semanticLabel,
     String? package,
-    @visibleForTesting bool isWeb = false,
   }) {
     return SvgPicture.asset(
       assetPath,
@@ -107,7 +106,7 @@ class _SvgImage {
       width: width,
       height: height,
       fit: fit,
-      color: color,
+      colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       alignment: alignment,
       semanticsLabel: semanticLabel,
       package: package,

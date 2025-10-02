@@ -8,8 +8,7 @@ class FailureWidget extends StatelessWidget {
   final Failure? failure;
   final VoidCallback onRetry;
 
-  const FailureWidget({Key? key, required this.failure, required this.onRetry})
-      : super(key: key);
+  const FailureWidget({super.key, required this.failure, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +23,7 @@ class FailureWidget extends StatelessWidget {
 class ConnectionErrorWidget extends StatelessWidget {
   final VoidCallback onRetry;
 
-  const ConnectionErrorWidget({Key? key, required this.onRetry})
-      : super(key: key);
+  const ConnectionErrorWidget({super.key, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +49,7 @@ class ConnectionErrorWidget extends StatelessWidget {
 class UnexpectedErrorWidget extends StatelessWidget {
   final VoidCallback onRetry;
 
-  const UnexpectedErrorWidget({Key? key, required this.onRetry})
-      : super(key: key);
+  const UnexpectedErrorWidget({super.key, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:example_domain/models/product.dart';
 class ProductsListWidget extends StatelessWidget {
   final List<Product> products;
 
-  const ProductsListWidget({Key? key, required this.products}) : super(key: key);
+  const ProductsListWidget({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {

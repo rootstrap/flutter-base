@@ -23,13 +23,13 @@ class PermissionManagerBase extends PermissionManager {
 
 extension FromStatus on PermissionStatus {
   static const Map<PermissionStatus, AppPermissionStatus> _permissionStatus = {
-    PermissionStatus.granted: AppPermissionStatus.GRANTED,
-    PermissionStatus.denied: AppPermissionStatus.DENIED,
-    PermissionStatus.restricted: AppPermissionStatus.RESTRICTED,
-    PermissionStatus.permanentlyDenied: AppPermissionStatus.DENIED_PERMANTLY,
-    PermissionStatus.limited: AppPermissionStatus.LIMITED,
+    PermissionStatus.granted: AppPermissionStatus.granted,
+    PermissionStatus.denied: AppPermissionStatus.denied,
+    PermissionStatus.restricted: AppPermissionStatus.restricted,
+    PermissionStatus.permanentlyDenied: AppPermissionStatus.deniedPermanently,
+    PermissionStatus.limited: AppPermissionStatus.limited,
   };
 
   AppPermissionStatus toAppPermission() =>
-      _permissionStatus[this] ?? AppPermissionStatus.DENIED;
+      _permissionStatus[this] ?? AppPermissionStatus.denied;
 }

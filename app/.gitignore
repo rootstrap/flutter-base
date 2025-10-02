@@ -70,6 +70,7 @@ unlinked_spec.ds
 **/android/**/GeneratedPluginRegistrant.java
 **/android/key.properties
 *.jks
+/android/gradle.properties
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -122,3 +123,22 @@ app.*.symbols
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
 /env*.json
+
+# Environment and configuration files (contain sensitive data)
+env/.env
+env/.settings
+env/env_*.json
+.env
+.env.*
+*.env
+
+# Firebase/Google config files (may contain sensitive keys)
+**/google-services.json
+**/GoogleService-Info.plist
+firebase.json
+.firebaserc
+firebase-debug.log
+
+# Local development files
+local.properties
+*.properties

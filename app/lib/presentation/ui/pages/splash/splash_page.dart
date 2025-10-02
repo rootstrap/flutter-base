@@ -1,9 +1,9 @@
 import 'package:app/main/init.dart';
-import 'package:domain/services/AuthService.dart';
+import 'package:domain/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   State<SplashPage> createState() => _SplashPageState();

@@ -1,6 +1,6 @@
 import 'package:common/core/failure/failure.dart';
 import 'package:common/core/resource.dart';
-import 'package:domain/bloc/BaseBlocState.dart';
+import 'package:domain/bloc/base_bloc_state.dart';
 import 'package:domain/bloc/auth/auth_state.dart';
 
 class AuthCubit extends BaseBlocState<AuthState, Failure> {

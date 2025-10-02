@@ -4,7 +4,7 @@ import 'package:domain/models/theme_type.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppThemeSwitch extends StatelessWidget {
-  const AppThemeSwitch({Key? key}) : super(key: key);
+  const AppThemeSwitch({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,15 +7,15 @@ abstract class PermissionManager {
 }
 
 enum AppPermissionStatus {
-  GRANTED,
-  DENIED,
+  granted,
+  denied,
 
   /// iOs
-  RESTRICTED,
+  restricted,
 
   /// Android/iOS
-  DENIED_PERMANTLY,
+  deniedPermanently,
 
   /// i.e when location permission is granted only when the app is in use
-  LIMITED
+  limited
 }
