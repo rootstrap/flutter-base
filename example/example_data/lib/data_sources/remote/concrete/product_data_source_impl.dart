@@ -19,7 +19,7 @@ class ProductDataSourceImpl extends ProductDataSource {
           .map((e) => ProductEntity.fromMap(e))
           .toList();
       return TSuccess(products);
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return TError(e.toFailure());
     } catch (e) {
       return TError(UnexpectedFailure(e.toString()));

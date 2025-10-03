@@ -2,19 +2,19 @@ import 'package:dio/dio.dart';
 
 import 'failure.dart';
 
-extension FailureMapper on DioError {
+extension FailureMapper on DioException {
   Failure toFailure() {
     switch (type) {
-      case DioErrorType.connectionTimeout:
-      case DioErrorType.sendTimeout:
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
         return SocketTimeOutFailure(message);
-      case DioErrorType.badResponse:
+      case DioExceptionType.badResponse:
         return HttpFailure(response?.statusCode, name: message);
-      case DioErrorType.cancel:
-      case DioErrorType.unknown:
-      case DioErrorType.badCertificate:
-      case DioErrorType.connectionError:
+      case DioExceptionType.cancel:
+      case DioExceptionType.unknown:
+      case DioExceptionType.badCertificate:
+      case DioExceptionType.connectionError:
         return UnexpectedFailure(message);
     }
   }

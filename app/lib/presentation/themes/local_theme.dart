@@ -25,8 +25,9 @@ abstract class LocalTheme {
           pickerTextStyle: bodyS,
           dateTimePickerTextStyle: bodyS,
         ),
-        colors.background,
+        colors.surface,
         colors.secondaryContainer,
+        CupertinoColors.systemBlue,
         true,
       );
 

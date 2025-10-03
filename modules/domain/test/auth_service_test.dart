@@ -2,7 +2,7 @@ import 'package:common/core/failure/failure.dart';
 import 'package:common/core/result_type.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/repositories/auth_repository.dart';
-import 'package:domain/services/AuthService.dart';
+import 'package:domain/services/auth_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

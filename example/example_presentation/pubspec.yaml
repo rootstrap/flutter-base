@@ -1,6 +1,7 @@
 name: example_presentation
 description: "A new Flutter package project."
 version: 0.0.1
+publish_to: none
 homepage:
 
 environment:
@@ -12,8 +13,6 @@ dependencies:
     sdk: flutter
   example_domain:
     path: ../example_domain
-  example_data:
-    path: ../example_data
 
 dev_dependencies:
   flutter_test:
