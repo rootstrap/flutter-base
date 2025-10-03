@@ -1,9 +1,10 @@
+import 'package:domain/env/env_config.dart';
+
 enum Flavor { dev, qa, prod }
 
 class FlavorValues {
-  final String baseUrl;
 
-  FlavorValues({required this.baseUrl});
+  FlavorValues();
 }
 
 class FlavorConfig {
@@ -22,6 +23,17 @@ class FlavorConfig {
       flavor.toString(),
       values,
     );
+    switch(flavor) {
+      case Flavor.dev:
+        EnvConfig.env = EnvConfig.kDevEnv;
+        break;
+      case Flavor.qa:
+        EnvConfig.env = EnvConfig.kQaEnv;
+        break;
+      case Flavor.prod:
+        EnvConfig.env = EnvConfig.kProdEnv;
+        break;
+    }
     return _instance!;
   }
 

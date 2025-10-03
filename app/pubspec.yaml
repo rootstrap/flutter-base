@@ -39,14 +39,13 @@ dependencies:
   equatable: ^2.0.5
   firebase_core: ^3.13.0
   url_strategy: ^0.2.0
+  flutter_dotenv: ^5.2.1
   flutter_localizations:
     sdk: flutter
   domain:
     path: ../modules/domain
   common:
     path: ../modules/common
-  data:
-    path: ../modules/data
 
   # Remove example dependencies
   example_data:
