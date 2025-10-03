@@ -7,7 +7,7 @@ class EnvConfig {
 
   static String env = kDevEnv;
 
-  static String get envConfigFile => 'env/.settings.example';
+  static String get envConfigFile => 'env/.env.example';
 
   static String get apiUrl => dotenv.env['API_URL_$env']?.toString() ?? '';
 }

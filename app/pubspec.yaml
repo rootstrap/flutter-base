@@ -46,6 +46,8 @@ dependencies:
     path: ../modules/domain
   common:
     path: ../modules/common
+  data:
+    path: ../modules/data
 
   # Remove example dependencies
   example_data:
@@ -81,6 +83,8 @@ flutter:
   # Remove example assets.
   assets:
     - assets/images/
+    # remove example suffix
+    - env/.env.example
   fonts:
     - family: Roboto Black
       fonts:
