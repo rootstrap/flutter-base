@@ -61,6 +61,10 @@ class FlavorConfig {
   /// 5. Access variables in domain/lib/env/env_config.dart using:
   ///    static String get apiUrl => dotenv.env['API_URL_$env']?.toString() ?? '';
   ///    (The $env automatically appends DEV, QA, or PROD based on active flavor)
+  /// 6. Go to pubspec.yaml and add the following:
+  ///    assets:
+  ///     - env/.env
+
   static String getEnvFilePath() {
     return 'env/.env.example';
   }
