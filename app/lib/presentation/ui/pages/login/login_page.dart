@@ -8,6 +8,8 @@ import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../custom/environment_selector.dart';
+
 class LoginPage extends StatelessWidget {
   AuthService get _authService => getIt();
 
@@ -39,6 +41,8 @@ class LoginPage extends StatelessWidget {
                     },
                   ),
                 ),
+                const SizedBox(height: 32),
+                EnvironmentSelector(),
               ],
             ),
           ),
