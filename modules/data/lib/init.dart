@@ -11,6 +11,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'network/config/environment_service_impl.dart';
+import 'network/interceptors/auth_token_interceptor.dart';
 
 class DataInit {
   static Future<void> initialize(GetIt getIt) async {
@@ -19,15 +20,16 @@ class DataInit {
     getIt.registerSingleton<SharedPreferences>(pref);
     getIt.registerSingleton<Preferences>(PreferencesImpl(getIt()));
 
-    //Network
-    getIt.registerLazySingleton<Dio>(() => NetworkConfig.provideDio());
+    // Network
+    getIt.registerLazySingleton<AuthTokenInterceptor>(() => AuthTokenInterceptor(getIt()));
+    getIt.registerLazySingleton<Dio>(() => NetworkConfig.provideDio(getIt()));
     getIt.registerLazySingleton<EnvironmentService>(() => EnvironmentServiceImpl(getIt()));
 
-    //Data Sources
+    // Data Sources
 
-    //Repositories
+    // Repositories
     getIt.registerLazySingleton<AuthRepository>(
-          () => AuthRepositoryImpl(getIt(), getIt()),
+          () => AuthRepositoryImpl(getIt(),),
     );
     getIt.registerLazySingleton<CommonRepository>(
           () => CommonRepositoryImpl(getIt()),

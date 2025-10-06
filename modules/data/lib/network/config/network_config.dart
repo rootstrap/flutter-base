@@ -2,10 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:domain/env/env_config.dart';
 import 'package:flutter/foundation.dart';
 
+import '../interceptors/auth_token_interceptor.dart';
 import 'network_constants.dart';
 
 class NetworkConfig {
-  static Dio provideDio() {
+  static Dio provideDio(AuthTokenInterceptor? authTokenInterceptor) {
     final options = BaseOptions(
       baseUrl: EnvConfig.apiUrl,
       connectTimeout: const Duration(
@@ -28,6 +29,10 @@ class NetworkConfig {
         error: true,
         logPrint: (object) => debugPrint(object.toString()),
       ));
+    }
+
+    if (authTokenInterceptor != null) {
+      dio.interceptors.add(authTokenInterceptor);
     }
 
     return dio;
