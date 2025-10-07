@@ -1,3 +1,4 @@
+import 'package:app/presentation/themes/local_theme.dart';
 import 'package:domain/env/env_config.dart';
 import 'package:domain/services/environment_service.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class EnvironmentSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle =
-        Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black);
+        Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary.v0);
 
     final items = <DropdownMenuItem<String>>[
       _item(EnvConfig.kDevEnv, 'Development', textStyle!),
