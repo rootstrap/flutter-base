@@ -1,37 +1,33 @@
-import 'package:flutter/material.dart';
 import 'package:app/presentation/themes/resources/app_theme_data.dart';
+import 'package:flutter/material.dart';
 
 class LightThemeColors implements ThemeColors {
-  /**
-   * 40: primary
-   * 100: onPrimary
-   * 90: primaryContainer
-   * 10: onPrimaryContainer
-   * **/
+  /// 10: onPrimaryContainer
+  /// 40: primary
+  /// 90: primaryContainer
+  /// 100: onPrimary
   @override
   // TODO: implement primary
   MaterialColor get primary => const MaterialColor(0xFF6750A4, {
         0: Color(0xFF000000),
-        10: Color(0xFF21005D),
+        10: Color(0xFF21005D), // Default Bottom navigation bar labels
         20: Color(0xFFF0524D),
         30: Color(0xFFF0524D),
-        40: Color(0xFF6750A4),
+        40: Color(0xFF6750A4), // Default Primary Buttons background
         50: Color(0xFFF0524D),
         60: Color(0xFFF0524D),
         70: Color(0xFFF0524D),
         80: Color(0xFFF0524D),
-        90: Color(0xFFEADDFF),
+        90: Color(0xFFEADDFF), // Default Bottom navigation bar background or variant button
         95: Color(0xFFF0524D),
         99: Color(0xFFEADDFF),
         100: Color(0xFFFFFFFF),
       });
 
-  /**
-   * 40: secondary
-   * 100: onSecondary
-   * 90: secondaryContainer
-   * 10: onSecondaryContainer
-   * **/
+  /// 10: onSecondaryContainer
+  /// 40: secondary
+  /// 90: secondaryContainer
+  /// 100: onSecondary
   @override
   // TODO: implement secondary
   MaterialColor get secondary => const MaterialColor(0xFF625B71, {
@@ -44,18 +40,16 @@ class LightThemeColors implements ThemeColors {
         60: Color(0xFFF0524D),
         70: Color(0xFFF0524D),
         80: Color(0xFFF0524D),
-        90: Color(0xFFE8DEF8),
+        90: Color(0xFFE8DEF8), // Default Bottom navigation labels color
         95: Color(0xFFF0524D),
         99: Color(0xFFE8DEF8),
         100: Color(0xFFFFFFFF),
       });
 
-  /**
-   * 40: tertiary
-   * 100: onTertiary
-   * 90: tertiaryContainer
-   * 10: onTertiaryContainer
-   * **/
+  /// 10: onTertiaryContainer
+  /// 40: tertiary
+  /// 90: tertiaryContainer
+  /// 100: onTertiary
   @override
   // TODO: implement tertiary
   MaterialColor get tertiary => const MaterialColor(0xFF7D5260, {
@@ -74,12 +68,10 @@ class LightThemeColors implements ThemeColors {
         100: Color(0xFFFFFFFF),
       });
 
-  /**
-   * 40: error
-   * 100: onError
-   * 90: errorContainer
-   * 10: onErrorContainer
-   * **/
+  /// 10: onErrorContainer
+  /// 40: error
+  /// 90: errorContainer
+  /// 100: onError
   @override
   // TODO: implement error
   MaterialColor get error => const MaterialColor(0xFFB3261E, {
@@ -87,7 +79,7 @@ class LightThemeColors implements ThemeColors {
         10: Color(0xFF410E0B),
         20: Color(0xFFF0524D),
         30: Color(0xFFF0524D),
-        40: Color(0xFFB3261E),
+        40: Color(0xFFB3261E), // Default Error text color & border color
         50: Color(0xFFF0524D),
         60: Color(0xFFF0524D),
         70: Color(0xFFF0524D),
@@ -98,16 +90,14 @@ class LightThemeColors implements ThemeColors {
         100: Color(0xFFFFFFFF),
       });
 
-  /**
-   * 0: shadow
-   * 99: background / surface
-   * 10: onBackground / onSurface
-   * **/
+  /// 0: shadow
+  /// 10: onBackground / onSurface
+  /// 99: background / surface
   @override
   // TODO: implement neutral
   MaterialColor get neutral => const MaterialColor(0xFFFFFFFF, {
-        0: Color(0xFFFFFFFF),
-        10: Color(0xFFFFFFFF),
+        0: Color(0xFFFFFFFF), // Default Shadow
+        10: Color(0xFFFFFFFF), // Default Text color
         20: Color(0xFFFFFFFF),
         30: Color(0xFFFFFFFF),
         40: Color(0xFFFFFFFF),
@@ -117,23 +107,21 @@ class LightThemeColors implements ThemeColors {
         80: Color(0xFFFFFFFF),
         90: Color(0xFFFFFFFF),
         95: Color(0xFFFFFFFF),
-        99: Color(0xFFFFFFFF),
+        99: Color(0xFFFFFFFF), // Default scaffold background
         100: Color(0xFFFFFFFF),
       });
 
-  /**
-   * 90: surfaceVariant
-   * 30: onSurfaceVariant
-   * 50: outline
-   * 80: outlineVariant
-   * **/
+  /// 30: onSurfaceVariant
+  /// 50: outline
+  /// 80: outlineVariant
+  /// 90: surfaceVariant
   @override
   // TODO: implement neutralVariant
   MaterialColor get neutralVariant => const MaterialColor(0xFFF0524D, {
         0: Color(0xFF000000),
         10: Color(0xFF49454F),
         20: Color(0xFFF0524D),
-        30: Color(0xFFF0524D),
+        30: Color(0xFFF0524D), // Labels in TextFormFields
         40: Color(0xFFF0524D),
         50: Color(0xFFFFFFFF),
         60: Color(0xFFF0524D),

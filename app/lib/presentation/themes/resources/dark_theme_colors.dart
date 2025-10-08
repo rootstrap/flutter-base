@@ -3,12 +3,10 @@ import 'package:app/presentation/themes/resources/app_theme_data.dart';
 
 /// Change the colors for the dark theme
 class DarkThemeColors implements ThemeColors {
-  /**
-   * 40: primary
-   * 100: onPrimary
-   * 90: primaryContainer
-   * 10: onPrimaryContainer
-   * **/
+  /// 10: onPrimaryContainer
+  /// 40: primary
+  /// 90: primaryContainer
+  /// 100: onPrimary
   @override
   // TODO: implement primary
   MaterialColor get primary => const MaterialColor(0xFFFFFFDE, {
@@ -27,12 +25,10 @@ class DarkThemeColors implements ThemeColors {
         100: Color(0xFF6750A4),
       });
 
-  /**
-   * 40: secondary
-   * 100: onSecondary
-   * 90: secondaryContainer
-   * 10: onSecondaryContainer
-   * **/
+  /// 10: onSecondaryContainer
+  /// 40: secondary
+  /// 90: secondaryContainer
+  /// 100: onSecondary
   @override
   // TODO: implement secondary
   MaterialColor get secondary => const MaterialColor(0xFFFFFFFD, {
@@ -51,12 +47,10 @@ class DarkThemeColors implements ThemeColors {
         100: Color(0xFF1D192B),
       });
 
-  /**
-   * 40: tertiary
-   * 100: onTertiary
-   * 90: tertiaryContainer
-   * 10: onTertiaryContainer
-   * **/
+  /// 10: onTertiaryContainer
+  /// 40: tertiary
+  /// 90: tertiaryContainer
+  /// 100: onTertiary
   @override
   // TODO: implement tertiary
   MaterialColor get tertiary => const MaterialColor(0xFFFFFFDE, {
@@ -75,12 +69,10 @@ class DarkThemeColors implements ThemeColors {
         100: Color(0xFFF0524D),
       });
 
-  /**
-   * 40: error
-   * 100: onError
-   * 90: errorContainer
-   * 10: onErrorContainer
-   * **/
+  /// 10: onErrorContainer
+  /// 40: error
+  /// 90: errorContainer
+  /// 100: onError
   @override
   // TODO: implement error
   MaterialColor get error => const MaterialColor(0xFFB3261E, {
@@ -99,11 +91,9 @@ class DarkThemeColors implements ThemeColors {
         100: Color(0xFFFFFFFF),
       });
 
-  /**
-   * 0: shadow
-   * 99: background / surface
-   * 10: onBackground / onSurface
-   * **/
+  /// 0: shadow
+  /// 10: onBackground / onSurface
+  /// 99: background / surface
   @override
   // TODO: implement neutral
   MaterialColor get neutral => const MaterialColor(0xFF410E0B, {
@@ -122,12 +112,10 @@ class DarkThemeColors implements ThemeColors {
         100: Color(0xFF410E0B),
       });
 
-  /**
-   * 90: surfaceVariant
-   * 30: onSurfaceVariant
-   * 50: outline
-   * 80: outlineVariant
-   * **/
+  /// 30: onSurfaceVariant
+  /// 50: outline
+  /// 80: outlineVariant
+  /// 90: surfaceVariant
   @override
   // TODO: implement neutralVariant
   MaterialColor get neutralVariant => const MaterialColor(0xFFFDDDDE, {

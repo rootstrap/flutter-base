@@ -16,13 +16,13 @@ abstract class AppPlatform {
   get isAndroid => false;
 
   PlatformType get currentPlatform {
-    if (isWeb) return PlatformType.Web;
+    if (isWeb) return PlatformType.web;
     if (isIOS) return PlatformType.iOS;
-    if (isAndroid) return PlatformType.Android;
-    if (isMacOS) return PlatformType.MacOS;
-    if (isFuchsia) return PlatformType.Fuchsia;
-    if (isLinux) return PlatformType.Linux;
-    if (isWindows) return PlatformType.Windows;
-    return PlatformType.Unknown;
+    if (isAndroid) return PlatformType.android;
+    if (isMacOS) return PlatformType.macOS;
+    if (isFuchsia) return PlatformType.fuchsia;
+    if (isLinux) return PlatformType.linux;
+    if (isWindows) return PlatformType.windows;
+    return PlatformType.unknown;
   }
 }
