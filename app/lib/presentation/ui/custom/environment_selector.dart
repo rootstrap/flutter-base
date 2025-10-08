@@ -1,3 +1,4 @@
+import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/themes/local_theme.dart';
 import 'package:domain/env/env_config.dart';
 import 'package:domain/services/environment_service.dart';
@@ -17,7 +18,7 @@ class EnvironmentSelector extends StatelessWidget {
       DropdownMenuItem<String>(
         value: value,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: EdgeInsets.symmetric(horizontal: spacing.xs),
           child: Text(label, style: textStyle),
         ),
       );
