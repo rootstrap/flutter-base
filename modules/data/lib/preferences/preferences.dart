@@ -14,4 +14,6 @@ abstract class Preferences {
   Future<void> setAppTheme(String theme);
 
   Future<void> setToken(String? token);
+
+  Future<void> clear();
 }

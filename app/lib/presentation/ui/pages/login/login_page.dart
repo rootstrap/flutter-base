@@ -1,12 +1,16 @@
 import 'package:app/main/init.dart';
+import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/themes/app_themes.dart';
+import 'package:app/presentation/ui/custom/app_theme_switch.dart';
+import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/services/auth_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:app/presentation/ui/custom/app_theme_switch.dart';
-import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../custom/environment_selector.dart';
 
 class LoginPage extends StatelessWidget {
   AuthService get _authService => getIt();
@@ -21,12 +25,12 @@ class LoginPage extends StatelessWidget {
           appBar: AppBar(),
           backgroundColor: context.theme.colorScheme.surface,
           body: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(spacing.m),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const AppThemeSwitch(),
-                const SizedBox(height: 16),
+                SizedBox(height: spacing.m),
                 SizedBox(
                   width: double.maxFinite,
                   child: ElevatedButton(
@@ -39,6 +43,10 @@ class LoginPage extends StatelessWidget {
                     },
                   ),
                 ),
+                SizedBox(height: spacing.xxxl),
+                if (kDebugMode) ...[
+                  EnvironmentSelector(),
+                ],
               ],
             ),
           ),

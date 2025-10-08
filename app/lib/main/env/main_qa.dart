@@ -6,7 +6,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlavorConfig(
     flavor: Flavor.qa,
-    values: FlavorValues(baseUrl: "https://demo_qa/web_api.json"),
+    values: FlavorValues(),
   );
   //Add your firebase configuration here
   /*await Firebase.initializeApp(

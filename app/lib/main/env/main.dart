@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:app/main/env/env_config.dart';
 import 'package:app/main/init.dart';
-import 'package:domain/env.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlavorConfig(
     flavor: Flavor.prod,
-    values: FlavorValues(baseUrl: EnvConfig.apiUrl),
+    values: FlavorValues(),
   );
   //Add your firebase configuration here
   /*await Firebase.initializeApp(

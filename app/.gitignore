@@ -125,9 +125,8 @@ app.*.symbols
 /env*.json
 
 # Environment and configuration files (contain sensitive data)
-env/.env
-env/.settings
-env/env_*.json
+../env/.env
+../env/env_*.json
 .env
 .env.*
 *.env
