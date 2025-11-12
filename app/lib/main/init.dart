@@ -1,4 +1,5 @@
 import 'package:app/main/app.dart';
+import 'package:app/main/env/env_config.dart';
 import 'package:common/init.dart';
 import 'package:data/init.dart';
 import 'package:domain/init.dart';
@@ -21,7 +22,8 @@ void init() async {
 final getIt = GetIt.instance;
 
 Future<void> initialize() async {
-  await dotenv.load(fileName: FlavorConfig.getEnvFilePath());
+  await dotenv.load(fileName: Environment.envConfigFile);
+
   await CommonInit.initialize(getIt);
   await DataInit.initialize(getIt);
   await DomainInit.initialize(getIt);

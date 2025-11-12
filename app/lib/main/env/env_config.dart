@@ -1,6 +1,30 @@
-import 'package:domain/env/env_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-enum Flavor { dev, qa, prod }
+enum Flavor {
+  dev,
+  qa,
+  prod;
+
+  static Flavor fromString(String value) {
+    return Flavor.values.firstWhere(
+      (flavor) => flavor.name == value,
+      orElse: () => Flavor.dev,
+    );
+  }
+}
+
+class Environment {
+  static String get clientSecret => dotenv.env['SECRET_KEY'] ?? '';
+
+  static String? get portalUrl => dotenv.env['API_URL'];
+
+  static String get envName => const String.fromEnvironment(
+        'ENV',
+        defaultValue: 'dev',
+      );
+
+  static String get envConfigFile => 'env/.$envName';
+}
 
 class FlavorValues {
 
