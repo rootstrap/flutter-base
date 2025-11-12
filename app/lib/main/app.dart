@@ -1,10 +1,7 @@
-import 'package:app/presentation/ui/custom/loading_screen.dart';
-import 'package:common/core/resource.dart';
 import 'package:flutter/material.dart';
 import 'package:domain/bloc/app/app_cubit.dart';
 import 'package:domain/bloc/app/app_state.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
-import 'package:domain/bloc/auth/auth_state.dart';
 import 'package:app/presentation/navigation/routers.dart';
 import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:app/presentation/themes/app_themes.dart';

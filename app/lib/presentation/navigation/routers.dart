@@ -1,4 +1,3 @@
-import 'package:app/main/init.dart';
 import 'package:app/presentation/ui/pages/home/home_page.dart';
 import 'package:app/presentation/ui/pages/login/login_page.dart';
 import 'package:app/presentation/ui/pages/sign_up/sign_up_page.dart';
@@ -12,7 +11,7 @@ import 'package:go_router/go_router.dart';
 enum Routes {
   auth,
   login,
-  signUp,
+  signup,
   app,
   home;
 
@@ -37,6 +36,7 @@ class Routers {
         path: '/',
         builder: (context, state) {
           return BlocListener<AuthCubit, Resource>(
+            listenWhen: (previous, current) => current is RSuccess,
             listener: (_, state) {
               if (state is RSuccess) {
                 switch (state.data) {
@@ -58,11 +58,12 @@ class Routers {
             name: Routes.auth.name,
             path: Routes.auth.path,
             redirect: (context, state) {
-              if (getIt<AuthCubit>().isLoggedIn()) {
+              if (context.read<AuthCubit>().isLoggedIn()) {
                 return '${Routes.app.path}${Routes.home.path}';
               }
 
-              return '${Routes.auth.path}${Routes.login.path}';
+              /// Continue to auth routes
+              return null;
             },
             routes: [
               GoRoute(
@@ -71,8 +72,8 @@ class Routers {
                 builder: (context, state) => const LoginPage(),
               ),
               GoRoute(
-                name: Routes.signUp.name,
-                path: Routes.signUp.subPath,
+                name: Routes.signup.name,
+                path: Routes.signup.subPath,
                 builder: (context, state) => const SignUpPage(),
               ),
             ],
@@ -80,13 +81,13 @@ class Routers {
           GoRoute(
             name: Routes.app.name,
             path: Routes.app.path,
-            builder: (context, state) => const SplashPage(),
             redirect: (context, state) {
-              if (!getIt<AuthCubit>().isLoggedIn()) {
+              if (!context.read<AuthCubit>().isLoggedIn()) {
                 return '${Routes.auth.path}${Routes.login.path}';
               }
 
-              return '${Routes.app.path}${Routes.home.path}';
+              /// Continue to app routes
+              return null;
             },
             routes: [
               GoRoute(
