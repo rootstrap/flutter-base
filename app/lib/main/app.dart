@@ -41,7 +41,7 @@ class App extends StatelessWidget {
             builder: (context, child) {
               return BlocListener<AuthCubit, Resource>(
                 listener: (_, state) {
-                  if (state is Success<AuthState>) {
+                  if (state is RSuccess<AuthState>) {
                     switch (state.data) {
                       case AuthStateAuthenticated _:
                         _goRouter.go('/home');

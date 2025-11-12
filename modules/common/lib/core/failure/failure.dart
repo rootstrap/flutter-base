@@ -1,11 +1,7 @@
-sealed class Failure {
+sealed class Failure implements Exception {
   String? message;
 
   Failure(this.message);
-}
-
-class Exception extends Failure {
-  Exception([String? message]) : super(message);
 }
 
 class ConnectionFailure extends Failure {

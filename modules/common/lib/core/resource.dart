@@ -1,15 +1,35 @@
-sealed class Resource {}
+class Resource<T> {
+  RState? state;
+  T? data;
+  Exception? exception;
 
-class Loading extends Resource {}
+  Resource({this.state, this.data, this.exception});
 
-class Error<E> extends Resource {
-  final E? exception;
+  RSuccess<T> isSuccess(T data, {Exception? exception}) =>
+      RSuccess<T>(data: data);
 
-  Error({this.exception});
+  RLoading<T> isLoading() => RLoading<T>(data: data);
+
+  RError<T> isError({Exception? exception}) => RError<T>(
+        exception: exception,
+        data: data,
+      );
 }
 
-class Success<T> extends Resource {
-  final T data;
+class RLoading<T> extends Resource<T> {
+  RLoading({super.state = RState.loading, super.data});
+}
 
-  Success(this.data);
+class RSuccess<T> extends Resource<T> {
+  RSuccess({super.state = RState.success, required super.data});
+}
+
+class RError<T> extends Resource<T> {
+  RError({super.state = RState.error, super.data, required super.exception});
+}
+
+enum RState {
+  loading,
+  success,
+  error;
 }

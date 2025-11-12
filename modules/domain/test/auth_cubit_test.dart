@@ -18,9 +18,9 @@ void main() {
     test('emits AuthStateAuthenticated when isLogin is called', () {
       cubit.isLogin();
 
-      expect(cubit.state, isA<Success<AuthState>>());
+      expect(cubit.state, isA<RSuccess<AuthState>>());
 
-      final successState = cubit.state as Success<AuthState>;
+      final successState = cubit.state as RSuccess<AuthState>;
 
       expect(successState.data, isA<AuthStateAuthenticated>());
     });
@@ -28,9 +28,9 @@ void main() {
     test('emits AuthStateUnauthenticated when isLogOut is called', () {
       cubit.isLogOut();
 
-      expect(cubit.state, isA<Success<AuthState>>());
+      expect(cubit.state, isA<RSuccess<AuthState>>());
 
-      final successState = cubit.state as Success<AuthState>;
+      final successState = cubit.state as RSuccess<AuthState>;
 
       expect(successState.data, isA<AuthStateUnauthenticated>());
     });
@@ -38,9 +38,9 @@ void main() {
     test('emits AuthStateUnknown when isUnknown is called', () {
       cubit.isUnknown();
 
-      expect(cubit.state, isA<Success<AuthState>>());
+      expect(cubit.state, isA<RSuccess<AuthState>>());
 
-      final successState = cubit.state as Success<AuthState>;
+      final successState = cubit.state as RSuccess<AuthState>;
 
       expect(successState.data, isA<AuthStateUnknown>());
     });

@@ -39,7 +39,6 @@ dependencies:
   equatable: ^2.0.5
   firebase_core: ^3.13.0
   url_strategy: ^0.2.0
-  flutter_dotenv: ^5.2.1
   flutter_localizations:
     sdk: flutter
   domain:
@@ -49,18 +48,9 @@ dependencies:
   data:
     path: ../modules/data
 
-  # Remove example dependencies
-  example_data:
-    path: ../example/example_data
-  example_domain:
-    path: ../example/example_domain
-  example_presentation:
-    path: ../example/example_presentation
-
   http: ^1.5.0
   melos: ^3.4.0
   dev: ^1.0.0
-  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   bloc_test: ^9.0.2
@@ -84,8 +74,7 @@ flutter:
   # Remove example assets.
   assets:
     - assets/images/
-    # remove example suffix
-    - env/.env.example
+    - env/
   fonts:
     - family: Roboto Black
       fonts:

@@ -1,4 +1,3 @@
-import 'package:common/core/failure/failure.dart';
 import 'package:common/core/result_type.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/repositories/auth_repository.dart';

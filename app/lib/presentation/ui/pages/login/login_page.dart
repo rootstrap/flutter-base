@@ -65,7 +65,7 @@ class _Loading extends StatelessWidget {
     return BlocBuilder<AuthCubit, Resource>(
       builder: (context, state) {
         return LoadingScreen(
-          isLoading: state is Loading,
+          isLoading: state is RLoading,
         );
       },
     );
