@@ -1,3 +1,4 @@
+import 'package:app/presentation/themes/local_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -45,7 +46,7 @@ class CustomNetworkImage extends StatelessWidget {
             decoration: BoxDecoration(boxShadow: [
               if ((shadow ?? false))
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: _shadowOpacity),
+                  color: Colors.black.shadow(_shadowOpacity),
                   spreadRadius: 0,
                   blurRadius: _blurRadius,
                   offset: const Offset(5, 5),
@@ -62,7 +63,7 @@ class CustomNetworkImage extends StatelessWidget {
             decoration: BoxDecoration(boxShadow: [
               if ((shadow ?? false))
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: _shadowOpacity),
+                  color: Colors.black.shadow(_shadowOpacity),
                   spreadRadius: 0,
                   blurRadius: _blurRadius,
                   offset: const Offset(5, 5),

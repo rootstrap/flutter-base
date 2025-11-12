@@ -8,7 +8,7 @@ class LightThemeColors implements ThemeColors {
   /// 100: onPrimary
   @override
   // TODO: implement primary
-  MaterialColor get primary => const MaterialColor(40, {
+  MaterialColor get primary => const MaterialColor(0xFF6750A4, {
         0: Color(0xFF000000),
         10: Color(0xFF21005D), // Default Bottom navigation bar labels
         20: Color(0xFFF0524D),
@@ -30,7 +30,7 @@ class LightThemeColors implements ThemeColors {
   /// 100: onSecondary
   @override
   // TODO: implement secondary
-  MaterialColor get secondary => const MaterialColor(40, {
+  MaterialColor get secondary => const MaterialColor(0xFF625B71, {
         0: Color(0xFF000000),
         10: Color(0xFF1D192B),
         20: Color(0xFFF0524D),
@@ -52,7 +52,7 @@ class LightThemeColors implements ThemeColors {
   /// 100: onTertiary
   @override
   // TODO: implement tertiary
-  MaterialColor get tertiary => const MaterialColor(40, {
+  MaterialColor get tertiary => const MaterialColor(0xFF7D5260, {
         0: Color(0xFF000000),
         10: Color(0xFF31111D),
         20: Color(0xFFF0524D),
@@ -74,7 +74,7 @@ class LightThemeColors implements ThemeColors {
   /// 100: onError
   @override
   // TODO: implement error
-  MaterialColor get error => const MaterialColor(40, {
+  MaterialColor get error => const MaterialColor(0xFFB3261E, {
         0: Color(0xFF000000),
         10: Color(0xFF410E0B),
         20: Color(0xFFF0524D),
@@ -95,7 +95,7 @@ class LightThemeColors implements ThemeColors {
   /// 99: background / surface
   @override
   // TODO: implement neutral
-  MaterialColor get neutral => const MaterialColor(40, {
+  MaterialColor get neutral => const MaterialColor(0xFFFFFFFF, {
         0: Color(0xFFFFFFFF), // Default Shadow
         10: Color(0xFFFFFFFF), // Default Text color
         20: Color(0xFFFFFFFF),
@@ -117,7 +117,7 @@ class LightThemeColors implements ThemeColors {
   /// 90: surfaceVariant
   @override
   // TODO: implement neutralVariant
-  MaterialColor get neutralVariant => const MaterialColor(40, {
+  MaterialColor get neutralVariant => const MaterialColor(0xFFF0524D, {
         0: Color(0xFF000000),
         10: Color(0xFF49454F),
         20: Color(0xFFF0524D),

@@ -251,6 +251,14 @@ abstract class LocalTheme {
 }
 
 extension ColorShadow on Color {
+  /// Returns a color with the specified shadow opacity.
+  /// If no opacity is specified, it defaults to 1.0 (fully opaque).
+  /// @param opacity value between 0.0 and 1.0
+  Color shadow(double opacity) {
+    assert(opacity >= 0.0 && opacity <= 1.0);
+    return withValues(alpha: opacity);
+  }
+
   Color variant(int variant) {
     try {
       return (this as MaterialColor)[variant] ?? this;
