@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 
 class LoadingScreen extends StatelessWidget {
-  final bool isLoading;
   final Color? color;
 
   const LoadingScreen({
     super.key,
-    required this.isLoading,
     this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      child: isLoading
-          ? Container(
-              color: Colors.transparent,
-              child: Center(
-                child: SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(
-                    color: color,
-                  ),
-                ),
-              ),
-            )
-          : const SizedBox.shrink(),
+    return Container(
+      color: Theme.of(context).colorScheme.primaryContainer.withAlpha(50),
+      child: Center(
+        child: SizedBox(
+          width: 24,
+          height: 24,
+          child: CircularProgressIndicator(
+            color: color,
+          ),
+        ),
+      ),
     );
   }
 }

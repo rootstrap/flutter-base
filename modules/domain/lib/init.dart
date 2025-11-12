@@ -5,11 +5,11 @@ import 'package:get_it/get_it.dart';
 
 class DomainInit {
   static Future<void> initialize(GetIt getIt) async {
-    //Cubits
-    getIt.registerSingleton(AppCubit(getIt()));
-    getIt.registerSingleton(AuthCubit());
-
     //Services
-    getIt.registerLazySingleton(() => AuthService(getIt(), getIt()));
+    getIt.registerLazySingleton(() => AuthService(getIt()));
+    
+    //Global Cubits
+    getIt.registerSingleton(AppCubit(getIt()));
+    getIt.registerSingleton(AuthCubit(getIt()));
   }
 }
