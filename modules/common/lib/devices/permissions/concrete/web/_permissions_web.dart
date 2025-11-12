@@ -6,29 +6,29 @@ class AppPermissions extends PermissionManager {
   Future<AppPermissionStatus> requestCameraPermission() async {
     final permission =
         await html.window.navigator.permissions?.query({"name": "camera"});
-    if (_permissionStatus(permission) != AppPermissionStatus.GRANTED) {
+    if (_permissionStatus(permission) != AppPermissionStatus.granted) {
       await html.window.navigator.getUserMedia(video: true);
       final check = await html.window.navigator.permissions
           ?.query({"request": "", "name": "camera"});
       return _permissionStatus(check);
     }
-    return AppPermissionStatus.GRANTED;
+    return AppPermissionStatus.granted;
   }
 
   @override
   Future<AppPermissionStatus> requestGalleryPermission() async {
-    return AppPermissionStatus.GRANTED;
+    return AppPermissionStatus.granted;
   }
 
   @override
   Future<AppPermissionStatus> requestNotificationPermission() async {
     //TODO...
-    return AppPermissionStatus.DENIED;
+    return AppPermissionStatus.denied;
   }
 
   AppPermissionStatus _permissionStatus(html.PermissionStatus? permission) {
     return (permission?.state ?? "denied") == "granted"
-        ? AppPermissionStatus.GRANTED
-        : AppPermissionStatus.DENIED;
+        ? AppPermissionStatus.granted
+        : AppPermissionStatus.denied;
   }
 }

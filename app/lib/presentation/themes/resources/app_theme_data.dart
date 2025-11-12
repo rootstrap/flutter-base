@@ -28,12 +28,10 @@ class AppThemeData {
         onError: palette.error.v100,
         errorContainer: palette.error.v90,
         onErrorContainer: palette.error.v10,
-        background: palette.neutral.v99,
-        onBackground: palette.neutral.v10,
         surface: palette.neutral.v99,
         onSurface: palette.neutral.v10,
-        surfaceVariant: palette.neutralVariant.v90,
         onSurfaceVariant: palette.neutralVariant.v30,
+        surfaceContainerHighest: palette.neutralVariant.v90,
         outline: palette.neutralVariant.v50,
         outlineVariant: palette.neutralVariant.v80,
         shadow: palette.neutral.v0,
@@ -44,50 +42,38 @@ class AppThemeData {
 }
 
 abstract class ThemeColors {
-  /**
-   * 40: primary
-   * 100: onPrimary
-   * 90: primaryContainer
-   * 10: onPrimaryContainer
-   * **/
+  /// 40: primary
+  /// 100: onPrimary
+  /// 90: primaryContainer
+  /// 10: onPrimaryContainer
   abstract final MaterialColor primary;
 
-  /**
-   * 40: secondary
-   * 100: onSecondary
-   * 90: secondaryContainer
-   * 10: onSecondaryContainer
-   * **/
+  /// 40: secondary
+  /// 100: onSecondary
+  /// 90: secondaryContainer
+  /// 10: onSecondaryContainer
   abstract final MaterialColor secondary;
 
-  /**
-   * 40: tertiary
-   * 100: onTertiary
-   * 90: tertiaryContainer
-   * 10: onTertiaryContainer
-   * **/
+  /// 40: tertiary
+  /// 100: onTertiary
+  /// 90: tertiaryContainer
+  /// 10: onTertiaryContainer
   abstract final MaterialColor tertiary;
 
-  /**
-   * 40: error
-   * 100: onError
-   * 90: errorContainer
-   * 10: onErrorContainer
-   * **/
+  /// 40: error
+  /// 100: onError
+  /// 90: errorContainer
+  /// 10: onErrorContainer
   abstract final MaterialColor error;
 
-  /**
-   * 0: shadow
-   * 99: background / surface
-   * 10: onBackground / onSurface
-   * **/
+  /// 0: shadow
+  /// 99: background / surface
+  /// 10: onBackground / onSurface
   abstract final MaterialColor neutral;
 
-  /**
-   * 90: surfaceVariant
-   * 30: onSurfaceVariant
-   * 50: outline
-   * 80: outlineVariant
-   * **/
+  /// 90: surfaceVariant
+  /// 30: onSurfaceVariant
+  /// 50: outline
+  /// 80: outlineVariant
   abstract final MaterialColor neutralVariant;
 }

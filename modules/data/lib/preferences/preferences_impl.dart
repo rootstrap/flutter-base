@@ -43,4 +43,9 @@ class PreferencesImpl extends Preferences {
     if (token == null) return _pref.remove(_tokenKey);
     return _pref.setString(_tokenKey, token);
   }
+
+  @override
+  Future<void> clear() {
+    return _pref.clear();
+  }
 }

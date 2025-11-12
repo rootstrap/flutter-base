@@ -1,6 +1,6 @@
 import 'package:domain/bloc/app/app_cubit.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
-import 'package:domain/services/AuthService.dart';
+import 'package:domain/services/auth_service.dart';
 import 'package:get_it/get_it.dart';
 
 class DomainInit {

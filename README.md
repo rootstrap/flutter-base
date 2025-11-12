@@ -171,7 +171,11 @@ For more information you can check the [docs](https://dartcode.org/docs/launch-c
 - [intl](https://pub.dev/packages/intl) and [intl_utils](https://pub.dev/packages/intl_utils) for
   localization.
 - [flutter_svg](https://pub.dev/packages/flutter_svg) Svg Image loader.
-
+- Auto generate translations files with [intl_utils](https://pub.dev/packages/intl_utils).
+ 
+-  ```text
+         dart run intl_utils:generate
+    ```
 ## Code Quality Standards
 
 In order to meet the required code quality standards, this project is following

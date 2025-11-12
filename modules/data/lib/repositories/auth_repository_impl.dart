@@ -28,6 +28,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> logout() async {
-    _preferences.setToken(null);
+    _preferences.clear();
   }
 }

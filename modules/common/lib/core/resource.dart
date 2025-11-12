@@ -1,5 +1,3 @@
-import 'package:common/core/failure/failure.dart';
-
 sealed class Resource {}
 
 class Loading extends Resource {}

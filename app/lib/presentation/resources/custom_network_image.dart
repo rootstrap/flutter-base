@@ -1,3 +1,4 @@
+import 'package:app/presentation/themes/local_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,7 +19,7 @@ class CustomNetworkImage extends StatelessWidget {
   static const double _shadowOpacity = 0.2;
 
   const CustomNetworkImage({
-    Key? key,
+    super.key,
     this.imageUrl,
     this.shadow,
     this.width,
@@ -29,7 +30,7 @@ class CustomNetworkImage extends StatelessWidget {
     this.loaderImage,
     this.svgIconColor,
     this.imageUrlError,
-  }) : super(key: key);
+  });
 
   bool isSvg(String? url) {
     if (url == null) {
@@ -45,7 +46,7 @@ class CustomNetworkImage extends StatelessWidget {
             decoration: BoxDecoration(boxShadow: [
               if ((shadow ?? false))
                 BoxShadow(
-                  color: Colors.black.withOpacity(_shadowOpacity),
+                  color: Colors.black.shadow(_shadowOpacity),
                   spreadRadius: 0,
                   blurRadius: _blurRadius,
                   offset: const Offset(5, 5),
@@ -55,14 +56,14 @@ class CustomNetworkImage extends StatelessWidget {
               imageUrl ?? "",
               width: width,
               height: height,
-              color: svgIconColor,
+              colorFilter: color != null ? ColorFilter.mode(svgIconColor!, BlendMode.srcIn) : null,
             ),
           )
         : Container(
             decoration: BoxDecoration(boxShadow: [
               if ((shadow ?? false))
                 BoxShadow(
-                  color: Colors.black.withOpacity(_shadowOpacity),
+                  color: Colors.black.shadow(_shadowOpacity),
                   spreadRadius: 0,
                   blurRadius: _blurRadius,
                   offset: const Offset(5, 5),

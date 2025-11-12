@@ -10,6 +10,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+import 'env/env_config.dart';
+
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialize();
@@ -27,6 +29,6 @@ Future<void> initialize() async {
   await DomainInit.initialize(getIt);
 
   // Example Module init
-  await ExampleDomainInit.initialize(getIt);
   await ExampleDataInit.initialize(getIt);
+  await ExampleDomainInit.initialize(getIt);
 }

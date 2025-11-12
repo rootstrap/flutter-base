@@ -1,4 +1,4 @@
-import 'package:example_domain/services/ProductService.dart';
+import 'package:example_domain/services/product_service.dart';
 import 'package:get_it/get_it.dart';
 import 'bloc/get_products/get_products_cubit.dart';
 
