@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 
 class DomainInit {
   static Future<void> initialize(GetIt getIt) async {
-    //Services (with dependencies to repositories)
+    //Services
     getIt.registerLazySingleton(() => AuthService(getIt()));
     
     //Global Cubits

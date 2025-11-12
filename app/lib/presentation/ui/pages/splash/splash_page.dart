@@ -11,7 +11,7 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   /// Given this is a global cubit, we can access it directly from getIt
-  /// other wise use context.read<AuthCubit>() to read the Cubit under that context
+  /// otherwise use context.read<AuthCubit>() to read the Cubit under that context
   AuthCubit get _authCubit => getIt();
 
   @override
