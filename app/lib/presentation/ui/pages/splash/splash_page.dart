@@ -1,5 +1,5 @@
 import 'package:app/main/init.dart';
-import 'package:domain/services/auth_service.dart';
+import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -10,12 +10,19 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  AuthService get _authService => getIt();
+  /// Given this is a global cubit, we can access it directly from getIt
+  /// other wise use context.read<AuthCubit>() to read the Cubit under that context
+  AuthCubit get _authCubit => getIt();
 
   @override
   void initState() {
     super.initState();
-    _authService.onValidate();
+
+    /// Add post frame callback to avoid calling bloc methods during build
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(seconds: 1));
+      _authCubit.onValidate();
+    });
   }
 
   @override

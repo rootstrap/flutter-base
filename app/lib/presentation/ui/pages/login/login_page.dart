@@ -5,7 +5,6 @@ import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
-import 'package:domain/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../custom/environment_selector.dart';
 
 class LoginPage extends StatelessWidget {
-  AuthService get _authService => getIt();
-
   const LoginPage({super.key});
+
+  AuthCubit get _authCubit => getIt();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +28,7 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const _Loading(),
                 const AppThemeSwitch(),
                 SizedBox(height: spacing.m),
                 SizedBox(
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
-                      _authService.logInWithCredentials(
+                      _authCubit.login(
                         'Rootstrap',
                         '12345678',
                       );
@@ -51,7 +51,6 @@ class LoginPage extends StatelessWidget {
             ),
           ),
         ),
-        const _Loading(),
       ],
     );
   }
