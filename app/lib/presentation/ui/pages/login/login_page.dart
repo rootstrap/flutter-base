@@ -1,6 +1,5 @@
 import 'package:app/main/init.dart';
 import 'package:app/presentation/resources/resources.dart';
-import 'package:app/presentation/themes/app_themes.dart';
 import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:common/core/resource.dart';

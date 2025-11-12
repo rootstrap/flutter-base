@@ -1,3 +1,4 @@
+import 'package:app/presentation/ui/custom/loading_screen.dart';
 import 'package:common/core/resource.dart';
 import 'package:flutter/material.dart';
 import 'package:domain/bloc/app/app_cubit.dart';
@@ -10,13 +11,10 @@ import 'package:app/presentation/themes/app_themes.dart';
 import 'package:app/presentation/utils/lang_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:go_router/go_router.dart';
 
 import 'init.dart';
 
 class App extends StatelessWidget {
-  GoRouter get _goRouter => Routers.authRouter;
-
   const App({super.key});
 
   @override
@@ -38,23 +36,14 @@ class App extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            builder: (context, child) {
-              return BlocListener<AuthCubit, Resource>(
-                listener: (_, state) {
-                  if (state is RSuccess<AuthState>) {
-                    switch (state.data) {
-                      case AuthStateAuthenticated _:
-                        _goRouter.go('/home');
-                      case AuthStateUnauthenticated _:
-                        _goRouter.go('/login');
-                      case _:
-                    }
-                  }
-                },
-                child: child,
-              );
-            },
-            routerConfig: _goRouter,
+            builder: (context, child) =>
+                child ??
+                const Material(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+            routerConfig: Routes.router,
           );
         },
       ),

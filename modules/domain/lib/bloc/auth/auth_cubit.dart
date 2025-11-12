@@ -31,6 +31,9 @@ class AuthCubit extends BaseCubit<AuthState> {
     isLogOut();
   }
 
+  bool isLoggedIn() =>
+      state is RSuccess && (state as RSuccess).data is AuthStateAuthenticated;
+
   void isLogin() => isSuccess(AuthStateAuthenticated());
 
   void isLogOut() => isSuccess(AuthStateUnauthenticated());
