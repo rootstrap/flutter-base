@@ -1,39 +1,39 @@
-sealed class ResultType<T, E> {}
+sealed class ResultType<T> {}
 
-class TSuccess<T, E> extends ResultType<T, E> {
+class TSuccess<T> extends ResultType<T> {
   final T data;
 
   TSuccess(this.data);
 }
 
-class TError<T, E> extends ResultType<T, E> {
-  final E? error;
+class TError<T> extends ResultType<T> {
+  final Exception? error;
 
   TError(this.error);
 }
 
-extension ResultTypeExtension<T, E> on ResultType<T, E> {
-  ResultType<V, B> map<V, B>({
-    required V Function(T data) success,
-    required B? Function(E? error) error,
+extension ResultTypeExtension<T> on ResultType<T> {
+  ResultType<T> map({
+    required T Function(T data) success,
+    required Exception? Function(Exception? error) error,
   }) {
     return switch (this) {
-      TSuccess<T, E> e => TSuccess(success(e.data)),
-      TError<T, E> e => TError(error(e.error)),
+      TSuccess<T> e => TSuccess(success(e.data)),
+      TError e => TError(error(e.error)),
     };
   }
 
-  ResultType<V, E> mapSuccess<V>(V Function(T data) success) {
+  ResultType<T> mapSuccess(Function(T data) success) {
     return switch (this) {
-      TSuccess<T, E> e => TSuccess(success(e.data)),
-      TError<T, E> e => TError(e.error),
+      TSuccess<T> e => TSuccess(success(e.data)),
+      TError e => TError(e.error),
     };
   }
 
-  ResultType<T, B> mapError<B>(B? Function(E? error) error) {
+  ResultType<T> mapError(Function(Exception? error) error) {
     return switch (this) {
-      TSuccess<T, E> e => TSuccess(e.data),
-      TError<T, E> e => TError(error(e.error)),
+      TSuccess<T> e => TSuccess(e.data),
+      TError e => TError(e.error),
     };
   }
 }

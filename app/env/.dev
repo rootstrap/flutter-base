@@ -1,0 +1,3 @@
+API_URL=https://dummyjson.com
+SECRET_KEY=your_secret_key_here
+ENV=dev
