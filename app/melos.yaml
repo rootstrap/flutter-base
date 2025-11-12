@@ -5,9 +5,6 @@ packages:
   - modules/*
 
 scripts:
-  run:web:
-    exec: cd app && flutter run -t lib/main.dart --dart-define-from-file=env/.dev -d chrome
-    description: Run the app in development mode for web.
   lint:all:
     run: melos run analyze && melos run format
     description: Run all static analysis checks.

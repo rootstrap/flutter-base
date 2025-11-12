@@ -18,17 +18,14 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          appBar: AppBar(),
-          backgroundColor: context.theme.colorScheme.surface,
-          body: Padding(
+    return Scaffold(
+      body: Stack(
+        children: [
+          Padding(
             padding: EdgeInsets.all(spacing.m),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const _Loading(),
                 const AppThemeSwitch(),
                 SizedBox(height: spacing.m),
                 SizedBox(
@@ -50,8 +47,9 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ],
+          const _Loading(),
+        ],
+      ),
     );
   }
 }
@@ -63,8 +61,15 @@ class _Loading extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, Resource>(
       builder: (context, state) {
-        return LoadingScreen(
-          isLoading: state is RLoading,
+        if (state is! RLoading) {
+          return const SizedBox.shrink();
+        }
+
+        return Container(
+          color: Colors.black.withAlpha(50),
+          width: double.maxFinite,
+          height: double.maxFinite,
+          child: const LoadingScreen(),
         );
       },
     );
