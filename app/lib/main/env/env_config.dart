@@ -1,3 +1,4 @@
+import 'package:domain/env/env_config.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 enum Flavor {
@@ -27,7 +28,6 @@ class Environment {
 }
 
 class FlavorValues {
-
   FlavorValues();
 }
 
@@ -47,7 +47,7 @@ class FlavorConfig {
       flavor.toString(),
       values,
     );
-    switch(flavor) {
+    switch (flavor) {
       case Flavor.dev:
         EnvConfig.env = EnvConfig.kDevEnv;
         break;

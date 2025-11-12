@@ -74,6 +74,7 @@ flutter:
   # Remove example assets.
   assets:
     - assets/images/
+    - env/
   fonts:
     - family: Roboto Black
       fonts:

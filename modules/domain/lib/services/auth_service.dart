@@ -1,4 +1,3 @@
-import 'package:common/core/failure/failure.dart';
 import 'package:common/core/result_type.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/repositories/auth_repository.dart';
@@ -13,9 +12,9 @@ class AuthService {
     _sessionCubit.isLoading();
     final result = await _authRepository.login(username, password);
     switch (result) {
-      case TSuccess<void, Failure> _:
+      case TSuccess<void> _:
         _sessionCubit.isLogin();
-      case TError<void, Failure> _:
+      case TError<void> _:
         _sessionCubit.isError(result.error);
     }
   }

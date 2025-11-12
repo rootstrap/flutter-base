@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:common/core/failure/failure.dart';
 import 'package:common/core/result_type.dart';
 import 'package:data/preferences/preferences.dart';
 import 'package:domain/repositories/auth_repository.dart';
@@ -17,7 +16,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<ResultType<void, Failure>> login(
+  Future<ResultType<void>> login(
     String username,
     String password,
   ) async {
