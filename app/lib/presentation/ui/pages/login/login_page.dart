@@ -1,4 +1,5 @@
 import 'package:app/main/init.dart';
+import 'package:app/presentation/navigation/routers.dart';
 import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 import 'package:app/presentation/ui/custom/loading_screen.dart';
@@ -32,10 +33,8 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
-                      _authCubit.login(
-                        'Rootstrap',
-                        '12345678',
-                      );
+                      Routes.signup.nav();
+                      //_authCubit.login('Rootstrap', '12345678');
                     },
                   ),
                 ),

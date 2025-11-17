@@ -5,6 +5,7 @@ import 'package:app/presentation/ui/pages/splash/splash_page.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/bloc/auth/auth_state.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,7 +14,8 @@ enum Routes {
   login,
   signup,
   app,
-  home;
+  home,
+  placeholder;
 
   String get path => '/$name';
   String get subPath => name;
@@ -41,59 +43,60 @@ class Routers {
               if (state is RSuccess) {
                 switch (state.data) {
                   case AuthStateAuthenticated _:
+                    debugPrint('User is authenticated');
                     Routes.app.nav();
                     break;
                   case AuthStateUnauthenticated _:
+                    debugPrint('User is unauthenticated');
                     Routes.auth.nav();
                     break;
                   case _:
                 }
               }
             },
-            child: const SplashPage(instant: true),
+            child: const SplashPage(),
           );
         },
         routes: [
-          GoRoute(
-            name: Routes.auth.name,
-            path: Routes.auth.path,
+          ShellRoute(
+            builder: (context, state, child) => child,
             redirect: (context, state) {
               if (context.read<AuthCubit>().isLoggedIn()) {
-                return '${Routes.app.path}${Routes.home.path}';
+                return Routes.app.path;
               }
-
-              /// Continue to auth routes
               return null;
             },
             routes: [
               GoRoute(
-                name: Routes.login.name,
-                path: Routes.login.subPath,
+                name: Routes.auth.name,
+                path: Routes.auth.path,
                 builder: (context, state) => const LoginPage(),
               ),
               GoRoute(
                 name: Routes.signup.name,
-                path: Routes.signup.subPath,
+                path: '${Routes.auth.path}${Routes.signup.path}',
                 builder: (context, state) => const SignUpPage(),
               ),
             ],
           ),
-          GoRoute(
-            name: Routes.app.name,
-            path: Routes.app.path,
+          ShellRoute(
+            builder: (context, state, child) => child,
             redirect: (context, state) {
               if (!context.read<AuthCubit>().isLoggedIn()) {
-                return '${Routes.auth.path}${Routes.login.path}';
+                return Routes.auth.path;
               }
-
-              /// Continue to app routes
               return null;
             },
             routes: [
               GoRoute(
-                name: Routes.home.name,
-                path: Routes.home.subPath,
+                name: Routes.app.name,
+                path: Routes.app.path,
                 builder: (context, state) => const HomePage(),
+              ),
+              GoRoute(
+                name: Routes.placeholder.name,
+                path: "${Routes.app.path}${Routes.placeholder.path}",
+                builder: (context, state) => const Placeholder(),
               ),
             ],
           ),
