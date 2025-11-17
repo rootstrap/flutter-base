@@ -3,7 +3,8 @@ import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+  final bool instant;
+  const SplashPage({super.key, this.instant = true});
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -20,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
 
     /// Add post frame callback to avoid calling bloc methods during build
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: widget.instant ? 0 : 2));
       _authCubit.onValidate();
     });
   }
