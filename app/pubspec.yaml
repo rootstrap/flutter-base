@@ -54,6 +54,7 @@ dependencies:
   flutter_dotenv: ^5.2.1
   flutter_web_plugins:
     sdk: flutter
+  app_links: ^6.4.1
 
 dev_dependencies:
   bloc_test: ^9.0.2

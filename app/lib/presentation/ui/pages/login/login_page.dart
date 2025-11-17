@@ -33,8 +33,7 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
-                      Routes.signup.nav();
-                      //_authCubit.login('Rootstrap', '12345678');
+                      _authCubit.login('Rootstrap', '12345678');
                     },
                   ),
                 ),

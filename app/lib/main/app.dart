@@ -8,11 +8,55 @@ import 'package:app/presentation/themes/app_themes.dart';
 import 'package:app/presentation/utils/lang_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:app_links/app_links.dart';
+import 'package:go_router/go_router.dart';
 import 'init.dart';
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({super.key});
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  late final GoRouter _router;
+  bool _isRouterReady = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initRouter();
+  }
+
+  Future<void> _initRouter() async {
+    String? initialLocation;
+    if (kIsWeb) {
+      final path = Uri.base.path;
+      if (path.isNotEmpty && path != '/') {
+        initialLocation = path;
+      }
+    } else {
+      final appLinks = AppLinks();
+      final initialUri = await appLinks.getInitialLink();
+      if (initialUri != null) {
+        initialLocation = initialUri.path;
+      }
+    }
+
+    debugPrint('App entry point: $initialLocation');
+
+    if (mounted) {
+      setState(() {
+        _router = Routes.init(
+          context,
+          initialLocation: initialLocation,
+        );
+        _isRouterReady = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,29 +65,35 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => getIt<AppCubit>()),
         BlocProvider(create: (_) => getIt<AuthCubit>()),
       ],
-      child: BlocBuilder<AppCubit, AppState>(
-        builder: (context, state) {
-          return MaterialApp.router(
-            theme: AppThemes.getAppTheme(state.themeType).data,
-            locale: LangExtensions.langLocale[state.appLang],
-            supportedLocales: LangExtensions.supportedLang,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            builder: (context, child) =>
-                child ??
-                const Material(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-            routerConfig: Routes.router,
-          );
-        },
-      ),
+      child: !_isRouterReady
+          ? const Material(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            )
+          : BlocBuilder<AppCubit, AppState>(
+              builder: (context, state) {
+                return MaterialApp.router(
+                  theme: AppThemes.getAppTheme(state.themeType).data,
+                  locale: LangExtensions.langLocale[state.appLang],
+                  supportedLocales: LangExtensions.supportedLang,
+                  localizationsDelegates: const [
+                    S.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  builder: (context, child) =>
+                      child ??
+                      const Material(
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                  routerConfig: _router,
+                );
+              },
+            ),
     );
   }
 }
