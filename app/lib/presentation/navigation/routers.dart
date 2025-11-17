@@ -1,3 +1,4 @@
+import 'package:app/main/init.dart';
 import 'package:app/presentation/ui/pages/home/home_page.dart';
 import 'package:app/presentation/ui/pages/login/login_page.dart';
 import 'package:app/presentation/ui/pages/sign_up/sign_up_page.dart';
@@ -42,7 +43,7 @@ class Routers {
   }) =>
       GoRouter(
         initialLocation: initialLocation ??
-            (context.read<AuthCubit>().isLoggedIn()
+            (getIt<AuthCubit>().isLoggedIn()
                 ? Routes.app.path
                 : Routes.auth.path),
         routes: [
@@ -56,7 +57,7 @@ class Routers {
                     switch (appState.data) {
                       case AuthStateAuthenticated _:
                         debugPrint('User is authenticated: ${state.fullPath}');
-                        if (state.fullPath?.contains(Routes.app.path) ??
+                        if (state.fullPath?.startsWith(Routes.app.path) ??
                             false) {
                           // Already navigating to app, do nothing
                           return;
@@ -67,7 +68,7 @@ class Routers {
                       case AuthStateUnauthenticated _:
                         debugPrint(
                             'User is unauthenticated: ${state.fullPath}');
-                        if (state.fullPath?.contains(Routes.auth.path) ??
+                        if (state.fullPath?.startsWith(Routes.auth.path) ??
                             false) {
                           // Already navigating to auth, do nothing
                           return;
@@ -90,7 +91,7 @@ class Routers {
                     name: Routes.auth.name,
                     path: Routes.auth.path,
                     redirect: (context, state) {
-                      if (context.read<AuthCubit>().isLoggedIn()) {
+                      if (getIt<AuthCubit>().isLoggedIn()) {
                         return Routes.app.path;
                       }
                       return null;
@@ -113,7 +114,7 @@ class Routers {
                     name: Routes.app.name,
                     path: Routes.app.path,
                     redirect: (context, state) {
-                      if (!context.read<AuthCubit>().isLoggedIn()) {
+                      if (!getIt<AuthCubit>().isLoggedIn()) {
                         return Routes.auth.path;
                       }
                       return null;
