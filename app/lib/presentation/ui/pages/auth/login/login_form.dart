@@ -119,19 +119,34 @@ class _LoginFormState extends State<LoginForm> {
           const Gap(Dimen.spacingM),
           BlocBuilder<AuthCubit, Resource>(
             builder: (context, state) {
-              return PrimaryButton(
-                label: S.of(context).ctaLogin,
-                onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    _authCubit.login(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-                  }
-                },
-                isEnabled: agreeToTerms,
-                isLoading: state is RLoading,
-                trailingIcon: const Icon(Icons.login),
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (state is RError) ...[
+                    Text(
+                      S.of(context).loginErrorInvalidCredentials,
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.error,
+                              ),
+                    ),
+                    const Gap(Dimen.spacingM),
+                  ],
+                  PrimaryButton(
+                    label: S.of(context).ctaLogin,
+                    onPressed: () {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        _authCubit.login(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                      }
+                    },
+                    isEnabled: agreeToTerms,
+                    isLoading: state is RLoading,
+                    trailingIcon: const Icon(Icons.login),
+                  )
+                ],
               );
             },
           ),

@@ -48,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "labelEmail": MessageLookupByLibrary.simpleMessage("Email"),
     "labelPassword": MessageLookupByLibrary.simpleMessage("Password"),
+    "loginErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Invalid email or password.",
+    ),
     "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
     "passwordInstructions": MessageLookupByLibrary.simpleMessage(
       "Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",

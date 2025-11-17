@@ -17,13 +17,30 @@ class PrimaryButton extends StatelessWidget {
     this.isLoading = false,
     this.leadingIcon,
     this.trailingIcon,
-  });
+  }) : assert(
+          leadingIcon == null || trailingIcon == null,
+          'Only one of leadingIcon or trailingIcon can be provided',
+        );
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed:  isLoading || !isEnabled ? null : onPressed,
-      child: isLoading
+    return ElevatedButton.icon(
+      style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+            minimumSize: WidgetStateProperty.all<Size>(
+              const Size(
+                double.infinity,
+                Dimen.buttonHeightM,
+              ),
+            ),
+          ),
+      onPressed: isLoading || !isEnabled ? null : onPressed,
+      icon: leadingIcon ?? trailingIcon ?? const SizedBox.shrink(),
+      iconAlignment: leadingIcon != null
+          ? IconAlignment.start
+          : trailingIcon != null
+              ? IconAlignment.end
+              : null,
+      label: isLoading
           ? SizedBox(
               width: Dimen.loadingSpinnerSizeS,
               height: Dimen.loadingSpinnerSizeS,
@@ -32,27 +49,7 @@ class PrimaryButton extends StatelessWidget {
                 strokeWidth: 2,
               ),
             )
-          : Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (leadingIcon != null)
-                  SizedBox(
-                    width: Dimen.loadingSpinnerSizeS,
-                    height: Dimen.loadingSpinnerSizeS,
-                    child: leadingIcon!,
-                  ),
-                const Spacer(),
-                Text(label),
-                const Spacer(),
-                if (trailingIcon != null)
-                  SizedBox(
-                    width: Dimen.loadingSpinnerSizeS,
-                    height: Dimen.loadingSpinnerSizeS,
-                    child: trailingIcon!,
-                  ),
-              ],
-            ),
+          : Text(label),
     );
   }
 }

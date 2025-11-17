@@ -18,15 +18,17 @@ class EnvironmentSelector extends StatelessWidget {
       DropdownMenuItem<String>(
         value: value,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: spacing.xs),
+          padding: const EdgeInsets.symmetric(horizontal: Dimen.spacingXs),
           child: Text(label, style: textStyle),
         ),
       );
 
   @override
   Widget build(BuildContext context) {
-    final textStyle =
-        Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary.v0);
+    final textStyle = Theme.of(context)
+        .textTheme
+        .bodyLarge
+        ?.copyWith(color: Theme.of(context).colorScheme.primary.v0);
 
     final items = <DropdownMenuItem<String>>[
       _item(EnvConfig.kDevEnv, 'Development', textStyle!),

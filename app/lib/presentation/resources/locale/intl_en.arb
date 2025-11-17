@@ -17,5 +17,6 @@
   "titleLogin": "Login",
   "titleLoginSubtitle": "Use your email and password to login to your account.",
   "errorEmailInvalid": "Please enter a valid email address.",
-  "errorPasswordWeak": "Password is too weak."
+  "errorPasswordWeak": "Password is too weak.",
+  "loginErrorInvalidCredentials": "Invalid email or password."
 }

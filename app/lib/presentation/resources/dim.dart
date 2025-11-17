@@ -19,4 +19,6 @@ class Dimen {
   static const spacingXl = 32.0;
   static const spacingXxl = 40.0;
   static const spacingXxxl = 48.0;
+
+  static const double buttonHeightM = 48.0;
 }

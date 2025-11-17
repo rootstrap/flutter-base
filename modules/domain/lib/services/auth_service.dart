@@ -7,7 +7,9 @@ class AuthService {
   AuthService(this._authRepository);
 
   Future<ResultType<void>> logInWithCredentials(
-          String username, String password) =>
+    String username,
+    String password,
+  ) =>
       _authRepository.login(username, password);
 
   bool isLoggedIn() => _authRepository.isLoggedIn();
