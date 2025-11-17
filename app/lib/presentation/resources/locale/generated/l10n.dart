@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,12 +57,7 @@ class S {
 
   /// `Flutter Target`
   String get appName {
-    return Intl.message(
-      'Flutter Target',
-      name: 'appName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Flutter Target', name: 'appName', desc: '', args: []);
   }
 
   /// `This website uses cookies`
@@ -72,12 +72,7 @@ class S {
 
   /// `Accept`
   String get cookiesAcceptCTA {
-    return Intl.message(
-      'Accept',
-      name: 'cookiesAcceptCTA',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Accept', name: 'cookiesAcceptCTA', desc: '', args: []);
   }
 
   /// `We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.`
@@ -102,12 +97,7 @@ class S {
 
   /// `Retry`
   String get retry {
-    return Intl.message(
-      'Retry',
-      name: 'retry',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
   }
 
   /// `Please try again later, we are\nworking to fix the issue.`
@@ -125,6 +115,96 @@ class S {
     return Intl.message(
       'Sorry we didn\'t find any product',
       name: 'sorryWeDidntFindAnyProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get ctaLogin {
+    return Intl.message('Login', name: 'ctaLogin', desc: '', args: []);
+  }
+
+  /// `Email`
+  String get labelEmail {
+    return Intl.message('Email', name: 'labelEmail', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get labelPassword {
+    return Intl.message('Password', name: 'labelPassword', desc: '', args: []);
+  }
+
+  /// `Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.`
+  String get passwordInstructions {
+    return Intl.message(
+      'Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.',
+      name: 'passwordInstructions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I agree to the Terms and Conditions`
+  String get labelAgreeToTerms {
+    return Intl.message(
+      'I agree to the Terms and Conditions',
+      name: 'labelAgreeToTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is required.`
+  String get errorEmailRequired {
+    return Intl.message(
+      'Email is required.',
+      name: 'errorEmailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required.`
+  String get errorPasswordRequired {
+    return Intl.message(
+      'Password is required.',
+      name: 'errorPasswordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get titleLogin {
+    return Intl.message('Login', name: 'titleLogin', desc: '', args: []);
+  }
+
+  /// `Use your email and password to login to your account.`
+  String get titleLoginSubtitle {
+    return Intl.message(
+      'Use your email and password to login to your account.',
+      name: 'titleLoginSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address.`
+  String get errorEmailInvalid {
+    return Intl.message(
+      'Please enter a valid email address.',
+      name: 'errorEmailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is too weak.`
+  String get errorPasswordWeak {
+    return Intl.message(
+      'Password is too weak.',
+      name: 'errorPasswordWeak',
       desc: '',
       args: [],
     );

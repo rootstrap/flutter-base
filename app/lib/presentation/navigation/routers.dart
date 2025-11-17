@@ -1,7 +1,7 @@
 import 'package:app/main/init.dart';
-import 'package:app/presentation/ui/pages/home/home_page.dart';
-import 'package:app/presentation/ui/pages/login/login_page.dart';
-import 'package:app/presentation/ui/pages/sign_up/sign_up_page.dart';
+import 'package:app/presentation/ui/pages/main/home/home_page.dart';
+import 'package:app/presentation/ui/pages/auth/login/login_page.dart';
+import 'package:app/presentation/ui/pages/auth/sign_up/sign_up_page.dart';
 import 'package:app/presentation/ui/pages/splash/splash_page.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
