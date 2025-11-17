@@ -8,8 +8,6 @@ class Dimen {
   static const loadingSpinnerSizeS = 16.0;
 
   static const double loginFormMaxWidth = 400.0;
-  static const double loginFormMaxHeight = 400.0;
-  static const double loginFormMinHeight = 200.0;
 
   static const spacingXxs = 2.0;
   static const spacingXs = 4.0;

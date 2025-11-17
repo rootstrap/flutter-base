@@ -1,4 +1,3 @@
-import 'package:app/main/init.dart';
 import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/ui/components/primary_button.dart';
@@ -17,13 +16,18 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  AuthCubit get _authCubit => getIt();
-
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool agreeToTerms = false;
 
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +54,6 @@ class _LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             controller: emailController,
             validator: (value) {
-              if (value == null || value.isEmpty) {
-                return S.of(context).errorEmailRequired;
-              }
-
               if (!FormValidator.isEmail(value)) {
                 return S.of(context).errorEmailInvalid;
               }
@@ -69,10 +69,6 @@ class _LoginFormState extends State<LoginForm> {
             obscureText: true,
             controller: passwordController,
             validator: (value) {
-              if (value == null || value.isEmpty) {
-                return S.of(context).errorPasswordRequired;
-              }
-
               if (!FormValidator.isStrongPassword(value)) {
                 return S.of(context).errorPasswordWeak;
               }
@@ -135,11 +131,12 @@ class _LoginFormState extends State<LoginForm> {
                   PrimaryButton(
                     label: S.of(context).ctaLogin,
                     onPressed: () {
-                      if (_formKey.currentState?.validate() ?? false) {
-                        _authCubit.login(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        );
+                      if ((_formKey.currentState?.validate() ?? false) &&
+                          agreeToTerms) {
+                        context.read<AuthCubit>().login(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                       }
                     },
                     isEnabled: agreeToTerms,
