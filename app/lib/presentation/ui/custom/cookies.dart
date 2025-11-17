@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:common/devices/platform/abstract/platform_info.dart';
 import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:app/presentation/resources/resources.dart';
+import 'package:gap/gap.dart';
 
 class Cookies extends StatefulWidget {
   final Widget child;
@@ -57,7 +58,7 @@ class _CookiesState extends State<Cookies> {
                       ),
                       child: Card(
                         child: Container(
-                          padding: EdgeInsets.all(spacing.s),
+                          padding: const EdgeInsets.all(Dimen.spacingS),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -68,13 +69,13 @@ class _CookiesState extends State<Cookies> {
                                 style:
                                     Theme.of(context).textTheme.headlineMedium,
                               ),
-                              SizedBox(height: spacing.s),
+                              const Gap(Dimen.spacingS),
                               SelectableText(
                                 S.of(context).cookiesBody,
                                 style:
                                     Theme.of(context).textTheme.headlineMedium,
                               ),
-                              SizedBox(height: spacing.s),
+                              const Gap(Dimen.spacingS),
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: ElevatedButton(

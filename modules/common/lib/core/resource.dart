@@ -26,6 +26,8 @@ class RSuccess<T> extends Resource<T> {
 
 class RError<T> extends Resource<T> {
   RError({super.state = RState.error, super.data, required super.exception});
+
+  get message => exception?.toString();
 }
 
 enum RState {

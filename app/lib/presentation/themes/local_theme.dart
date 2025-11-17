@@ -59,7 +59,10 @@ abstract class LocalTheme {
         // i.e: elevatedButton
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            disabledBackgroundColor: colors.primary,
+            disabledBackgroundColor: colors.primary.withAlpha(90),
+            disabledForegroundColor: colors.onPrimary.withAlpha(90),
+            disabledIconColor: colors.onPrimary.withAlpha(90),
+            disabledMouseCursor: SystemMouseCursors.forbidden,
             backgroundColor: colors.primary.v40,
             textStyle: buttonText,
             foregroundColor: colors.onPrimary.v10,
@@ -71,6 +74,16 @@ abstract class LocalTheme {
                   BorderRadius.all(Radius.circular(themeData.borderRadius)),
             ),
           ),
+        ),
+        cardTheme: CardThemeData(
+          color: colors.surface,
+          shadowColor: colors.onSurface.shadow(0.2),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(themeData.borderRadius),
+            ),
+          ),
+          elevation: 10,
         ),
       );
 

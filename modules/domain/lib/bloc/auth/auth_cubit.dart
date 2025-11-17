@@ -8,10 +8,15 @@ class AuthCubit extends BaseCubit<AuthState> {
   final AuthService _authService;
   AuthCubit(this._authService) : super(RSuccess(data: AuthStateUnknown()));
 
-  Future<void> login(String username, String password) async {
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
     isLoading();
-    final authResult =
-        await _authService.logInWithCredentials(username, password);
+    final authResult = await _authService.logInWithCredentials(
+      email,
+      password,
+    );
 
     authResult
       ..mapSuccess((_) => isLogin())

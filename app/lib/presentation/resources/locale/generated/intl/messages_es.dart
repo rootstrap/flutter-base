@@ -22,18 +22,50 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
-        "cookiesAcceptCTA": MessageLookupByLibrary.simpleMessage("Accept"),
-        "cookiesBody": MessageLookupByLibrary.simpleMessage(
-            "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services."),
-        "cookiesTitle":
-            MessageLookupByLibrary.simpleMessage("This website uses cookies"),
-        "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
-        "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
-            MessageLookupByLibrary.simpleMessage(
-                "Please try again later, we are\nworking to fix the issue."),
-        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-        "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
-            "Sorry we didn\'t find any product")
-      };
+    "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
+    "cookiesAcceptCTA": MessageLookupByLibrary.simpleMessage("Aceptar"),
+    "cookiesBody": MessageLookupByLibrary.simpleMessage(
+      "Usamos cookies para personalizar el contenido y los anuncios, ofrecer funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre el uso de nuestro sitio con nuestros socios de redes sociales, publicidad y análisis, quienes pueden combinarla con otra información que les hayas proporcionado o que hayan recopilado a partir del uso de sus servicios.",
+    ),
+    "cookiesTitle": MessageLookupByLibrary.simpleMessage(
+      "Este sitio web utiliza cookies",
+    ),
+    "ctaLogin": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+    "errorEmailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Por favor ingresa una dirección de correo válida.",
+    ),
+    "errorEmailRequired": MessageLookupByLibrary.simpleMessage(
+      "El correo electrónico es obligatorio.",
+    ),
+    "errorPasswordRequired": MessageLookupByLibrary.simpleMessage(
+      "La contraseña es obligatoria.",
+    ),
+    "errorPasswordWeak": MessageLookupByLibrary.simpleMessage(
+      "La contraseña es demasiado débil.",
+    ),
+    "labelAgreeToTerms": MessageLookupByLibrary.simpleMessage(
+      "Acepto los Términos y Condiciones",
+    ),
+    "labelEmail": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
+    "labelPassword": MessageLookupByLibrary.simpleMessage("Contraseña"),
+    "loginErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Correo o contraseña inválidos.",
+    ),
+    "noConnection": MessageLookupByLibrary.simpleMessage("Sin conexión"),
+    "passwordInstructions": MessageLookupByLibrary.simpleMessage(
+      "Mínimo 8 caracteres: 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.",
+    ),
+    "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
+        MessageLookupByLibrary.simpleMessage(
+          "Por favor, inténtalo más tarde,\nestamos trabajando para resolver el problema.",
+        ),
+    "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
+    "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
+      "Lo sentimos, no hemos encontrado ningún producto",
+    ),
+    "titleLogin": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+    "titleLoginSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Usa tu correo y contraseña para iniciar sesión en tu cuenta.",
+    ),
+  };
 }
