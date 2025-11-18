@@ -21,7 +21,6 @@ class HomeView extends StatelessWidget {
             onPressed: () => _authCubit.logOut(),
             icon: const Icon(Icons.logout),
           ),
-          const AppThemeSwitch(),
         ],
       ),
       body: const Text('Home Page'),

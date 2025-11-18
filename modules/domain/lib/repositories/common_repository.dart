@@ -13,4 +13,6 @@ abstract class CommonRepository {
   bool areCookiesAllowed();
 
   void setAcceptCookies(bool isAllowed);
+
+  Future<void> deepClean();
 }

@@ -269,6 +269,56 @@ class S {
       args: [],
     );
   }
+
+  /// `DEV MODE`
+  String get debugModeLabel {
+    return Intl.message('DEV MODE', name: 'debugModeLabel', desc: '', args: []);
+  }
+
+  /// `RESET APP`
+  String get debugModeResetApp {
+    return Intl.message(
+      'RESET APP',
+      name: 'debugModeResetApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset App`
+  String get debugModeResetAppTitle {
+    return Intl.message(
+      'Reset App',
+      name: 'debugModeResetAppTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to reset the app?`
+  String get debugModeResetAppMessage {
+    return Intl.message(
+      'Are you sure you want to reset the app?',
+      name: 'debugModeResetAppMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get debugModeCancel {
+    return Intl.message('Cancel', name: 'debugModeCancel', desc: '', args: []);
+  }
+
+  /// `Confirm`
+  String get debugModeConfirm {
+    return Intl.message(
+      'Confirm',
+      name: 'debugModeConfirm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

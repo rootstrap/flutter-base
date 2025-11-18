@@ -1,4 +1,5 @@
 import 'package:app/main/init.dart';
+import 'package:app/presentation/ui/pages/debug_banner.dart';
 import 'package:app/presentation/ui/pages/main/home/home_page.dart';
 import 'package:app/presentation/ui/pages/auth/login/login_page.dart';
 import 'package:app/presentation/ui/pages/auth/sign_up/sign_up_page.dart';
@@ -6,6 +7,7 @@ import 'package:app/presentation/ui/pages/splash/splash_page.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:domain/bloc/auth/auth_state.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -36,12 +38,15 @@ extension ContextOnRouter on BuildContext {
   GoRouter get router => GoRouter.of(this);
 }
 
+final rootNavigatorKey = GlobalKey<NavigatorState>();
+
 class Routers {
   static GoRouter appRouter(
     BuildContext context, {
     String? initialLocation,
   }) =>
       GoRouter(
+        navigatorKey: rootNavigatorKey,
         initialLocation: initialLocation ??
             (getIt<AuthCubit>().isLoggedIn()
                 ? Routes.app.path
@@ -85,7 +90,8 @@ class Routers {
             },
             routes: [
               ShellRoute(
-                builder: (context, state, child) => child,
+                builder: (context, state, child) =>
+                    kDebugMode ? DebugBanner(child: child) : child,
                 routes: [
                   GoRoute(
                     name: Routes.auth.name,
@@ -108,7 +114,8 @@ class Routers {
                 ],
               ),
               ShellRoute(
-                builder: (context, state, child) => child,
+                builder: (context, state, child) =>
+                    kDebugMode ? DebugBanner(child: child) : child,
                 routes: [
                   GoRoute(
                     name: Routes.app.name,
