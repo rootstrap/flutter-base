@@ -1,5 +1,6 @@
 import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/ui/pages/auth/login/login_form.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,7 +12,7 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Container(
           constraints: const BoxConstraints(
-            maxWidth: Dimen.loginFormMaxWidth,
+            maxWidth: kIsWeb ? Dimen.authFormMaxWidth : double.infinity,
           ),
           child: const Card(
             child: Padding(

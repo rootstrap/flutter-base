@@ -21,7 +21,7 @@ enum Routes {
   String get path => '/$name';
   String get subPath => name;
 
-  void nav(BuildContext context, {Object? extra}) {
+  void go(BuildContext context, {Object? extra}) {
     context.router.goNamed(
       name,
       extra: extra,
@@ -63,7 +63,7 @@ class Routers {
                           return;
                         }
                         debugPrint('Navigating to app route');
-                        Routes.app.nav(context);
+                        Routes.app.go(context);
                         break;
                       case AuthStateUnauthenticated _:
                         debugPrint(
@@ -74,7 +74,7 @@ class Routers {
                           return;
                         }
                         debugPrint('Navigating to auth route');
-                        Routes.auth.nav(context);
+                        Routes.auth.go(context);
                         break;
                       case _:
                     }

@@ -125,6 +125,11 @@ class S {
     return Intl.message('Login', name: 'ctaLogin', desc: '', args: []);
   }
 
+  /// `Sign Up`
+  String get ctaSignUp {
+    return Intl.message('Sign Up', name: 'ctaSignUp', desc: '', args: []);
+  }
+
   /// `Email`
   String get labelEmail {
     return Intl.message('Email', name: 'labelEmail', desc: '', args: []);
@@ -133,6 +138,26 @@ class S {
   /// `Password`
   String get labelPassword {
     return Intl.message('Password', name: 'labelPassword', desc: '', args: []);
+  }
+
+  /// `Confirm Password`
+  String get labelConfirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'labelConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match.`
+  String get errorPasswordsDoNotMatch {
+    return Intl.message(
+      'Passwords do not match.',
+      name: 'errorPasswordsDoNotMatch',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.`
@@ -180,11 +205,26 @@ class S {
     return Intl.message('Login', name: 'titleLogin', desc: '', args: []);
   }
 
+  /// `Sign Up`
+  String get titleSignUp {
+    return Intl.message('Sign Up', name: 'titleSignUp', desc: '', args: []);
+  }
+
   /// `Use your email and password to login to your account.`
   String get titleLoginSubtitle {
     return Intl.message(
       'Use your email and password to login to your account.',
       name: 'titleLoginSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create an account using your email and password.`
+  String get titleSignUpSubtitle {
+    return Intl.message(
+      'Create an account using your email and password.',
+      name: 'titleSignUpSubtitle',
       desc: '',
       args: [],
     );

@@ -29,4 +29,14 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> logout() async {
     _preferences.clear();
   }
+
+  @override
+  Future<ResultType<void>> signUp(
+    String username,
+    String password,
+  ) async {
+    await Future.delayed(const Duration(seconds: 1));
+    _preferences.setToken('new-token');
+    return TSuccess(null);
+  }
 }

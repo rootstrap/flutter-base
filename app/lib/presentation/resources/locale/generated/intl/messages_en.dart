@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "This website uses cookies",
     ),
     "ctaLogin": MessageLookupByLibrary.simpleMessage("Login"),
+    "ctaSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "errorEmailInvalid": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email address.",
     ),
@@ -43,8 +44,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorPasswordWeak": MessageLookupByLibrary.simpleMessage(
       "Password is too weak.",
     ),
+    "errorPasswordsDoNotMatch": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match.",
+    ),
     "labelAgreeToTerms": MessageLookupByLibrary.simpleMessage(
       "I agree to the Terms and Conditions",
+    ),
+    "labelConfirmPassword": MessageLookupByLibrary.simpleMessage(
+      "Confirm Password",
     ),
     "labelEmail": MessageLookupByLibrary.simpleMessage("Email"),
     "labelPassword": MessageLookupByLibrary.simpleMessage("Password"),
@@ -66,6 +73,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "titleLogin": MessageLookupByLibrary.simpleMessage("Login"),
     "titleLoginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Use your email and password to login to your account.",
+    ),
+    "titleSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "titleSignUpSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Create an account using your email and password.",
     ),
   };
 }
