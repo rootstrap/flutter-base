@@ -23,6 +23,21 @@ class AuthCubit extends BaseCubit<AuthState> {
       ..mapError((failure) => isError(failure));
   }
 
+  Future<void> signUp({
+    required String email,
+    required String password,
+  }) async {
+    isLoading();
+    final signUpResult = await _authService.signUpWithCredentials(
+      email,
+      password,
+    );
+
+    signUpResult
+      ..mapSuccess((_) => isLogin())
+      ..mapError((failure) => isError(failure));
+  }
+
   Future<void> onValidate() async {
     if (_authService.isLoggedIn()) {
       isLogin();

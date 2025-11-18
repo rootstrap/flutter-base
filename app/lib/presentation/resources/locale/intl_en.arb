@@ -8,15 +8,21 @@
   "pleaseTryAgainLaterWeArenworkingToFixTheIssue": "Please try again later, we are\nworking to fix the issue.",
   "sorryWeDidntFindAnyProduct": "Sorry we didn't find any product",
   "ctaLogin": "Login",
+  "ctaSignUp": "Sign Up",
   "labelEmail": "Email",
   "labelPassword": "Password",
+  "labelConfirmPassword": "Confirm Password",
+  "errorPasswordsDoNotMatch": "Passwords do not match.",
   "passwordInstructions": "Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",
   "labelAgreeToTerms": "I agree to the Terms and Conditions",
   "errorEmailRequired": "Email is required.",
   "errorPasswordRequired": "Password is required.",
   "titleLogin": "Login",
+  "titleSignUp": "Sign Up",
   "titleLoginSubtitle": "Use your email and password to login to your account.",
+  "titleSignUpSubtitle": "Create an account using your email and password.",
   "errorEmailInvalid": "Please enter a valid email address.",
   "errorPasswordWeak": "Password is too weak.",
-  "loginErrorInvalidCredentials": "Invalid email or password."
+  "loginErrorInvalidCredentials": "Invalid email or password.",
+  "hintTermsAndConditions": "This should open the terms and conditions URL."
 }

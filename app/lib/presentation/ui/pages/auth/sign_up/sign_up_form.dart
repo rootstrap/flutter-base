@@ -1,24 +1,24 @@
-import 'package:app/presentation/navigation/routers.dart';
 import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/ui/components/primary_button.dart';
 import 'package:common/core/resource.dart';
+import 'package:common/validators/form_validator.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:common/validators/form_validator.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _SignUpFormState extends State<SignUpForm> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   bool agreeToTerms = false;
 
   final _formKey = GlobalKey<FormState>();
@@ -27,6 +27,7 @@ class _LoginFormState extends State<LoginForm> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -39,12 +40,12 @@ class _LoginFormState extends State<LoginForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S.of(context).titleLogin,
+            S.of(context).titleSignUp,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const Gap(Dimen.spacingL),
           Text(
-            S.of(context).titleLoginSubtitle,
+            S.of(context).titleSignUpSubtitle,
             style: Theme.of(context).textTheme.titleSmall,
           ),
           const Gap(Dimen.spacingL),
@@ -81,6 +82,20 @@ class _LoginFormState extends State<LoginForm> {
           Text(
             S.of(context).passwordInstructions,
             style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const Gap(Dimen.spacingM),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: S.of(context).labelConfirmPassword,
+            ),
+            obscureText: true,
+            controller: confirmPasswordController,
+            validator: (value) {
+              if (value != passwordController.text) {
+                return S.of(context).errorPasswordsDoNotMatch;
+              }
+              return null;
+            },
           ),
           const Gap(Dimen.spacingM),
           TextButton(
@@ -130,11 +145,11 @@ class _LoginFormState extends State<LoginForm> {
                     const Gap(Dimen.spacingM),
                   ],
                   PrimaryButton(
-                    label: S.of(context).ctaLogin,
+                    label: S.of(context).ctaSignUp,
                     onPressed: () {
                       if ((_formKey.currentState?.validate() ?? false) &&
                           agreeToTerms) {
-                        context.read<AuthCubit>().login(
+                        context.read<AuthCubit>().signUp(
                               email: emailController.text,
                               password: passwordController.text,
                             );
@@ -147,26 +162,6 @@ class _LoginFormState extends State<LoginForm> {
                 ],
               );
             },
-          ),
-          const Gap(Dimen.spacingL),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(child: Divider()),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimen.spacingS),
-                child: Text("OR"),
-              ),
-              Expanded(child: Divider()),
-            ],
-          ),
-          const Gap(Dimen.spacingM),
-          SizedBox(
-            width: double.infinity,
-            child: TextButton(
-              onPressed: () => Routes.signup.go(context),
-              child: Text(S.of(context).ctaSignUp.toUpperCase()),
-            ),
           ),
         ],
       ),

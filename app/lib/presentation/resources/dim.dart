@@ -7,7 +7,7 @@ class Dimen {
   static const loadingSpinnerSize = 32.0;
   static const loadingSpinnerSizeS = 16.0;
 
-  static const double loginFormMaxWidth = 400.0;
+  static const double authFormMaxWidth = 400.0;
 
   static const spacingXxs = 2.0;
   static const spacingXs = 4.0;
