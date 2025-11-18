@@ -259,6 +259,16 @@ class S {
       args: [],
     );
   }
+
+  /// `This should open the terms and conditions URL.`
+  String get hintTermsAndConditions {
+    return Intl.message(
+      'This should open the terms and conditions URL.',
+      name: 'hintTermsAndConditions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

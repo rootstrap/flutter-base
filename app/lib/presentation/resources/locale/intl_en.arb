@@ -23,5 +23,6 @@
   "titleSignUpSubtitle": "Create an account using your email and password.",
   "errorEmailInvalid": "Please enter a valid email address.",
   "errorPasswordWeak": "Password is too weak.",
-  "loginErrorInvalidCredentials": "Invalid email or password."
+  "loginErrorInvalidCredentials": "Invalid email or password.",
+  "hintTermsAndConditions": "This should open the terms and conditions URL."
 }

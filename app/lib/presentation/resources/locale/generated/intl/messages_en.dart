@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorPasswordsDoNotMatch": MessageLookupByLibrary.simpleMessage(
       "Passwords do not match.",
     ),
+    "hintTermsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "This should open the terms and conditions URL.",
+    ),
     "labelAgreeToTerms": MessageLookupByLibrary.simpleMessage(
       "I agree to the Terms and Conditions",
     ),

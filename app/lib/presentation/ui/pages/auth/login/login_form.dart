@@ -103,9 +103,8 @@ class _LoginFormState extends State<LoginForm> {
                 IconButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                            "This should open the terms and conditions URL."),
+                      SnackBar(
+                        content: Text(S.of(context).hintTermsAndConditions),
                       ),
                     );
                   },
