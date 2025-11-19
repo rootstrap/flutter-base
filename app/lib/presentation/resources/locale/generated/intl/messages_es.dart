@@ -20,6 +20,9 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'es';
 
+  static String m0(currentPage, totalPages) =>
+      "Página ${currentPage} de ${totalPages}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
@@ -90,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Esta es la cuarta página del flujo de incorporación",
     ),
     "onboardingPage4Title": MessageLookupByLibrary.simpleMessage("Comenzar"),
+    "onboardingPageIndicator": m0,
     "onboardingStart": MessageLookupByLibrary.simpleMessage("Comenzar"),
     "passwordInstructions": MessageLookupByLibrary.simpleMessage(
       "Mínimo 8 caracteres: 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.",

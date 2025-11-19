@@ -19,4 +19,5 @@ class Dimen {
   static const spacingXxxl = 48.0;
 
   static const double buttonHeightM = 48.0;
+  static const double onboardingIconSize = 120.0;
 }

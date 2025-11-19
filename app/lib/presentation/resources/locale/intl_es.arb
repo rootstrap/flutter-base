@@ -41,5 +41,6 @@
   "onboardingPage3Title": "Conectar",
   "onboardingPage3Description": "Esta es la tercera página del flujo de incorporación",
   "onboardingPage4Title": "Comenzar",
-  "onboardingPage4Description": "Esta es la cuarta página del flujo de incorporación"
+  "onboardingPage4Description": "Esta es la cuarta página del flujo de incorporación",
+  "onboardingPageIndicator": "Página {currentPage} de {totalPages}"
 }

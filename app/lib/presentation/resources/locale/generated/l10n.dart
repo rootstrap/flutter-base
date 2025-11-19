@@ -409,6 +409,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Page {currentPage} of {totalPages}`
+  String onboardingPageIndicator(Object currentPage, Object totalPages) {
+    return Intl.message(
+      'Page $currentPage of $totalPages',
+      name: 'onboardingPageIndicator',
+      desc: '',
+      args: [currentPage, totalPages],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

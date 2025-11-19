@@ -41,5 +41,6 @@
   "onboardingPage3Title": "Connect",
   "onboardingPage3Description": "This is the third page of the onboarding flow",
   "onboardingPage4Title": "Get Started",
-  "onboardingPage4Description": "This is the fourth page of the onboarding flow"
+  "onboardingPage4Description": "This is the fourth page of the onboarding flow",
+  "onboardingPageIndicator": "Page {currentPage} of {totalPages}"
 }
