@@ -72,6 +72,25 @@ class MessageLookup extends MessageLookupByLibrary {
       "Correo electrónico o contraseña incorrectos.",
     ),
     "noConnection": MessageLookupByLibrary.simpleMessage("Sin conexión"),
+    "onboardingBack": MessageLookupByLibrary.simpleMessage("Atrás"),
+    "onboardingNext": MessageLookupByLibrary.simpleMessage("Siguiente"),
+    "onboardingPage1Description": MessageLookupByLibrary.simpleMessage(
+      "Esta es la primera página del flujo de incorporación",
+    ),
+    "onboardingPage1Title": MessageLookupByLibrary.simpleMessage("Bienvenido"),
+    "onboardingPage2Description": MessageLookupByLibrary.simpleMessage(
+      "Esta es la segunda página del flujo de incorporación",
+    ),
+    "onboardingPage2Title": MessageLookupByLibrary.simpleMessage("Descubrir"),
+    "onboardingPage3Description": MessageLookupByLibrary.simpleMessage(
+      "Esta es la tercera página del flujo de incorporación",
+    ),
+    "onboardingPage3Title": MessageLookupByLibrary.simpleMessage("Conectar"),
+    "onboardingPage4Description": MessageLookupByLibrary.simpleMessage(
+      "Esta es la cuarta página del flujo de incorporación",
+    ),
+    "onboardingPage4Title": MessageLookupByLibrary.simpleMessage("Comenzar"),
+    "onboardingStart": MessageLookupByLibrary.simpleMessage("Comenzar"),
     "passwordInstructions": MessageLookupByLibrary.simpleMessage(
       "Mínimo 8 caracteres: 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.",
     ),

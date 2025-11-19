@@ -30,5 +30,16 @@
   "debugModeResetAppTitle": "Resetear App",
   "debugModeResetAppMessage": "¿Estás seguro de que deseas resetear la aplicación?",
   "debugModeCancel": "Cancelar",
-  "debugModeConfirm": "Confirmar"
+  "debugModeConfirm": "Confirmar",
+  "onboardingBack": "Atrás",
+  "onboardingNext": "Siguiente",
+  "onboardingStart": "Comenzar",
+  "onboardingPage1Title": "Bienvenido",
+  "onboardingPage1Description": "Esta es la primera página del flujo de incorporación",
+  "onboardingPage2Title": "Descubrir",
+  "onboardingPage2Description": "Esta es la segunda página del flujo de incorporación",
+  "onboardingPage3Title": "Conectar",
+  "onboardingPage3Description": "Esta es la tercera página del flujo de incorporación",
+  "onboardingPage4Title": "Comenzar",
+  "onboardingPage4Description": "Esta es la cuarta página del flujo de incorporación"
 }

@@ -3,6 +3,7 @@ import 'package:app/presentation/ui/custom/debug_banner.dart';
 import 'package:app/presentation/ui/pages/main/home/home_page.dart';
 import 'package:app/presentation/ui/pages/auth/login/login_page.dart';
 import 'package:app/presentation/ui/pages/auth/sign_up/sign_up_page.dart';
+import 'package:app/presentation/ui/pages/onboarding/onboarding_page.dart';
 import 'package:app/presentation/ui/pages/splash/splash_page.dart';
 import 'package:common/core/resource.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
@@ -14,6 +15,7 @@ import 'package:go_router/go_router.dart';
 
 enum Routes {
   auth,
+  onboarding,
   login,
   signup,
   app,
@@ -50,7 +52,7 @@ class Routers {
         initialLocation: initialLocation ??
             (getIt<AuthCubit>().isLoggedIn()
                 ? Routes.app.path
-                : Routes.auth.path),
+                : Routes.onboarding.path),
         routes: [
           GoRoute(
             path: '/',
@@ -79,7 +81,7 @@ class Routers {
                           return;
                         }
                         debugPrint('Navigating to auth route');
-                        Routes.auth.go(context);
+                        Routes.onboarding.go(context);
                         break;
                       case _:
                     }
@@ -93,6 +95,11 @@ class Routers {
                 builder: (context, state, child) =>
                     kDebugMode ? DebugBanner(child: child) : child,
                 routes: [
+                  GoRoute(
+                    name: Routes.onboarding.name,
+                    path: Routes.onboarding.path,
+                    builder: (context, state) => const OnboardingPage(),
+                  ),
                   GoRoute(
                     name: Routes.auth.name,
                     path: Routes.auth.path,

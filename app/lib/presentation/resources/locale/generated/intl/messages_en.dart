@@ -70,6 +70,25 @@ class MessageLookup extends MessageLookupByLibrary {
       "Invalid email or password.",
     ),
     "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
+    "onboardingBack": MessageLookupByLibrary.simpleMessage("Back"),
+    "onboardingNext": MessageLookupByLibrary.simpleMessage("Next"),
+    "onboardingPage1Description": MessageLookupByLibrary.simpleMessage(
+      "This is the first page of the onboarding flow",
+    ),
+    "onboardingPage1Title": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "onboardingPage2Description": MessageLookupByLibrary.simpleMessage(
+      "This is the second page of the onboarding flow",
+    ),
+    "onboardingPage2Title": MessageLookupByLibrary.simpleMessage("Discover"),
+    "onboardingPage3Description": MessageLookupByLibrary.simpleMessage(
+      "This is the third page of the onboarding flow",
+    ),
+    "onboardingPage3Title": MessageLookupByLibrary.simpleMessage("Connect"),
+    "onboardingPage4Description": MessageLookupByLibrary.simpleMessage(
+      "This is the fourth page of the onboarding flow",
+    ),
+    "onboardingPage4Title": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
     "passwordInstructions": MessageLookupByLibrary.simpleMessage(
       "Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",
     ),

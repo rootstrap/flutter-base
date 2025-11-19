@@ -30,5 +30,16 @@
   "debugModeResetAppTitle": "Reset App",
   "debugModeResetAppMessage": "Are you sure you want to reset the app?",
   "debugModeCancel": "Cancel",
-  "debugModeConfirm": "Confirm"
+  "debugModeConfirm": "Confirm",
+  "onboardingBack": "Back",
+  "onboardingNext": "Next",
+  "onboardingStart": "Start",
+  "onboardingPage1Title": "Welcome",
+  "onboardingPage1Description": "This is the first page of the onboarding flow",
+  "onboardingPage2Title": "Discover",
+  "onboardingPage2Description": "This is the second page of the onboarding flow",
+  "onboardingPage3Title": "Connect",
+  "onboardingPage3Description": "This is the third page of the onboarding flow",
+  "onboardingPage4Title": "Get Started",
+  "onboardingPage4Description": "This is the fourth page of the onboarding flow"
 }
