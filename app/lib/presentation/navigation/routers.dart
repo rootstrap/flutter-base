@@ -1,5 +1,5 @@
 import 'package:app/main/init.dart';
-import 'package:app/presentation/ui/pages/debug_banner.dart';
+import 'package:app/presentation/ui/custom/debug_banner.dart';
 import 'package:app/presentation/ui/pages/main/home/home_page.dart';
 import 'package:app/presentation/ui/pages/auth/login/login_page.dart';
 import 'package:app/presentation/ui/pages/auth/sign_up/sign_up_page.dart';

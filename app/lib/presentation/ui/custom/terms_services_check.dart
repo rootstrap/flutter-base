@@ -31,7 +31,7 @@ class TermsServicesCheck extends StatelessWidget {
           children: [
             Checkbox(
               value: agreeToTerms,
-              onChanged: (value) => onChanged?.call(!agreeToTerms),
+              onChanged: (value) => onChanged?.call(value ?? false),
             ),
             Expanded(
               child: Text(

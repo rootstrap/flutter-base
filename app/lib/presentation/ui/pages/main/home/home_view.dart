@@ -1,7 +1,6 @@
 import 'package:app/main/init.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:app/presentation/ui/custom/app_theme_switch.dart';
 
 class HomeView extends StatelessWidget {
   /// Given this is a global cubit, we can access it directly from getIt
