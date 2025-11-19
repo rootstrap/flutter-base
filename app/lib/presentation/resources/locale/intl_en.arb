@@ -24,5 +24,11 @@
   "errorEmailInvalid": "Please enter a valid email address.",
   "errorPasswordWeak": "Password is too weak.",
   "loginErrorInvalidCredentials": "Invalid email or password.",
-  "hintTermsAndConditions": "This should open the terms and conditions URL."
+  "hintTermsAndConditions": "This should open the terms and conditions URL.",
+  "debugModeLabel": "DEV",
+  "debugModeResetApp": "RESET",
+  "debugModeResetAppTitle": "Reset App",
+  "debugModeResetAppMessage": "Are you sure you want to reset the app?",
+  "debugModeCancel": "Cancel",
+  "debugModeConfirm": "Confirm"
 }

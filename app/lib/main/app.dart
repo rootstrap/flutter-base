@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:domain/bloc/app/app_cubit.dart';
-import 'package:domain/bloc/app/app_state.dart';
-import 'package:domain/bloc/auth/auth_cubit.dart';
 import 'package:app/presentation/navigation/routers.dart';
 import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:app/presentation/themes/app_themes.dart';
 import 'package:app/presentation/utils/lang_extensions.dart';
+import 'package:app_links/app_links.dart';
+import 'package:domain/bloc/app/app_cubit.dart';
+import 'package:domain/bloc/app/app_state.dart';
+import 'package:domain/bloc/auth/auth_cubit.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:app_links/app_links.dart';
 import 'package:go_router/go_router.dart';
+
 import 'init.dart';
 
 class App extends StatefulWidget {
@@ -74,6 +75,7 @@ class _AppState extends State<App> {
           : BlocBuilder<AppCubit, AppState>(
               builder: (context, state) {
                 return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
                   theme: AppThemes.getAppTheme(state.themeType).data,
                   locale: LangExtensions.langLocale[state.appLang],
                   supportedLocales: LangExtensions.supportedLang,

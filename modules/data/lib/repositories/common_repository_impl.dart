@@ -41,4 +41,7 @@ class CommonRepositoryImpl implements CommonRepository {
   void setAcceptCookies(bool isAllowed) {
     _preferences.setCookiesAllowed(isAllowed);
   }
+
+  @override
+  Future<void> deepClean() => _preferences.clear();
 }

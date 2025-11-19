@@ -85,6 +85,15 @@ abstract class LocalTheme {
           ),
           elevation: 10,
         ),
+        dialogTheme: DialogThemeData(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(themeData.borderRadius),
+            ),
+          ),
+          titleTextStyle: titleM.copyWith(color: colors.onSurface),
+          contentTextStyle: subtitleM.copyWith(color: colors.onSurface),
+        ),
       );
 
   final primaryFont = 'Roboto Regular';

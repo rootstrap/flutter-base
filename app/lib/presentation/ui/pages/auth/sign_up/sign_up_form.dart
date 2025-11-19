@@ -1,6 +1,7 @@
 import 'package:app/presentation/resources/locale/generated/l10n.dart';
 import 'package:app/presentation/resources/resources.dart';
 import 'package:app/presentation/ui/components/primary_button.dart';
+import 'package:app/presentation/ui/custom/terms_services_check.dart';
 import 'package:common/core/resource.dart';
 import 'package:common/validators/form_validator.dart';
 import 'package:domain/bloc/auth/auth_cubit.dart';
@@ -98,35 +99,13 @@ class _SignUpFormState extends State<SignUpForm> {
             },
           ),
           const Gap(Dimen.spacingM),
-          TextButton(
-            onPressed: () => setState(() {
-              agreeToTerms = !agreeToTerms;
-            }),
-            child: Row(
-              children: [
-                Checkbox(
-                  value: agreeToTerms,
-                  onChanged: (value) => setState(() {
-                    agreeToTerms = value ?? false;
-                  }),
-                ),
-                Text(
-                  S.of(context).labelAgreeToTerms,
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                const Gap(Dimen.spacingS),
-                IconButton(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(S.of(context).hintTermsAndConditions),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.info),
-                )
-              ],
-            ),
+          TermsServicesCheck(
+            agreeToTerms: agreeToTerms,
+            onChanged: (value) {
+              setState(() {
+                agreeToTerms = value;
+              });
+            },
           ),
           const Gap(Dimen.spacingM),
           BlocBuilder<AuthCubit, Resource>(

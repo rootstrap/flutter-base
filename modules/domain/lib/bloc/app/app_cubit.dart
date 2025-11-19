@@ -22,4 +22,12 @@ class AppCubit extends Cubit<AppState> {
     _commonRepository.setAppLang(appLang);
     emit(state.copyWith(appLang: appLang));
   }
+
+  Future<void> resetApp() async {
+    await _commonRepository.deepClean();
+    emit(AppState(
+      themeType: ThemeType.light,
+      appLang: AppLang.en,
+    ));
+  }
 }

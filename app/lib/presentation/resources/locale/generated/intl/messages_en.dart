@@ -32,6 +32,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ctaLogin": MessageLookupByLibrary.simpleMessage("Login"),
     "ctaSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "debugModeCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "debugModeConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "debugModeLabel": MessageLookupByLibrary.simpleMessage("DEV"),
+    "debugModeResetApp": MessageLookupByLibrary.simpleMessage("RESET"),
+    "debugModeResetAppMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to reset the app?",
+    ),
+    "debugModeResetAppTitle": MessageLookupByLibrary.simpleMessage("Reset App"),
     "errorEmailInvalid": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email address.",
     ),
