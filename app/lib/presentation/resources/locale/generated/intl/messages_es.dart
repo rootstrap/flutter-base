@@ -34,8 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "ctaSignUp": MessageLookupByLibrary.simpleMessage("Registrarse"),
     "debugModeCancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "debugModeConfirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
-    "debugModeLabel": MessageLookupByLibrary.simpleMessage("MODO DEV"),
-    "debugModeResetApp": MessageLookupByLibrary.simpleMessage("RESETEAR APP"),
+    "debugModeLabel": MessageLookupByLibrary.simpleMessage("DEV"),
+    "debugModeResetApp": MessageLookupByLibrary.simpleMessage("RESET"),
     "debugModeResetAppMessage": MessageLookupByLibrary.simpleMessage(
       "¿Estás seguro de que deseas resetear la aplicación?",
     ),
