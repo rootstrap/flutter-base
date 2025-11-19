@@ -72,16 +72,11 @@ class _LoginFormState extends State<LoginForm> {
             obscureText: true,
             controller: passwordController,
             validator: (value) {
-              if (!FormValidator.isStrongPassword(value)) {
-                return S.of(context).errorPasswordWeak;
+              if (value?.trim().isEmpty ?? true) {
+                return S.of(context).errorPasswordRequired;
               }
               return null;
             },
-          ),
-          const Gap(Dimen.spacingM),
-          Text(
-            S.of(context).passwordInstructions,
-            style: Theme.of(context).textTheme.bodySmall,
           ),
           const Gap(Dimen.spacingM),
           TermsServicesCheck(

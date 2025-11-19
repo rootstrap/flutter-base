@@ -314,6 +314,111 @@ class S {
       args: [],
     );
   }
+
+  /// `Back`
+  String get onboardingBack {
+    return Intl.message('Back', name: 'onboardingBack', desc: '', args: []);
+  }
+
+  /// `Next`
+  String get onboardingNext {
+    return Intl.message('Next', name: 'onboardingNext', desc: '', args: []);
+  }
+
+  /// `Start`
+  String get onboardingStart {
+    return Intl.message('Start', name: 'onboardingStart', desc: '', args: []);
+  }
+
+  /// `Welcome`
+  String get onboardingPage1Title {
+    return Intl.message(
+      'Welcome',
+      name: 'onboardingPage1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is the first page of the onboarding flow`
+  String get onboardingPage1Description {
+    return Intl.message(
+      'This is the first page of the onboarding flow',
+      name: 'onboardingPage1Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover`
+  String get onboardingPage2Title {
+    return Intl.message(
+      'Discover',
+      name: 'onboardingPage2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is the second page of the onboarding flow`
+  String get onboardingPage2Description {
+    return Intl.message(
+      'This is the second page of the onboarding flow',
+      name: 'onboardingPage2Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect`
+  String get onboardingPage3Title {
+    return Intl.message(
+      'Connect',
+      name: 'onboardingPage3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is the third page of the onboarding flow`
+  String get onboardingPage3Description {
+    return Intl.message(
+      'This is the third page of the onboarding flow',
+      name: 'onboardingPage3Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Started`
+  String get onboardingPage4Title {
+    return Intl.message(
+      'Get Started',
+      name: 'onboardingPage4Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is the fourth page of the onboarding flow`
+  String get onboardingPage4Description {
+    return Intl.message(
+      'This is the fourth page of the onboarding flow',
+      name: 'onboardingPage4Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Page {currentPage} of {totalPages}`
+  String onboardingPageIndicator(Object currentPage, Object totalPages) {
+    return Intl.message(
+      'Page $currentPage of $totalPages',
+      name: 'onboardingPageIndicator',
+      desc: '',
+      args: [currentPage, totalPages],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
