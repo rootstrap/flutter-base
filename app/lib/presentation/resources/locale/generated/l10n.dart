@@ -270,19 +270,14 @@ class S {
     );
   }
 
-  /// `DEV MODE`
+  /// `DEV`
   String get debugModeLabel {
-    return Intl.message('DEV MODE', name: 'debugModeLabel', desc: '', args: []);
+    return Intl.message('DEV', name: 'debugModeLabel', desc: '', args: []);
   }
 
-  /// `RESET APP`
+  /// `RESET`
   String get debugModeResetApp {
-    return Intl.message(
-      'RESET APP',
-      name: 'debugModeResetApp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('RESET', name: 'debugModeResetApp', desc: '', args: []);
   }
 
   /// `Reset App`

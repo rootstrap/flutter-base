@@ -25,14 +25,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
     "cookiesAcceptCTA": MessageLookupByLibrary.simpleMessage("Aceptar"),
     "cookiesBody": MessageLookupByLibrary.simpleMessage(
-      "Usamos cookies para personalizar el contenido y los anuncios, ofrecer funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre el uso de nuestro sitio con nuestros socios de redes sociales, publicidad y análisis, quienes pueden combinarla con otra información que les hayas proporcionado o que hayan recopilado a partir del uso de sus servicios.",
+      "Usamos cookies para personalizar el contenido y los anuncios, proporcionar funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre el uso que haces de nuestro sitio con nuestros socios de redes sociales, publicidad y análisis, quienes pueden combinarla con otra información que les hayas proporcionado o que hayan recopilado a partir del uso que haces de sus servicios.",
     ),
     "cookiesTitle": MessageLookupByLibrary.simpleMessage(
       "Este sitio web utiliza cookies",
     ),
     "ctaLogin": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+    "ctaSignUp": MessageLookupByLibrary.simpleMessage("Registrarse"),
+    "debugModeCancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+    "debugModeConfirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
+    "debugModeLabel": MessageLookupByLibrary.simpleMessage("MODO DEV"),
+    "debugModeResetApp": MessageLookupByLibrary.simpleMessage("RESETEAR APP"),
+    "debugModeResetAppMessage": MessageLookupByLibrary.simpleMessage(
+      "¿Estás seguro de que deseas resetear la aplicación?",
+    ),
+    "debugModeResetAppTitle": MessageLookupByLibrary.simpleMessage(
+      "Resetear App",
+    ),
     "errorEmailInvalid": MessageLookupByLibrary.simpleMessage(
-      "Por favor ingresa una dirección de correo válida.",
+      "Por favor ingresa un correo electrónico válido.",
     ),
     "errorEmailRequired": MessageLookupByLibrary.simpleMessage(
       "El correo electrónico es obligatorio.",
@@ -43,13 +54,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorPasswordWeak": MessageLookupByLibrary.simpleMessage(
       "La contraseña es demasiado débil.",
     ),
+    "errorPasswordsDoNotMatch": MessageLookupByLibrary.simpleMessage(
+      "Las contraseñas no coinciden.",
+    ),
+    "hintTermsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "Esto debería abrir la URL de términos y condiciones.",
+    ),
     "labelAgreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Acepto los Términos y Condiciones",
+    ),
+    "labelConfirmPassword": MessageLookupByLibrary.simpleMessage(
+      "Confirmar contraseña",
     ),
     "labelEmail": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
     "labelPassword": MessageLookupByLibrary.simpleMessage("Contraseña"),
     "loginErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
-      "Correo o contraseña inválidos.",
+      "Correo electrónico o contraseña incorrectos.",
     ),
     "noConnection": MessageLookupByLibrary.simpleMessage("Sin conexión"),
     "passwordInstructions": MessageLookupByLibrary.simpleMessage(
@@ -57,15 +77,19 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
         MessageLookupByLibrary.simpleMessage(
-          "Por favor, inténtalo más tarde,\nestamos trabajando para resolver el problema.",
+          "Por favor intenta nuevamente más tarde,\nestamos trabajando para solucionar el problema.",
         ),
     "retry": MessageLookupByLibrary.simpleMessage("Reintentar"),
     "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
-      "Lo sentimos, no hemos encontrado ningún producto",
+      "Lo sentimos, no encontramos ningún producto",
     ),
     "titleLogin": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
     "titleLoginSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Usa tu correo y contraseña para iniciar sesión en tu cuenta.",
+      "Usa tu correo electrónico y contraseña para iniciar sesión en tu cuenta.",
+    ),
+    "titleSignUp": MessageLookupByLibrary.simpleMessage("Registrarse"),
+    "titleSignUpSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Crea una cuenta usando tu correo electrónico y contraseña.",
     ),
   };
 }
