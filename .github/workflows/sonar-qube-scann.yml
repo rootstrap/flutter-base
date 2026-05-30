@@ -43,9 +43,9 @@ jobs:
       - name: Install Melos
         run: dart pub global activate melos
 
-      # 6 — Install all pub packages (app + each module)
-      - name: Get pub packages
-        run: melos run pub:get
+      # 6 — Resolve workspace dependencies
+      - name: Bootstrap workspace
+        run: melos bootstrap
 
       # 7 — Static analysis
       - name: Analyze

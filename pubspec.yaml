@@ -32,21 +32,9 @@ melos:
     format:
       description: Run `dart format` in all packages.
       run: melos exec -c 1 -- dart format --set-exit-if-changed .
-    pub:get:
-      description: Run `flutter pub get` in selected or all packages.
-      run: melos exec -- flutter pub get
-      packageFilters:
-        dirExists:
-          - lib
     pub:runner:
       description: Run `pub run build_runner` in selected or all packages.
       run: melos exec -- dart run build_runner build --delete-conflicting-outputs
-      packageFilters:
-        dirExists:
-          - lib
-    pub:upgrade:
-      description: Run `flutter pub upgrade` in selected or all packages.
-      run: melos exec -- flutter pub upgrade
       packageFilters:
         dirExists:
           - lib
