@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();

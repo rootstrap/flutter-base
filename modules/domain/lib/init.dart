@@ -7,7 +7,7 @@ class DomainInit {
   static Future<void> initialize(GetIt getIt) async {
     //Services
     getIt.registerLazySingleton(() => AuthService(getIt()));
-    
+
     //Global Cubits
     getIt.registerSingleton(AppCubit(getIt()));
     getIt.registerSingleton(AuthCubit(getIt()));

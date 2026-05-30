@@ -21,18 +21,22 @@ class DataInit {
     getIt.registerSingleton<Preferences>(PreferencesImpl(getIt()));
 
     // Network
-    getIt.registerLazySingleton<AuthTokenInterceptor>(() => AuthTokenInterceptor(getIt()));
+    getIt.registerLazySingleton<AuthTokenInterceptor>(
+        () => AuthTokenInterceptor(getIt()));
     getIt.registerLazySingleton<Dio>(() => NetworkConfig.provideDio(getIt()));
-    getIt.registerLazySingleton<EnvironmentService>(() => EnvironmentServiceImpl(getIt()));
+    getIt.registerLazySingleton<EnvironmentService>(
+        () => EnvironmentServiceImpl(getIt()));
 
     // Data Sources
 
     // Repositories
     getIt.registerLazySingleton<AuthRepository>(
-          () => AuthRepositoryImpl(getIt(),),
+      () => AuthRepositoryImpl(
+        getIt(),
+      ),
     );
     getIt.registerLazySingleton<CommonRepository>(
-          () => CommonRepositoryImpl(getIt()),
+      () => CommonRepositoryImpl(getIt()),
     );
   }
 }

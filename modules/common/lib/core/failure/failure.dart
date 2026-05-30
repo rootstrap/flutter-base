@@ -5,11 +5,11 @@ sealed class Failure implements Exception {
 }
 
 class ConnectionFailure extends Failure {
-  ConnectionFailure([String? message]) : super(message);
+  ConnectionFailure([super.message]);
 }
 
 class SocketTimeOutFailure extends Failure {
-  SocketTimeOutFailure([String? message]) : super(message);
+  SocketTimeOutFailure([super.message]);
 }
 
 class HttpFailure extends Failure {
@@ -19,5 +19,5 @@ class HttpFailure extends Failure {
 }
 
 class UnexpectedFailure extends Failure {
-  UnexpectedFailure([String? message]) : super(message);
+  UnexpectedFailure([super.message]);
 }

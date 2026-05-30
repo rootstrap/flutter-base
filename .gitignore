@@ -20,7 +20,11 @@
 .classpath
 .project
 .settings/
-.vscode/
+.vscode/*
+!.vscode/settings.json
+
+# FVM (Flutter Version Management)
+.fvm/
 
 # Flutter repo-specific
 /bin/cache/
@@ -110,7 +114,7 @@ unlinked_spec.ds
 
 # Coverage
 coverage/
-+!coverage/full_coverage.py
+!coverage/full_coverage.py
 
 # Symbols
 app.*.symbols
