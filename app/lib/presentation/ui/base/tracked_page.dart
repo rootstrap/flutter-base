@@ -6,23 +6,26 @@ import 'package:flutter/material.dart';
 /// A base class for pages that are tracked for analytics purposes.
 /// This class can be extended to implement specific tracking logic
 /// for different pages in the application.
+///
+/// ```dart
 /// class HomePage extends TrackedPage {
-///  const HomePage({super.key});
-///  @override
-///  String get trackingName => "home_page";
-///  @override
-///  Map<String, dynamic>? get trackingProperties => {
-///        'userType': 'guest',
-///        'origin': 'splash_screen',
-///      };
-///  @override
-///  Widget buildPage(BuildContext context) {
-///    return Scaffold(
-///      appBar: AppBar(title: const Text("Home")),
-///      body: const Center(child: Text("Welcome")),
-///    );
-///  }
-///}
+///   const HomePage({super.key});
+///   @override
+///   String get trackingName => "home_page";
+///   @override
+///   Map<String, dynamic>? get trackingProperties => {
+///         'userType': 'guest',
+///         'origin': 'splash_screen',
+///       };
+///   @override
+///   Widget buildPage(BuildContext context) {
+///     return Scaffold(
+///       appBar: AppBar(title: const Text("Home")),
+///       body: const Center(child: Text("Welcome")),
+///     );
+///   }
+/// }
+/// ```
 abstract class TrackedPage extends StatefulWidget {
   const TrackedPage({super.key});
 

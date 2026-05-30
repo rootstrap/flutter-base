@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
   /// Given this is a global cubit, we can access it directly from getIt
-  /// otherwise use context.read<AuthCubit>() to read the Cubit under that context
+  /// otherwise use `context.read<AuthCubit>()` to read the Cubit under that context
   AuthCubit get _authCubit => getIt();
 
   const HomeView({super.key});

@@ -1,64 +1,67 @@
-# name: sonarqube
+name: sonarqube
 
-# # ────────────────────────────────────────────────────────────────
-# # CI TRIGGERS
-# #   · push on main      → historical baseline
-# #   · pull_request PRs  → quality gate before merge
-# # ────────────────────────────────────────────────────────────────
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#     types: [opened, synchronize, reopened]
+# ────────────────────────────────────────────────────────────────
+# CI TRIGGERS
+#   · push on main      → historical baseline
+#   · pull_request PRs  → quality gate before merge
+# ────────────────────────────────────────────────────────────────
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
-# jobs:
-#   sonarQubeTrigger:
-#     name: Sonarqube Trigger
-#     runs-on: ubuntu-latest
+jobs:
+  sonarQubeTrigger:
+    name: Sonarqube Trigger
+    runs-on: ubuntu-latest
 
-#     steps:
-#       # 1 — Checkout the repo
-#       - name: Checkout code
-#         uses: actions/checkout@v3
+    steps:
+      # 1 — Checkout the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-#       # 2 — SSH agent for any Git-based pub dependencies
-#       - name: Start ssh-agent
-#         uses: webfactory/ssh-agent@v0.9.0
-#         with:
-#           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      # 2 — SSH agent for any Git-based pub dependencies
+      - name: Start ssh-agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-#       # 3 — Install Dart SDK
-#       - uses: dart-lang/setup-dart@v1
+      # 3 — Read the pinned Flutter version from .fvmrc
+      - name: Read Flutter version
+        id: fvm
+        run: echo "version=$(jq -r '.flutter' .fvmrc)" >> "$GITHUB_OUTPUT"
 
-#       # 4 — Install Flutter SDK
-#       - name: Set up Flutter
-#         uses: subosito/flutter-action@v2
-#         with:
-#           channel: stable
-#           flutter-version: 3.24.3
+      # 4 — Install Flutter SDK at the pinned version
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.version }}
 
-#       # 5 — Install all pub packages (app + each module)
-#       - name: Get pub packages
-#         run: |
-#           set -e
-#           for dir in app modules/*; do
-#             if [ -f "$dir/pubspec.yaml" ]; then
-#               echo "▶ flutter pub get --directory $dir"
-#               flutter pub get --directory "$dir"
-#             fi
-#           done
+      # 5 — Install Melos
+      - name: Install Melos
+        run: dart pub global activate melos
 
-#       # 6 — Static analysis (kept exactly as before)
-#       - name: Analyze App
-#         run: flutter analyze
+      # 6 — Resolve workspace dependencies
+      - name: Bootstrap workspace
+        run: melos bootstrap
 
-#       # 7 — Install SonarScanner CLI (needed by full_coverage.py)
-#       - name: Setup Sonarqube Scanner
-#         uses: warchant/setup-sonar-scanner@v8
+      # 7 — Static analysis
+      - name: Analyze
+        run: melos run analyze
 
-#       # 8 — Run tests, build combined lcov.info and upload to SonarQube
-#       - name: Generate coverage & run SonarQube
-#         run: python3 coverage/full_coverage.py --ci
-#         env:
-#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#           SONAR_URL: ${{ secrets.SONAR_URL }}
+      # 8 — Run tests (each package)
+      - name: Run tests
+        run: melos exec --dir-exists=test -- flutter test
+
+      # 9 — Install SonarScanner CLI (needed by full_coverage.py)
+      - name: Setup Sonarqube Scanner
+        uses: warchant/setup-sonar-scanner@v8
+
+      # 10 — Generate coverage & run SonarQube
+      - name: Generate coverage & run SonarQube
+        run: python3 coverage/full_coverage.py --ci
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_URL: ${{ secrets.SONAR_URL }}
