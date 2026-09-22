@@ -41,7 +41,6 @@ requirement
   - For lists with local add/remove, extend `ListBlocState<T>`.
   - Mix in `CancelableCubitMixin` and wrap futures with `toCancelable(...)` when a request may outlive the screen.
   - For multi-variant state (like `AuthState`), use a sealed class and emit it as the `T` of `Resource<T>`.
-  - Don't chain `mapSuccess`/`mapError` for side effects (known-issues #1).
 
 ## 2. Data (`modules/data/lib/`)
 
