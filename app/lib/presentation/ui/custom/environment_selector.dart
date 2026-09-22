@@ -7,27 +7,25 @@ import 'package:flutter/material.dart';
 import '../../../main/init.dart';
 
 class EnvironmentSelector extends StatelessWidget {
-  EnvironmentSelector({
-    super.key,
-  });
+  EnvironmentSelector({super.key});
 
   final EnvironmentService environmentService = getIt<EnvironmentService>();
 
   DropdownMenuItem<String> _item(
-          String value, String label, TextStyle textStyle) =>
-      DropdownMenuItem<String>(
-        value: value,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Dimen.spacingXs),
-          child: Text(label, style: textStyle),
-        ),
-      );
+    String value,
+    String label,
+    TextStyle textStyle,
+  ) => DropdownMenuItem<String>(
+    value: value,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Dimen.spacingXs),
+      child: Text(label, style: textStyle),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context)
-        .textTheme
-        .bodyLarge
+    final textStyle = Theme.of(context).textTheme.bodyLarge
         ?.copyWith(color: Theme.of(context).colorScheme.primary.v0);
 
     final items = <DropdownMenuItem<String>>[

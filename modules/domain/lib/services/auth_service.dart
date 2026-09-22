@@ -9,14 +9,12 @@ class AuthService {
   Future<ResultType<void>> logInWithCredentials(
     String username,
     String password,
-  ) =>
-      _authRepository.login(username, password);
+  ) => _authRepository.login(username, password);
 
   Future<ResultType<void>> signUpWithCredentials(
     String username,
     String password,
-  ) =>
-      _authRepository.signUp(username, password);
+  ) => _authRepository.signUp(username, password);
 
   bool isLoggedIn() => _authRepository.isLoggedIn();
 

@@ -43,15 +43,17 @@ class CustomNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return isSvg(imageUrl)
         ? Container(
-            decoration: BoxDecoration(boxShadow: [
-              if ((shadow ?? false))
-                BoxShadow(
-                  color: Colors.black.shadow(_shadowOpacity),
-                  spreadRadius: 0,
-                  blurRadius: _blurRadius,
-                  offset: const Offset(5, 5),
-                ),
-            ]),
+            decoration: BoxDecoration(
+              boxShadow: [
+                if ((shadow ?? false))
+                  BoxShadow(
+                    color: Colors.black.shadow(_shadowOpacity),
+                    spreadRadius: 0,
+                    blurRadius: _blurRadius,
+                    offset: const Offset(5, 5),
+                  ),
+              ],
+            ),
             child: SvgPicture.network(
               imageUrl ?? "",
               width: width,
@@ -62,32 +64,35 @@ class CustomNetworkImage extends StatelessWidget {
             ),
           )
         : Container(
-            decoration: BoxDecoration(boxShadow: [
-              if ((shadow ?? false))
-                BoxShadow(
-                  color: Colors.black.shadow(_shadowOpacity),
-                  spreadRadius: 0,
-                  blurRadius: _blurRadius,
-                  offset: const Offset(5, 5),
-                ),
-            ]),
+            decoration: BoxDecoration(
+              boxShadow: [
+                if ((shadow ?? false))
+                  BoxShadow(
+                    color: Colors.black.shadow(_shadowOpacity),
+                    spreadRadius: 0,
+                    blurRadius: _blurRadius,
+                    offset: const Offset(5, 5),
+                  ),
+              ],
+            ),
             child: FadeInImage(
               width: width,
               height: height,
               fit: imageBoxFit,
               image: NetworkImage(imageUrl ?? ""),
               placeholder: NetworkImage(loaderImage ?? ""),
-              imageErrorBuilder: (
-                BuildContext context,
-                Object object,
-                StackTrace? stackTrace,
-              ) {
-                return CustomNetworkImage(
-                  imageUrl: imageUrlError,
-                  width: width,
-                  height: height,
-                );
-              },
+              imageErrorBuilder:
+                  (
+                    BuildContext context,
+                    Object object,
+                    StackTrace? stackTrace,
+                  ) {
+                    return CustomNetworkImage(
+                      imageUrl: imageUrlError,
+                      width: width,
+                      height: height,
+                    );
+                  },
             ),
           );
   }

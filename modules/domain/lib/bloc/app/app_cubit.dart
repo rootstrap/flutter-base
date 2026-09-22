@@ -8,10 +8,12 @@ class AppCubit extends Cubit<AppState> {
   final CommonRepository _commonRepository;
 
   AppCubit(this._commonRepository)
-      : super(AppState(
+    : super(
+        AppState(
           themeType: _commonRepository.getTheme(),
           appLang: _commonRepository.getAppLang(),
-        ));
+        ),
+      );
 
   void updateTheme(ThemeType theme) {
     _commonRepository.setTheme(theme);
@@ -25,9 +27,6 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> resetApp() async {
     await _commonRepository.deepClean();
-    emit(AppState(
-      themeType: ThemeType.light,
-      appLang: AppLang.en,
-    ));
+    emit(AppState(themeType: ThemeType.light, appLang: AppLang.en));
   }
 }

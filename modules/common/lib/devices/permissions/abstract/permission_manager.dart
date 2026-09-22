@@ -17,5 +17,5 @@ enum AppPermissionStatus {
   deniedPermanently,
 
   /// i.e when location permission is granted only when the app is in use
-  limited
+  limited,
 }

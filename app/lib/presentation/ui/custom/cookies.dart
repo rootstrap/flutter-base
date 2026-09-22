@@ -51,7 +51,8 @@ class _CookiesState extends State<Cookies> {
               widget.child,
               Align(
                 alignment: widget.alignment,
-                child: widget.cookiesChild ??
+                child:
+                    widget.cookiesChild ??
                     Container(
                       constraints: BoxConstraints(
                         maxWidth: MediaQuery.of(context).size.width,
@@ -66,14 +67,16 @@ class _CookiesState extends State<Cookies> {
                             children: [
                               Text(
                                 S.of(context).cookiesTitle,
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium,
                               ),
                               const Gap(Dimen.spacingS),
                               SelectableText(
                                 S.of(context).cookiesBody,
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium,
                               ),
                               const Gap(Dimen.spacingS),
                               Align(

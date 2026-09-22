@@ -6,7 +6,7 @@ import 'package:data/init.dart';
 import 'package:domain/init.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();

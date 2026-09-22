@@ -5,29 +5,29 @@ version: 0.0.1
 resolution: workspace
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
-  flutter: ">=3.41.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.20.2
-  intl_utils: ^2.8.14
-  cupertino_icons: ^1.0.5
-  async: ^2.11.0
-  flutter_bloc: ^9.0.0
-  get_it: ^8.0.0
-  package_info_plus: ^8.3.0
-  permission_handler: ^12.0.0
-  universal_html: ^2.2.4
-  dio: ^5.8.0
+  intl: ^0.20.3
+  intl_utils: ^2.8.16
+  cupertino_icons: ^1.0.9
+  async: ^2.13.1
+  flutter_bloc: ^9.1.1
+  get_it: ^9.3.0
+  package_info_plus: ^10.2.1
+  permission_handler: ^13.0.2
+  universal_html: ^2.3.0
+  dio: ^5.11.1
   flutter_localizations:
     sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

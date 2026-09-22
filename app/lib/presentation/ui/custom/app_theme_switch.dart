@@ -16,9 +16,9 @@ class AppThemeSwitch extends StatelessWidget {
       value: theme == ThemeType.dark,
       thumbIcon: const WidgetStatePropertyAll(Icon(Icons.brightness_6)),
       onChanged: (value) {
-        context
-            .read<AppCubit>()
-            .updateTheme(value ? ThemeType.dark : ThemeType.light);
+        context.read<AppCubit>().updateTheme(
+          value ? ThemeType.dark : ThemeType.light,
+        );
       },
     );
   }

@@ -3,6 +3,15 @@
 #
 # Lint rules come from `package:flutter_lints/flutter.yaml`. To customize, add
 # entries under `linter.rules` below.
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - linux/**
+    # intl_utils output (regenerate with `melos run gen:l10n`, never edit by hand).
+    - lib/presentation/resources/locale/generated/**
 include: package:flutter_lints/flutter.yaml
 
 linter:

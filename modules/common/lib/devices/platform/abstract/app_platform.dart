@@ -1,19 +1,19 @@
 import 'package:common/devices/platform/abstract/platform_info.dart';
 
 abstract class AppPlatform {
-  get isWeb => false;
+  bool get isWeb => false;
 
-  get isMacOS => false;
+  bool get isMacOS => false;
 
-  get isFuchsia => false;
+  bool get isFuchsia => false;
 
-  get isLinux => false;
+  bool get isLinux => false;
 
-  get isWindows => false;
+  bool get isWindows => false;
 
-  get isIOS => false;
+  bool get isIOS => false;
 
-  get isAndroid => false;
+  bool get isAndroid => false;
 
   PlatformType get currentPlatform {
     if (isWeb) return PlatformType.web;

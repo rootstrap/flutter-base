@@ -50,10 +50,7 @@ class _AppState extends State<App> {
 
     if (mounted) {
       setState(() {
-        _router = Routes.init(
-          context,
-          initialLocation: initialLocation,
-        );
+        _router = Routes.init(context, initialLocation: initialLocation);
         _isRouterReady = true;
       });
     }
@@ -67,11 +64,7 @@ class _AppState extends State<App> {
         BlocProvider(create: (_) => getIt<AuthCubit>()),
       ],
       child: !_isRouterReady
-          ? const Material(
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            )
+          ? const Material(child: Center(child: CircularProgressIndicator()))
           : BlocBuilder<AppCubit, AppState>(
               builder: (context, state) {
                 return MaterialApp.router(
@@ -88,9 +81,7 @@ class _AppState extends State<App> {
                   builder: (context, child) =>
                       child ??
                       const Material(
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                        child: Center(child: CircularProgressIndicator()),
                       ),
                   routerConfig: _router,
                 );

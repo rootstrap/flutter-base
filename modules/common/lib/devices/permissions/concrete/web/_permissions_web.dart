@@ -4,12 +4,15 @@ import 'package:universal_html/html.dart' as html;
 class AppPermissions extends PermissionManager {
   @override
   Future<AppPermissionStatus> requestCameraPermission() async {
-    final permission =
-        await html.window.navigator.permissions?.query({"name": "camera"});
+    final permission = await html.window.navigator.permissions?.query({
+      "name": "camera",
+    });
     if (_permissionStatus(permission) != AppPermissionStatus.granted) {
       await html.window.navigator.getUserMedia(video: true);
-      final check = await html.window.navigator.permissions
-          ?.query({"request": "", "name": "camera"});
+      final check = await html.window.navigator.permissions?.query({
+        "request": "",
+        "name": "camera",
+      });
       return _permissionStatus(check);
     }
     return AppPermissionStatus.granted;

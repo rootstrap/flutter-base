@@ -11,10 +11,7 @@ import 'package:gap/gap.dart';
 
 class DebugBanner extends StatelessWidget {
   final Widget child;
-  const DebugBanner({
-    super.key,
-    required this.child,
-  });
+  const DebugBanner({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +29,9 @@ class DebugBanner extends StatelessWidget {
                 const Gap(Dimen.spacingS),
                 Text(
                   S.of(context).debugModeLabel,
-                  style:
-                      textTheme.bodyLarge?.copyWith(color: colorScheme.onError),
+                  style: textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onError,
+                  ),
                 ),
                 const Spacer(),
                 BlocBuilder<AppCubit, AppState>(

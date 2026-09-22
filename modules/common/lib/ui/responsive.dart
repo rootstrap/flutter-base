@@ -33,11 +33,7 @@ class ResponsiveBuilder extends StatelessWidget {
       builder = medium ?? big;
     }
 
-    return builder.call(
-      context,
-      orientation,
-      platform,
-    );
+    return builder.call(context, orientation, platform);
   }
 }
 

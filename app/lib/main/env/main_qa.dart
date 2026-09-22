@@ -4,10 +4,7 @@ import 'package:app/main/init.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FlavorConfig(
-    flavor: Flavor.qa,
-    values: FlavorValues(),
-  );
+  FlavorConfig(flavor: Flavor.qa, values: FlavorValues());
   //Add your firebase configuration here
   /*await Firebase.initializeApp(
     options: const FirebaseOptions(

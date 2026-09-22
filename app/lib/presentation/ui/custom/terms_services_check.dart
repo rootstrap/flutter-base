@@ -19,11 +19,11 @@ class TermsServicesCheck extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: Theme.of(context).textButtonTheme.style?.copyWith(
-              alignment: Alignment.centerLeft, // <-- important
-              padding: WidgetStateProperty.all(
-                EdgeInsets.zero,
-              ), // optional, but helps
-            ),
+          alignment: Alignment.centerLeft, // <-- important
+          padding: WidgetStateProperty.all(
+            EdgeInsets.zero,
+          ), // optional, but helps
+        ),
         onPressed: () => onChanged?.call(!agreeToTerms),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,9 +45,7 @@ class TermsServicesCheck extends StatelessWidget {
             IconButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(S.of(context).hintTermsAndConditions),
-                  ),
+                  SnackBar(content: Text(S.of(context).hintTermsAndConditions)),
                 );
               },
               icon: const Icon(Icons.info),
