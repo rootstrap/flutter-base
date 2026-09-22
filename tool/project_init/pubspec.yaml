@@ -1,0 +1,14 @@
+name: project_init
+description: Initializes a project from the Flutter Base template (melos run init).
+publish_to: none
+
+resolution: workspace
+
+environment:
+  sdk: ^3.13.0
+
+# The initializer must run before `melos bootstrap`, so it depends on dart:
+# libraries only. Test dependencies are fine: tests run after bootstrap.
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.31.1

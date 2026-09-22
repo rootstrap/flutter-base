@@ -1,10 +1,14 @@
 name: sonarqube
 
-# ────────────────────────────────────────────────────────────────
-# CI TRIGGERS
-#   · push on main      → historical baseline
-#   · pull_request PRs  → quality gate before merge
-# ────────────────────────────────────────────────────────────────
+# Project-only automation. It is skipped in the Flutter Base template and runs
+# in projects created from it: the `gate` job reads flutter_base.json, and
+# `melos run init` switches its "state" from "template" to "initialized".
+#
+# Required repository secrets once the project is initialized:
+#   SONAR_TOKEN     SonarQube project token
+#   SONAR_URL       SonarQube server URL
+# Optional:
+#   SSH_PRIVATE_KEY only needed for git-based pub dependencies
 on:
   push:
     branches: [main]
@@ -12,56 +16,67 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  sonarQubeTrigger:
-    name: Sonarqube Trigger
+  gate:
+    name: Check repository state
     runs-on: ubuntu-latest
-
+    outputs:
+      initialized: ${{ steps.state.outputs.initialized }}
     steps:
-      # 1 — Checkout the repo
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: flutter_base.json
+          sparse-checkout-cone-mode: false
 
-      # 2 — SSH agent for any Git-based pub dependencies
-      - name: Start ssh-agent
+      - name: Read flutter_base.json
+        id: state
+        run: |
+          state=$(jq -r '.state' flutter_base.json)
+          echo "Repository state: $state"
+          if [ "$state" = "initialized" ]; then
+            echo "initialized=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "initialized=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Template repository: SonarQube is disabled until 'melos run init' initializes a project."
+          fi
+
+  sonarqube:
+    name: SonarQube scan
+    needs: gate
+    if: needs.gate.outputs.initialized == 'true'
+    runs-on: ubuntu-latest
+    env:
+      MELOS_SDK_PATH: auto
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start ssh-agent for git-based pub dependencies
+        if: env.SSH_PRIVATE_KEY != ''
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # 3 — Read the pinned Flutter version from .fvmrc
-      - name: Read Flutter version
+      - name: Read the pinned Flutter version
         id: fvm
         run: echo "version=$(jq -r '.flutter' .fvmrc)" >> "$GITHUB_OUTPUT"
 
-      # 4 — Install Flutter SDK at the pinned version
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version: ${{ steps.fvm.outputs.version }}
+          cache: true
 
-      # 5 — Install Melos
       - name: Install Melos
         run: dart pub global activate melos
 
-      # 6 — Resolve workspace dependencies
-      - name: Bootstrap workspace
+      - name: Bootstrap the workspace
         run: melos bootstrap
 
-      # 7 — Static analysis
-      - name: Analyze
-        run: melos run analyze
-
-      # 8 — Run tests (each package)
-      - name: Run tests
-        run: melos exec --dir-exists=test -- flutter test
-
-      # 9 — Install SonarScanner CLI (needed by full_coverage.py)
-      - name: Setup Sonarqube Scanner
+      - name: Set up SonarScanner
         uses: warchant/setup-sonar-scanner@v8
 
-      # 10 — Generate coverage & run SonarQube
-      - name: Generate coverage & run SonarQube
+      - name: Generate coverage and run SonarQube
         run: python3 coverage/full_coverage.py --ci
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_URL: ${{ secrets.SONAR_URL }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_URL }}

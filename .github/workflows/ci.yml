@@ -1,0 +1,78 @@
+name: ci
+
+# Runs in the Flutter Base template and in every project created from it.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Use the SDK installed by flutter-action instead of the FVM link (.fvm/),
+  # which only exists on developer machines.
+  MELOS_SDK_PATH: auto
+
+jobs:
+  verify:
+    name: Format, analyze and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the pinned Flutter version
+        id: fvm
+        run: echo "version=$(jq -r '.flutter' .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          cache: true
+
+      - name: Install Melos
+        run: dart pub global activate melos
+
+      - name: Bootstrap the workspace
+        run: melos bootstrap
+
+      - name: Format, analyze and test
+        run: melos run verify
+
+  build-android:
+    name: Build Android (debug)
+    runs-on: ubuntu-latest
+    needs: verify
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Read the pinned Flutter version
+        id: fvm
+        run: echo "version=$(jq -r '.flutter' .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          cache: true
+
+      # compileSdk 37 (android/build.properties) is newer than the runner image.
+      - name: Install Android SDK platform 37
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-37.0" > /dev/null
+
+      - name: Install Melos
+        run: dart pub global activate melos
+
+      - name: Bootstrap the workspace
+        run: melos bootstrap
+
+      - name: Build the dev flavor
+        working-directory: app
+        run: flutter build apk --debug -t lib/main/env/main_dev.dart --dart-define-from-file=env/.dev
