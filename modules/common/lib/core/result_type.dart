@@ -30,10 +30,16 @@ extension ResultTypeExtension<T> on ResultType<T> {
     };
   }
 
+  /// Invokes [error] when this is a [TError]. If the callback returns an
+  /// [Exception], it replaces the original error; otherwise the original
+  /// error is kept, so side-effect callbacks don't discard it.
   ResultType<T> mapError(Function(Exception? error) error) {
     return switch (this) {
       TSuccess<T> e => TSuccess(e.data),
-      TError e => TError(e.error),
+      TError e => _mapErrorValue(error(e.error), e.error),
     };
   }
+
+  TError<T> _mapErrorValue(dynamic mapped, Exception? original) =>
+      TError(mapped is Exception ? mapped : original);
 }
