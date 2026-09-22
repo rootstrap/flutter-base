@@ -6,6 +6,14 @@ Flutter base is a boilerplate project created by Rootstrap for new projects usin
 objective is helping any new projects jump start into feature development by providing a handful of
 functionalities.
 
+## Documentation
+
+- [CLAUDE.md](CLAUDE.md): the entry point for AI agents and a quick reference for developers (architecture, commands, rules, definition of done)
+- [Architecture overview](docs/architecture/overview.md) · [Module guide](docs/architecture/modules.md) · [Known issues](docs/architecture/known-issues.md)
+- [Feature development](docs/development/feature-guide.md) · [Testing](docs/development/testing.md) · [Bootstrap customization](docs/development/bootstrap-customization.md)
+
+Where this README and `docs/` disagree, `docs/` reflects the current code (see known-issues #15).
+
 # Features
 
 This template comes with:
