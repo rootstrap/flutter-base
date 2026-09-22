@@ -1,7 +1,8 @@
 # Bootstrap customization guide
 
 What to keep, what to change, and what to delete when starting a new project from this template.
-This complements the step-by-step setup in the root `README.md`.
+Start with `melos run init` ([project-initialization.md](project-initialization.md)): it applies the project identity
+everywhere. This page covers what comes after.
 
 ## What each part of the template is
 
@@ -11,26 +12,17 @@ This complements the step-by-step setup in the root `README.md`.
 | **Extension points** (customize) | `ThemeColors` palettes (`light_theme_colors.dart`, `dark_theme_colors.dart`); `LocalTheme` text styles + fonts; `Dimen`; `Images` enum; `.arb` files; `AnalyticsClient` implementation; `PermissionManager` methods; `Preferences` keys; `NetworkConstants`; `AuthTokenInterceptor` header/clear policy; `FlavorValues` (empty, for per-flavor values); `TrackedPage` | Designed to be filled in per project. |
 | **Example / reference** (replace) | Auth flow (`AuthRepositoryImpl` is a fake that sleeps and stores `'new-token'`), login/sign-up pages, onboarding (4 placeholder pages), home, splash, `/app/placeholder` route, `User` model, cookies banner, `EnvironmentSelector`, `DebugBanner` | They show the patterns. Rewrite them against your real backend and design, keeping the same shape. |
 | **Placeholders** (must replace) | See the checklist below | Leaving any of these in production is a defect. |
-| **Generated** (never hand-edit) | `app/lib/presentation/resources/locale/generated/**`; Flutter plugin registrants; `ios/Flutter/Generated.xcconfig` | Regenerate them instead. |
+| **Generated** (never hand-edit) | `app/lib/presentation/resources/locale/generated/**`; Flutter plugin registrants; `ios/Flutter/Generated.xcconfig`; `flutter_base.json` (the initializer's) | Regenerate them instead. |
 | **Protected boundaries** | Dependency rules in [modules.md](../architecture/modules.md#dependency-rules); interfaces in domain / impls in data; Common → Data → Domain init order | Changing these needs an explicit decision. |
 
 ## New-project checklist
 
 ### Identity
-- [ ] `android/build.properties`: `flutter.appId`, versions, SDK levels. The applicationId becomes `com.rs.<appId>`.
-  Change the `"com.rs."` prefix in `android/app/build.gradle` if you aren't using Rootstrap's namespace.
-- [ ] Android `namespace` and Kotlin package `com.rootstrap.base.flutter_base_rootstrap` (`android/app/build.gradle`,
-  `AndroidManifest.xml` `package`, `src/main/kotlin/.../MainActivity.kt`).
-- [ ] `android:label="flutter_base_rootstrap"` in `AndroidManifest.xml`.
-- [ ] iOS `FLUTTER_APP_ID` / `FLUTTER_APP_NAME` in `ios/Flutter/Debug.xcconfig`, `ios/Flutter/Release.xcconfig`,
-  `ios/dev.xcconfig`, and `ios/qa.xcconfig` ("RS Base …"). The bundle ID becomes `com.rs.$(FLUTTER_APP_ID)`, and the `com.rs.` prefix is
-  in `project.pbxproj` `PRODUCT_BUNDLE_IDENTIFIER`.
-- [ ] `CFBundleName` `flutter_base_rootstrap` in `ios/Runner/Info.plist`.
-- [ ] Web: `<title>` / `apple-mobile-web-app-title` in `web/index.html`, and `web/manifest.json` name, description, and colors.
-- [ ] `appName` ("Flutter Target") in the `.arb` files.
+- [ ] Run `melos run init`. It sets the app name, Dart package name, Android application ID and namespace (and moves
+  `MainActivity.kt`), the iOS bundle ID and display names, web titles, `appName`, and the Sonar project key and name.
+  Don't edit those by hand. The full list is in [project-initialization.md](project-initialization.md#what-init-changes).
 - [ ] Package descriptions ("A new Flutter project." / "A new Flutter package project.") and the template `README.md` /
   `CHANGELOG.md` in each `modules/*`.
-- [ ] Root `pubspec.yaml` `name: flutter_base_workspace` / `description`, if you want the workspace named after the project.
 - [ ] License: `app/LICENSE.md`, `modules/*/LICENSE` (MIT). Replace or remove them for private projects (the README says so).
 
 ### Environments
@@ -63,20 +55,16 @@ This complements the step-by-step setup in the root `README.md`.
 - [ ] Android: create a keystore and `android/key.properties` (git-ignored). `build.gradle` reads `storeFile`, `storePassword`,
   `keyAlias`, and `keyPassword`.
 - [ ] iOS: signing team and provisioning profiles in Xcode. None are committed, and the README marks this as TODO.
-- [ ] Versioning: `version:` in `app/pubspec.yaml` (1.0.0+1), which Flutter writes into `android/local.properties`, and that's what
-  `build.gradle` reads. The `flutter.versionName/Code` in `build.properties` are **not** read by Gradle. The iOS xcconfigs
-  also set `FLUTTER_BUILD_NAME/NUMBER` (2.0.0). These disagree today. Pick one source.
+- [ ] Versioning: `version:` in `app/pubspec.yaml` is the single source for Android and iOS. Bump it there, or pass
+  `--build-name` / `--build-number` to `flutter build`.
 
 ### CI/CD and quality
-- [ ] `.github/workflows/sonar-qube-scann.yml` runs on every PR and push to `main` (analyze, tests, coverage + SonarQube),
-  using the Flutter version from `.fvmrc`. Set the secrets `SONAR_TOKEN` and `SONAR_URL`. It also requires
-  `SSH_PRIVATE_KEY`, which is only needed for git-based pub dependencies (there are none), so either set it or drop the
-  `ssh-agent` step. Without it, the job fails at that step (known-issues #3).
+- [ ] `ci.yml` (format, analyze, test, Android build) needs no setup.
+- [ ] SonarQube starts running once the project is initialized. Add the repository secrets `SONAR_TOKEN` and `SONAR_URL`
+  (and `SSH_PRIVATE_KEY` only if you add git-based pub dependencies). `sonar-project.properties` gets its key and name
+  from `init`.
 - [ ] Bump the Flutter version with `fvm use <version>` and commit `.fvmrc`. CI follows it.
-- [ ] `sonar-project.properties`: `projectKey`, `projectName`, `host.url`. `sonar.tests` lists `app/test`, which doesn't
-  exist yet.
-- [ ] Add `melos run format` and a `flutter build` to CI. The current workflow runs neither (the README also mentions Bitrise
-  and an RS-GPT-Review action, but neither is configured in this repo).
+- [ ] iOS isn't built in CI. Add a macOS job if the project needs it.
 - [ ] `.github/pull_request_template.md`: adjust the issue-tracker link.
 
 ### Clean-up of examples

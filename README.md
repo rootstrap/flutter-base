@@ -18,7 +18,7 @@ Where this README and `docs/` disagree, `docs/` reflects the current code (see k
 
 This template comes with:
 
-- Melos: Manage actions.
+- Melos 8 workspace scripts, and a one-command project initializer (`melos run init`).
 - Dependency injection (GetIt).
 - HttpClient already configured for Rootstrap BE Projects(Dio).
 - Theming setup.
@@ -32,39 +32,61 @@ This template comes with:
 
 ## Initial Setup
 
-1. Create a new repo using this template.
+This repository is a **template**: `flutter_base.json` says `"state": "template"`, and project-only automation
+(SonarQube) is off. One command turns a copy of it into your project.
+See [docs/development/project-initialization.md](docs/development/project-initialization.md) for everything it does.
+
+1. Create a new repo using this template, and clone it.
 
    ![template](app/template.png)
-2. Clone your new repo.
-3. Install [FVM](https://fvm.app) (Flutter Version Management):
+2. Install [FVM](https://fvm.app) and the Flutter version pinned in `.fvmrc` (3.47.5):
 ```text
     dart pub global activate fvm
-```
-4. Install the Flutter SDK version pinned in `.fvmrc`:
-```text
     fvm install
 ```
-   This downloads the exact Flutter version the repo is pinned to and links it at `.fvm/flutter_sdk`. All contributors and CI use the same version.
-5. Run Flutter commands through FVM:
-```text
-    fvm flutter <command>
-```
-   Optionally add a shell alias (`alias flutter='fvm flutter'`) so you can keep typing `flutter ...`.
-6. Install [Melos](https://melos.invertase.dev/getting-started) 7.x globally:
+   Run Flutter through FVM (`fvm flutter <command>`), or add `alias flutter='fvm flutter'`.
+3. Install [Melos](https://melos.invertase.dev/getting-started) 8 globally. If your shell can't find `melos`,
+   add `export PATH="$PATH":"$HOME/.pub-cache/bin"` to `~/.zshrc` or `~/.bashrc`:
 ```text
     dart pub global activate melos
 ```
-7. Verify melos is on the path: `melos --version`. If your shell does not find the command, add `pub-cache` to `PATH` (e.g. in `~/.zshrc` or `~/.bashrc`):
+4. Initialize the project. It prompts for the app name, Dart package name and bundle ID, and shows every change
+   before applying it:
 ```text
-    export PATH="$PATH":"$HOME/.pub-cache/bin"
+    melos run init
 ```
-8. Bootstrap the workspace (downloads packages for every workspace member):
+   Non-interactive form (use it when the name contains spaces):
+```text
+    dart tool/project_init/bin/init.dart --name "My App" --package-name my_app --bundle-id com.company.myapp
+```
+5. Bootstrap the workspace and check everything:
 ```text
     melos bootstrap
+    melos run verify
 ```
-9. Run `melos doctor` to verify the setup.
+6. Add your environment values. Each flavor reads `app/env/.<flavor>` (see `app/env/.dev`):
+```text
+    API_URL=https://your-api.example.com
+    ENV=dev
+```
+   ![me](env_config_files.png)
+7. Android release signing: create a keystore and `app/android/key.properties`. Without it, release builds use the
+   debug key.
+```text
+   keytool -genkey -v -keystore ~/keystore_name.jks -keyalg RSA -keysize 2048 -validity 10000 -alias your_alias
+```
+```text
+    storePassword=<YourStorePassword>
+    keyPassword=<YourKeyPassword>
+    keyAlias=<YourStoreAlias>
+    storeFile=<FilePath>
+```
+8. iOS signing: set your team in Xcode (`app/ios/Runner.xcworkspace`).
 
-> Melos 7 uses [Dart pub workspaces](https://dart.dev/tools/pub/workspaces). The workspace is declared in the root `pubspec.yaml`, each package sets `resolution: workspace`, and there is a single shared `pubspec.lock` at the repo root.
+Toolchain: JDK 17, Android SDK platform 37 (`sdkmanager "platforms;android-37.0"`), Xcode with the iOS 15+ SDK.
+CocoaPods is not needed; iOS plugins use Swift Package Manager.
+
+> Melos 8 uses [Dart pub workspaces](https://dart.dev/tools/pub/workspaces). The workspace is declared in the root `pubspec.yaml`, each package sets `resolution: workspace`, and there is a single shared `pubspec.lock` at the repo root.
 
 ### Upgrading the pinned Flutter version
 
@@ -74,49 +96,6 @@ When the team agrees to move to a new Flutter version, run `fvm use <version>` a
 
 - **VS Code**: settings are already wired in `.vscode/settings.json` — the Dart extension picks up `.fvm/flutter_sdk` automatically.
 - **Android Studio / IntelliJ**: open `Preferences → Languages & Frameworks → Flutter` and set the SDK path to `<repo>/.fvm/flutter_sdk`.
-10. Setup Android:
-    - Add to the build.properties file (and update when needed):
-```text 
-    flutter.versionName=1.0.0
-    flutter.appId=base
-    flutter.versionCode=1
-    flutter.compileSdkVersion=33
-    flutter.minSdkVersion=21
-    flutter.targetSdkVersion=33 
-```
-
-11. Android SignIn
-    - Create your release Key Store:
-
-```text
-   keytool -genkey -v -keystore ~/keystore_name.jks -keyalg RSA -keysize 2048 -validity 10000 -alias your_alias"
-```
-
-- Create the 'key.properties' file with the keystore information:
-
-```text
-    storePassword=<YourStorePassword>
-    keyPassword=<YourKeyPassword>
-    keyAlias=<YourStoreAlias>>
-    storeFile=<FilePath>
-```
-
-12. Add your env vars, create a config file for each env:
-   ![me](env_config_files.png)
-    - add the env config, i.e:
-
-```text
-    {
-        "API_URL": "https://dummyjson.com"
-    }
-```
-
-10. Setup iOs App Name and id:
-   - Locate the config file for each flavor and configure the FLUTTER_APP_NAME i.e: Debug.xcconfig
-```text
-     FLUTTER_APP_ID=base.debug
-     FLUTTER_APP_NAME=RS Base Debug
-```
 
 ## Set up an editor
 

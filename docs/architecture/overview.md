@@ -162,10 +162,14 @@ naming in comments vs. `.dev` on disk, and the fact that bundled env files are r
 
 Platform flavor support:
 - **iOS:** build configurations `Debug/Release/Profile` × (`dev`, `qa`, and default), and schemes `Dev`, `QA`,
-  `Runner`. `ios/dev.xcconfig` / `ios/qa.xcconfig` / `ios/Flutter/*.xcconfig` set `FLUTTER_APP_ID`,
-  `FLUTTER_APP_NAME`, and `FLUTTER_TARGET`. Bundle ID = `com.rs.$(FLUTTER_APP_ID)` (+ `.debug.dev` / `.debug.qa`).
-- **Android:** no product flavors. `applicationId = "com.rs." + flutter.appId` from `android/build.properties`,
-  and the debug build type adds `.debug`. Environment selection is by `-t` entrypoint only.
+  `Runner`. `ios/Flutter/AppIdentity.xcconfig` holds `APP_BUNDLE_ID` and `APP_DISPLAY_NAME`. `ios/Flutter/Debug.xcconfig`,
+  `Release.xcconfig`, `ios/dev.xcconfig` and `ios/qa.xcconfig` include it and set `FLUTTER_TARGET` and `FLUTTER_APP_NAME`.
+  Bundle ID = `$(APP_BUNDLE_ID)` plus `.debug`, `.dev` or `.qa` suffixes; the full table is in
+  [project-initialization.md](../development/project-initialization.md#what-init-changes). Plugins are integrated
+  with Swift Package Manager (no CocoaPods), and the app uses the UIScene lifecycle (`FlutterSceneDelegate`).
+- **Android:** no product flavors. `android/build.properties` holds `flutter.applicationId`, `flutter.namespace` and
+  `flutter.appName` (the launcher label, via the `appLabel` manifest placeholder) plus the SDK levels. The debug build type
+  adds `.debug`. Environment selection is by `-t` entrypoint only.
 
 ## Error handling
 
