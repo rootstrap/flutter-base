@@ -1,22 +1,46 @@
-# This config file is for Sonarqube only
-name: Sonar
-description: Sonar
+name: flutter_base_workspace
+description: Melos workspace root. Real packages live under app/ and modules/*.
 
 publish_to: "none"
 version: 0.0.1+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.6.0 <4.0.0"
+  flutter: ">=3.41.0"
 
-dependencies:
-  flutter:
-    sdk: flutter
-  app_links: ^6.4.1
+workspace:
+  - app
+  - modules/common
+  - modules/data
+  - modules/domain
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  melos: ^7.0.0
 
-flutter:
-  generate: true
-  uses-material-design: true
+melos:
+  sdkPath: .fvm/flutter_sdk
+  scripts:
+    run:web:
+      description: Run the app in development mode for web.
+      run: melos exec --scope="app" -- flutter run -t lib/main.dart --dart-define-from-file=env/.dev -d chrome
+    lint:all:
+      run: melos run analyze && melos run format
+      description: Run all static analysis checks.
+    analyze:
+      description: Run `dart analyze` in all packages.
+      run: melos exec -c 1 -- dart analyze . --fatal-infos
+    format:
+      description: Run `dart format` in all packages.
+      run: melos exec -c 1 -- dart format --set-exit-if-changed .
+    pub:runner:
+      description: Run `pub run build_runner` in selected or all packages.
+      run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+      packageFilters:
+        dirExists:
+          - lib
+    doctor:
+      description: Run `flutter doctor`.
+      run: melos exec -- flutter doctor
+      packageFilters:
+        dirExists:
+          - lib

@@ -28,14 +28,45 @@ This template comes with:
 
    ![template](app/template.png)
 2. Clone your new repo.
-3. Install [Melos](https://melos.invertase.dev/getting-started) globally executing: `dart pub global activate melos`.
-4. test: `melos -v` * note: if your terminal don't recognize melos command, you can add the following line to your .zshrc or .bashrc file:*
+3. Install [FVM](https://fvm.app) (Flutter Version Management):
+```text
+    dart pub global activate fvm
+```
+4. Install the Flutter SDK version pinned in `.fvmrc`:
+```text
+    fvm install
+```
+   This downloads the exact Flutter version the repo is pinned to and links it at `.fvm/flutter_sdk`. All contributors and CI use the same version.
+5. Run Flutter commands through FVM:
+```text
+    fvm flutter <command>
+```
+   Optionally add a shell alias (`alias flutter='fvm flutter'`) so you can keep typing `flutter ...`.
+6. Install [Melos](https://melos.invertase.dev/getting-started) 7.x globally:
+```text
+    dart pub global activate melos
+```
+7. Verify melos is on the path: `melos --version`. If your shell does not find the command, add `pub-cache` to `PATH` (e.g. in `~/.zshrc` or `~/.bashrc`):
 ```text
     export PATH="$PATH":"$HOME/.pub-cache/bin"
-``` 
-5. Run `melos doctor`. 
-6. Run `melos pub:get`. 
-7. Setup Android:
+```
+8. Bootstrap the workspace (downloads packages for every workspace member):
+```text
+    melos bootstrap
+```
+9. Run `melos doctor` to verify the setup.
+
+> Melos 7 uses [Dart pub workspaces](https://dart.dev/tools/pub/workspaces). The workspace is declared in the root `pubspec.yaml`, each package sets `resolution: workspace`, and there is a single shared `pubspec.lock` at the repo root.
+
+### Upgrading the pinned Flutter version
+
+When the team agrees to move to a new Flutter version, run `fvm use <version>` at the repo root and commit the updated `.fvmrc`. CI reads the pinned version from `.fvmrc`, so the change propagates automatically.
+
+### IDE setup
+
+- **VS Code**: settings are already wired in `.vscode/settings.json` — the Dart extension picks up `.fvm/flutter_sdk` automatically.
+- **Android Studio / IntelliJ**: open `Preferences → Languages & Frameworks → Flutter` and set the SDK path to `<repo>/.fvm/flutter_sdk`.
+10. Setup Android:
     - Add to the build.properties file (and update when needed):
 ```text 
     flutter.versionName=1.0.0
@@ -46,7 +77,7 @@ This template comes with:
     flutter.targetSdkVersion=33 
 ```
 
-8. Android SignIn
+11. Android SignIn
     - Create your release Key Store:
 
 ```text
@@ -62,7 +93,7 @@ This template comes with:
     storeFile=<FilePath>
 ```
 
-9. Add your env vars, create a config file for each env:
+12. Add your env vars, create a config file for each env:
    ![me](env_config_files.png)
     - add the env config, i.e:
 

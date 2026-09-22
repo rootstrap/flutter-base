@@ -92,6 +92,7 @@ class DebugBanner extends StatelessWidget {
               onPressed: () async {
                 Navigator.of(dialogContext).pop();
                 await context.read<AppCubit>().resetApp();
+                if (!context.mounted) return;
                 await context.read<AuthCubit>().logOut();
               },
               child: Text(S.of(context).debugModeConfirm),

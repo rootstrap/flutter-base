@@ -25,92 +25,95 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
-    "cookiesAcceptCTA": MessageLookupByLibrary.simpleMessage("Accept"),
-    "cookiesBody": MessageLookupByLibrary.simpleMessage(
-      "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.",
-    ),
-    "cookiesTitle": MessageLookupByLibrary.simpleMessage(
-      "This website uses cookies",
-    ),
-    "ctaLogin": MessageLookupByLibrary.simpleMessage("Login"),
-    "ctaSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
-    "debugModeCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-    "debugModeConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
-    "debugModeLabel": MessageLookupByLibrary.simpleMessage("DEV"),
-    "debugModeResetApp": MessageLookupByLibrary.simpleMessage("RESET"),
-    "debugModeResetAppMessage": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to reset the app?",
-    ),
-    "debugModeResetAppTitle": MessageLookupByLibrary.simpleMessage("Reset App"),
-    "errorEmailInvalid": MessageLookupByLibrary.simpleMessage(
-      "Please enter a valid email address.",
-    ),
-    "errorEmailRequired": MessageLookupByLibrary.simpleMessage(
-      "Email is required.",
-    ),
-    "errorPasswordRequired": MessageLookupByLibrary.simpleMessage(
-      "Password is required.",
-    ),
-    "errorPasswordWeak": MessageLookupByLibrary.simpleMessage(
-      "Password is too weak.",
-    ),
-    "errorPasswordsDoNotMatch": MessageLookupByLibrary.simpleMessage(
-      "Passwords do not match.",
-    ),
-    "hintTermsAndConditions": MessageLookupByLibrary.simpleMessage(
-      "This should open the terms and conditions URL.",
-    ),
-    "labelAgreeToTerms": MessageLookupByLibrary.simpleMessage(
-      "I agree to the Terms and Conditions",
-    ),
-    "labelConfirmPassword": MessageLookupByLibrary.simpleMessage(
-      "Confirm Password",
-    ),
-    "labelEmail": MessageLookupByLibrary.simpleMessage("Email"),
-    "labelPassword": MessageLookupByLibrary.simpleMessage("Password"),
-    "loginErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
-      "Invalid email or password.",
-    ),
-    "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
-    "onboardingBack": MessageLookupByLibrary.simpleMessage("Back"),
-    "onboardingNext": MessageLookupByLibrary.simpleMessage("Next"),
-    "onboardingPage1Description": MessageLookupByLibrary.simpleMessage(
-      "This is the first page of the onboarding flow",
-    ),
-    "onboardingPage1Title": MessageLookupByLibrary.simpleMessage("Welcome"),
-    "onboardingPage2Description": MessageLookupByLibrary.simpleMessage(
-      "This is the second page of the onboarding flow",
-    ),
-    "onboardingPage2Title": MessageLookupByLibrary.simpleMessage("Discover"),
-    "onboardingPage3Description": MessageLookupByLibrary.simpleMessage(
-      "This is the third page of the onboarding flow",
-    ),
-    "onboardingPage3Title": MessageLookupByLibrary.simpleMessage("Connect"),
-    "onboardingPage4Description": MessageLookupByLibrary.simpleMessage(
-      "This is the fourth page of the onboarding flow",
-    ),
-    "onboardingPage4Title": MessageLookupByLibrary.simpleMessage("Get Started"),
-    "onboardingPageIndicator": m0,
-    "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
-    "passwordInstructions": MessageLookupByLibrary.simpleMessage(
-      "Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",
-    ),
-    "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
-        MessageLookupByLibrary.simpleMessage(
+        "appName": MessageLookupByLibrary.simpleMessage("Flutter Target"),
+        "cookiesAcceptCTA": MessageLookupByLibrary.simpleMessage("Accept"),
+        "cookiesBody": MessageLookupByLibrary.simpleMessage(
+          "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.",
+        ),
+        "cookiesTitle": MessageLookupByLibrary.simpleMessage(
+          "This website uses cookies",
+        ),
+        "ctaLogin": MessageLookupByLibrary.simpleMessage("Login"),
+        "ctaSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "debugModeCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "debugModeConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "debugModeLabel": MessageLookupByLibrary.simpleMessage("DEV"),
+        "debugModeResetApp": MessageLookupByLibrary.simpleMessage("RESET"),
+        "debugModeResetAppMessage": MessageLookupByLibrary.simpleMessage(
+          "Are you sure you want to reset the app?",
+        ),
+        "debugModeResetAppTitle":
+            MessageLookupByLibrary.simpleMessage("Reset App"),
+        "errorEmailInvalid": MessageLookupByLibrary.simpleMessage(
+          "Please enter a valid email address.",
+        ),
+        "errorEmailRequired": MessageLookupByLibrary.simpleMessage(
+          "Email is required.",
+        ),
+        "errorPasswordRequired": MessageLookupByLibrary.simpleMessage(
+          "Password is required.",
+        ),
+        "errorPasswordWeak": MessageLookupByLibrary.simpleMessage(
+          "Password is too weak.",
+        ),
+        "errorPasswordsDoNotMatch": MessageLookupByLibrary.simpleMessage(
+          "Passwords do not match.",
+        ),
+        "hintTermsAndConditions": MessageLookupByLibrary.simpleMessage(
+          "This should open the terms and conditions URL.",
+        ),
+        "labelAgreeToTerms": MessageLookupByLibrary.simpleMessage(
+          "I agree to the Terms and Conditions",
+        ),
+        "labelConfirmPassword": MessageLookupByLibrary.simpleMessage(
+          "Confirm Password",
+        ),
+        "labelEmail": MessageLookupByLibrary.simpleMessage("Email"),
+        "labelPassword": MessageLookupByLibrary.simpleMessage("Password"),
+        "loginErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
+          "Invalid email or password.",
+        ),
+        "noConnection": MessageLookupByLibrary.simpleMessage("No connection"),
+        "onboardingBack": MessageLookupByLibrary.simpleMessage("Back"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("Next"),
+        "onboardingPage1Description": MessageLookupByLibrary.simpleMessage(
+          "This is the first page of the onboarding flow",
+        ),
+        "onboardingPage1Title": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "onboardingPage2Description": MessageLookupByLibrary.simpleMessage(
+          "This is the second page of the onboarding flow",
+        ),
+        "onboardingPage2Title":
+            MessageLookupByLibrary.simpleMessage("Discover"),
+        "onboardingPage3Description": MessageLookupByLibrary.simpleMessage(
+          "This is the third page of the onboarding flow",
+        ),
+        "onboardingPage3Title": MessageLookupByLibrary.simpleMessage("Connect"),
+        "onboardingPage4Description": MessageLookupByLibrary.simpleMessage(
+          "This is the fourth page of the onboarding flow",
+        ),
+        "onboardingPage4Title":
+            MessageLookupByLibrary.simpleMessage("Get Started"),
+        "onboardingPageIndicator": m0,
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
+        "passwordInstructions": MessageLookupByLibrary.simpleMessage(
+          "Min 8 characters long: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",
+        ),
+        "pleaseTryAgainLaterWeArenworkingToFixTheIssue":
+            MessageLookupByLibrary.simpleMessage(
           "Please try again later, we are\nworking to fix the issue.",
         ),
-    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-    "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
-      "Sorry we didn\'t find any product",
-    ),
-    "titleLogin": MessageLookupByLibrary.simpleMessage("Login"),
-    "titleLoginSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Use your email and password to login to your account.",
-    ),
-    "titleSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
-    "titleSignUpSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Create an account using your email and password.",
-    ),
-  };
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "sorryWeDidntFindAnyProduct": MessageLookupByLibrary.simpleMessage(
+          "Sorry we didn\'t find any product",
+        ),
+        "titleLogin": MessageLookupByLibrary.simpleMessage("Login"),
+        "titleLoginSubtitle": MessageLookupByLibrary.simpleMessage(
+          "Use your email and password to login to your account.",
+        ),
+        "titleSignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "titleSignUpSubtitle": MessageLookupByLibrary.simpleMessage(
+          "Create an account using your email and password.",
+        ),
+      };
 }

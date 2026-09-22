@@ -11,11 +11,11 @@ class ResponsiveBuilder extends StatelessWidget {
   final AppPlatform _platform = getIt.get();
 
   ResponsiveBuilder({
-    Key? key,
+    super.key,
     required this.small,
     required this.big,
     this.medium,
-  }) : super(key: key);
+  });
 
   Orientation _screenOrientation(BuildContext context) =>
       MediaQuery.orientationOf(context);

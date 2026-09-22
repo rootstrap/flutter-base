@@ -106,7 +106,8 @@ class _SvgImage {
       width: width,
       height: height,
       fit: fit,
-      colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+      colorFilter:
+          color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
       alignment: alignment,
       semanticsLabel: semanticLabel,
       package: package,

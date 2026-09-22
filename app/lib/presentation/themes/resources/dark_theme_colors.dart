@@ -95,7 +95,8 @@ class DarkThemeColors implements ThemeColors {
   @override
   MaterialColor get neutral => const MaterialColor(0xFF1C1B1F, {
         0: Color(0xFF000000), // shadow / scrim
-        10: Color(0xFFE6E1E5), // onSurface - Main text color in dark (light color)
+        10: Color(
+            0xFFE6E1E5), // onSurface - Main text color in dark (light color)
         20: Color(0xFFF4EFF4), // inverseSurface (light color)
         30: Color(0xFFAEAAAE),
         40: Color(0xFF939094),
@@ -118,7 +119,8 @@ class DarkThemeColors implements ThemeColors {
         0: Color(0xFF000000),
         10: Color(0xFFF5EEFA),
         20: Color(0xFFE7E0EC),
-        30: Color(0xFFC9C5D0), // onSurfaceVariant - Secondary text (lighter in dark)
+        30: Color(
+            0xFFC9C5D0), // onSurfaceVariant - Secondary text (lighter in dark)
         40: Color(0xFFAEA9B4),
         50: Color(0xFF938F99), // outline - Borders, dividers
         60: Color(0xFF79747E),
