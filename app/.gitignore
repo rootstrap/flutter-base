@@ -141,3 +141,7 @@ firebase-debug.log
 # Local development files
 local.properties
 *.properties
+
+# Tracked Android build configuration (the rules above would ignore it).
+!android/build.properties
+!android/gradle.properties
