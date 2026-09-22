@@ -142,11 +142,15 @@ this [here](https://docs.page/bizz84/complete-flutter-course/faq/android-build-g
 
 ## Build Production App:
 
+The production entry point is `lib/main.dart`. Run the commands from `app/`. The env file passed to
+`--dart-define-from-file` must define `ENV=prod`, because `init.dart` then loads `env/.prod` as the dotenv file.
+Create `app/env/.prod` first (following `app/env/.dev`) and don't commit real secrets.
+
 1. Build your android appBundle or apk:
     - run the following command to build your appBundle
 
     ```text
-        flutter build appBundle -t lib/main/env/main.dart --dart-define-from-file=env_prod.json
+        flutter build appbundle -t lib/main.dart --dart-define-from-file=env/.prod
     ```
 
    [TODO: add how to setup Xcode for apple signIn]
@@ -154,7 +158,7 @@ this [here](https://docs.page/bizz84/complete-flutter-course/faq/android-build-g
     - run the following command to build your ipa
 
     ```text
-        flutter build ipa --release -t lib/main/env/main.dart --dart-define-from-file=env_prod.json
+        flutter build ipa --release -t lib/main.dart --dart-define-from-file=env/.prod
     ```
 
 For more information you can check the [docs](https://dartcode.org/docs/launch-configuration/)
