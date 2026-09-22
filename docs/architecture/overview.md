@@ -78,8 +78,8 @@ Key types (all in `modules/common/lib/core/`):
 and `onResult(ResultType<T>)`. `ListBlocState<T>` extends it for list screens. `CancelableCubitMixin`
 (common) cancels in-flight futures on `close()`.
 
-> Use `onResult` or a `switch` on the sealed `ResultType`. The `mapSuccess`/`mapError` chaining in
-> `AuthCubit` looks correct but `mapError` never invokes its callback (known-issues #1).
+> Prefer `onResult` or a `switch` on the sealed `ResultType`. `mapSuccess`/`mapError` also work for side effects
+> (as in `AuthCubit`). `mapError` keeps the original error unless its callback returns an `Exception`.
 
 ## State ownership
 
@@ -153,12 +153,11 @@ There are two mechanisms, and they don't fully agree. Understand both before cha
 |---|---|---|
 | Entrypoints | `app/lib/main.dart` (prod), `app/lib/main/env/main_dev.dart`, `main_qa.dart` | Construct `FlavorConfig(flavor: …)`, which sets `EnvConfig.env` to `DEV`/`QA`/`PROD` |
 | dotenv file choice | `Environment.envConfigFile` in `app/lib/main/env/env_config.dart` | Loads `env/.<ENV>`, where `ENV` is the `--dart-define` `ENV` value (default `dev`) |
-| API URL lookup | `EnvConfig.apiUrl` in `modules/domain/lib/env/env_config.dart` | Reads `dotenv.env['API_URL_<DEV|QA|PROD>']` |
+| API URL lookup | `EnvConfig.apiUrl` in `modules/domain/lib/env/env_config.dart` | Reads `API_URL_<DEV|QA|PROD>`, falling back to `API_URL` |
 | Bundled files | `app/pubspec.yaml` assets: `env/` | Everything in `app/env/` ships inside the app bundle |
 
-The committed `env/.dev` defines `API_URL` (no suffix) and `ENV=dev`, but `EnvConfig.apiUrl` looks for
-`API_URL_DEV`, so **the Dio base URL is empty with the shipped files**. `env/.env.example` shows the
-suffixed format. See known-issues #2 for the full list of drift (unused `getEnvFilePath`, the `.env`
+The committed `env/.dev` defines `API_URL` (no suffix) and `ENV=dev`, which the fallback picks up. `env/.env.example`
+shows the alternative single-file, suffixed format. See known-issues #2 for the full list of drift (unused `getEnvFilePath`, the `.env`
 naming in comments vs. `.dev` on disk, and the fact that bundled env files are readable by anyone with the binary).
 
 Platform flavor support:

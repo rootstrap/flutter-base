@@ -35,11 +35,11 @@ This complements the step-by-step setup in the root `README.md`.
 
 ### Environments
 - [ ] Decide on one env scheme and fix the drift described in [overview.md § Environments](../architecture/overview.md#environments-and-flavors)
-  and known-issues #2. Today the committed `env/.dev` doesn't provide the `API_URL_DEV` key that `EnvConfig.apiUrl` reads.
+  and known-issues #2. `EnvConfig.apiUrl` accepts either `API_URL_<FLAVOR>` or `API_URL`. Pick one layout and document it.
 - [ ] Create env files per flavor, and don't commit real secrets. Everything in `app/env/` is bundled into the app as an asset.
   `SECRET_KEY` in `env/.dev` is a placeholder.
-- [ ] Fix the flavor targets: `ios/qa.xcconfig` points `FLUTTER_TARGET` at `main_dev.dart` (with `PREFIX=dev`), and
-  `ios/Flutter/Release.xcconfig` points at the non-existent `lib/main/env/main.dart`.
+- [ ] Check the iOS flavor targets (`FLUTTER_TARGET` in `ios/Flutter/*.xcconfig`, `ios/dev.xcconfig`, `ios/qa.xcconfig`) if you
+  add or rename entrypoints.
 - [ ] Android product flavors (if you need them). None exist today.
 - [ ] `NetworkConstants`: timeouts (2 s is aggressive), `tokenHeader` (`"token"`), and the example `productsPath` / `baseUrl`.
 
@@ -73,8 +73,8 @@ This complements the step-by-step setup in the root `README.md`.
   `SSH_PRIVATE_KEY`, which is only needed for git-based pub dependencies (there are none), so either set it or drop the
   `ssh-agent` step. Without it, the job fails at that step (known-issues #3).
 - [ ] Bump the Flutter version with `fvm use <version>` and commit `.fvmrc`. CI follows it.
-- [ ] `sonar-project.properties`: `projectKey`, `projectName`, `host.url`. `sonar.tests` lists `modules/domain/test`,
-  which doesn't exist yet.
+- [ ] `sonar-project.properties`: `projectKey`, `projectName`, `host.url`. `sonar.tests` lists `app/test`, which doesn't
+  exist yet.
 - [ ] Add `melos run format` and a `flutter build` to CI. The current workflow runs neither (the README also mentions Bitrise
   and an RS-GPT-Review action, but neither is configured in this repo).
 - [ ] `.github/pull_request_template.md`: adjust the issue-tracker link.

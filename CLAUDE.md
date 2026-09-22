@@ -110,8 +110,7 @@ Flavors: iOS has `Dev`/`QA`/`Runner` schemes (`--flavor dev|qa` works on iOS). A
 2. **Interfaces in `domain`, implementations in `data`.** Presentation talks to cubits and services, not to
    repositories or Dio. (`ui/custom/cookies.dart` violates this. It is a known exception, don't copy it.)
 3. **Follow the established result pipeline.** Repositories return `ResultType<T>`. Cubits extend
-   `BaseCubit<T>` and use `onResult(...)` or a `switch` on `TSuccess`/`TError`. Do **not** chain
-   `mapSuccess`/`mapError` for side effects: `mapError` never calls its callback (known-issues #1).
+   `BaseCubit<T>` and use `onResult(...)` or a `switch` on `TSuccess`/`TError`.
 4. **Register everything in the owning package's `init.dart`.** Global cubits are singletons in
    `DomainInit`. Screen-scoped cubits should be created with `BlocProvider(create: ...)` at the page.
 5. **Reuse before adding.** Check `common/core`, `BaseCubit`, `ListBlocState`, `PrimaryButton`,
@@ -125,8 +124,8 @@ Flavors: iOS has `Dev`/`QA`/`Runner` schemes (`--flavor dev|qa` works on iOS). A
 9. **Don't introduce a second pattern** (Riverpod, Provider-only state, another HTTP client, another DI
    container, freezed/json_serializable) without an explicit architecture decision.
 10. **Don't edit generated or platform-generated files** (see below).
-11. **Behavior changes need tests.** See [testing.md](docs/development/testing.md). There are no tests
-    yet, so create the package's `test/` directory as the guide describes rather than skipping. CI picks it up automatically.
+11. **Behavior changes need tests.** See [testing.md](docs/development/testing.md). Only `common` and `domain`
+    have a few, so create the package's `test/` directory as the guide describes rather than skipping. CI picks it up automatically.
 12. **Report pre-existing problems; don't silently fix them** in unrelated changes. Record them in
     known-issues.md instead.
 

@@ -2,7 +2,8 @@
 
 ## Current state (verified)
 
-- **There are no tests.** No package has a `test/` directory.
+- **Very few tests:** `modules/common/test/core/result_type_test.dart` and `modules/domain/test/env/env_config_test.dart`.
+  `app` and `data` have no `test/` directory.
 - There are no integration tests (`integration_test/`), no golden tests, and no mocks or fakes checked in.
 - The test dependencies are declared but unused:
   - `app`: `flutter_test`, `bloc_test`, `mocktail`, `build_runner`
@@ -46,7 +47,7 @@ These follow from the declared dev dependencies and the architecture. Keep new s
 - **Mocks**: use `mocktail` (no codegen). It's the only mocking library declared. Don't add `mockito`, which needs
   build_runner and produces generated `*.mocks.dart` files.
 - When you add a package's first tests, make sure `<pkg>/test` is in `sonar.tests` in `sonar-project.properties`. It
-  currently lists `app/test` and `modules/domain/test`, which don't exist yet.
+  currently lists `app/test` (not created yet), `modules/domain/test` and `modules/common/test`.
 
 ## What a change must test
 
