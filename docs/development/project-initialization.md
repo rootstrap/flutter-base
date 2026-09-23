@@ -77,7 +77,7 @@ because Melos re-splits forwarded arguments on spaces. The initializer uses only
 | Option | Required | Meaning | Rules |
 |---|---|---|---|
 | `--name` | yes | Display name: Android launcher label, iOS display name, web title, `appName` string | 1–50 characters, one line, no leading/trailing spaces. Must not contain `$`, `//` or `\`, or start with `@` or `?`, because those break xcconfig, `.properties` or Android resources. |
-| `--package-name` | yes | Dart package name of `app/`, and the workspace root name (`<name>_workspace`) | Lowercase letters, digits and `_`, starting with a letter. Not a Dart reserved word, not a workspace package (`common`, `data`, `domain`, `project_init`), and not a dependency name. |
+| `--package-name` | yes | Dart package name of `app/`, and the workspace root name (`<name>_workspace`) | Lowercase letters, digits and `_`, starting with a letter. Not a Dart reserved word, not a workspace package (`common`, `data`, `domain`, `project_init`), and not the name of any package in the dependency graph, direct or indirect (for example `bloc`, which `flutter_bloc` pulls in). |
 | `--bundle-id` | yes, unless both platform IDs are given | Android `applicationId` + namespace and iOS bundle ID | At least two dot-separated segments. It must also satisfy the Android rules unless `--android-application-id` is given. |
 | `--android-application-id` | no | Android ID when it must differ (for example, iOS uses `-`) | Segments start with a letter, contain only letters, digits and `_`, and aren't Java/Kotlin keywords. It is also the namespace and the Kotlin package. |
 | `--ios-bundle-id` | no | iOS ID when it must differ | Segments contain only letters, digits and `-`. |
@@ -177,3 +177,7 @@ every location above, including re-runs, invalid input and drift.
 When you change a template file the initializer edits (or add a new place that holds project identity), update
 `lib/src/plan.dart` and the tests in the same change. If you don't, `melos run test` fails with a
 `TemplateDriftException` naming the file.
+
+The initializer runs before `melos bootstrap`, when there is no `pubspec.lock`, so the names the app package can't
+take are listed in `lib/src/resolved_packages.dart` (every package in the resolved dependency graph). When you add or
+upgrade a dependency that brings in a new package, `melos run test` fails and lists the names to add to that file.

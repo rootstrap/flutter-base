@@ -49,6 +49,8 @@ These follow from the declared dev dependencies and the architecture. Keep new s
 - When you add a package's first tests, add `<pkg>/test` to `sonar.tests` in `sonar-project.properties`. It
   currently lists `modules/common/test` and `modules/domain/test`, which are the directories that exist.
 - Changing a template file the initializer edits? Run `cd tool/project_init && dart test`; it fails on drift.
+- Added or upgraded a dependency? The same tests fail if it brings in a package missing from
+  `tool/project_init/lib/src/resolved_packages.dart`; add the names they report.
 
 ## What a change must test
 

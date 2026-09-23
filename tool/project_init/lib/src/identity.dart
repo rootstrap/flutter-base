@@ -99,7 +99,8 @@ class IdentityValidator {
       return '"$value" is a reserved word in Dart.';
     }
     if (reservedPackageNames.contains(value)) {
-      return '"$value" is already used by a workspace package or a dependency.';
+      return '"$value" is already used by a workspace package or a dependency '
+          '(direct or indirect).';
     }
     return null;
   }

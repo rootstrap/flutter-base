@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'identity.dart';
 import 'plan.dart';
+import 'resolved_packages.dart';
 import 'state.dart';
 
 /// Raised for problems the developer can fix (invalid input, wrong state).
@@ -46,9 +47,21 @@ class ProjectInitializer {
       IdentityValidator(reservedPackageNames: reservedPackageNames());
 
   /// Names the application package must not take: the other workspace
-  /// packages and every dependency declared in the workspace.
+  /// packages and every package in the dependency graph, direct or indirect.
   Set<String> reservedPackageNames() {
-    final names = <String>{'flutter', 'flutter_test', 'flutter_driver', 'test'};
+    final names = <String>{
+      'flutter',
+      'flutter_test',
+      'flutter_driver',
+      'test',
+      ...resolvedPackageNames,
+    };
+    // After `melos bootstrap`, the lock also covers dependencies added since
+    // resolvedPackageNames was last updated.
+    final lock = File('${root.path}/pubspec.lock');
+    if (lock.existsSync()) {
+      names.addAll(lockedPackageNames(lock.readAsStringSync()));
+    }
     final pubspecs = [
       File('${root.path}/pubspec.yaml'),
       ...['modules', 'tool']
