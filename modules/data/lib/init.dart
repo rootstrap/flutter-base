@@ -22,18 +22,18 @@ class DataInit {
 
     // Network
     getIt.registerLazySingleton<AuthTokenInterceptor>(
-        () => AuthTokenInterceptor(getIt()));
+      () => AuthTokenInterceptor(getIt()),
+    );
     getIt.registerLazySingleton<Dio>(() => NetworkConfig.provideDio(getIt()));
     getIt.registerLazySingleton<EnvironmentService>(
-        () => EnvironmentServiceImpl(getIt()));
+      () => EnvironmentServiceImpl(getIt()),
+    );
 
     // Data Sources
 
     // Repositories
     getIt.registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImpl(
-        getIt(),
-      ),
+      () => AuthRepositoryImpl(getIt()),
     );
     getIt.registerLazySingleton<CommonRepository>(
       () => CommonRepositoryImpl(getIt()),

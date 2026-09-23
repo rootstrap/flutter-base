@@ -8,23 +8,23 @@
 - The test dependencies are declared but unused:
   - `app`: `flutter_test`, `bloc_test`, `mocktail`, `build_runner`
   - `domain`, `data`: `flutter_test`, `mocktail`
+  - `tool/project_init` (pure Dart): `test`. Its suite initializes a temporary copy of the repository
   - `common`: `flutter_test` only
 - There's no coverage threshold. Coverage is collected and uploaded to SonarQube by `coverage/full_coverage.py`.
-- CI (`.github/workflows/sonar-qube-scann.yml`) runs the command in the first row below, but it currently fails before
-  reaching the tests (known-issues #3).
+- CI (`.github/workflows/ci.yml`) runs `melos run verify` (format, analyze, test) on every PR.
 
 ## Commands
 
 | What | Command |
 |---|---|
-| All packages (what CI runs) | `melos exec --dir-exists=test -- flutter test` (from the repo root) |
-| One package | `cd <pkg> && flutter test` |
+| All packages (what CI runs) | `melos run test` (from the repo root; `flutter test` in Flutter packages, `dart test` in pure-Dart ones) |
+| One package | `cd <pkg> && flutter test` (`dart test` in `tool/project_init`) |
 | One file | `flutter test test/path/to/file_test.dart` (from the package dir) |
 | Coverage for one package | `flutter test --coverage` → `<pkg>/coverage/lcov.info` |
 | Merged coverage + Sonar | `python3 coverage/full_coverage.py` (interactive), `--ci`, or `--dry-run` |
 
 Use `fvm flutter` if `flutter` isn't aliased to the pinned SDK. A package's tests only run once it has a `test/`
-directory: `melos exec --dir-exists=test` and `full_coverage.py` (which iterates the packages listed in
+directory: `melos run test` and `full_coverage.py` (which iterates the packages listed in
 `sonar.sources`) both skip packages without one.
 
 ## Expected conventions for new tests
@@ -46,8 +46,11 @@ These follow from the declared dev dependencies and the architecture. Keep new s
   Anything that reads `getIt` needs registrations in `setUp`. Call `GetIt.instance.reset()` in `tearDown`.
 - **Mocks**: use `mocktail` (no codegen). It's the only mocking library declared. Don't add `mockito`, which needs
   build_runner and produces generated `*.mocks.dart` files.
-- When you add a package's first tests, make sure `<pkg>/test` is in `sonar.tests` in `sonar-project.properties`. It
-  currently lists `app/test` (not created yet), `modules/domain/test` and `modules/common/test`.
+- When you add a package's first tests, add `<pkg>/test` to `sonar.tests` in `sonar-project.properties`. It
+  currently lists `modules/common/test` and `modules/domain/test`, which are the directories that exist.
+- Changing a template file the initializer edits? Run `cd tool/project_init && dart test`; it fails on drift.
+- Added or upgraded a dependency? The same tests fail if it brings in a package missing from
+  `tool/project_init/lib/src/resolved_packages.dart`; add the names they report.
 
 ## What a change must test
 

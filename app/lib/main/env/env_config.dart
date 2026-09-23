@@ -19,10 +19,8 @@ class Environment {
 
   static String? get portalUrl => dotenv.env['API_URL'];
 
-  static String get envName => const String.fromEnvironment(
-        'ENV',
-        defaultValue: 'dev',
-      );
+  static String get envName =>
+      const String.fromEnvironment('ENV', defaultValue: 'dev');
 
   static String get envConfigFile => 'env/.$envName';
 }
@@ -38,15 +36,8 @@ class FlavorConfig {
 
   static FlavorConfig? _instance;
 
-  factory FlavorConfig({
-    required Flavor flavor,
-    required FlavorValues values,
-  }) {
-    _instance ??= FlavorConfig._internal(
-      flavor,
-      flavor.toString(),
-      values,
-    );
+  factory FlavorConfig({required Flavor flavor, required FlavorValues values}) {
+    _instance ??= FlavorConfig._internal(flavor, flavor.toString(), values);
     switch (flavor) {
       case Flavor.dev:
         EnvConfig.env = EnvConfig.kDevEnv;

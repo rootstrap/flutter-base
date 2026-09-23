@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class LoadingScreen extends StatelessWidget {
   final Color? color;
 
-  const LoadingScreen({
-    super.key,
-    this.color,
-  });
+  const LoadingScreen({super.key, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +13,7 @@ class LoadingScreen extends StatelessWidget {
         child: SizedBox(
           width: 24,
           height: 24,
-          child: CircularProgressIndicator(
-            color: color,
-          ),
+          child: CircularProgressIndicator(color: color),
         ),
       ),
     );

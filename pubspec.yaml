@@ -1,46 +1,103 @@
 name: flutter_base_workspace
-description: Melos workspace root. Real packages live under app/ and modules/*.
+description: Workspace root (pub workspace + Melos). Packages live in app/, modules/* and tool/*.
 
 publish_to: "none"
 version: 0.0.1+1
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
-  flutter: ">=3.41.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 workspace:
   - app
   - modules/common
   - modules/data
   - modules/domain
+  - tool/project_init
 
 dev_dependencies:
-  melos: ^7.0.0
+  melos: ^8.9.0
 
 melos:
+  # FVM links the SDK pinned in .fvmrc here. CI sets MELOS_SDK_PATH=auto to use
+  # the SDK installed by the workflow instead.
   sdkPath: .fvm/flutter_sdk
+
+  command:
+    run:
+      # Scripts with packageFilters run in every matching package without
+      # prompting for a selection.
+      noSelect: true
+
+  # Scripts named after built-in commands (analyze, format, test) shadow them,
+  # so `melos analyze` and `melos run analyze` run the same script. They call
+  # dart/flutter directly: delegating to the built-in would recurse.
   scripts:
-    run:web:
-      description: Run the app in development mode for web.
-      run: melos exec --scope="app" -- flutter run -t lib/main.dart --dart-define-from-file=env/.dev -d chrome
-    lint:all:
-      run: melos run analyze && melos run format
-      description: Run all static analysis checks.
+    init:
+      description: Turn this template into a project. Prompts for the app name, package name and bundle ID.
+      run: dart tool/project_init/bin/init.dart
+      stdio: inherit
+
     analyze:
-      description: Run `dart analyze` in all packages.
-      run: melos exec -c 1 -- dart analyze . --fatal-infos
+      description: Static analysis of every package; infos are fatal.
+      exec: dart analyze . --fatal-infos
+
     format:
-      description: Run `dart format` in all packages.
-      run: melos exec -c 1 -- dart format --set-exit-if-changed .
+      description: Format every package and fail if any file changed (the CI check).
+      exec: dart format --set-exit-if-changed .
+
+    test:
+      description: Run the tests of every package that has a test/ directory.
+      dependsOn:
+        - test:flutter
+        - test:dart
+
+    test:flutter:
+      private: true
+      exec: flutter test
+      packageFilters:
+        flutter: true
+        dirExists: test
+
+    test:dart:
+      private: true
+      exec: dart test
+      packageFilters:
+        flutter: false
+        dirExists: test
+
+    verify:
+      description: Everything CI checks - format, analyze and test.
+      dependsOn:
+        - format
+        - analyze
+        - test
+
+    lint:all:
+      description: Format and analyze. Kept for existing workflows; prefer verify.
+      dependsOn:
+        - format
+        - analyze
+
+    gen:l10n:
+      description: Regenerate the localization code from the .arb files.
+      exec: dart run intl_utils:generate && dart format lib/presentation/resources/locale/generated
+      packageFilters:
+        fileExists: lib/presentation/resources/locale/intl_en.arb
+
     pub:runner:
-      description: Run `pub run build_runner` in selected or all packages.
-      run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+      description: Run build_runner in the packages that depend on it.
+      exec:
+        command: dart run build_runner build --delete-conflicting-outputs
+        orderDependents: true
       packageFilters:
-        dirExists:
-          - lib
+        dependsOn: build_runner
+
+    run:web:
+      description: Run the app (dev flavor) in Chrome.
+      run: cd app && flutter run -t lib/main/env/main_dev.dart --dart-define-from-file=env/.dev -d chrome
+      stdio: inherit
+
     doctor:
-      description: Run `flutter doctor`.
-      run: melos exec -- flutter doctor
-      packageFilters:
-        dirExists:
-          - lib
+      description: Run flutter doctor.
+      run: flutter doctor

@@ -1,0 +1,11 @@
+{
+  "$comment": "Managed by the project initializer (melos run init). \"template\" means this is the Flutter Base itself; \"initialized\" means it is a project created from it. CI reads \"state\" to decide whether project-only automation runs. See docs/development/project-initialization.md.",
+  "state": "template",
+  "identity": {
+    "displayName": "RS Base",
+    "packageName": "app",
+    "androidApplicationId": "com.rs.base",
+    "androidNamespace": "com.rootstrap.base.flutter_base_rootstrap",
+    "iosBundleId": "com.rs.base"
+  }
+}

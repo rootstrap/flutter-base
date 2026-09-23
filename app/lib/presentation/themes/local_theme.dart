@@ -12,28 +12,29 @@ abstract class LocalTheme {
   }
 
   CupertinoThemeData get cupertinoThemeData => CupertinoThemeData.raw(
-        colors.brightness,
-        colors.primary,
-        colors.inversePrimary,
-        CupertinoTextThemeData(
-          textStyle: bodyS,
-          actionTextStyle: buttonText,
-          tabLabelTextStyle: overLine,
-          navTitleTextStyle: titleL,
-          navLargeTitleTextStyle: titleXL,
-          navActionTextStyle: titleM,
-          pickerTextStyle: bodyS,
-          dateTimePickerTextStyle: bodyS,
-        ),
-        colors.surface,
-        colors.secondaryContainer,
-        CupertinoColors.systemBlue,
-        true,
-      );
+    colors.brightness,
+    colors.primary,
+    colors.inversePrimary,
+    CupertinoTextThemeData(
+      textStyle: bodyS,
+      actionTextStyle: buttonText,
+      tabLabelTextStyle: overLine,
+      navTitleTextStyle: titleL,
+      navLargeTitleTextStyle: titleXL,
+      navActionTextStyle: titleM,
+      pickerTextStyle: bodyS,
+      dateTimePickerTextStyle: bodyS,
+    ),
+    colors.surface,
+    colors.secondaryContainer,
+    CupertinoColors.systemBlue,
+    true,
+  );
 
   // By using this configuration you should have this output for each material widget:
   // https://flutter.github.io/samples/web/material_3_demo
-  ThemeData get data => ThemeData.from(
+  ThemeData get data =>
+      ThemeData.from(
         useMaterial3: true,
         colorScheme: colors,
         textTheme: Typography.blackCupertino.copyWith(
@@ -70,8 +71,9 @@ abstract class LocalTheme {
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             alignment: Alignment.center,
             shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(themeData.borderRadius)),
+              borderRadius: BorderRadius.all(
+                Radius.circular(themeData.borderRadius),
+              ),
             ),
           ),
         ),
@@ -122,154 +124,154 @@ abstract class LocalTheme {
   final double labelSFontSize = 8;
   final double captionFontSize = 12;
 
-  get titleXLHeight => 32.4 / titleXLFontSize;
+  double get titleXLHeight => 32.4 / titleXLFontSize;
 
-  get titleLHeight => 26.4 / titleLFontSize;
+  double get titleLHeight => 26.4 / titleLFontSize;
 
-  get titleMHeight => 24 / titleMFontSize;
+  double get titleMHeight => 24 / titleMFontSize;
 
-  get titleSHeight => 19.2 / titleSFontSize;
+  double get titleSHeight => 19.2 / titleSFontSize;
 
-  get titleXSHeight => 16.8 / titleXSFontSize;
+  double get titleXSHeight => 16.8 / titleXSFontSize;
 
-  get buttonHeight => 19.6 / buttonFontSize;
+  double get buttonHeight => 19.6 / buttonFontSize;
 
-  get bodyHeight => 16.41 / bodyFontSize;
+  double get bodyHeight => 16.41 / bodyFontSize;
 
-  get bodySHeight => 14 / bodyFontSize;
+  double get bodySHeight => 14 / bodyFontSize;
 
-  get subtitleMHeight => 16.41 / subtitleMFontSize;
+  double get subtitleMHeight => 16.41 / subtitleMFontSize;
 
-  get subtitleSHeight => 12.89 / subtitleSFontSize;
+  double get subtitleSHeight => 12.89 / subtitleSFontSize;
 
-  get inputTextHeight => 13 / inputTextFontSize;
+  double get inputTextHeight => 13 / inputTextFontSize;
 
-  get labelHeight => 9 / labelFontSize;
+  double get labelHeight => 9 / labelFontSize;
 
-  get inputFieldLabelHeight => 7 / labelFontSize;
+  double get inputFieldLabelHeight => 7 / labelFontSize;
 
-  get captionHeight => 14 / captionFontSize;
+  double get captionHeight => 14 / captionFontSize;
 
-  get titleXL => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: titleXLFontSize,
-        height: titleXLHeight,
-        letterSpacing: -0.07,
-        color: colors.primary,
-      );
+  TextStyle get titleXL => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: titleXLFontSize,
+    height: titleXLHeight,
+    letterSpacing: -0.07,
+    color: colors.primary,
+  );
 
-  get titleL => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: titleLFontSize,
-        height: titleLHeight,
-        letterSpacing: -0.22,
-      );
+  TextStyle get titleL => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: titleLFontSize,
+    height: titleLHeight,
+    letterSpacing: -0.22,
+  );
 
-  get titleM => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: titleMFontSize,
-        height: titleMHeight,
-        letterSpacing: -0.2,
-      );
+  TextStyle get titleM => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: titleMFontSize,
+    height: titleMHeight,
+    letterSpacing: -0.2,
+  );
 
-  get titleS => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: titleSFontSize,
-        height: titleSHeight,
-        letterSpacing: -0.16,
-      );
+  TextStyle get titleS => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: titleSFontSize,
+    height: titleSHeight,
+    letterSpacing: -0.16,
+  );
 
-  get titleXS => TextStyle(
-        fontFamily: primaryFontHeavy,
-        fontSize: titleXSFontSize,
-        height: titleXSHeight,
-        letterSpacing: -0.14,
-      );
+  TextStyle get titleXS => TextStyle(
+    fontFamily: primaryFontHeavy,
+    fontSize: titleXSFontSize,
+    height: titleXSHeight,
+    letterSpacing: -0.14,
+  );
 
-  get titleXSS => TextStyle(
-        fontFamily: primaryFontHeavy,
-        fontSize: titleXSSFontSize,
-        height: titleXSHeight,
-        letterSpacing: -0.14,
-      );
+  TextStyle get titleXSS => TextStyle(
+    fontFamily: primaryFontHeavy,
+    fontSize: titleXSSFontSize,
+    height: titleXSHeight,
+    letterSpacing: -0.14,
+  );
 
-  get subtitleL => TextStyle(
-        fontFamily: primaryFontMedium,
-        fontSize: subtitleLFontSize,
-        height: subtitleMHeight,
-        letterSpacing: 1.2,
-      );
+  TextStyle get subtitleL => TextStyle(
+    fontFamily: primaryFontMedium,
+    fontSize: subtitleLFontSize,
+    height: subtitleMHeight,
+    letterSpacing: 1.2,
+  );
 
-  get subtitleM => TextStyle(
-        fontFamily: primaryFontMedium,
-        fontSize: subtitleMFontSize,
-        height: subtitleMHeight,
-        letterSpacing: 1.2,
-      );
+  TextStyle get subtitleM => TextStyle(
+    fontFamily: primaryFontMedium,
+    fontSize: subtitleMFontSize,
+    height: subtitleMHeight,
+    letterSpacing: 1.2,
+  );
 
-  get subtitleS => TextStyle(
-        fontFamily: primaryFontMedium,
-        fontSize: subtitleSFontSize,
-        height: subtitleSHeight,
-        letterSpacing: 1.65,
-      );
+  TextStyle get subtitleS => TextStyle(
+    fontFamily: primaryFontMedium,
+    fontSize: subtitleSFontSize,
+    height: subtitleSHeight,
+    letterSpacing: 1.65,
+  );
 
-  get buttonText => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: buttonFontSize,
-        height: buttonHeight,
-        letterSpacing: 1.4,
-      );
+  TextStyle get buttonText => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: buttonFontSize,
+    height: buttonHeight,
+    letterSpacing: 1.4,
+  );
 
-  get body => TextStyle(
-        fontFamily: primaryFontLight,
-        fontSize: bodyFontSize,
-        height: bodyHeight,
-        fontWeight: FontWeight.normal,
-        letterSpacing: -0.14,
-      );
+  TextStyle get body => TextStyle(
+    fontFamily: primaryFontLight,
+    fontSize: bodyFontSize,
+    height: bodyHeight,
+    fontWeight: FontWeight.normal,
+    letterSpacing: -0.14,
+  );
 
   TextStyle get bodyS => TextStyle(
-        fontFamily: primaryFontMedium,
-        fontSize: bodySFontSize,
-        height: bodySHeight,
-        fontWeight: FontWeight.normal,
-        letterSpacing: -0.14,
-      );
+    fontFamily: primaryFontMedium,
+    fontSize: bodySFontSize,
+    height: bodySHeight,
+    fontWeight: FontWeight.normal,
+    letterSpacing: -0.14,
+  );
 
-  get inputText => TextStyle(
-        fontFamily: primaryFontMedium,
-        fontSize: titleXSFontSize,
-        height: inputTextHeight,
-        letterSpacing: 0.1,
-      );
+  TextStyle get inputText => TextStyle(
+    fontFamily: primaryFontMedium,
+    fontSize: titleXSFontSize,
+    height: inputTextHeight,
+    letterSpacing: 0.1,
+  );
 
-  get overLine => TextStyle(
-        fontFamily: primaryFontLight,
-        fontSize: titleXSFontSize,
-        height: inputTextHeight,
-        letterSpacing: 0.1,
-      );
+  TextStyle get overLine => TextStyle(
+    fontFamily: primaryFontLight,
+    fontSize: titleXSFontSize,
+    height: inputTextHeight,
+    letterSpacing: 0.1,
+  );
 
-  get caption => TextStyle(
-        fontFamily: primaryFontHeavy,
-        fontSize: captionFontSize,
-        height: captionHeight,
-      );
+  TextStyle get caption => TextStyle(
+    fontFamily: primaryFontHeavy,
+    fontSize: captionFontSize,
+    height: captionHeight,
+  );
 
-  get label => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: labelFontSize,
-        height: labelHeight,
-        letterSpacing: 1,
-      );
+  TextStyle get label => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: labelFontSize,
+    height: labelHeight,
+    letterSpacing: 1,
+  );
 
-  get labelS => TextStyle(
-        fontFamily: primaryFontBlack,
-        fontSize: labelSFontSize,
-        height: labelHeight,
-        letterSpacing: 1,
-      );
+  TextStyle get labelS => TextStyle(
+    fontFamily: primaryFontBlack,
+    fontSize: labelSFontSize,
+    height: labelHeight,
+    letterSpacing: 1,
+  );
 }
 
 extension ColorShadow on Color {

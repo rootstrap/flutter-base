@@ -18,28 +18,25 @@ class PrimaryButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
   }) : assert(
-          leadingIcon == null || trailingIcon == null,
-          'Only one of leadingIcon or trailingIcon can be provided',
-        );
+         leadingIcon == null || trailingIcon == null,
+         'Only one of leadingIcon or trailingIcon can be provided',
+       );
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-            minimumSize: WidgetStateProperty.all<Size>(
-              const Size(
-                double.infinity,
-                Dimen.buttonHeightM,
-              ),
-            ),
-          ),
+        minimumSize: WidgetStateProperty.all<Size>(
+          const Size(double.infinity, Dimen.buttonHeightM),
+        ),
+      ),
       onPressed: isLoading || !isEnabled ? null : onPressed,
       icon: leadingIcon ?? trailingIcon ?? const SizedBox.shrink(),
       iconAlignment: leadingIcon != null
           ? IconAlignment.start
           : trailingIcon != null
-              ? IconAlignment.end
-              : null,
+          ? IconAlignment.end
+          : null,
       label: isLoading
           ? SizedBox(
               width: Dimen.loadingSpinnerSizeS,

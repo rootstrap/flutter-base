@@ -3,8 +3,11 @@
 A **module** is a local Dart/Flutter package under `modules/<name>/` with its own `pubspec.yaml`,
 `analysis_options.yaml`, and `lib/`. It is consumed through a `path:` dependency. The repo is a **Dart pub
 workspace**: the root `pubspec.yaml` lists every member under `workspace:`, each member sets
-`resolution: workspace`, and one shared `pubspec.lock` sits at the root. Melos 7 reads the same workspace, with
+`resolution: workspace`, and one shared `pubspec.lock` sits at the root. Melos 8 reads the same workspace, with
 its scripts under the root pubspec's `melos:` key. `melos bootstrap` resolves everything.
+
+`tool/project_init` is also a workspace member. It is tooling, not an architecture layer: it depends on no
+workspace package, and no package may depend on it.
 
 ## Packages
 
@@ -87,11 +90,11 @@ wrapper or a chat feature). Most features should **not** become modules. They go
 1. `cd modules && flutter create --template=package <name>`. The existing modules were generated this way and
    still carry the template README and CHANGELOG. Replace those.
 2. In `modules/<name>/pubspec.yaml`: set `publish_to: none` and `resolution: workspace`, match the environment
-   constraints of the other members (`sdk: ">=3.6.0 <4.0.0"`, `flutter: ">=3.41.0"`), and add only the workspace
+   constraints of the other members (`sdk: ^3.13.0`, `flutter: ">=3.47.0"`), and add only the workspace
    dependencies its layer allows (usually `common`, and `domain` if it implements domain interfaces).
 3. Add `modules/<name>` to the `workspace:` list in the root `pubspec.yaml`. Without it, `resolution: workspace` fails.
 4. Copy `analysis_options.yaml` from a sibling module (`include: package:flutter_lints/flutter.yaml`) and add
-   `flutter_lints: ^5.0.0` to its dev dependencies.
+   `flutter_lints: ^6.0.0` to its dev dependencies.
 5. Add `lib/init.dart` with `class <Name>Init { static Future<void> initialize(GetIt getIt) async { … } }`.
 6. Wire it: add a `path: ../modules/<name>` dependency in `app/pubspec.yaml` and call `<Name>Init.initialize(getIt)`
    in `app/lib/main/init.dart` at the right point in the order.

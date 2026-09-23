@@ -8,6 +8,7 @@ extension FailureMapper on DioException {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
+      case DioExceptionType.transformTimeout:
         return SocketTimeOutFailure(message);
       case DioExceptionType.badResponse:
         return HttpFailure(response?.statusCode, name: message);

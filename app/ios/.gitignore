@@ -32,3 +32,7 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+
+# Swift Package Manager pins. Lock files are not committed in this repository
+# (see pubspec.lock / *.lock in the root .gitignore).
+**/xcshareddata/swiftpm/Package.resolved

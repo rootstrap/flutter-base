@@ -1,6 +1,6 @@
 {
-    "name": "flutter_base_rootstrap",
-    "short_name": "flutter_base_rootstrap",
+    "name": "RS Base",
+    "short_name": "RS Base",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

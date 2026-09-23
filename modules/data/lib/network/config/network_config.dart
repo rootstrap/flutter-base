@@ -9,26 +9,24 @@ class NetworkConfig {
   static Dio provideDio(AuthTokenInterceptor? authTokenInterceptor) {
     final options = BaseOptions(
       baseUrl: EnvConfig.apiUrl,
-      connectTimeout: const Duration(
-        seconds: NetworkConstants.connectTimeout,
-      ),
-      receiveTimeout: const Duration(
-        seconds: NetworkConstants.receiveTimeout,
-      ),
+      connectTimeout: const Duration(seconds: NetworkConstants.connectTimeout),
+      receiveTimeout: const Duration(seconds: NetworkConstants.receiveTimeout),
     );
 
     final dio = Dio(options);
 
     // Add debug logging only in debug mode
     if (kDebugMode) {
-      dio.interceptors.add(LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-        requestHeader: true,
-        responseHeader: true,
-        error: true,
-        logPrint: (object) => debugPrint(object.toString()),
-      ));
+      dio.interceptors.add(
+        LogInterceptor(
+          requestBody: true,
+          responseBody: true,
+          requestHeader: true,
+          responseHeader: true,
+          error: true,
+          logPrint: (object) => debugPrint(object.toString()),
+        ),
+      );
     }
 
     if (authTokenInterceptor != null) {

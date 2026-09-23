@@ -10,10 +10,8 @@ class Resource<T> {
 
   RLoading<T> isLoading() => RLoading<T>(data: data);
 
-  RError<T> isError({Exception? exception}) => RError<T>(
-        exception: exception,
-        data: data,
-      );
+  RError<T> isError({Exception? exception}) =>
+      RError<T>(exception: exception, data: data);
 }
 
 class RLoading<T> extends Resource<T> {
@@ -27,11 +25,7 @@ class RSuccess<T> extends Resource<T> {
 class RError<T> extends Resource<T> {
   RError({super.state = RState.error, super.data, required super.exception});
 
-  get message => exception?.toString();
+  String? get message => exception?.toString();
 }
 
-enum RState {
-  loading,
-  success,
-  error;
-}
+enum RState { loading, success, error }

@@ -13,8 +13,7 @@ void main() {
       expect(received, same(failure));
     });
 
-    test('keeps the original error when the callback returns no Exception',
-        () {
+    test('keeps the original error when the callback returns no Exception', () {
       final failure = UnexpectedFailure('boom');
 
       final result = TError<int>(failure).mapError((_) {});

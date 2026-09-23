@@ -51,9 +51,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const Gap(Dimen.spacingL),
           TextFormField(
-            decoration: InputDecoration(
-              labelText: S.of(context).labelEmail,
-            ),
+            decoration: InputDecoration(labelText: S.of(context).labelEmail),
             keyboardType: TextInputType.emailAddress,
             autofillHints: const [AutofillHints.username, AutofillHints.email],
             controller: emailController,
@@ -67,9 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const Gap(Dimen.spacingM),
           TextFormField(
-            decoration: InputDecoration(
-              labelText: S.of(context).labelPassword,
-            ),
+            decoration: InputDecoration(labelText: S.of(context).labelPassword),
             obscureText: true,
             controller: passwordController,
             validator: (value) {
@@ -116,10 +112,10 @@ class _SignUpFormState extends State<SignUpForm> {
                   if (state is RError) ...[
                     Text(
                       S.of(context).loginErrorInvalidCredentials,
-                      style:
-                          Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                color: Theme.of(context).colorScheme.error,
-                              ),
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
                     ),
                     const Gap(Dimen.spacingM),
                   ],
@@ -129,15 +125,15 @@ class _SignUpFormState extends State<SignUpForm> {
                       if ((_formKey.currentState?.validate() ?? false) &&
                           agreeToTerms) {
                         context.read<AuthCubit>().signUp(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
                       }
                     },
                     isEnabled: agreeToTerms,
                     isLoading: state is RLoading,
                     trailingIcon: const Icon(Icons.login),
-                  )
+                  ),
                 ],
               );
             },

@@ -55,8 +55,10 @@ class _TrackedPageState extends State<TrackedPage> with RouteAware {
   AnalyticsClient get analytics => getIt<AnalyticsClient>();
 
   void _track(String phase) {
-    analytics.trackEvent('${widget.trackingName}_$phase',
-        properties: widget.trackingProperties);
+    analytics.trackEvent(
+      '${widget.trackingName}_$phase',
+      properties: widget.trackingProperties,
+    );
   }
 
   @override

@@ -1,0 +1,5 @@
+// Project identity. Written by the project initializer (`melos run init`);
+// see docs/development/project-initialization.md. Every build configuration
+// derives its bundle identifier and display name from these two values.
+APP_BUNDLE_ID=com.rs.base
+APP_DISPLAY_NAME=RS Base

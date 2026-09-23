@@ -16,13 +16,11 @@ class AuthTokenInterceptor extends Interceptor {
     try {
       final token = _preferences.getToken();
       if (token != null && token.isNotEmpty) {
-        options.headers.addAll(
-          {
-            NetworkConstants.tokenHeader: token,
-            NetworkConstants.contentTypeHeader:
-                NetworkConstants.applicationJsonContentType,
-          },
-        );
+        options.headers.addAll({
+          NetworkConstants.tokenHeader: token,
+          NetworkConstants.contentTypeHeader:
+              NetworkConstants.applicationJsonContentType,
+        });
       } else {
         await _clearCredentials();
       }

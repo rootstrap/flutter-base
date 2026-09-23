@@ -26,10 +26,7 @@ enum Routes {
   String get subPath => name;
 
   void go(BuildContext context, {Object? extra}) {
-    context.router.goNamed(
-      name,
-      extra: extra,
-    );
+    context.router.goNamed(name, extra: extra);
   }
 
   static GoRouter init(BuildContext context, {String? initialLocation}) =>
@@ -46,106 +43,103 @@ class Routers {
   static GoRouter appRouter(
     BuildContext context, {
     String? initialLocation,
-  }) =>
-      GoRouter(
-        navigatorKey: rootNavigatorKey,
-        initialLocation: initialLocation ??
-            (getIt<AuthCubit>().isLoggedIn()
-                ? Routes.app.path
-                : Routes.onboarding.path),
-        routes: [
-          GoRoute(
-            path: '/',
-            builder: (context, state) {
-              return BlocListener<AuthCubit, Resource>(
-                listenWhen: (previous, current) => current is RSuccess,
-                listener: (_, appState) {
-                  if (appState is RSuccess) {
-                    switch (appState.data) {
-                      case AuthStateAuthenticated _:
-                        debugPrint('User is authenticated: ${state.fullPath}');
-                        if (state.fullPath?.startsWith(Routes.app.path) ??
-                            false) {
-                          // Already navigating to app, do nothing
-                          return;
-                        }
-                        debugPrint('Navigating to app route');
-                        Routes.app.go(context);
-                        break;
-                      case AuthStateUnauthenticated _:
-                        debugPrint(
-                            'User is unauthenticated: ${state.fullPath}');
-                        if (state.fullPath?.startsWith(Routes.auth.path) ??
-                            false) {
-                          // Already navigating to auth, do nothing
-                          return;
-                        }
-                        debugPrint('Navigating to auth route');
-                        Routes.onboarding.go(context);
-                        break;
-                      case _:
+  }) => GoRouter(
+    navigatorKey: rootNavigatorKey,
+    initialLocation:
+        initialLocation ??
+        (getIt<AuthCubit>().isLoggedIn()
+            ? Routes.app.path
+            : Routes.onboarding.path),
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) {
+          return BlocListener<AuthCubit, Resource>(
+            listenWhen: (previous, current) => current is RSuccess,
+            listener: (_, appState) {
+              if (appState is RSuccess) {
+                switch (appState.data) {
+                  case AuthStateAuthenticated _:
+                    debugPrint('User is authenticated: ${state.fullPath}');
+                    if (state.fullPath?.startsWith(Routes.app.path) ?? false) {
+                      // Already navigating to app, do nothing
+                      return;
                     }
-                  }
-                },
-                child: const SplashPage(),
-              );
+                    debugPrint('Navigating to app route');
+                    Routes.app.go(context);
+                    break;
+                  case AuthStateUnauthenticated _:
+                    debugPrint('User is unauthenticated: ${state.fullPath}');
+                    if (state.fullPath?.startsWith(Routes.auth.path) ?? false) {
+                      // Already navigating to auth, do nothing
+                      return;
+                    }
+                    debugPrint('Navigating to auth route');
+                    Routes.onboarding.go(context);
+                    break;
+                  case _:
+                }
+              }
             },
+            child: const SplashPage(),
+          );
+        },
+        routes: [
+          ShellRoute(
+            builder: (context, state, child) =>
+                kDebugMode ? DebugBanner(child: child) : child,
             routes: [
-              ShellRoute(
-                builder: (context, state, child) =>
-                    kDebugMode ? DebugBanner(child: child) : child,
+              GoRoute(
+                name: Routes.onboarding.name,
+                path: Routes.onboarding.path,
+                builder: (context, state) => const OnboardingPage(),
+              ),
+              GoRoute(
+                name: Routes.auth.name,
+                path: Routes.auth.path,
+                redirect: (context, state) {
+                  if (getIt<AuthCubit>().isLoggedIn()) {
+                    return Routes.app.path;
+                  }
+                  return null;
+                },
+                builder: (context, state) => const LoginPage(),
                 routes: [
                   GoRoute(
-                    name: Routes.onboarding.name,
-                    path: Routes.onboarding.path,
-                    builder: (context, state) => const OnboardingPage(),
-                  ),
-                  GoRoute(
-                    name: Routes.auth.name,
-                    path: Routes.auth.path,
-                    redirect: (context, state) {
-                      if (getIt<AuthCubit>().isLoggedIn()) {
-                        return Routes.app.path;
-                      }
-                      return null;
-                    },
-                    builder: (context, state) => const LoginPage(),
-                    routes: [
-                      GoRoute(
-                        name: Routes.signup.name,
-                        path: Routes.signup.subPath,
-                        builder: (context, state) => const SignUpPage(),
-                      ),
-                    ],
+                    name: Routes.signup.name,
+                    path: Routes.signup.subPath,
+                    builder: (context, state) => const SignUpPage(),
                   ),
                 ],
               ),
-              ShellRoute(
-                builder: (context, state, child) =>
-                    kDebugMode ? DebugBanner(child: child) : child,
+            ],
+          ),
+          ShellRoute(
+            builder: (context, state, child) =>
+                kDebugMode ? DebugBanner(child: child) : child,
+            routes: [
+              GoRoute(
+                name: Routes.app.name,
+                path: Routes.app.path,
+                redirect: (context, state) {
+                  if (!getIt<AuthCubit>().isLoggedIn()) {
+                    return Routes.auth.path;
+                  }
+                  return null;
+                },
+                builder: (context, state) => const HomePage(),
                 routes: [
                   GoRoute(
-                    name: Routes.app.name,
-                    path: Routes.app.path,
-                    redirect: (context, state) {
-                      if (!getIt<AuthCubit>().isLoggedIn()) {
-                        return Routes.auth.path;
-                      }
-                      return null;
-                    },
-                    builder: (context, state) => const HomePage(),
-                    routes: [
-                      GoRoute(
-                        name: Routes.placeholder.name,
-                        path: Routes.placeholder.subPath,
-                        builder: (context, state) => const Placeholder(),
-                      ),
-                    ],
+                    name: Routes.placeholder.name,
+                    path: Routes.placeholder.subPath,
+                    builder: (context, state) => const Placeholder(),
                   ),
                 ],
               ),
             ],
           ),
         ],
-      );
+      ),
+    ],
+  );
 }

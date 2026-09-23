@@ -6,17 +6,17 @@ publish_to: none
 resolution: workspace
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
-  flutter: ">=3.41.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  async: ^2.11.0
-  flutter_bloc: ^9.0.0
-  get_it: ^8.0.0
-  equatable: ^2.0.7
-  flutter_dotenv: ^5.2.1
+  async: ^2.13.1
+  flutter_bloc: ^9.1.1
+  get_it: ^9.3.0
+  equatable: ^3.0.0
+  flutter_dotenv: ^6.0.1
   flutter_localizations:
     sdk: flutter
   common:
@@ -25,8 +25,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  mocktail: ^1.0.4
+  flutter_lints: ^6.0.0
+  mocktail: ^1.0.5
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

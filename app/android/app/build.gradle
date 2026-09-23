@@ -1,23 +1,27 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-def flutterProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
-        flutterProperties.load(reader)
-    }
-}
-
+/**
+ * Project identity and SDK levels live in android/build.properties.
+ * The identity keys are written by the project initializer (`melos run init`).
+ */
 def buildProperties = new Properties()
 def buildPropertiesFile = rootProject.file('build.properties')
 if (buildPropertiesFile.exists()) {
     buildPropertiesFile.withReader('UTF-8') { reader ->
         buildProperties.load(reader)
     }
+}
+
+def requiredBuildProperty = { String key ->
+    def value = buildProperties.getProperty(key)
+    if (value == null || value.trim().isEmpty()) {
+        throw new GradleException("Missing '$key' in android/build.properties")
+    }
+    return value.trim()
 }
 
 /**
@@ -36,70 +40,63 @@ if (project.hasProperty('dart-defines')) {
             }
 }
 
-def flutterVersionCode = flutterProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
-
-def flutterVersionName = flutterProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
-
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def releaseSigningConfigured = keystorePropertiesFile.exists()
+if (releaseSigningConfigured) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
 }
 
 android {
-    namespace 'com.rootstrap.base.flutter_base_rootstrap'
-    compileSdkVersion buildProperties.getProperty('flutter.compileSdkVersion').toInteger()
-    ndkVersion flutter.ndkVersion
+    namespace = requiredBuildProperty('flutter.namespace')
+    compileSdk = requiredBuildProperty('flutter.compileSdkVersion').toInteger()
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     defaultConfig {
-        applicationId "com.rs." + buildProperties.getProperty('flutter.appId')
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion buildProperties.getProperty('flutter.minSdkVersion')
-        targetSdkVersion buildProperties.getProperty('flutter.targetSdkVersion')
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        applicationId = requiredBuildProperty('flutter.applicationId')
+        minSdk = requiredBuildProperty('flutter.minSdkVersion').toInteger()
+        targetSdk = requiredBuildProperty('flutter.targetSdkVersion').toInteger()
+        // Uses the version from pubspec.yaml.
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        // Added to (not replacing) the placeholders the Flutter plugin sets.
+        manifestPlaceholders.put('appLabel', requiredBuildProperty('flutter.appName'))
     }
 
     signingConfigs {
-        release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword']
+        if (releaseSigningConfigured) {
+            release {
+                keyAlias = keystoreProperties['keyAlias']
+                keyPassword = keystoreProperties['keyPassword']
+                storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storePassword = keystoreProperties['storePassword']
+            }
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            // Signed with android/key.properties when present. Without it, the debug keys are
+            // used so `flutter build apk --release` works in the template and in CI.
+            signingConfig = releaseSigningConfigured ? signingConfigs.release : signingConfigs.debug
         }
         debug {
-            applicationIdSuffix ".debug"
+            applicationIdSuffix = ".debug"
         }
     }
 }
 
-flutter {
-    source '../..'
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
 }
 
+flutter {
+    source = '../..'
+}

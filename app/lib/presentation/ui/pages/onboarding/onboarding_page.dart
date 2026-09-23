@@ -80,17 +80,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
               Padding(
                 padding: const EdgeInsets.all(Dimen.spacingM),
                 child: Semantics(
-                  label: S.of(context).onboardingPageIndicator(
-                        _currentPage + 1,
-                        _totalPages,
-                      ),
+                  label: S
+                      .of(context)
+                      .onboardingPageIndicator(_currentPage + 1, _totalPages),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       _totalPages,
                       (index) => Container(
                         margin: const EdgeInsets.symmetric(
-                            horizontal: Dimen.spacingXs),
+                          horizontal: Dimen.spacingXs,
+                        ),
                         width: _currentPage == index
                             ? Dimen.spacingL
                             : Dimen.spacingS,
@@ -183,28 +183,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            icon,
-            size: Dimen.onboardingIconSize,
-            color: color,
-          ),
+          Icon(icon, size: Dimen.onboardingIconSize, color: color),
           const SizedBox(height: Dimen.spacingXl),
           Text(
             title,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(context).textTheme.headlineMedium
+                ?.copyWith(fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: Dimen.spacingM),
           Text(
             description,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.6),
-                ),
+              color: Theme.of(context).colorScheme.onSurface
+                  .withValues(alpha: 0.6),
+            ),
             textAlign: TextAlign.center,
           ),
         ],

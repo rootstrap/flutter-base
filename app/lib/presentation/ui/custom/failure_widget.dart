@@ -8,8 +8,11 @@ class FailureWidget extends StatelessWidget {
   final Failure? failure;
   final VoidCallback onRetry;
 
-  const FailureWidget(
-      {super.key, required this.failure, required this.onRetry});
+  const FailureWidget({
+    super.key,
+    required this.failure,
+    required this.onRetry,
+  });
 
   @override
   Widget build(BuildContext context) {

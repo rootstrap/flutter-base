@@ -22,24 +22,12 @@ class AppThemes {
 
 class LightTheme extends LocalTheme {
   LightTheme()
-      : super(
-          themeData: AppThemeData(
-            Brightness.light,
-            LightThemeColors(),
-            8.0,
-          ),
-        );
+    : super(themeData: AppThemeData(Brightness.light, LightThemeColors(), 8.0));
 }
 
 class DarkTheme extends LocalTheme {
   DarkTheme()
-      : super(
-          themeData: AppThemeData(
-            Brightness.dark,
-            DarkThemeColors(),
-            8.0,
-          ),
-        );
+    : super(themeData: AppThemeData(Brightness.dark, DarkThemeColors(), 8.0));
 }
 
 /// For projects where the design is custom and use more colors than the ones definded for Material Design,
@@ -60,10 +48,8 @@ class DarkTheme extends LocalTheme {
 /// https://m3.material.io/styles/color/the-color-system/color-roles
 extension AppLocalTheme on BuildContext {
   LocalTheme get localTheme => AppThemes.getAppTheme(
-        select<AppCubit, ThemeType>(
-          (value) => value.state.themeType,
-        ),
-      );
+    select<AppCubit, ThemeType>((value) => value.state.themeType),
+  );
 
   ThemeData get theme => Theme.of(this);
 

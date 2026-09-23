@@ -16,10 +16,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<ResultType<void>> login(
-    String username,
-    String password,
-  ) async {
+  Future<ResultType<void>> login(String username, String password) async {
     await Future.delayed(const Duration(seconds: 1));
     _preferences.setToken('new-token');
     return TSuccess(null);
@@ -31,10 +28,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<ResultType<void>> signUp(
-    String username,
-    String password,
-  ) async {
+  Future<ResultType<void>> signUp(String username, String password) async {
     await Future.delayed(const Duration(seconds: 1));
     _preferences.setToken('new-token');
     return TSuccess(null);

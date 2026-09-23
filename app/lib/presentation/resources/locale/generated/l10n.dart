@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -54,9 +55,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Flutter Target`
+  /// `RS Base`
   String get appName {
-    return Intl.message('Flutter Target', name: 'appName', desc: '', args: []);
+    return Intl.message('RS Base', name: 'appName', desc: '', args: []);
   }
 
   /// `This website uses cookies`

@@ -1,9 +1,6 @@
-#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+// Build configuration. Project identity comes from AppIdentity.xcconfig.
 #include "Generated.xcconfig"
+#include "AppIdentity.xcconfig"
 
 FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_NAME=2.0.0
-FLUTTER_BUILD_NUMBER=1
-FLUTTER_APP_ID=base
-FLUTTER_APP_NAME=RS Base
-PREFIX=release
+FLUTTER_APP_NAME=$(APP_DISPLAY_NAME)

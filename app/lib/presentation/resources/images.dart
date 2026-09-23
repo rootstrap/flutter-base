@@ -3,9 +3,7 @@ part of 'resources.dart';
 /// Add images references here
 /// call: Images.appLogo.get()
 /// **/
-enum Images {
-  appLogo,
-}
+enum Images { appLogo }
 
 extension LoadImage on Images {
   static const assetsFolder = "assets";
@@ -26,16 +24,15 @@ extension LoadImage on Images {
     Color? color,
     Alignment alignment = Alignment.center,
     String? semanticLabel,
-  }) =>
-      _SvgImage.asset(
-        value,
-        width: width,
-        height: height,
-        fit: fit,
-        color: color,
-        alignment: alignment,
-        semanticLabel: semanticLabel,
-      );
+  }) => _SvgImage.asset(
+    value,
+    width: width,
+    height: height,
+    fit: fit,
+    color: color,
+    alignment: alignment,
+    semanticLabel: semanticLabel,
+  );
 
   Widget get({
     Key? key,
@@ -75,16 +72,15 @@ extension LoadImage on Images {
     double? height,
     BoxFit fit = BoxFit.contain,
     Alignment alignment = Alignment.center,
-  }) =>
-      Image.asset(
-        value,
-        bundle: assetImage().bundle,
-        height: width,
-        width: width,
-        scale: scale,
-        fit: fit,
-        alignment: alignment,
-      );
+  }) => Image.asset(
+    value,
+    bundle: assetImage().bundle,
+    height: width,
+    width: width,
+    scale: scale,
+    fit: fit,
+    alignment: alignment,
+  );
 
   AssetImage assetImage() => AssetImage(value);
 }
@@ -106,8 +102,9 @@ class _SvgImage {
       width: width,
       height: height,
       fit: fit,
-      colorFilter:
-          color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+      colorFilter: color != null
+          ? ColorFilter.mode(color, BlendMode.srcIn)
+          : null,
       alignment: alignment,
       semanticsLabel: semanticLabel,
       package: package,

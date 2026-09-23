@@ -7,15 +7,16 @@ void main() {
 
   group('EnvConfig.apiUrl', () {
     test('reads the unsuffixed API_URL of a per-flavor file', () {
-      dotenv.testLoad(fileInput: 'API_URL=https://dev.example.com');
+      dotenv.loadFromString(envString: 'API_URL=https://dev.example.com');
       EnvConfig.env = EnvConfig.kDevEnv;
 
       expect(EnvConfig.apiUrl, 'https://dev.example.com');
     });
 
     test('reads the key suffixed with the active flavor', () {
-      dotenv.testLoad(
-        fileInput: 'API_URL_DEV=https://dev.example.com\n'
+      dotenv.loadFromString(
+        envString:
+            'API_URL_DEV=https://dev.example.com\n'
             'API_URL_QA=https://qa.example.com',
       );
       EnvConfig.env = EnvConfig.kQaEnv;
@@ -24,8 +25,9 @@ void main() {
     });
 
     test('prefers the suffixed key over the unsuffixed one', () {
-      dotenv.testLoad(
-        fileInput: 'API_URL=https://fallback.example.com\n'
+      dotenv.loadFromString(
+        envString:
+            'API_URL=https://fallback.example.com\n'
             'API_URL_PROD=https://prod.example.com',
       );
       EnvConfig.env = EnvConfig.kProdEnv;
@@ -34,7 +36,7 @@ void main() {
     });
 
     test('is empty when no API_URL key is defined', () {
-      dotenv.testLoad(fileInput: 'ENV=dev');
+      dotenv.loadFromString(envString: 'ENV=dev');
 
       expect(EnvConfig.apiUrl, isEmpty);
     });
