@@ -76,8 +76,8 @@ There are empty `.github/instructions/*.md.new` files. `app/linux/` contains onl
 partial platform). The template `README.md`/`CHANGELOG.md` are still in each module.
 
 **#15 Documentation drift.**
-The root `README.md` advertises "Chat with Gemini and Vertex AI" and an "RS-GPT-Review" GitHub Action. Neither exists in
-this repo. It describes Bitrise CI, but there's no config for it, and its license badge points at `rootstrap/ios-base`.
+The root `README.md` was rewritten to match the code (it used to advertise a Gemini chat, an "RS-GPT-Review" action
+and Bitrise CI, none of which exist). The repository has no `LICENSE` file, so projects must add their own.
 `.cursor/rules/*.mdc` and `.github/instructions/*.instructions.md` prescribe conventions the code doesn't follow
 (PascalCase `AuthService.dart` file names, `ALL_CAPS` constants, "avoid global cubits", entity classes with a
 `parseFlexibleNumber` helper that doesn't exist). `CLAUDE.md` and `docs/` describe the actual code.
